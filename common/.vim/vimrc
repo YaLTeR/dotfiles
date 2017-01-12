@@ -21,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin '887/cargo.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -48,6 +49,10 @@ map <F12> :YcmCompleter GoTo<CR>
 " Show whitespace
 set list listchars=tab:→\ ,trail:·
 
+" Wrapping
+set wrap
+set showbreak=↪
+
 " Strip trailing whitespace on save
 autocmd BufWritePre *.rs :%s/\s\+$//e
 
@@ -67,3 +72,13 @@ set colorcolumn=100
 " Set up tab and shift-tab to indent and unindent selection
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+" Use ag, not ack
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
+
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
