@@ -1,0 +1,69 @@
+syntax on
+set clipboard=unnamed
+set encoding=utf-8
+
+" Required for Vundle
+set nocompatible
+filetype off
+
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin '887/cargo.vim'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'chriskempson/base16-vim'
+
+call vundle#end()            " Required
+filetype plugin indent on    " Required
+
+" Syntastic recommended defaults
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Make vim-airline appear always (as opposed to only when a split is created)
+set laststatus=2
+
+" Show line numbers
+set number
+set relativenumber
+
+" Map F12 to go to definition / declaration
+map <F12> :YcmCompleter GoTo<CR>
+
+" Show whitespace
+set list listchars=tab:→\ ,trail:·
+
+" Strip trailing whitespace on save
+autocmd BufWritePre *.rs :%s/\s\+$//e
+
+" Use powerline symbols
+let g:airline_powerline_fonts = 1
+
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+
+" Set the colorscheme
+let base16colorspace=256
+colorscheme base16-ashes
+
+" Draw a line at the 100th column
+set colorcolumn=100
+
+" Set up tab and shift-tab to indent and unindent selection
+vmap <Tab> >gv
+vmap <S-Tab> <gv
