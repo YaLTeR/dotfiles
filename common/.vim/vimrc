@@ -22,6 +22,9 @@ Plugin '887/cargo.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'chriskempson/base16-vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'embear/vim-localvimrc'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -82,3 +85,17 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+" Map CTRL-S to save
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
+" Set leader to ,
+let mapleader = ","
+
+" Unconditionally load .lvimrc from OpenAG
+let g:localvimrc_whitelist='/home/yalter/Source/cpp/OpenAG'
+
+" Disable loading in sandbox
+let g:localvimrc_sandbox=0
