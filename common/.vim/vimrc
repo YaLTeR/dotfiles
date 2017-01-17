@@ -1,5 +1,5 @@
 syntax on
-set clipboard=unnamed
+set clipboard=unnamedplus
 set encoding=utf-8
 
 " Required for Vundle
@@ -25,6 +25,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'embear/vim-localvimrc'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'lyuts/vim-rtags'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -99,3 +100,6 @@ let g:localvimrc_whitelist='/home/yalter/Source/cpp/OpenAG'
 
 " Disable loading in sandbox
 let g:localvimrc_sandbox=0
+
+" Increase the preview window height
+set previewheight=24
