@@ -1,5 +1,6 @@
 [options]
-font = Bitstream Vera Sans Mono 10
+# font = Bitstream Vera Sans Mono 10
+font = Gohu GohuFont
 
 [colors]
 

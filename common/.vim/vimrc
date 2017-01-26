@@ -26,6 +26,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'embear/vim-localvimrc'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'lyuts/vim-rtags'
+Plugin 'tfnico/vim-gradle'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -39,6 +41,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" For the gradle syntastic plugin
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " Make vim-airline appear always (as opposed to only when a split is created)
 set laststatus=2
@@ -60,11 +65,18 @@ set showbreak=↪
 " Strip trailing whitespace on save
 autocmd BufWritePre *.rs :%s/\s\+$//e
 
+" Show incomplete commands
+set showcmd
+
 " Use powerline symbols
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=0
 
 " Enable tabline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
+
+" Some symbol customization
+let g:airline_left_sep='▓▒░'
+let g:airline_right_sep='░▒▓'
 
 " Set the colorscheme
 let base16colorspace=256

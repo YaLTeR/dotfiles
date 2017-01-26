@@ -58,4 +58,9 @@ ssh-add ~/.ssh/id_rsa_gh &
 
 export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
+# Fix VSync.
+export __GL_SYNC_TO_VBLANK=1
+export __GL_SYNC_DISPLAY_DEVICE=DP-2
+export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-2
+
 exec awesome
