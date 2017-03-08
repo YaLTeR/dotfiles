@@ -83,23 +83,23 @@ local layouts =
 }
 -- }}}
 
--- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        -- gears.wallpaper.maximized(beautiful.wallpaper, s, false)
-        gears.wallpaper.centered(beautiful.wallpaper, s)
-    end
-end
--- }}}
+---- {{{ Wallpaper
+--if beautiful.wallpaper then
+--    for s = 1, screen.count() do
+--         gears.wallpaper.maximized(beautiful.wallpaper, s, false)
+--        gears.wallpaper.centered(beautiful.wallpaper, s)
+--    end
+--end
+---- }}}
 
--- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[2])
-end
--- }}}
+---- {{{ Tags
+---- Define a tag table which hold all screen tags.
+--tags = {}
+--for s = 1, screen.count() do
+--    -- Each screen has its own tag table.
+--    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[2])
+--end
+---- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -231,17 +231,77 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-for s = 1, screen.count() do
+--for s = 1, screen.count() do
+--    -- Create a promptbox for each screen
+--    mypromptbox[s] = awful.widget.prompt()
+--    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
+--    -- We need one layoutbox per screen.
+--    mylayoutbox[s] = awful.widget.layoutbox(s)
+--    mylayoutbox[s]:buttons(awful.util.table.join(
+--                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
+--                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
+--                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
+--                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+--    -- Create a taglist widget
+--    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+
+--    -- Create a tasklist widget
+--    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+
+--    -- Create the wibox
+--    mywibox[s] = awful.wibox({ position = "top", screen = s })
+
+--    -- Widgets that are aligned to the left
+--    local left_layout = wibox.layout.fixed.horizontal()
+--    left_layout:add(mylauncher)
+--    left_layout:add(mytaglist[s])
+--    left_layout:add(mypromptbox[s])
+
+--    -- Widgets that are aligned to the right
+--    local right_layout = wibox.layout.fixed.horizontal()
+--    if s == 1 then right_layout:add(wibox.widget.systray()) end
+--    right_layout:add(diskspace.widget)
+--    right_layout:add(ramusage.widget)
+--    right_layout:add(cpugraph.widget)
+--    right_layout:add(textclock.widget)
+--    right_layout:add(kbdcfg.widget)
+--    -- right_layout:add(powerline_widget)
+--    right_layout:add(mylayoutbox[s])
+
+--    -- Now bring it all together (with the tasklist in the middle)
+--    local layout = wibox.layout.align.horizontal()
+--    layout:set_left(left_layout)
+--    layout:set_middle(mytasklist[s])
+--    layout:set_right(right_layout)
+
+--    mywibox[s]:set_widget(layout)
+--end
+
+awful.screen.connect_for_each_screen(function(s)
+    -- Wallpaper
+    if beautiful.wallpaper then
+        local wallpaper = beautiful.wallpaper
+        -- If wallpaper is a function, call it with the screen
+        if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+        end
+        gears.wallpaper.maximized(wallpaper, s, false)
+        gears.wallpaper.centered(wallpaper, s)
+    end
+
+    -- Each screen has its own tag table.
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
     mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
+                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
@@ -251,31 +311,28 @@ for s = 1, screen.count() do
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
 
-    -- Widgets that are aligned to the left
-    local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
-    left_layout:add(mytaglist[s])
-    left_layout:add(mypromptbox[s])
-
-    -- Widgets that are aligned to the right
-    local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(diskspace.widget)
-    right_layout:add(ramusage.widget)
-    right_layout:add(cpugraph.widget)
-    right_layout:add(textclock.widget)
-    right_layout:add(kbdcfg.widget)
-    -- right_layout:add(powerline_widget)
-    right_layout:add(mylayoutbox[s])
-
-    -- Now bring it all together (with the tasklist in the middle)
-    local layout = wibox.layout.align.horizontal()
-    layout:set_left(left_layout)
-    layout:set_middle(mytasklist[s])
-    layout:set_right(right_layout)
-
-    mywibox[s]:set_widget(layout)
-end
+    -- Add widgets to the wibox
+    mywibox[s]:setup {
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            mylauncher,
+            mytaglist[s],
+            mypromptbox[s],
+        },
+        mytasklist[s], -- Middle widget
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            wibox.widget.systray(),
+	    diskspace.widget,
+	    ramusage.widget,
+	    cpugraph.widget,
+	    textclock.widget,
+	    kbdcfg.widget,
+            mylayoutbox[s],
+        },
+    }
+end)
 -- }}}
 
 -- {{{ Mouse bindings
@@ -319,13 +376,14 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ "Mod1"            }, "Shift_L", function () kbdcfg.switch() end),
-    awful.key({ modkey, "Control" }, "Shift_L", function ()
-                                                  if (kbdcfg.current ~= 1) then
-                                                    kbdcfg.switch()
-                                                  end
-                                                  awful.util.spawn("i3lock")
-                                                end),
+    --awful.key({ "Mod1"            }, "Shift_L", function () kbdcfg.switch() end),
+    --awful.key({ modkey, "Control" }, "Shift_L", function ()
+    --                                              if (kbdcfg.current ~= 1) then
+    --                                                kbdcfg.switch()
+    --                                              end
+    --                                              awful.util.spawn("i3lock")
+    --                                            end),
+    awful.key({ modkey, "Control" }, "Shift_L", function() awful.util.spawn("i3lock") end),
     awful.key({ modkey,           }, "u", function () awful.util.spawn("xrandr --output DP-2 --mode 1920x1080 -r 120") end),
     awful.key({ modkey,           }, "i", function () awful.util.spawn("xrandr --output DP-2 --mode 1920x1080 -r 144") end),
     awful.key({ modkey,           }, "y", function () awful.util.spawn(os.getenv("HOME") .. "/Source/sh/toggle_gsync.sh") end),
@@ -333,6 +391,7 @@ globalkeys = awful.util.table.join(
     awful.key({ "Control",        }, "Print", function () awful.util.spawn(os.getenv("HOME") .. "/Source/sh/shot.sh --screen") end),
     awful.key({ "Mod1",           }, "Print", function () awful.util.spawn(os.getenv("HOME") .. "/Source/sh/shot.sh --window") end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal .. " -e fish") end),
+--    awful.key({                   }, "Escape", nil, nil), -- function () awful.util.spawn("xdotool mousemove 960 540") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -348,12 +407,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",     function () mypromptbox[awful.screen.focused()]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
+                  mypromptbox[awful.screen.focused()].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),

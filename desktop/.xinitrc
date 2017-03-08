@@ -52,6 +52,7 @@ redshift -l 55.6540919:37.4818654 &
 numlockx &
 xinput set-prop "HUION 420 Pen" --type=float "Coordinate Transformation Matrix" 0.5333333333 0 0 0 1 0 0 0 1 &
 xinput set-button-map "HUION 420 Pen" 1 0 0 &
+setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
 export SSH_ASKPASS=ssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
