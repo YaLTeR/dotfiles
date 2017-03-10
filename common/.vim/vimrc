@@ -28,6 +28,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'lyuts/vim-rtags'
 Plugin 'tfnico/vim-gradle'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'dag/vim-fish'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -115,3 +116,6 @@ let g:localvimrc_sandbox=0
 
 " Increase the preview window height
 set previewheight=24
+
+" Fix airline delay when exiting insert mode
+set ttimeoutlen=10
