@@ -13,6 +13,30 @@ function fish_prompt
 
 	echo -n '┌ '
 
+	# Vi mode indicator
+	# Do nothing if not in vi mode
+	if test "$fish_key_bindings" = "fish_vi_key_bindings"
+		or test "$fish_key_bindings" = "fish_hybrid_key_bindings"
+		switch $fish_bind_mode
+			case default
+				echo -n '[N]'
+			case insert
+				echo -n '[I]'
+			case replace-one
+				echo -n '[R]'
+			case visual
+				echo -n '[V]'
+		end
+
+		echo -n ' '
+	end
+
+	# VCS prompt
+	set -l vcs (__fish_vcs_prompt)
+	if test -n "$vcs"
+		printf "%s " (string sub -s 2 (__fish_vcs_prompt))
+	end
+
 	# PWD
 	set_color $fish_color_cwd
 	echo -n (prompt_pwd)
@@ -30,24 +54,6 @@ function fish_prompt
 end
 
 function fish_right_prompt
-	# VCS prompt
-	#printf "%s " (__fish_vcs_prompt)
-
-	# Vi mode indicator
-	# Do nothing if not in vi mode
-	if test "$fish_key_bindings" = "fish_vi_key_bindings"
-		or test "$fish_key_bindings" = "fish_hybrid_key_bindings"
-		switch $fish_bind_mode
-			case default
-				echo '[N]'
-			case insert
-				echo '[I]'
-			case replace-one
-				echo '[R]'
-			case visual
-				echo '[V]'
-		end
-	end
 end
 
 function fish_mode_prompt
