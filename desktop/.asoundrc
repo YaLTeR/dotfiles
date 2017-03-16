@@ -1,0 +1,186 @@
+pcm.backside {
+	type hw
+	card 0
+	device 0
+}
+
+pcm.source {
+	type dsnoop
+	ipc_key 318453
+
+	slave.pcm "backside"
+}
+
+pcm.aloop_source {
+	type hw
+	card Loopback
+	device 0
+	subdevice 0
+}
+
+pcm.default_sink_lowlatency {
+	type dmix
+	ipc_key 132156
+
+	slave {
+		pcm {
+			type hw
+			card 0
+			device 0
+		}
+
+		period_size 32
+		buffer_size 640
+	}
+}
+
+pcm.default_sink {
+	type dmix
+	ipc_key 1894282
+
+	slave {
+		pcm {
+			type hw
+			card 0
+			device 0
+		}
+
+		period_size 512
+		buffer_size 3192
+	}
+}
+
+pcm.aloop_sink_lowlatency {
+	type dmix
+	ipc_key 5145612
+
+	slave {
+		pcm {
+			type hw
+			card Loopback
+			device 1
+			subdevice 0
+		}
+
+		period_size 32
+		buffer_size 640
+	}
+}
+
+pcm.aloop_sink {
+	type dmix
+	ipc_key 254564
+
+	slave {
+		pcm {
+			type hw
+			card Loopback
+			device 1
+			subdevice 0
+		}
+
+		period_size 512
+		buffer_size 3192
+	}
+}
+
+pcm.loopback_lowlatency {
+	type plug
+	slave.pcm {
+		type multi
+		slaves {
+			a { channels 2 pcm "default_sink_lowlatency" }  # the real device
+			b { channels 2 pcm "aloop_sink_lowlatency" }  # the loopback driver
+		}
+		bindings {
+			0 { slave a channel 0 }
+			1 { slave a channel 1 }
+			2 { slave b channel 0 }
+			3 { slave b channel 1 }
+		}
+	}
+	ttable [
+		[ 1 0 1 0 ]   # left  -> a.left,  b.left
+		[ 0 1 0 1 ]   # right -> a.right, b.right
+	]
+}
+
+pcm.loopback {
+	type plug
+	slave.pcm {
+		type multi
+		slaves {
+			a { channels 2 pcm "default_sink" }  # the real device
+			b { channels 2 pcm "aloop_sink" }  # the loopback driver
+		}
+		bindings {
+			0 { slave a channel 0 }
+			1 { slave a channel 1 }
+			2 { slave b channel 0 }
+			3 { slave b channel 1 }
+		}
+	}
+	ttable [
+		[ 1 0 1 0 ]   # left  -> a.left,  b.left
+		[ 0 1 0 1 ]   # right -> a.right, b.right
+	]
+}
+
+pcm.aloop_control {
+	type softvol
+	slave.pcm "dsnoop:Loopback,0,0"
+	control.name "Mixed Loopback"
+	control.card 0
+}
+
+pcm.mic_control {
+	type softvol
+	slave.pcm "dsnoop:Microphone"
+	# slave.pcm "dsnoop:PCH"
+	control.name "Mixed Microphone"
+	control.card 0
+}
+
+pcm.mixed_multi {
+	type multi
+	slaves {
+		a { channels 2 pcm aloop_control }
+		b { channels 2 pcm mic_control }
+	}
+	bindings {
+		0 { slave a channel 0 }
+		1 { slave a channel 1 }
+		2 { slave b channel 0 }
+		3 { slave b channel 1 }
+	}
+}
+
+pcm.mixed {
+	type plug
+	slave.pcm mixed_multi
+	ttable [ [ 0.5 0 0.5 0 ] [ 0 0.5 0 0.5 ] ]
+}
+
+pcm.!default {
+	type asym
+	playback.pcm {
+		type plug
+		slave.pcm {
+			@func getenv
+			vars [ ALSAPLAYBACK ]
+			#default "loopback_lowlatency"
+			default "loopback"
+			# default "default_sink"
+		}
+	}
+
+	capture.pcm {
+		type plug
+		slave.pcm {
+			@func getenv
+			vars [ ALSACAPTURE ]
+			default "dsnoop:Microphone"
+			#default "dsnoop:PCH"
+		}
+	}
+}
