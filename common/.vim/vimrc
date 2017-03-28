@@ -29,6 +29,7 @@ Plugin 'lyuts/vim-rtags'
 Plugin 'tfnico/vim-gradle'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'dag/vim-fish'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()            " Required
 filetype plugin indent on    " Required
@@ -119,3 +120,9 @@ set previewheight=24
 
 " Fix airline delay when exiting insert mode
 set ttimeoutlen=10
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" Only press leader once
+map <Leader> <Plug>(easymotion-prefix)
