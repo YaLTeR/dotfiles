@@ -56,6 +56,7 @@ fi
 
 xrdb -merge ~/.Xresources
 redshift -l 55.6515862:37.4827431 &
+setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
 export SSH_ASKPASS=ssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &

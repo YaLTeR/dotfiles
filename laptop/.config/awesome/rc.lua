@@ -225,7 +225,7 @@ awful.screen.connect_for_each_screen(function(s)
             ram_widget,
             battery.widget,
             textclock.widget,
-            kbdcfg.widget,
+            --kbdcfg.widget,
             mylayoutbox[s],
         },
     }
@@ -287,12 +287,12 @@ globalkeys = awful.util.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ "Mod1",           }, "Shift_L", function() kbdcfg.switch() end,
-              {description = "switch the keyboard layout", group = "custom"}),
+    --awful.key({ "Mod1",           }, "Shift_L", function() kbdcfg.switch() end,
+    --          {description = "switch the keyboard layout", group = "custom"}),
     awful.key({ modkey, "Control" }, "Shift_L", function()
-                                                    if (kbdcfg.current ~= 1) then
-                                                        kbdcfg.switch()
-                                                    end
+                                                    --if (kbdcfg.current ~= 1) then
+                                                    --    kbdcfg.switch()
+                                                    --end
                                                     awful.util.spawn("i3lock -p win -i " .. os.getenv("HOME") .. "/.config/awesome/lock.png")
                                                 end,
               {description = "lock the screen", group = "custom"}),
@@ -301,7 +301,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 20") end,
               {description = "decrease the screen brightness", group = "custom"}),
 
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal .. " -e fish") end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
