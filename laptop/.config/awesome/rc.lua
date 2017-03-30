@@ -114,6 +114,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
+mykeyboardlayout.widget:set_font("Liberation Mono 10")
 
 -- {{{ Wibox
 -- Create a wibox for each screen and add it
@@ -217,7 +218,6 @@ awful.screen.connect_for_each_screen(function(s)
         mytasklist[s], -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
             wibox.widget.systray(),
             wifi.widget,
             cpuwidget,
@@ -226,6 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
             battery.widget,
             textclock.widget,
             --kbdcfg.widget,
+            mykeyboardlayout,
             mylayoutbox[s],
         },
     }

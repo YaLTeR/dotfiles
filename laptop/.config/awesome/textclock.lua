@@ -2,7 +2,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 
 local textclock = {}
-textclock.widget = awful.widget.textclock(" %H:%M ")
+textclock.widget = awful.widget.textclock(" %H:%M")
 textclock.widget:set_font("Liberation Mono 10")
 
 textclock.tooltip = awful.tooltip({
