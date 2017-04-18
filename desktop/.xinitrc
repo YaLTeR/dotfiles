@@ -58,6 +58,9 @@ setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 export SSH_ASKPASS=ssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
 
+sudo /usr/bin/mullvad &
+rescuetime &
+
 export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
 # Fix VSync.
