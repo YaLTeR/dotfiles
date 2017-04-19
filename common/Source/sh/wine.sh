@@ -7,7 +7,7 @@ function main {
 		echo "./wine.sh <link to wine source code>"
 	else
 		echo "Downloading and extracting the source code..."
-		curl "$1" | tar xj
+		curl "$1" | tar xJ
 
 		local DIR=$(find -maxdepth 1 -type d -name "wine-*" | head -n1)
 

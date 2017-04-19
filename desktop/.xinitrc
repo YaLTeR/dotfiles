@@ -55,7 +55,7 @@ xinput set-button-map "HUION 420 Pen" 1 0 0 &
 xinput set-button-map "UGTABLET TABLET G3 4x3 Pen Pen (0)" 1 0 0 &
 setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
-export SSH_ASKPASS=ssh-askpass
+export SSH_ASKPASS=lxqt-openssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
 
 sudo /usr/bin/mullvad &
