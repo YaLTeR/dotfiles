@@ -1,0 +1,22 @@
+Section "InputClass"
+   Identifier "stylus"
+   MatchIsTablet "on"
+   MatchDevicePath "/dev/input/event*"
+   MatchVendor "UGTABLET"
+   Driver "wizardpen"
+   Option "Device" "/dev/input/by-id/usb-UGTABLET_TABLET_G3_4x3-event-mouse"
+
+   Option "TopX"                 "4799"
+   Option "TopY"                 "6228"
+   Option "BottomX"              "27968"
+   Option "BottomY"              "26539"
+   Option "TransformationMatrix" "0.533333333333333333 0 0 0 1 0 0 0 1"
+EndSection
+
+Section "InputClass"
+   Identifier "wizardpen ignore mouse dev"
+   MatchIsTablet "on"
+   MatchDevicePath "/dev/input/by-id/usb-UGTABLET_TABLET_G3_4x3-event-mouse"
+   MatchVendor "UC-LOGIC|KYE Systems|Ace Cad|WALTOP|Waltop|UGTABLET"
+   Driver ""
+EndSection
