@@ -1,0 +1,8 @@
+56,58c56,58
+< static const REFERENCE_TIME DefaultPeriod = 100000;
+< static const REFERENCE_TIME MinimumPeriod = 50000;
+< #define                     EXTRA_SAFE_RT   40000
+---
+> static const REFERENCE_TIME DefaultPeriod = 20000;
+> static const REFERENCE_TIME MinimumPeriod = 20000;
+> #define                     EXTRA_SAFE_RT   11000

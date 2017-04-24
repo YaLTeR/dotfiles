@@ -3,10 +3,10 @@ alias l "ls -hl"
 # Vi key bindings
 fish_vi_key_bindings
 
-# Base16 Shell
-if status --is-interactive
-	eval sh $HOME/.config/base16-shell/scripts/base16-ashes.sh
-end
+# # Base16 Shell
+# if status --is-interactive
+# 	eval sh $HOME/.config/base16-shell/scripts/base16-ashes.sh
+# end
 
 function fish_prompt
 	set -l last_status $status

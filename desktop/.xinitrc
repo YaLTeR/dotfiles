@@ -60,6 +60,7 @@ ssh-add ~/.ssh/id_rsa_gh &
 
 sudo /usr/bin/mullvad &
 rescuetime &
+dropbox &
 
 export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
@@ -67,5 +68,8 @@ export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-li
 export __GL_SYNC_TO_VBLANK=1
 export __GL_SYNC_DISPLAY_DEVICE=DP-2
 export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-2
+
+# Better font rendering in Java.
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 exec awesome
