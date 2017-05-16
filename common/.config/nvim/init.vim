@@ -26,6 +26,7 @@ set showbreak=↪
 
 " Strip trailing whitespace on save
 autocmd BufWritePre *.rs :%s/\s\+$//e
+autocmd BufWritePost *.rs Neomake
 
 " Show incomplete commands
 set showcmd
@@ -61,6 +62,12 @@ inoremap <C-S> <C-O>:update<CR>
 " Mapping for easy search highlight removal
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 
+" Better vertical movement in normal and visual modes
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
 " Set leader to ,
 let mapleader = ","
 
@@ -77,12 +84,12 @@ set wildignore+=*.o,*.dll,*.dylib,*.so,*.a
 map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
-let g:LanguageClient_serverCommands = {
+"let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', '/home/yalter/Source/rust/rls/target/release/rls'],
     \ }
 
 " Automatically start language servers.
-let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_autoStart = 1
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -136,3 +143,28 @@ map <Leader> <Plug>(easymotion-prefix)
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
+
+let g:vimtex_compiler_latexmk = {
+\ 'backend' : 'nvim',
+\ 'background' : 1,
+\ 'build_dir' : '',
+\ 'callback' : 1,
+\ 'continuous' : 1,
+\ 'executable' : 'latexmk',
+\ 'options' : [
+\   '-pdf',
+\   '-verbose',
+\   '-file-line-error',
+\   '-synctex=1',
+\   '-interaction=nonstopmode',
+\   '-lualatex',
+\ ],
+\}
+
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_viewer_general_viewer = 'zathura'
+
+" Nice NERDCommenter style
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1

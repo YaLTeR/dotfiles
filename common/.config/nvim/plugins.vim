@@ -11,17 +11,19 @@ Plug 'Valloric/YouCompleteMe'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'chriskempson/base16-vim'
 "Plug 'mileszs/ack.vim'
-"Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 "Plug 'embear/vim-localvimrc'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'lyuts/vim-rtags'
 "Plug 'dag/vim-fish'
 Plug 'easymotion/vim-easymotion'
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/echodoc.vim'
 "Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'roxma/nvim-completion-manager'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
+Plug 'lervag/vimtex'
+Plug 'neomake/neomake'
 
 call plug#end()
