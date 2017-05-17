@@ -1,6 +1,9 @@
 let s:path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 execute 'source ' . s:path . '/plugins.vim'
 
+" Enable true color
+set termguicolors
+
 " Use the system clipboard
 set clipboard+=unnamedplus
 
@@ -117,7 +120,7 @@ let g:airline#extensions#tabline#enabled=1
 " Set the colorscheme
 " let base16colorspace=256
 colorscheme base16-flat
-hi Whitespace cterm=bold ctermfg=2 gui=bold guifg=#2ECC71
+hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#34495e
 
 " Use rg, not ack
 if executable('rg')
