@@ -73,3 +73,4 @@ export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-2
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
 exec awesome
+# exec awesome -a

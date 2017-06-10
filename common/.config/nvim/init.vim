@@ -81,15 +81,15 @@ set previewheight=24
 set ttimeoutlen=10
 
 " Remove some binary output paths from ctrl-p
-set wildignore+=*.o,*.dll,*.dylib,*.so,*.a
+set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*/target/*
 
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 "let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', '/home/yalter/Source/rust/rls/target/release/rls'],
-    \ }
+"    \ 'rust': ['rustup', 'run', 'nightly', '/home/yalter/Source/rust/rls/target/release/rls'],
+"    \ }
 
 " Automatically start language servers.
 "let g:LanguageClient_autoStart = 1
@@ -171,3 +171,7 @@ let g:vimtex_viewer_general_viewer = 'zathura'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+
+" Better binds for nvim-completion-manager
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

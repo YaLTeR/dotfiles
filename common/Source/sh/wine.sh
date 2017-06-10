@@ -15,7 +15,7 @@ function main {
 		patch $DIR/dlls/winealsa.drv/mmdevdrv.c ~/Source/c/alsa_mmdevdrv.c.patch
 
 		echo "Patching Pulse mmdevdrv.c..."
-		patch $DIR/dlls/winepulse.drv/mmdevdrv.c ~/Source/c/pulse_mmdevdrv.c.patch
+		# patch $DIR/dlls/winepulse.drv/mmdevdrv.c ~/Source/c/pulse_mmdevdrv.c.patch
 
 		echo "Configuting..."
 		cd $DIR
@@ -30,7 +30,7 @@ function main {
 
 		echo "Removing the directory..."
 		cd ..
-		rm -rf $DIR
+		# rm -rf $DIR
 	fi
 }
 
