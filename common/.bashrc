@@ -19,3 +19,8 @@ export JAVA_HOME=/usr/lib/jvm/default
 # BASE16_SHELL=$HOME/.config/base16-shell/
 # [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 # base16_ashes
+
+# added by travis gem
+[ -f /home/yalter/.travis/travis.sh ] && source /home/yalter/.travis/travis.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

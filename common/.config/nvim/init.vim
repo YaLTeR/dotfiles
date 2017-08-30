@@ -29,7 +29,7 @@ set showbreak=↪
 
 " Strip trailing whitespace on save
 autocmd BufWritePre *.rs :%s/\s\+$//e
-autocmd BufWritePost *.rs Neomake
+" autocmd BufWritePost *.rs Neomake
 
 " Show incomplete commands
 set showcmd
@@ -48,10 +48,10 @@ set gdefault
 set undofile
 
 " Make some space for echodoc
-"set cmdheight=2
+set cmdheight=2
 
 " Required for operations modifying multiple buffers like rename.
-"set hidden
+" set hidden
 
 " Set up tab and shift-tab to indent and unindent selection
 vmap <Tab> >gv
@@ -81,18 +81,18 @@ set previewheight=24
 set ttimeoutlen=10
 
 " Remove some binary output paths from ctrl-p
-set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*/target/*
+set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*.rs.bk,*/target/*
 
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
-"let g:LanguageClient_serverCommands = {
-"    \ 'rust': ['rustup', 'run', 'nightly', '/home/yalter/Source/rust/rls/target/release/rls'],
-"    \ }
+let g:LanguageClient_serverCommands = {
+   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+   \ }
 
 " Automatically start language servers.
-"let g:LanguageClient_autoStart = 1
+let g:LanguageClient_autoStart = 1
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -173,5 +173,19 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
 " Better binds for nvim-completion-manager
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" Make ALE use cargo check
+let g:ale_rust_cargo_use_check = 1
+
+" Binds for ALE
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Enable echodoc
+let g:echodoc#enable_at_startup = 1
+
+" Map FZF
+nnoremap <C-P> :FZF<CR>

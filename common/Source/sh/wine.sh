@@ -30,7 +30,7 @@ function main {
 
 		echo "Removing the directory..."
 		cd ..
-		# rm -rf $DIR
+		rm -rf $DIR
 	fi
 }
 
