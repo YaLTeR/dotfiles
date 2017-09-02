@@ -58,7 +58,7 @@ setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 export SSH_ASKPASS=lxqt-openssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
 
-sudo /usr/bin/mullvad &
+# sudo /usr/bin/mullvad &
 rescuetime &
 dropbox &
 nm-applet &

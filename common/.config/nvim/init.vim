@@ -122,16 +122,6 @@ let g:airline#extensions#tabline#enabled=1
 colorscheme base16-flat
 hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#34495e
 
-" Use rg, not ack
-if executable('rg')
-	let g:ackprg = 'rg --vimgrep'
-endif
-
-"cnoreabbrev rg Ack
-"cnoreabbrev rG Ack
-"cnoreabbrev Rg Ack
-"cnoreabbrev RG Ack
-
 " Unconditionally load .lvimrc from OpenAG
 let g:localvimrc_whitelist='/home/yalter/Source/cpp/OpenAG'
 
@@ -178,7 +168,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Make ALE use cargo check
-let g:ale_rust_cargo_use_check = 1
+" let g:ale_rust_cargo_use_check = 1
 
 " Binds for ALE
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -187,5 +177,32 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Enable echodoc
 let g:echodoc#enable_at_startup = 1
 
-" Map FZF
-nnoremap <C-P> :FZF<CR>
+" Correct FZF colors
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Map Ctrl-P to FZF
+nnoremap <C-P> :Files<CR>
+
+" Rg integration with FZF
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%', '?'),
+  \   <bang>0)
+
+cnoreabbrev rg Rg
+cnoreabbrev rG Rg
+cnoreabbrev RG Rg

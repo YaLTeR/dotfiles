@@ -28,5 +28,6 @@ Plug 'lervag/vimtex'
 Plug 'chitalu/vim-opencl'
 " Plug 'w0rp/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
