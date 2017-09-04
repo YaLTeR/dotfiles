@@ -61,4 +61,7 @@ setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 export SSH_ASKPASS=ssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
 
+nm-applet &
+rescuetime &
+
 exec awesome >> ~/.cache/awesome/stdout 2>> ~/.cache/awesome/stderr

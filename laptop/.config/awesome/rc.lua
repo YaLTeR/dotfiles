@@ -123,7 +123,6 @@ local textclock  = require("textclock")
 local battery    = require("battery")
 local cpuwidget  = require("cpuwidget")
 local ram_widget = require("ram_widget")
-local wifi       = require("wifi")
 local freespace_widget = require("freespace_widget")
 
 mywibox = {}
@@ -219,7 +218,6 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-            wifi.widget,
             cpuwidget,
             freespace_widget,
             ram_widget,
