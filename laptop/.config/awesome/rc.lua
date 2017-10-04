@@ -43,9 +43,13 @@ end
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+
+-- Various directories.
+home = os.getenv("HOME")
+shell_scripts = home .. "/Source/sh/"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -292,7 +296,7 @@ globalkeys = awful.util.table.join(
                                                     --if (kbdcfg.current ~= 1) then
                                                     --    kbdcfg.switch()
                                                     --end
-                                                    awful.util.spawn("i3lock -p win -i " .. os.getenv("HOME") .. "/.config/awesome/lock.png")
+                                                    awful.util.spawn("lock")
                                                 end,
               {description = "lock the screen", group = "custom"}),
     awful.key({                   }, "XF86MonBrightnessUp",   function () awful.spawn("xbacklight -inc 20") end,
@@ -300,7 +304,14 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 20") end,
               {description = "decrease the screen brightness", group = "custom"}),
 
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal .. " -e fish") end,
+    awful.key({                   }, "Print", function () awful.util.spawn(shell_scripts .. "shot.sh") end,
+              {description = "capture a screenshot of an area", group = "screen"}),
+    awful.key({ "Control",        }, "Print", function () awful.util.spawn(shell_scripts .. "shot.sh --screen") end,
+              {description = "capture a screenshot of the whole screen", group = "screen"}),
+    awful.key({ "Mod1",           }, "Print", function () awful.util.spawn(shell_scripts .. "shot.sh --window") end,
+              {description = "capture a screenshot of the active window", group = "screen"}),
+
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
