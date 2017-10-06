@@ -1,5 +1,12 @@
 alias l "ls -hl"
 
+alias gs "git status"
+alias gpus "git push"
+alias gpul "git pull"
+alias gc "git commit"
+alias gd "git diff"
+alias g "git"
+
 set -x PATH ~/.cargo/bin $PATH
 set -x BASE16_THEME ocean
 

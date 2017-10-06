@@ -9,7 +9,7 @@ if math (count $argv) ">= 1" > /dev/null
 		gnome-screenshot -f $filename
 	end
 else
-	gnome-screenshot -a -f $filename >~/gsshot.log ^~/gsshot-err.log
+	sleep 0.2; gnome-screenshot -a -f $filename
 end
 
 if test -f $filename

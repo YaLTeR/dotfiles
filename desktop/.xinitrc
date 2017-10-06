@@ -58,6 +58,8 @@ setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 export SSH_ASKPASS=lxqt-openssh-askpass
 ssh-add ~/.ssh/id_rsa_gh &
 
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # sudo /usr/bin/mullvad &
 rescuetime &
 dropbox &
