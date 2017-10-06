@@ -119,8 +119,15 @@ let g:airline#extensions#tabline#enabled=1
 
 " Set the colorscheme
 " let base16colorspace=256
-colorscheme base16-flat
-hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#34495e
+if empty($BASE16_THEME)
+	colorscheme base16-flat
+else
+	execute "colorscheme base16-".$BASE16_THEME
+endif
+
+let color = execute("hi LineNr")
+let color = matchstr(color, 'guibg=#\zs[0-9a-fA-F]\+')
+execute "hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#" . color
 
 " Unconditionally load .lvimrc from OpenAG
 let g:localvimrc_whitelist='/home/yalter/Source/cpp/OpenAG'

@@ -1,5 +1,8 @@
 alias l "ls -hl"
 
+set -x PATH ~/.cargo/bin $PATH
+set -x BASE16_THEME ocean
+
 # Vi key bindings
 fish_vi_key_bindings
 
