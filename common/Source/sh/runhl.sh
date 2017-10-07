@@ -39,6 +39,13 @@ if [ -n "$FFMPEG_LIBRARY_PATH" ]; then
 fi
 
 export LD_PRELOAD=/usr/lib32/libSDL2.so
+
+if [ -n "$BXT" ]; then
+	export LD_PRELOAD=~/Source/cpp/BunnymodXT/build/libBunnymodXT.so:$LD_PRELOAD
+fi
+if [ -n "$HLCAPTURE" ]; then
+	export LD_PRELOAD=~/Source/rust/hl-capture/target/i686-unknown-linux-gnu/release/libhl_capture.so:$LD_PRELOAD
+fi
 if [ -n "$PRELOAD" ]; then
 	export LD_PRELOAD=$PRELOAD:$LD_PRELOAD
 fi
