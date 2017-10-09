@@ -10,6 +10,10 @@ alias g "git"
 set -x PATH ~/.cargo/bin $PATH
 set -x BASE16_THEME ocean
 
+# Initialize the gnome-keyring-daemon
+set -l gnome_keyring_vars (gnome-keyring-daemon --start)
+eval (echo $gnome_keyring_vars | sed -e 's/^\(.*\)$/set -x \\1;/' -e 's/=/ /')
+
 # Vi key bindings
 fish_vi_key_bindings
 

@@ -1,3 +1,7 @@
+# Autostart
+exec lxpolkit
+exec dropbox start
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -162,6 +166,8 @@ input "1739:30381:DLL0665:01_06CB:76AD_To" {
 
     bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
+
+    bindsym $mod+l exec swaylock
 #
 # Resizing containers:
 #
