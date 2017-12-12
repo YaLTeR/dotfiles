@@ -55,8 +55,10 @@ xinput set-button-map "HUION 420 Pen" 1 0 0 &
 xinput set-button-map "UGTABLET TABLET G3 4x3 Pen Pen (0)" 1 0 0 &
 setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
-export SSH_ASKPASS=lxqt-openssh-askpass
-ssh-add ~/.ssh/id_rsa_gh &
+# export SSH_ASKPASS=lxqt-openssh-askpass
+# ssh-add ~/.ssh/id_rsa_gh &
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 

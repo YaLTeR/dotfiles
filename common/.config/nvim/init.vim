@@ -71,6 +71,20 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Move between windows with Alt-hjkl
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 " Set leader to ,
 let mapleader = ","
 
@@ -144,6 +158,7 @@ map <Leader> <Plug>(easymotion-prefix)
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
 
+" Set up vimtex stuff
 let g:vimtex_compiler_latexmk = {
 \ 'backend' : 'nvim',
 \ 'background' : 1,
@@ -163,6 +178,11 @@ let g:vimtex_compiler_latexmk = {
 
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_viewer_general_viewer = 'zathura'
+
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " Nice NERDCommenter style
 let g:NERDSpaceDelims = 1
