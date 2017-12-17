@@ -1,6 +1,7 @@
 # Autostart
 exec lxpolkit
 exec dropbox start
+exec dunst
 
 ### Variables
 #
@@ -23,6 +24,8 @@ gaps inner 10
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
 output * bg /usr/share/backgrounds/f26/default/tv-wide/f26.png fill
+
+output DP-1 position 1920,0
 #
 # Example configuration:
 #
@@ -167,7 +170,10 @@ input "1739:30381:DLL0665:01_06CB:76AD_To" {
     bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
 
-    bindsym $mod+l exec swaylock
+    bindsym $mod+Shift+l exec swaylock
+
+for_window [title="FreeRDP.*"] floating enable
+
 #
 # Resizing containers:
 #

@@ -8,6 +8,7 @@ alias gd "git diff"
 alias g "git"
 
 set -x PATH ~/.cargo/bin $PATH
+set -x RUST_SRC_PATH $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 set -x BASE16_THEME ocean
 
 # Initialize the gnome-keyring-daemon

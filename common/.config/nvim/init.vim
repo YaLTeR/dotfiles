@@ -110,7 +110,9 @@ let g:LanguageClient_autoStart = 1
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F19> :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
 
 " Syntastic recommended defaults
 let g:syntastic_always_populate_loc_list = 1
@@ -134,9 +136,9 @@ let g:airline#extensions#tabline#enabled=1
 " Set the colorscheme
 " let base16colorspace=256
 if empty($BASE16_THEME)
-	colorscheme base16-flat
+        colorscheme base16-flat
 else
-	execute "colorscheme base16-".$BASE16_THEME
+        execute "colorscheme base16-".$BASE16_THEME
 endif
 
 let color = execute("hi LineNr")
