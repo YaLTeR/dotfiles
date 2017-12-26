@@ -51,5 +51,9 @@ if [ -n "$PRELOAD" ]; then
 fi
 
 cd $HL_ROOT
-exec ./hl_linux -steam "$@"
-# exec gdb ./hl_linux
+
+if [ -n "$GDB" ]; then
+	exec gdb ./hl_linux
+else
+	exec ./hl_linux -steam "$@"
+fi

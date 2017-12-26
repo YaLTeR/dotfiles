@@ -102,11 +102,16 @@ map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 let g:LanguageClient_serverCommands = {
-   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+   \ 'cpp': ['~/Source/cpp/cquery/build/release/bin/cquery', '--language-server', '--enable-comments'],
+   \ 'rust': ['rls'],
    \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
+
+" Load settings from a global file (a setting is required by cquery).
+let g:LanguageClient_loadSettings = 1
+let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -192,16 +197,16 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
 " Better binds for nvim-completion-manager
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Make ALE use cargo check
 " let g:ale_rust_cargo_use_check = 1
 
 " Binds for ALE
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Enable echodoc
 let g:echodoc#enable_at_startup = 1
@@ -235,3 +240,11 @@ command! -bang -nargs=* Rg
 cnoreabbrev rg Rg
 cnoreabbrev rG Rg
 cnoreabbrev RG Rg
+
+" UltiSnips+NCM function parameter expansion
+" let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
+" let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
+" let g:UltiSnipsRemoveSelectModeMappings = 0
+"
+" inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
