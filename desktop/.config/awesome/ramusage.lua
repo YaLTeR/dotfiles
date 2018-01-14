@@ -3,8 +3,8 @@ local wibox   = require("wibox")
 local vicious = require("vicious")
 
 ram_widget = wibox.widget.textbox()
-ram_widget:set_align("right")
+ram_widget:set_align("center")
 
-vicious.register(ram_widget, vicious.widgets.mem, "<span color='orange'>  $1% </span>", 2)
+vicious.register(ram_widget, vicious.widgets.mem, "<span color='#00000088'><b>$1%</b></span>", 2)
 
 return ram_widget

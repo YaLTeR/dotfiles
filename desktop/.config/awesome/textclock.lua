@@ -2,7 +2,8 @@ local awful = require("awful")
 local wibox = require("wibox")
 
 local textclock = {}
-textclock.widget = awful.widget.textclock("<span color='pink'> %H:%M</span>")
+textclock.widget = wibox.widget.textclock("<span color='#00000088'><b>%H:%M</b></span>")
+textclock.widget:set_align("center")
 textclock.tooltip = awful.tooltip({
     objects = { textclock.widget },
     timer_function = function()

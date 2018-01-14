@@ -12,6 +12,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 -- Enable VIM help for hotkeys widget when client with matching name is opened:
 require("awful.hotkeys_popup.keys.vim")
 
@@ -131,6 +133,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
+mykeyboardlayout.widget:set_align("center")
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -191,12 +194,168 @@ local function set_wallpaper(s)
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)
         end
-        gears.wallpaper.maximized(wallpaper, s, true)
+        gears.wallpaper.maximized(wallpaper, s, false)
     end
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
+
+vertical_constraint = function(widget, height)
+   height = height or 40
+   return wibox.container.constraint(widget, "exact", nil, dpi(height))
+end
+
+-- awful.widget.common.list_update with modifications
+local function taglist_update(w, buttons, label, data, objects)
+    -- update the widgets, creating them if needed
+    w:reset()
+    for i, o in ipairs(objects) do
+        local cache = data[o]
+        local ib, tb, bgb, tbm, ibm, l
+        if cache then
+            ib = cache.ib
+            tb = cache.tb
+            bgb = cache.bgb
+            tbm = cache.tbm
+            ibm = cache.ibm
+        else
+            ib = wibox.widget.imagebox()
+            tb = wibox.widget.textbox()
+            bgb = wibox.container.background()
+            tbm = wibox.container.margin(tb, dpi(4), dpi(4))
+            ibm = wibox.container.margin(ib, dpi(4))
+            l = wibox.layout.fixed.horizontal()
+
+            tb:set_align("center")
+
+            -- All of this is added in a fixed widget
+            l:fill_space(true)
+            l:add(ibm)
+            l:add(tbm)
+
+            v = vertical_constraint(l, 20)
+
+            -- And all of this gets a background
+            bgb:set_widget(v)
+
+            bgb:buttons(awful.widget.common.create_buttons(buttons, o))
+
+            data[o] = {
+                ib  = ib,
+                tb  = tb,
+                bgb = bgb,
+                tbm = tbm,
+                ibm = ibm,
+            }
+        end
+
+        local text, bg, bg_image, icon, args = label(o, tb)
+        args = args or {}
+
+        -- The text might be invalid, so use pcall.
+        if text == nil or text == "" then
+            tbm:set_margins(0)
+        else
+            if not tb:set_markup_silently(text) then
+                tb:set_markup("<i>&lt;Invalid text&gt;</i>")
+            end
+        end
+        bgb:set_bg(bg)
+        if type(bg_image) == "function" then
+            -- TODO: Why does this pass nil as an argument?
+            bg_image = bg_image(tb,o,nil,objects,i)
+        end
+        bgb:set_bgimage(bg_image)
+        if icon then
+            ib:set_image(icon)
+        else
+            ibm:set_margins(0)
+        end
+
+        bgb.shape              = args.shape
+        bgb.shape_border_width = args.shape_border_width
+        bgb.shape_border_color = args.shape_border_color
+
+        w:add(bgb)
+   end
+end
+
+-- awful.widget.common.list_update with modifications
+local function tasklist_update(w, buttons, label, data, objects)
+    -- update the widgets, creating them if needed
+    w:reset()
+    for i, o in ipairs(objects) do
+        local cache = data[o]
+        local ib, tb, bgb, c2
+        if cache then
+            ib = cache.ib
+            tb = cache.tb
+            bgb = cache.bgb
+            c2 = cache.c2
+        else
+            tb = wibox.widget.textbox()
+
+            ib = wibox.widget.imagebox()
+            i_c = wibox.container.constraint(ib, "exact", dpi(20), dpi(20))
+            i_p = wibox.container.place(i_c)
+
+            bar_c = wibox.container.constraint(nil, "exact", dpi(4), dpi(30))
+            bgb = wibox.container.background(bar_c)
+
+            l = wibox.layout.fixed.horizontal()
+            l:add(wibox.container.constraint(nil, "exact", dpi(5)))
+            l:add(i_p)
+            l:add(wibox.container.constraint(nil, "exact", dpi(5)))
+            l:add(bgb)
+
+            v = wibox.container.place(l)
+            c2 = wibox.container.constraint(v, "exact", dpi(40), dpi(40))
+
+            c2:buttons(awful.widget.common.create_buttons(buttons, o))
+
+            data[o] = {
+                ib  = ib,
+                tb  = tb,
+                bgb = bgb,
+                c2 = c2,
+            }
+        end
+
+        local text, bg, bg_image, icon, args = label(o, tb)
+        args = args or {}
+
+        -- The text might be invalid, so use pcall.
+        if text == nil or text == "" then
+            -- tbm:set_margins(0)
+        else
+            if not tb:set_markup_silently(text) then
+                tb:set_markup("<i>&lt;Invalid text&gt;</i>")
+            end
+        end
+        bgb:set_bg(bg)
+        if type(bg_image) == "function" then
+            -- TODO: Why does this pass nil as an argument?
+            bg_image = bg_image(tb,o,nil,objects,i)
+        end
+        bgb:set_bgimage(bg_image)
+        if icon then
+            ib:set_image(icon)
+        else
+            -- ibm:set_margins(0)
+        end
+
+        bgb.shape              = args.shape
+        bgb.shape_border_width = args.shape_border_width
+        bgb.shape_border_color = args.shape_border_color
+
+        w:add(c2)
+   end
+end
+
+local function background(color)
+   return wibox.container.background(nil, color)
+end
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -216,34 +375,57 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    s.mytaglist = awful.widget.taglist(s,
+                                       awful.widget.taglist.filter.all,
+                                       taglist_buttons,
+                                       {},
+                                       taglist_update,
+                                       wibox.layout.fixed.vertical())
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+    s.mytasklist = awful.widget.tasklist(s,
+                                         awful.widget.tasklist.filter.currenttags,
+                                         tasklist_buttons,
+                                         {
+                                            bg_normal = beautiful.bg_focus,
+                                            bg_focus = beautiful.fg_normal,
+                                         },
+                                         tasklist_update,
+                                         wibox.layout.fixed.vertical())
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "left", screen = s, width = dpi(40) })
+
+    s.mysystray = wibox.widget.systray()
+    s.mysystray:set_horizontal(false)
+    s.mysystray:set_base_size(dpi(30))
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+        layout = wibox.layout.align.vertical,
+        { -- Top widgets
+            { widget = vertical_constraint(nil, 20),
+              { widget = wibox.container.place, s.mylayoutbox } },
+            layout = wibox.layout.fixed.vertical,
+            -- mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            update_button.widget,
-            freespace,
-            ramusage,
-            cpugraph,
-            textclock.widget,
-            mykeyboardlayout,
-            s.mylayoutbox,
+        { -- Bottom widgets
+            layout = wibox.layout.fixed.vertical,
+
+            { widget = wibox.container.place, s.mysystray },
+            -- cpugraph,
+            { widget = vertical_constraint,
+              { widget = background("#c795ae"), update_button.widget } },
+            { widget = vertical_constraint,
+              { widget = background("#ae95c7"), freespace } },
+            { widget = vertical_constraint,
+              { widget = background("#aec795"), ramusage } },
+            { widget = vertical_constraint,
+              { widget = background("#95c7ae"), textclock.widget } },
+            { widget = vertical_constraint, mykeyboardlayout },
         },
     }
 end)

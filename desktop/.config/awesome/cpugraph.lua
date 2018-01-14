@@ -1,11 +1,11 @@
-local awful   = require("awful")
-local wibox   = require("wibox")
-local vicious = require("vicious")
+local awful     = require("awful")
+local beautiful = require("beautiful")
+local wibox     = require("wibox")
+local vicious   = require("vicious")
 
-cpugraph = awful.widget.graph()
+cpugraph = wibox.widget.graph()
 
-cpugraph:set_width(50)
-cpugraph:set_background_color("#494B4F")
+cpugraph:set_background_color(beautiful.bg_normal)
 cpugraph:set_color({
                         type  = "linear",
                         from  = { 0, 0 },
