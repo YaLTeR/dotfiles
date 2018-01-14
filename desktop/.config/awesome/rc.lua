@@ -206,6 +206,28 @@ vertical_constraint = function(widget, height)
    return wibox.container.constraint(widget, "exact", nil, dpi(height))
 end
 
+local function background(color)
+   return wibox.container.background(nil, color)
+end
+
+local function with_bg_and_symbol(widget, color, symbol)
+  return {
+           widget = background(color),
+           {
+             layout = wibox.layout.stack,
+             {
+                widget = wibox.widget.textbox("<span color='#00000011'>" .. symbol .. "</span>"),
+                align = "center",
+                font = "Droid Sans 25",
+             },
+             {
+               widget = vertical_constraint,
+               widget,
+             },
+           }
+         }
+end
+
 -- awful.widget.common.list_update with modifications
 local function taglist_update(w, buttons, label, data, objects)
     -- update the widgets, creating them if needed
@@ -353,10 +375,6 @@ local function tasklist_update(w, buttons, label, data, objects)
    end
 end
 
-local function background(color)
-   return wibox.container.background(nil, color)
-end
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -419,12 +437,9 @@ awful.screen.connect_for_each_screen(function(s)
             -- cpugraph,
             { widget = vertical_constraint,
               { widget = background("#c795ae"), update_button.widget } },
-            { widget = vertical_constraint,
-              { widget = background("#ae95c7"), freespace } },
-            { widget = vertical_constraint,
-              { widget = background("#aec795"), ramusage } },
-            { widget = vertical_constraint,
-              { widget = background("#95c7ae"), textclock.widget } },
+            with_bg_and_symbol(freespace, "#ae95c7", ""),
+            with_bg_and_symbol(ramusage, "#aec795", ""),
+            with_bg_and_symbol(textclock.widget, "#95c7ae", ""),
             { widget = vertical_constraint, mykeyboardlayout },
         },
     }
