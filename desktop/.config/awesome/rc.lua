@@ -132,14 +132,13 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-mykeyboardlayout.widget:set_align("center")
 
 -- {{{ Wibar
 -- Create a textclock widget
 textclock = require("textclock")
 cpugraph = require("cpugraph")
 freespace = require("freespace")
+keyboardlayout = require("keyboardlayout")
 ramusage = require("ramusage")
 update_button = require("update_button")
 
@@ -440,7 +439,10 @@ awful.screen.connect_for_each_screen(function(s)
             with_bg_and_symbol(freespace, "#ae95c7", ""),
             with_bg_and_symbol(ramusage, "#aec795", ""),
             with_bg_and_symbol(textclock.widget, "#95c7ae", ""),
-            { widget = vertical_constraint, mykeyboardlayout },
+            { widget = vertical_constraint,
+              { widget = wibox.container.place,
+                { widget = wibox.container.constraint(nil, "exact", nil, dpi(20)),
+                  keyboardlayout.widget } } },
         },
     }
 end)
