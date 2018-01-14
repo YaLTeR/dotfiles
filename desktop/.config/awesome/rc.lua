@@ -205,8 +205,36 @@ vertical_constraint = function(widget, height)
    return wibox.container.constraint(widget, "exact", nil, dpi(height))
 end
 
+square_constraint = function(widget, size)
+   size = size or 40
+   return wibox.container.constraint(widget, "exact", dpi(size), dpi(size))
+end
+
 local function background(color)
    return wibox.container.background(nil, color)
+end
+
+local function with_bg_and_icon(widget, color, icon)
+  return {
+           widget = background(color),
+           {
+             widget = square_constraint,
+             {
+               layout = wibox.layout.stack,
+               widget,
+               {
+                 widget = wibox.container.place,
+                 {
+                   widget = square_constraint(nil, 35),
+                   {
+                      widget = wibox.widget.imagebox(home .. "/.config/awesome/" .. icon),
+                      opacity = 17 / 255
+                   }
+                 }
+               }
+             }
+           }
+         }
 end
 
 local function with_bg_and_symbol(widget, color, symbol)
@@ -433,9 +461,16 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.vertical,
 
             { widget = wibox.container.place, s.mysystray },
-            -- cpugraph,
             { widget = vertical_constraint,
-              { widget = background("#c795ae"), update_button.widget } },
+              { widget = background("#95aec7"), update_button.widget } },
+            with_bg_and_icon({
+                               widget = wibox.container.rotate(nil, "west"),
+                               {
+                                 widget = cpugraph,
+                                 color = beautiful.bg_normal,
+                                 background_color = "#00000000"
+                               }
+                             }, "#c795ae", "cpu.png"),
             with_bg_and_symbol(freespace, "#ae95c7", ""),
             with_bg_and_symbol(ramusage, "#aec795", ""),
             with_bg_and_symbol(textclock.widget, "#95c7ae", ""),
