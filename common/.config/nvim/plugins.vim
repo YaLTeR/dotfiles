@@ -17,7 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
 " Plug 'embear/vim-localvimrc'
 Plug 'scrooloose/nerdcommenter'
-Plug 'lyuts/vim-rtags'
+" Plug 'lyuts/vim-rtags'
 Plug 'dag/vim-fish'
 Plug 'easymotion/vim-easymotion'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

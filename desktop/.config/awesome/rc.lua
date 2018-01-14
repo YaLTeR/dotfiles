@@ -138,6 +138,7 @@ textclock = require("textclock")
 cpugraph = require("cpugraph")
 freespace = require("freespace")
 ramusage = require("ramusage")
+update_button = require("update_button")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -236,9 +237,10 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
-	    freespace,
-	    ramusage,
-	    cpugraph,
+            update_button.widget,
+            freespace,
+            ramusage,
+            cpugraph,
             textclock.widget,
             mykeyboardlayout,
             s.mylayoutbox,
@@ -507,7 +509,8 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+          "mpv"},
 
         name = {
           "Event Tester",  -- xev.
@@ -528,6 +531,22 @@ awful.rules.rules = {
     -- Put Mullvad settings where it belongs
     { rule = { name = "Settings for Mullvad" },
       properties = { screen = 2, tag = "7" } },
+
+    -- Discord
+    { rule = { class = "discord" },
+      properties = { screen = 2, tag = "1" } },
+
+    -- Steam
+    { rule = { class = "Steam" },
+      properties = { screen = 2, tag = "9" } },
+
+    -- Steam main window
+    { rule = { class = "Steam", name = "Steam" },
+      properties = { screen = 1, tag = "9" } },
+
+    -- Telegram
+    { rule = { class = "Telegram" },
+      properties = { screen = 2, tag = "2" } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },

@@ -12,6 +12,7 @@ set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set statusline+=%{fugitive#statusline()}
+set statusline+=%{LanguageClient_statusLine()}
 
 " Make vim-airline appear always (as opposed to only when a split is created)
 set laststatus=2
@@ -51,7 +52,7 @@ set undofile
 set cmdheight=2
 
 " Required for operations modifying multiple buffers like rename.
-" set hidden
+set hidden
 
 " Set up tab and shift-tab to indent and unindent selection
 vmap <Tab> >gv
@@ -105,6 +106,8 @@ let g:LanguageClient_serverCommands = {
    \ 'cpp': ['~/Source/cpp/cquery/build/release/bin/cquery', '--language-server', '--enable-comments'],
    \ 'rust': ['rls'],
    \ }
+   " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh', '--language-server', '--enable-comments'],
+   " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -113,10 +116,14 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
 
+" let g:LanguageClient_devel = 1 "Use rust debug build
+" let g:LanguageClient_loggingLevel = 'DEBUG' "Use highest logging level
+
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <F19> :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <F20> :call LanguageClient_rustDocument_implementations()<CR>
 nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
 
 " Syntastic recommended defaults
