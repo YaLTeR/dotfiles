@@ -49,69 +49,56 @@ local function tasklist_update(w, buttons, label, data, objects)
     w:reset()
     for i, o in ipairs(objects) do
         local cache = data[o]
-        local ib, tb, bgb, c2
+        local ib, bgb, tt, container
         if cache then
             ib = cache.ib
-            tb = cache.tb
             bgb = cache.bgb
-            c2 = cache.c2
+            tt = cache.tt
+            container = cache.container
         else
-            tb = wibox.widget.textbox()
-
             ib = wibox.widget.imagebox()
-            i_c = wibox.container.constraint(ib, "exact", dpi(20), dpi(20))
-            i_p = wibox.container.place(i_c)
+            local ib_container = wibox.container.place(wibox.container.constraint(ib, "exact", dpi(20), dpi(20)))
 
-            bar_c = wibox.container.constraint(nil, "exact", dpi(4), dpi(30))
-            bgb = wibox.container.background(bar_c)
+            local bar = wibox.container.constraint(nil, "exact", dpi(4), dpi(30))
+            bgb = wibox.container.background(bar)
 
-            l = wibox.layout.fixed.horizontal()
+            local l = wibox.layout.fixed.horizontal()
             l:add(wibox.container.constraint(nil, "exact", dpi(5)))
-            l:add(i_p)
+            l:add(ib_container)
             l:add(wibox.container.constraint(nil, "exact", dpi(5)))
             l:add(bgb)
 
-            v = wibox.container.place(l)
-            c2 = wibox.container.constraint(v, "exact", dpi(40), dpi(40))
+            tt = awful.tooltip({ objects = { l } })
 
-            c2:buttons(awful.widget.common.create_buttons(buttons, o))
+            local v = wibox.container.place(l)
+            container = wibox.container.constraint(v, "exact", dpi(40), dpi(40))
+
+            container:buttons(awful.widget.common.create_buttons(buttons, o))
 
             data[o] = {
                 ib  = ib,
-                tb  = tb,
                 bgb = bgb,
-                c2 = c2,
+                tt = tt,
+                container = container,
             }
         end
 
-        local text, bg, bg_image, icon, args = label(o, tb)
+        local text, bg, bg_image, icon, args = label(o, tt.textbox)
         args = args or {}
 
-        -- The text might be invalid, so use pcall.
-        if text == nil or text == "" then
-            -- tbm:set_margins(0)
-        else
-            if not tb:set_markup_silently(text) then
-                tb:set_markup("<i>&lt;Invalid text&gt;</i>")
-            end
-        end
         bgb:set_bg(bg)
-        if type(bg_image) == "function" then
-            -- TODO: Why does this pass nil as an argument?
-            bg_image = bg_image(tb,o,nil,objects,i)
+
+        if not tt.textbox:set_markup_silently(text) then
+            tt:set_markup("<i>&lt;Invalid text&gt;</i>")
+        else
+            tt:set_markup(text)
         end
-        bgb:set_bgimage(bg_image)
+
         if icon then
             ib:set_image(icon)
-        else
-            -- ibm:set_margins(0)
         end
 
-        bgb.shape              = args.shape
-        bgb.shape_border_width = args.shape_border_width
-        bgb.shape_border_color = args.shape_border_color
-
-        w:add(c2)
+        w:add(container)
    end
 end
 
