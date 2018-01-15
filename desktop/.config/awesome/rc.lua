@@ -133,6 +133,7 @@ textclock      = require("textclock")
 cpugraph       = require("cpugraph")
 freespace      = require("freespace")
 keyboardlayout = require("keyboardlayout")
+promptbox      = require("promptbox")
 ramusage       = require("ramusage")
 taglist        = require("taglist")
 tasklist       = require("tasklist")
@@ -207,7 +208,8 @@ awful.screen.connect_for_each_screen(function(s)
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
 
     -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
+    s.mypromptbox = promptbox.make(s)
+
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
@@ -238,7 +240,6 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.vertical,
             -- mylauncher,
             s.mytaglist,
-            s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Bottom widgets
@@ -378,15 +379,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
+    awful.key({ modkey },            "x",     function () awful.screen.focused().mypromptbox:run_lua() end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
