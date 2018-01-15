@@ -15,20 +15,20 @@ keyboardlayout.widget = {
                           keyboardlayout.original_widget,
                           keyboardlayout.imagebox,
                         }
-
-local current_text = keyboardlayout.original_widget.widget.text
-local original_set_text = keyboardlayout.original_widget.widget.set_text
-
-function keyboardlayout.original_widget.widget:set_text(text)
+keyboardlayout.update_image = function(text)
   if keyboardlayout.imagebox:set_image(home .. "/.config/awesome/" .. trim(text) .. ".png") then
     keyboardlayout.imagebox:set_opacity(1)
   else
     keyboardlayout.imagebox:set_opacity(0)
   end
+end
 
+local original_set_text = keyboardlayout.original_widget.widget.set_text
+function keyboardlayout.original_widget.widget:set_text(text)
+  keyboardlayout.update_image(text)
   original_set_text(self, text)
 end
 
-keyboardlayout.original_widget.widget:set_text(current_text)
+keyboardlayout.update_image(keyboardlayout.original_widget.widget.text)
 
 return keyboardlayout
