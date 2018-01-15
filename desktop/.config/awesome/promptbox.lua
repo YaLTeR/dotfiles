@@ -17,26 +17,56 @@ function promptbox.make(s)
                       visible = false })
 
   box.prompt = awful.widget.prompt()
+  box.timer = nil
 
   box:setup { layout = wibox.layout.fixed.horizontal,
               box.prompt }
 
   function box:spawn_and_handle_error(...)
     local result = awful.util.spawn(...)
+
     if type(result) == "string" then
       self.prompt.widget:set_text(result)
-      gears.timer.start_new(3, function() self.visible = false end)
-    else
-      self.visible = false
+
+      if self.timer ~= nil then self.timer:stop() end
+      self.timer = gears.timer.start_new(3, function()
+        self.visible = false
+        self.timer = nil
+        return false
+      end)
     end
   end
 
   function box:eval_and_handle_error(...)
-    self.visible = false
-    local result = awful.util.eval(...)
+    local status, result = pcall(awful.util.eval, ...)
+
+    if status then
+      self.prompt.widget:set_markup(tostring(result))
+
+      if self.timer ~= nil then self.timer:stop() end
+      self.timer = gears.timer.start_new(3, function()
+        self.visible = false
+        self.timer = nil
+        return false
+      end)
+    else
+      self.visible = false
+      error(result)
+    end
+  end
+
+  function box:done(...)
+    if self.timer == nil then
+      self.visible = false
+    end
   end
 
   function box:run()
+    if self.timer ~= nil then
+      self.timer:stop()
+      self.timer = nil
+    end
+
     self.visible = true
 
     awful.prompt.run {
@@ -47,19 +77,30 @@ function promptbox.make(s)
       exe_callback        = function(...)
         self:spawn_and_handle_error(...)
       end,
+      done_callback       = function(...)
+        self:done(...)
+      end,
     }
   end
 
   function box:run_lua()
+    if self.timer ~= nil then
+      self.timer:stop()
+      self.timer = nil
+    end
+
     self.visible = true
 
     awful.prompt.run {
-      prompt       = "Run Lua code: ",
-      textbox      = self.prompt.widget,
-      exe_callback = function(...)
+      prompt        = "Run Lua code: ",
+      textbox       = self.prompt.widget,
+      history_path  = gfs.get_cache_dir() .. "/history_eval",
+      exe_callback  = function(...)
         self:eval_and_handle_error(...)
       end,
-      history_path = gfs.get_cache_dir() .. "/history_eval"
+      done_callback = function(...)
+        self:done(...)
+      end,
     }
   end
 
