@@ -38,7 +38,7 @@ if [ -n "$FFMPEG_LIBRARY_PATH" ]; then
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FFMPEG_LIBRARY_PATH
 fi
 
-export LD_PRELOAD=/usr/lib32/libSDL2.so
+export LD_PRELOAD=~/Source/rust/hlfixperf/target/i686-unknown-linux-gnu/release/libhlfixperf.so:/usr/lib32/libSDL2.so
 
 if [ -n "$BXT" ]; then
 	export LD_PRELOAD=~/Source/cpp/BunnymodXT/build/libBunnymodXT.so:$LD_PRELOAD

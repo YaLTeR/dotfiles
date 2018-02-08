@@ -81,5 +81,5 @@ export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
 # Better font rendering in Java.
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-exec awesome
-# exec awesome -a
+# exec awesome
+exec awesome -a

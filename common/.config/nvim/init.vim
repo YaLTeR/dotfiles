@@ -104,10 +104,10 @@ map <F12> :YcmCompleter GoTo<CR>
 " Language server stuff
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['~/Source/cpp/cquery/build/release/bin/cquery', '--language-server', '--enable-comments'],
-   \ 'rust': ['rls'],
+   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh', '--language-server', '--enable-comments'],
-   " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh'],
+   " \ 'rust': ['rls'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -117,7 +117,16 @@ let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
 
 " let g:LanguageClient_devel = 1 "Use rust debug build
-" let g:LanguageClient_loggingLevel = 'DEBUG' "Use highest logging level
+let g:LanguageClient_loggingLevel = 'DEBUG'
+
+" Automatic Hover
+let g:Plugin_LanguageClient_running = 0
+augroup LanguageClient_config
+  autocmd!
+  autocmd User LanguageClientStarted let g:Plugin_LanguageClient_running = 1
+  autocmd User LanguageClientStopped let g:Plugin_LanguageClient_running = 0
+  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp if g:Plugin_LanguageClient_running | call LanguageClient_textDocument_hover() | endif
+augroup end
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
