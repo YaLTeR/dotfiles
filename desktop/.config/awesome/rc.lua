@@ -376,8 +376,18 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey },            "r",
+        function ()
+            -- awful.screen.focused().mypromptbox:run()
+            awful.util.spawn("rofi -show run")
+        end,
+        {description = "run prompt", group = "launcher"}),
+
+    awful.key({ modkey },            "e",
+        function ()
+            awful.util.spawn(shell_scripts .. "rofi-emoji.sh")
+        end,
+        {description = "emoji prompt", group = "launcher"}),
 
     awful.key({ modkey },            "x",     function () awful.screen.focused().mypromptbox:run_lua() end,
               {description = "lua execute prompt", group = "awesome"}),

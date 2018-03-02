@@ -103,8 +103,8 @@ map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['~/Source/cpp/cquery/build/release/bin/cquery', '--language-server', '--enable-comments'],
-   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh'],
+   \ 'cpp': ['cquery', '--language-server'],
+   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh', '--language-server', '--enable-comments'],
    " \ 'rust': ['rls'],

@@ -69,7 +69,7 @@ nm-applet &
 steam &
 telegram &
 discord &
-firefox-beta &
+firefox &
 
 export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
@@ -81,5 +81,5 @@ export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
 # Better font rendering in Java.
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-# exec awesome
-exec awesome -a
+exec awesome
+# exec awesome -a

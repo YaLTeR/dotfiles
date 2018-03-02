@@ -2,10 +2,10 @@
 
 set filename $HOME"/Screenshots/"(date +%F-%T)".png"
 
-if math (count $argv) ">= 1" > /dev/null
-	if [ $argv[1] = "--window" ]
+if test (count $argv) -gt 1
+	if test $argv[1] = "--window"
 		gnome-screenshot -w -f $filename
-	else if [ $argv[1] = "--screen" ]
+	else if test $argv[1] = "--screen"
 		gnome-screenshot -f $filename
 	end
 else

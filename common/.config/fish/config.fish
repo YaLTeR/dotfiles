@@ -1,15 +1,24 @@
 alias l "ls -hl"
 
 alias gs "git status"
+alias gsh "git show"
 alias gpus "git push"
 alias gpul "git pull"
 alias gc "git commit"
+alias gch "git checkout"
+alias gf "git fetch"
+alias grb "git rebase"
+alias grm "git remote"
+alias gl "git log"
 alias gd "git diff"
 alias g "git"
 
 set -x PATH ~/.cargo/bin $PATH
 set -x RUST_SRC_PATH $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 set -x BASE16_THEME ocean
+
+# Fix emoji and others rendering
+set -g fish_emoji_width 2
 
 # Initialize the gnome-keyring-daemon
 # set -l gnome_keyring_vars (gnome-keyring-daemon --start)

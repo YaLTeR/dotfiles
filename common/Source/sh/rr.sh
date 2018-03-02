@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-if math (count $argv) "!= 1" > /dev/null
+if test (count $argv) -ne 1
 	echo "./"(basename (status -f)) "<refresh rate>"
 else
 	xrandr --output DP-0 --mode 2560x1440 --rate $argv[1]

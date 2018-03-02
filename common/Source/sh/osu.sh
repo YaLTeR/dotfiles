@@ -1,16 +1,19 @@
-#!/usr/bin/fish
+#!/bin/sh
 
-set -x WINEPREFIX $HOME/.wine_osu
-set -x WINEARCH win32
+export WINEPREFIX=$HOME/.wine_osu
+export WINEARCH=win32
 
-if math (count $argv) ">= 1" > /dev/null
-	if [ $argv[1] = "k" ]
+if [ $# -ge 1 ]
+then
+	if [ "$1" = "k" ]
+	then
 		exec wineserver -k
-	else if [ $argv[1] = "a" ]
+	elif [ "$1" = "a" ]
+	then
 		exec wine '/mnt/hdd/Source/osu! stuff/osufx/osu!win/bin/x86/PublicNoUpdate/osu!.exe'
 	else
-		exec wine '/mnt/hdd/Games/osu!/osu!.exe' $argv
-	end
+		exec wine '/mnt/hdd/Games/osu!/osu!.exe' "$@"
+	fi
 else
 	exec wine '/mnt/hdd/Games/osu!/osu!.exe'
-end
+fi

@@ -2,7 +2,7 @@
 
 set gsync_enabled (nvidia-settings -q AllowGSYNC | grep -o -P '(?<= )(0|1)(?=.$)')
 
-if [ $gsync_enabled = "0" ]
+if test $gsync_enabled = "0"
 	set new_value "1"
 else
 	set new_value "0"
