@@ -86,11 +86,21 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" F5 to refresh the current file
+nnoremap <F5> :e %<CR>
+
 " Set leader to ,
 let mapleader = ","
 
 " Increase the preview window height
 set previewheight=24
+
+" Always show at least one line above/below the cursor.
+set scrolloff=1
+set sidescrolloff=5
+
+" Reload the files automatically on external changes.
+set autoread
 
 " Fix airline delay when exiting insert mode
 set ttimeoutlen=10
@@ -98,16 +108,21 @@ set ttimeoutlen=10
 " Remove some binary output paths from ctrl-p
 set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*.rs.bk,*/target/*
 
+" Highlight Rust in Markdown code blocks.
+let g:markdown_fenced_languages = ['rust']
+
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['cquery', '--language-server'],
-   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
+   \ 'c': ['cquery', '--language-server'],
+   \ 'rust': ['rls'],
+   \ 'python': ['pyls'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh', '--language-server', '--enable-comments'],
-   " \ 'rust': ['rls'],
+   " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1

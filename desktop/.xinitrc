@@ -61,6 +61,7 @@ export SSH_AUTH_SOCK
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+numlockx on &
 # sudo /usr/bin/mullvad &
 rescuetime &
 dropbox &
