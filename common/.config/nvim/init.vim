@@ -227,11 +227,6 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
 
-" Better binds for nvim-completion-manager
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
 " Make ALE use cargo check
 " let g:ale_rust_cargo_use_check = 1
 
@@ -273,9 +268,22 @@ cnoreabbrev rG Rg
 cnoreabbrev RG Rg
 
 " UltiSnips+NCM function parameter expansion
-" let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
-" let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
-" let g:UltiSnipsRemoveSelectModeMappings = 0
-"
-" inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+imap <expr> <CR> (pumvisible() ? "\<C-Y>\<Plug>(expand_or_cr)" : "\<CR>")
+imap <expr> <Plug>(expand_or_cr) (cm#completed_is_snippet() ? "\<Tab>" : "\<CR>")
+
+let g:UltiSnipsExpandTrigger       = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+
+function! MappingITab()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  elseif pumvisible()
+    return "\<C-Y>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+
+inoremap <silent> <expr> <Tab> MappingITab()
