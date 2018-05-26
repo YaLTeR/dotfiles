@@ -8,11 +8,22 @@ set termguicolors
 set clipboard+=unnamedplus
 
 " Add useful stuff to the statusline
-set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline+=%{fugitive#statusline()}
-set statusline+=%{LanguageClient_statusLine()}
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+set statusline=
+set statusline+=%<%f\ %h%m%r
+set statusline+=%{PrependSpace(fugitive#statusline())}
+set statusline+=%{PrependSpace(LanguageClient_statusLine())}
+set statusline+=%=%-14.(%l,%c%V%)\ %P
+
+function! PrependSpace(string)
+  if empty(a:string)
+    return ''
+  else
+    return '  ' . a:string
+  endif
+endfunction
 
 " Make vim-airline appear always (as opposed to only when a split is created)
 set laststatus=2
@@ -54,6 +65,13 @@ set cmdheight=2
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" Live preview of some commands.
+set inccommand=split
+
+" C highlighting settings
+let c_gnu = 1
+let c_space_errors = 1
+
 " Set up tab and shift-tab to indent and unindent selection
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -64,7 +82,10 @@ vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
 " Mapping for easy search highlight removal
-nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+nnoremap <silent> <C-L> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-L>
+
+" Mapping for macro editing
+nnoremap <leader>m :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
 " Better vertical movement in normal and visual modes
 nnoremap j gj
@@ -86,14 +107,22 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+" Map Alt-1..9 to opening the corresponding tab
+for n in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  call execute('nnoremap <silent> <A-' . string(n) . '> :tabnext ' . string(n) . '<CR>')
+  call execute('inoremap <silent> <A-' . string(n) . '> <C-\><C-N>:tabnext ' . string(n) . '<CR>')
+  call execute('tnoremap <silent> <A-' . string(n) . '> <C-\><C-N>:tabnext ' . string(n) . '<CR>')
+endfor
+
 " F5 to refresh the current file
 nnoremap <F5> :e %<CR>
 
 " Set leader to ,
 let mapleader = ","
+let maplocalleader = ","
 
 " Increase the preview window height
-set previewheight=24
+" set previewheight=24
 
 " Always show at least one line above/below the cursor.
 set scrolloff=1
@@ -108,21 +137,22 @@ set ttimeoutlen=10
 " Remove some binary output paths from ctrl-p
 set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*.rs.bk,*/target/*
 
-" Highlight Rust in Markdown code blocks.
-let g:markdown_fenced_languages = ['rust']
+" Highlight stuff in Markdown code blocks.
+let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['cquery', '--language-server'],
-   \ 'c': ['cquery', '--language-server'],
-   \ 'rust': ['rls'],
+   \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
+   \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
+   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
    \ 'python': ['pyls'],
+   \ 'haskell': ['hie', '--lsp'],
    \ }
-   " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-server.sh', '--language-server', '--enable-comments'],
-   " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
+   " \ 'cpp': ['cquery', '--language-server'],
+   " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -130,6 +160,10 @@ let g:LanguageClient_autoStart = 1
 " Load settings from a global file (a setting is required by cquery).
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
+
+" Set a short timeout (1 second) so the client doesn't hang when servers don't
+" respond for some reason.
+let g:LanguageClient_waitOutputTimeout = 1
 
 " let g:LanguageClient_devel = 1 "Use rust debug build
 let g:LanguageClient_loggingLevel = 'DEBUG'
@@ -140,14 +174,17 @@ augroup LanguageClient_config
   autocmd!
   autocmd User LanguageClientStarted let g:Plugin_LanguageClient_running = 1
   autocmd User LanguageClientStopped let g:Plugin_LanguageClient_running = 0
-  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp if g:Plugin_LanguageClient_running | call LanguageClient_textDocument_hover() | endif
+  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp if g:Plugin_LanguageClient_running && mode() == 'n' | call LanguageClient_textDocument_hover() | endif
 augroup end
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <S-F6> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <F19> :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> <F20> :call LanguageClient_rustDocument_implementations()<CR>
+nnoremap <silent> <S-F7> :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <F20> :call LanguageClient#rustDocument_implementations()<CR>
+nnoremap <silent> <S-F8> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
 
 " Syntastic recommended defaults
@@ -172,7 +209,7 @@ let g:airline#extensions#tabline#enabled=1
 " Set the colorscheme
 " let base16colorspace=256
 if empty($BASE16_THEME)
-        colorscheme base16-flat
+        colorscheme base16-ocean
 else
         execute "colorscheme base16-".$BASE16_THEME
 endif
@@ -214,8 +251,27 @@ let g:vimtex_compiler_latexmk = {
 \ ],
 \}
 
+" Zathura as the PDF viewer
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_viewer_general_viewer = 'zathura'
+
+" Okualr as the PDF viewer
+" let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_view_general_options_latexmk = '--unique'
+
+augroup my_cm_setup
+  autocmd!
+  autocmd User CmSetup call cm#register_source({
+        \ 'name' : 'vimtex',
+        \ 'priority': 8,
+        \ 'scoping': 1,
+        \ 'scopes': ['tex'],
+        \ 'abbreviation': 'tex',
+        \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+        \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+        \ })
+augroup END
 
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
@@ -287,3 +343,18 @@ function! MappingITab()
 endfunction
 
 inoremap <silent> <expr> <Tab> MappingITab()
+
+" Startify
+let g:startify_session_persistence = 1
+let g:startify_fortune_use_unicode = 1
+let g:startify_bookmarks = [
+  \ '~/.config/nvim/init.vim',
+  \ '~/.config/nvim/plugins.vim'
+  \ ]
+
+let g:startify_session_before_save = [
+  \ 'silent! pclose',
+  \ ]
+
+" Netrw
+let g:netrw_bufsettings = "noma nomod nonu nowrap ro nobl relativenumber"

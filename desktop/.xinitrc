@@ -49,8 +49,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 redshift -l 55.6540919:37.4818654 &
-xinput set-prop "HUION 420 Pen" --type=float "Coordinate Transformation Matrix" 0.5333333333 0 0 0 1 0 0 0 1 &
-xinput set-button-map "HUION 420 Pen" 1 0 0 &
+# xinput set-prop "HUION 420 Pen" --type=float "Coordinate Transformation Matrix" 0.5333333333 0 0 0 1 0 0 0 1 &
+# xinput set-button-map "HUION 420 Pen" 1 0 0 &
 xinput set-button-map "UGTABLET TABLET G3 4x3 Pen Pen (0)" 1 0 0 &
 setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
@@ -69,10 +69,19 @@ nm-applet &
 
 steam &
 telegram &
+signal &
+fractal &
 discord &
 firefox &
+konsole -e tmux new -s irc irssi &
+sudo mullvad &
 
-export RUST_SRC_PATH=/home/yalter/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+# Set the Rust paths.
+export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+export PATH=~/.cargo/bin:$PATH
+
+# Set the Base16 theme.
+export BASE16_THEME=ocean
 
 # Fix VSync.
 export __GL_SYNC_TO_VBLANK=1

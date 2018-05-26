@@ -569,6 +569,18 @@ awful.rules.rules = {
     { rule = { class = "Telegram" },
       properties = { screen = 2, tag = "2" } },
 
+    -- Signal
+    { rule = { class = "Signal" },
+      properties = { screen = 2, tag = "2" } },
+
+    -- Fractal
+    { rule = { name = "Fractal" },
+      properties = { screen = 2, tag = "4" } },
+
+    -- Konsole with IRC (window name set in .xinitrc)
+    { rule = { class = "konsole", name = "IRC" },
+      properties = { screen = 2, tag = "4" } },
+
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },

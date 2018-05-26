@@ -20,10 +20,6 @@ alias grm  "git remote"
 alias gs   "git status"
 alias gsh  "git show"
 
-set -x PATH ~/.cargo/bin $PATH
-set -x RUST_SRC_PATH $HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-set -x BASE16_THEME ocean
-
 # Fix emoji and others rendering
 set -g fish_emoji_width 2
 

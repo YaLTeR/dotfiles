@@ -26,6 +26,10 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': './install.sh'
     \ }
+" Plug 'YaLTeR/LanguageClient-neovim', {
+"     \ 'branch': 'rls-hover-fix-empty',
+"     \ 'do': 'make release'
+"     \ }
 Plug 'roxma/nvim-completion-manager'
 Plug 'godlygeek/tabular'
 " Plug 'jiangmiao/auto-pairs'
@@ -37,5 +41,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'machakann/vim-highlightedyank'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
