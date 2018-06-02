@@ -145,14 +145,15 @@ map <F12> :YcmCompleter GoTo<CR>
 
 " Language server stuff
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
-   \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
-   \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
+   \ 'cpp': ['cquery', '--language-server'],
+   \ 'c': ['cquery', '--language-server'],
+   \ 'rust': ['rls'],
    \ 'python': ['pyls'],
    \ 'haskell': ['hie', '--lsp'],
    \ }
-   " \ 'cpp': ['cquery', '--language-server'],
-   " \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+   " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
+   " \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
+   " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -177,7 +178,7 @@ augroup LanguageClient_config
   autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp if g:Plugin_LanguageClient_running && mode() == 'n' | call LanguageClient_textDocument_hover() | endif
 augroup end
 
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <S-F6> :call LanguageClient_textDocument_rename()<CR>
