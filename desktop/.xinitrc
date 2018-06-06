@@ -91,5 +91,10 @@ export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
 # Better font rendering in Java.
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
+# Neovim-gtk settings.
+export NVIM_GTK_DOUBLE_BUFFER=1
+export NVIM_GTK_NO_HEADERBAR=1
+export NVIM_GTK_PREFER_DARK_THEME=1
+
 exec awesome
 # exec awesome -a

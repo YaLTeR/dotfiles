@@ -228,8 +228,9 @@ let g:localvimrc_sandbox=0
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
 
-" Only press leader once
+" EasyMotion binds
 map <Leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s2)
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
