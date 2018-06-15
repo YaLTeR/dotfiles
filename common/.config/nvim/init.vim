@@ -121,14 +121,18 @@ nnoremap <F5> :e %<CR>
 let mapleader = ","
 let maplocalleader = ","
 
+" Automatically start inserting in terminal
+autocmd BufEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
+
 " Increase the preview window height
 " set previewheight=24
 
-" Always show at least one line above/below the cursor.
+" Always show at least one line above/below the cursor
 set scrolloff=1
 set sidescrolloff=5
 
-" Reload the files automatically on external changes.
+" Reload the files automatically on external changes
 set autoread
 
 " Fix airline delay when exiting insert mode
@@ -162,20 +166,41 @@ let g:LanguageClient_autoStart = 1
 let g:LanguageClient_loadSettings = 1
 let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
 
-" Set a short timeout (1 second) so the client doesn't hang when servers don't
-" respond for some reason.
-let g:LanguageClient_waitOutputTimeout = 1
+" Set a short timeout (5 seconds) so the client doesn't hang when servers don't
+" respond for some reason. Note that this affects how fast you have to type
+" the new name in refactor rename.
+let g:LanguageClient_waitOutputTimeout = 5
 
 " let g:LanguageClient_devel = 1 "Use rust debug build
 let g:LanguageClient_loggingLevel = 'DEBUG'
 
 " Automatic Hover
+let g:Plugin_LanguageClient_timeOfLastHoverQuery = reltime()
+
+function! GetHoverInfo()
+  " Prevent infinite loops by restricting Hover queries to only every 0.1
+  " seconds.
+  " The loops happen because nvim_buf_set_lines() moves the cursor into the
+  " target buffer and back.
+  let l:curTime = reltime()
+  let l:timeSinceLastHoverQuery = reltime(g:Plugin_LanguageClient_timeOfLastHoverQuery, l:curTime)
+  if reltimefloat(l:timeSinceLastHoverQuery) < 0.1
+    return
+  endif
+
+  let g:Plugin_LanguageClient_timeOfLastHoverQuery = l:curTime
+
+  if g:Plugin_LanguageClient_running && mode() == 'n'
+    call LanguageClient_textDocument_hover()
+  endif
+endfunction
+
 let g:Plugin_LanguageClient_running = 0
 augroup LanguageClient_config
   autocmd!
   autocmd User LanguageClientStarted let g:Plugin_LanguageClient_running = 1
   autocmd User LanguageClientStopped let g:Plugin_LanguageClient_running = 0
-  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp if g:Plugin_LanguageClient_running && mode() == 'n' | call LanguageClient_textDocument_hover() | endif
+  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp call GetHoverInfo()
 augroup end
 
 " nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -230,7 +255,7 @@ let g:EasyMotion_smartcase = 1
 
 " EasyMotion binds
 map <Leader> <Plug>(easymotion-prefix)
-nmap s <Plug>(easymotion-s2)
+nmap S <Plug>(easymotion-s2)
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
@@ -331,7 +356,7 @@ imap <expr> <Plug>(expand_or_cr) (cm#completed_is_snippet() ? "\<Tab>" : "\<CR>"
 
 let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-K>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 function! MappingITab()
   let snippet = UltiSnips#ExpandSnippetOrJump()
@@ -360,3 +385,8 @@ let g:startify_session_before_save = [
 
 " Netrw
 let g:netrw_bufsettings = "noma nomod nonu nowrap ro nobl relativenumber"
+
+" nvim-completion-manager
+let g:cm_matcher =
+\ { 'module': 'cm_matchers.fuzzy_matcher',
+  \ 'case':   'smartcase' }
