@@ -10,7 +10,7 @@ set -e
 # and save filenames) are contained in their own mini-cfgs updated by the script.
 #
 # Prerequisites:
-# - wine (for Listdemo-), inotifywait from inotify-tools.
+# - wine (for Listdemo-), inotifywait from inotify-tools,
 # - source_segments.cfg in the same folder as the script,
 # - Listdemo.exe (Listdemo-) in the same folder as the script,
 # - A previous segment save in the SAVE folder of the mod. For example, if the segment number is 23,
