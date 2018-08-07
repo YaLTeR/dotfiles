@@ -3,6 +3,8 @@
                 "cacheDirectory": "/tmp/cquery"
         },
 
-        "clippy_preference": "on",
-        "wait_to_build": 500
+        "rust": {
+                "clippy_preference": "on",
+                "wait_to_build": 500
+        }
 }
