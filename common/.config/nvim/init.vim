@@ -151,7 +151,7 @@ map <F12> :YcmCompleter GoTo<CR>
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['cquery', '--language-server'],
    \ 'c': ['cquery', '--language-server'],
-   \ 'rust': ['rls'],
+   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
    \ 'python': ['pyls'],
    \ 'haskell': ['hie', '--lsp'],
    \ }
@@ -289,15 +289,31 @@ let g:vimtex_viewer_general_viewer = 'zathura'
 
 augroup my_cm_setup
   autocmd!
-  autocmd User CmSetup call cm#register_source({
-        \ 'name' : 'vimtex',
-        \ 'priority': 8,
-        \ 'scoping': 1,
-        \ 'scopes': ['tex'],
-        \ 'abbreviation': 'tex',
-        \ 'cm_refresh_patterns': g:vimtex#re#ncm,
-        \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
-        \ })
+  " autocmd User CmSetup call cm#register_source({
+  "       \ 'name' : 'vimtex',
+  "       \ 'priority': 8,
+  "       \ 'scoping': 1,
+  "       \ 'scopes': ['tex'],
+  "       \ 'abbreviation': 'tex',
+  "       \ 'cm_refresh_patterns': g:vimtex#re#ncm,
+  "       \ 'cm_refresh': {'omnifunc': 'vimtex#complete#omnifunc'},
+  "       \ })
+  autocmd User Ncm2Plugin call ncm2#register_source({
+          \ 'name' : 'vimtex',
+          \ 'priority': 1,
+          \ 'subscope_enable': 1,
+          \ 'complete_length': 1,
+          \ 'scope': ['tex'],
+          \ 'matcher': {'name': 'combine',
+          \           'matchers': [
+          \               {'name': 'abbrfuzzy', 'key': 'menu'},
+          \               {'name': 'prefix', 'key': 'word'},
+          \           ]},
+          \ 'mark': 'tex',
+          \ 'word_pattern': '\w+',
+          \ 'complete_pattern': g:vimtex#re#ncm,
+          \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+          \ })
 augroup END
 
 if !exists('g:ycm_semantic_triggers')
@@ -351,25 +367,38 @@ cnoreabbrev rG Rg
 cnoreabbrev RG Rg
 
 " UltiSnips+NCM function parameter expansion
-imap <expr> <CR> (pumvisible() ? "\<C-Y>\<Plug>(expand_or_cr)" : "\<CR>")
-imap <expr> <Plug>(expand_or_cr) (cm#completed_is_snippet() ? "\<Tab>" : "\<CR>")
 
-let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+" We don't really want UltiSnips to map these two, but there's no option for
+" that so just make it map them to a <Plug> key.
+let g:UltiSnipsExpandTrigger       = "<Plug>(ultisnips_expand_or_jump)"
+let g:UltiSnipsJumpForwardTrigger  = "<Plug>(ultisnips_expand_or_jump)"
+" Let UltiSnips bind the jump backward trigger as there's nothing special
+" about it.
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-function! MappingITab()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
+" Try expanding snippet or jumping with UltiSnips and return <Tab> if nothing
+" worked.
+function! UltiSnipsExpandOrJumpOrTab()
+  call UltiSnips#ExpandSnippetOrJump()
   if g:ulti_expand_or_jump_res > 0
-    return snippet
-  elseif pumvisible()
-    return "\<C-Y>"
+    return ""
   else
     return "\<Tab>"
   endif
 endfunction
 
-inoremap <silent> <expr> <Tab> MappingITab()
+" First try expanding with ncm2_ultisnips. This does both LSP snippets and
+" normal snippets when there's a completion popup visible.
+inoremap <silent> <expr> <Tab> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_try_expand)")
+
+" If that failed, try the UltiSnips expand or jump function. This handles
+" short snippets when the completion popup isn't visible yet as well as
+" jumping forward from the insert mode. Writes <Tab> if there is no special
+" action taken.
+inoremap <silent> <Plug>(ultisnips_try_expand) <C-R>=UltiSnipsExpandOrJumpOrTab()<CR>
+
+" Select mode mapping for jumping forward with <Tab>.
+snoremap <silent> <Tab> <Esc>:call UltiSnips#ExpandSnippetOrJump()<cr>
 
 " Startify
 let g:startify_session_persistence = 1
@@ -387,6 +416,22 @@ let g:startify_session_before_save = [
 let g:netrw_bufsettings = "noma nomod nonu nowrap ro nobl relativenumber"
 
 " nvim-completion-manager
-let g:cm_matcher =
-\ { 'module': 'cm_matchers.fuzzy_matcher',
-  \ 'case':   'smartcase' }
+" let g:cm_matcher =
+" \ { 'module': 'cm_matchers.fuzzy_matcher',
+"   \ 'case':   'smartcase' }
+
+" ncm2
+" Causes an error in nvim-gtk.
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" Causes LanguageClient integration to not work right away.
+" autocmd InsertEnter * call ncm2#enable_for_buffer()
+function! s:ncm2_start(...)
+    if v:vim_did_enter
+        call ncm2#enable_for_buffer()
+    endif
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+endfunc
+call timer_start(500, function('s:ncm2_start'))
+
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c

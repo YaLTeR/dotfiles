@@ -30,7 +30,19 @@ Plug 'autozimu/LanguageClient-neovim', {
 "     \ 'branch': 'rls-hover-fix-empty',
 "     \ 'do': 'make release'
 "     \ }
-Plug 'roxma/nvim-completion-manager'
+
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-ultisnips'
+
+Plug 'ncm2/ncm2-html-subscope'
+Plug 'ncm2/ncm2-markdown-subscope'
+Plug 'ncm2/ncm2-rst-subscope'
+
 Plug 'godlygeek/tabular'
 " Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
