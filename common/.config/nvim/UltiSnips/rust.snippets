@@ -33,7 +33,10 @@ println!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(
 endsnippet
 
 snippet plnd "println! some Debug objects"
-println!("${1/([^,]+)(, ?)?/$1: {:#?}(?2:, )/g}", $1);
+println!("`!p
+expressions = filter(None, map(str.strip, t[1].split(',')))
+snip.rv = '\\n'.join([expr.strip() + ' = {:#?}' for expr in expressions])
+`", $1);
 endsnippet
 
 # extern crate with macro_use
@@ -59,4 +62,12 @@ endsnippet
 # Inline attribute
 snippet inl "Inline attribute"
 #[inline]
+endsnippet
+
+# Option and Result with ${VISUAL}
+snippet opt "Option<T>"
+Option<${1:${VISUAL:()}}>
+endsnippet
+snippet res "Result<T, E>"
+Result<${1:${VISUAL:()}}, ${2:()}>
 endsnippet
