@@ -4,6 +4,18 @@ execute 'source ' . s:path . '/plugins.vim'
 " Enable true color
 set termguicolors
 
+" Set the colorscheme
+" let base16colorspace=256
+if empty($BASE16_THEME)
+        colorscheme base16-ocean
+else
+        execute "colorscheme base16-".$BASE16_THEME
+endif
+
+let color = execute("hi LineNr")
+let color = matchstr(color, 'guibg=#\zs[0-9a-fA-F]\+')
+execute "hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#" . color
+
 " Use the system clipboard
 set clipboard+=unnamedplus
 
@@ -67,6 +79,9 @@ set hidden
 
 " Live preview of some commands.
 set inccommand=split
+
+" Marker folding
+set foldmethod=marker
 
 " C highlighting settings
 let c_gnu = 1
@@ -147,17 +162,17 @@ let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
-" Language server stuff
+" LanguageClient-neovim {{{
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['cquery', '--language-server'],
-   \ 'c': ['cquery', '--language-server'],
+   \ 'cpp': ['cquery'],
+   \ 'c': ['cquery'],
    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
    \ 'python': ['pyls'],
-   \ 'haskell': ['hie', '--lsp'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
+   " \ 'haskell': ['hie', '--lsp'],
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -173,38 +188,54 @@ let g:LanguageClient_waitOutputTimeout = 5
 
 " let g:LanguageClient_devel = 1 "Use rust debug build
 let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
 
 " Automatic Hover
-let g:Plugin_LanguageClient_timeOfLastHoverQuery = reltime()
+function! DoNothingHandler(output)
+endfunction
 
-function! GetHoverInfo()
-  " Prevent infinite loops by restricting Hover queries to only every 0.1
-  " seconds.
-  " The loops happen because nvim_buf_set_lines() moves the cursor into the
-  " target buffer and back.
-  let l:curTime = reltime()
-  let l:timeSinceLastHoverQuery = reltime(g:Plugin_LanguageClient_timeOfLastHoverQuery, l:curTime)
-  if reltimefloat(l:timeSinceLastHoverQuery) < 0.1
-    return
+function! IsDifferentHoverLineFromLast()
+  if !exists('b:last_hover_line')
+    return 1
   endif
 
-  let g:Plugin_LanguageClient_timeOfLastHoverQuery = l:curTime
+  return b:last_hover_line !=# line('.') || b:last_hover_col !=# col('.')
+endfunction
 
-  if g:Plugin_LanguageClient_running && mode() == 'n'
-    call LanguageClient_textDocument_hover()
+function! GetHoverInfo()
+  " Only call hover if the cursor position changed.
+  "
+  " This is needed to prevent infinite loops, because hover info is displayed
+  " in a popup window via nvim_buf_set_lines() which puts the cursor into the
+  " popup window and back, which in turn calls CursorMoved again.
+  if mode() == 'n' && IsDifferentHoverLineFromLast()
+    let b:last_hover_line = line('.')
+    let b:last_hover_col = col('.')
+
+    call LanguageClient_textDocument_hover({'handle': v:true}, 'DoNothingHandler')
+    call LanguageClient_textDocument_documentHighlight({'handle': v:true}, 'DoNothingHandler')
   endif
 endfunction
 
-let g:Plugin_LanguageClient_running = 0
 augroup LanguageClient_config
   autocmd!
-  autocmd User LanguageClientStarted let g:Plugin_LanguageClient_running = 1
-  autocmd User LanguageClientStopped let g:Plugin_LanguageClient_running = 0
-  autocmd CursorMoved *.rs,*.c,*.cpp,*.h,*.hpp call GetHoverInfo()
+  autocmd CursorMoved * call GetHoverInfo()
+  autocmd CursorMovedI * call LanguageClient_clearDocumentHighlight()
 augroup end
 
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" Go to definition, but with a fallback in case the language server isn't
+" running.
+function! GoToDefinitionHandler(output)
+  if has_key(a:output, 'error')
+    call searchdecl(expand('<cword>'))
+  endif
+endfunction
+
+function! GoToDefinition()
+  call LanguageClient#textDocument_definition({'handle': v:true}, 'GoToDefinitionHandler')
+endfunction
+
+nnoremap <silent> gd :call GoToDefinition()<CR>
 nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <S-F6> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <F19> :call LanguageClient_textDocument_references()<CR>
@@ -212,6 +243,58 @@ nnoremap <silent> <S-F7> :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F20> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <S-F8> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
+vnoremap <silent> <Leader>= :call LanguageClient_textDocument_rangeFormatting()<CR>
+
+let g:LanguageClient_diagnosticsDisplay = {
+      \   1: {
+      \     "name": "Error",
+      \     "texthl": "SpellBad",
+      \   },
+      \   2: {
+      \     "name": "Warning",
+      \     "texthl": "SpellCap",
+      \   },
+      \   3: {
+      \     "name": "Information",
+      \     "texthl": "SpellCap",
+      \   },
+      \   4: {
+      \     "name": "Hint",
+      \     "texthl": "SpellCap",
+      \   },
+      \ }
+
+function! GetColorSettings(group)
+  let settings = execute("highlight " . a:group)
+  return matchstr(settings, 'xxx \zs.*')
+endfunction
+
+function! CopySettingsFrom(target, source)
+  let settings = GetColorSettings(a:source)
+  call execute("highlight " . a:target . " " . settings)
+endfunction
+
+call CopySettingsFrom("VariableRead", "Visual")
+call CopySettingsFrom("VariableRead", "SpellLocal")
+
+call CopySettingsFrom("VariableWrite", "Visual")
+call CopySettingsFrom("VariableWrite", "SpellRare")
+
+let g:LanguageClient_documentHighlightDisplay = {
+      \   1: {
+      \     "name": "Text",
+      \     "texthl": "Visual",
+      \   },
+      \   2: {
+      \     "name": "Read",
+      \     "texthl": "VariableRead",
+      \   },
+      \   3: {
+      \     "name": "Write",
+      \     "texthl": "VariableWrite",
+      \   },
+      \ }
+" }}}
 
 " Syntastic recommended defaults
 let g:syntastic_always_populate_loc_list = 1
@@ -231,18 +314,6 @@ let g:airline#extensions#tabline#enabled=1
 " Some symbol customization
 " let g:airline_left_sep='▓▒░'
 " let g:airline_right_sep='░▒▓'
-
-" Set the colorscheme
-" let base16colorspace=256
-if empty($BASE16_THEME)
-        colorscheme base16-ocean
-else
-        execute "colorscheme base16-".$BASE16_THEME
-endif
-
-let color = execute("hi LineNr")
-let color = matchstr(color, 'guibg=#\zs[0-9a-fA-F]\+')
-execute "hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#" . color
 
 " Unconditionally load .lvimrc from OpenAG
 let g:localvimrc_whitelist='/home/yalter/Source/cpp/OpenAG'
@@ -399,6 +470,9 @@ inoremap <silent> <Plug>(ultisnips_try_expand) <C-R>=UltiSnipsExpandOrJumpOrTab(
 
 " Select mode mapping for jumping forward with <Tab>.
 snoremap <silent> <Tab> <Esc>:call UltiSnips#ExpandSnippetOrJump()<cr>
+
+" Visual mode mapping for expanding visual snippets.
+xnoremap <silent> <Tab> :call UltiSnips#SaveLastVisualSelection()<cr>gvs
 
 " Startify
 let g:startify_session_persistence = 1

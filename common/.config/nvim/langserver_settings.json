@@ -5,6 +5,7 @@
 
         "rust": {
                 "clippy_preference": "on",
-                "wait_to_build": 500
+                "wait_to_build": 500,
+                "build_on_save": true
         }
 }
