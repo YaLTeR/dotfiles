@@ -213,6 +213,7 @@ function! GetHoverInfo()
     let b:last_hover_col = col('.')
 
     call LanguageClient_textDocument_hover({'handle': v:true}, 'DoNothingHandler')
+    call LanguageClient_clearDocumentHighlight()
     call LanguageClient_textDocument_documentHighlight({'handle': v:true}, 'DoNothingHandler')
   endif
 endfunction
