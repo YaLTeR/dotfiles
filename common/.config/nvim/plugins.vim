@@ -56,5 +56,7 @@ Plug 'honza/vim-snippets'
 Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
+Plug 'airblade/vim-rooter'
+Plug 'takac/vim-hardtime'
 
 call plug#end()

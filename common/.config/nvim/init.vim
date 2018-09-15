@@ -132,9 +132,13 @@ endfor
 " F5 to refresh the current file
 nnoremap <F5> :e %<CR>
 
-" Set leader to ,
-let mapleader = ","
-let maplocalleader = ","
+" Swap ; and :
+nnoremap ; :
+nnoremap : ;
+
+" Set leader to Space
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 " Automatically start inserting in terminal
 autocmd BufEnter term://* startinsert
@@ -510,3 +514,20 @@ call timer_start(500, function('s:ncm2_start'))
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
+
+" Enable hardtime.
+let g:hardtime_default_on = 1
+
+" https://stackoverflow.com/questions/8450919/how-can-i-delete-all-hidden-buffers
+function! DeleteHiddenBuffers()
+  let tpbl=[]
+  let closed = 0
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1 && empty(getbufvar(v:val, "&buftype"))')
+    if getbufvar(buf, '&mod') == 0
+      silent execute 'bwipeout' buf
+      let closed += 1
+    endif
+  endfor
+  echo "Closed ".closed." hidden buffers"
+endfunction

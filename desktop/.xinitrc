@@ -69,7 +69,7 @@ nm-applet &
 
 steam &
 telegram &
-signal &
+# signal &
 fractal &
 discord &
 firefox &
