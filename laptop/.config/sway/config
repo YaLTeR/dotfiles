@@ -1,7 +1,13 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
 # Autostart
-exec lxpolkit
+# exec lxpolkit
 exec dropbox start
-exec dunst
+# exec dunst
 
 ### Variables
 #
@@ -15,7 +21,8 @@ set $right l
 # Your preferred terminal emulator
 set $term konsole
 # Your preferred application launcher
-set $menu dmenu_run
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | dmenu | xargs swaymsg exec
 
 gaps outer 20
 gaps inner 10
@@ -23,15 +30,29 @@ gaps inner 10
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg /usr/share/backgrounds/f26/default/tv-wide/f26.png fill
+output * bg /usr/share/backgrounds/f29/default/tv-wide/f29.png fill
 
-output DP-1 position 1920,0
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
+output DP-1 position 1920,0
+
+### Idle configuration
+#
+# Example configuration:
+#
+#exec swayidle \
+#    timeout 300 'swaylock -c 000000' \
+#    timeout 600 'swaymsg "output * dpms off"' \
+#       resume 'swaymsg "output * dpms on"' \
+#    before-sleep 'swaylock -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 600 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
@@ -47,10 +68,15 @@ output DP-1 position 1920,0
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-input "1739:30381:DLL0665:01_06CB:76AD_To" {
-	tap enabled
-	natural_scroll enabled
-	middle_emulation enabled
+input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle,compose:ralt
 }
 
 ### Key bindings
@@ -76,8 +102,8 @@ input "1739:30381:DLL0665:01_06CB:76AD_To" {
     # reload the configuration file
     bindsym $mod+Shift+c reload
 
-    # exit sway (logs you out of your wayland session)
-    bindsym $mod+Shift+e exit
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -172,6 +198,9 @@ input "1739:30381:DLL0665:01_06CB:76AD_To" {
 
     bindsym $mod+Shift+l exec swaylock
 
+    # Screenshots
+    bindsym Print exec way-shot
+
 for_window [title="FreeRDP.*"] floating enable
 
 #
@@ -182,16 +211,16 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10 px or 10 ppt
-    bindsym $down resize grow height 10 px or 10 ppt
-    bindsym $up resize shrink height 10 px or 10 ppt
-    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
     # ditto, with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
     # return to default mode
     bindsym Return mode "default"
@@ -205,7 +234,12 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
     status_command sway-status.sh
+
     colors {
         statusline #ffffff
         background #323232
