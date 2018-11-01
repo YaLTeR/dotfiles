@@ -5,9 +5,9 @@
 # Read `man 5 sway` for a complete reference.
 
 # Autostart
-# exec lxpolkit
+exec lxpolkit
 exec dropbox start
-# exec dunst
+exec mako
 
 ### Variables
 #
@@ -24,8 +24,10 @@ set $term konsole
 # Note: it's recommended that you pass the final command to sway
 set $menu dmenu_path | dmenu | xargs swaymsg exec
 
-gaps outer 20
-gaps inner 10
+set $scripts ~/Source/sh
+
+# gaps outer 20
+# gaps inner 10
 
 ### Output configuration
 #
@@ -43,13 +45,13 @@ output DP-1 position 1920,0
 ### Idle configuration
 #
 # Example configuration:
-#
-#exec swayidle \
-#    timeout 300 'swaylock -c 000000' \
-#    timeout 600 'swaymsg "output * dpms off"' \
-#       resume 'swaymsg "output * dpms on"' \
-#    before-sleep 'swaylock -c 000000'
-#
+
+exec swayidle \
+    timeout 300 'swaylock -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+       resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 600 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -72,12 +74,21 @@ input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
+    dwt disabled
 }
 
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us,ru
     xkb_options grp:alt_shift_toggle,compose:ralt
 }
+
+input "1133:49941:Logitech_Logitech_USB_Keyboard" {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle,compose:ralt
+}
+
+# seat seat0 fallback true
+# seat seat1 attach "1133:49941:Logitech_Logitech_USB_Keyboard"
 
 ### Key bindings
 #
@@ -103,7 +114,7 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     bindsym $mod+Shift+c reload
 
     # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec $scripts/sway-exit.sh
 #
 # Moving around:
 #
@@ -187,16 +198,26 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    # bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    # bindsym $mod+minus scratchpad show
 
     bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
     bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
 
-    bindsym $mod+Shift+l exec swaylock
+    bindsym $mod+plus \
+        gaps inner all set 10; \
+        gaps outer all set 20; \
+        gaps inner 10; \
+        gaps outer 10
+    bindsym $mod+minus \
+        gaps inner all set 0; \
+        gaps outer all set 0; \
+        gaps inner 0; \
+        gaps outer 0
+    bindsym $mod+Ctrl+L exec swaylock
 
     # Screenshots
     bindsym Print exec way-shot
