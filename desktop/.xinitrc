@@ -62,7 +62,6 @@ export SSH_AUTH_SOCK
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 numlockx on &
-# sudo /usr/bin/mullvad &
 rescuetime &
 dropbox &
 nm-applet &
@@ -74,7 +73,7 @@ fractal &
 discord &
 firefox &
 konsole -e tmux new -s irc irssi &
-sudo mullvad &
+xdotool search --sync --onlyvisible --class konsole set_desktop_for_window 12 &
 
 # Set the Rust paths.
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src

@@ -25,7 +25,7 @@ set clipboard+=unnamedplus
 " set statusline+=%*
 set statusline=
 set statusline+=%<%f\ %h%m%r
-set statusline+=%{PrependSpace(fugitive#statusline())}
+" set statusline+=%{PrependSpace(fugitive#statusline())}
 set statusline+=%{PrependSpace(LanguageClient_statusLine())}
 set statusline+=%=%-14.(%l,%c%V%)\ %P
 
@@ -80,8 +80,9 @@ set hidden
 " Live preview of some commands.
 set inccommand=split
 
-" Marker folding
-set foldmethod=marker
+" Folding
+set foldmethod=syntax
+set foldlevelstart=1
 
 " C highlighting settings
 let c_gnu = 1
@@ -135,6 +136,8 @@ nnoremap <F5> :e %<CR>
 " Swap ; and :
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Set leader to Space
 let mapleader = "\<Space>"
@@ -516,7 +519,7 @@ set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 
 " Enable hardtime.
-let g:hardtime_default_on = 1
+" let g:hardtime_default_on = 1
 
 " https://stackoverflow.com/questions/8450919/how-can-i-delete-all-hidden-buffers
 function! DeleteHiddenBuffers()
@@ -531,3 +534,6 @@ function! DeleteHiddenBuffers()
   endfor
   echo "Closed ".closed." hidden buffers"
 endfunction
+
+let g:discord_blacklist = ['.*vm-malevich']
+let g:rooter_manual_only = 1

@@ -323,7 +323,7 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey, "Control" }, "Shift_L", function () awful.spawn("i3lock") end,
+    awful.key({ modkey, "Control" }, "Shift_L", function () keyboardlayout.switch_to_us() awful.spawn("i3lock") end,
               {description = "lock the screen", group = "launcher"}),
 
     awful.key({ modkey,           }, "u", function () awful.util.spawn(shell_scripts .. "rr.sh 120") end,
@@ -557,8 +557,8 @@ awful.rules.rules = {
     { rule = { class = "discord" },
       properties = { screen = 2, tag = "1" } },
 
-    -- Steam
-    { rule = { class = "Steam" },
+    -- Steam friends list
+    { rule = { class = "Steam", name = "Friends List" },
       properties = { screen = 2, tag = "9" } },
 
     -- Steam main window
@@ -575,10 +575,6 @@ awful.rules.rules = {
 
     -- Fractal
     { rule = { name = "Fractal" },
-      properties = { screen = 2, tag = "4" } },
-
-    -- Konsole with IRC (window name set in .xinitrc)
-    { rule = { class = "konsole", name = "IRC" },
       properties = { screen = 2, tag = "4" } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

@@ -31,4 +31,10 @@ end
 
 keyboardlayout.update_image(keyboardlayout.original_widget.widget.text)
 
+keyboardlayout.switch_to_us = function()
+  if keyboardlayout.original_widget.widget:get_text() ~= " us " then
+    keyboardlayout.original_widget.next_layout()
+  end
+end
+
 return keyboardlayout
