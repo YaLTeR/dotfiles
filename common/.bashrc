@@ -25,3 +25,6 @@ export FZF_DEFAULT_COMMAND="rg --hidden --files -g '!.git'"
 [ -f /home/yalter/.travis/travis.sh ] && source /home/yalter/.travis/travis.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# If we're not going to start X, exec fish.
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] || exec fish

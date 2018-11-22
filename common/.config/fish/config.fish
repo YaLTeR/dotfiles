@@ -1,7 +1,18 @@
-alias l "ls -hl"
+alias ls "ls -hN --group-directories-first --color=auto"
+alias l "ls -l"
+
+alias p "pacaur"
+alias pr "p -Rscn"
+alias ps "p -S"
+alias pss "p -S"
+alias psy "p -Sy"
+
+alias v "nvim"
+alias nvim-update "nvim -u ~/.config/nvim/plugins.vim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa"
 
 alias g    "git"
 alias ga   "git add"
+alias gap  "git add -p"
 alias gau  "git add -u"
 alias gc   "git commit"
 alias gca  "git commit -a"
@@ -19,6 +30,8 @@ alias gri  "git rebase -i"
 alias grm  "git remote"
 alias gs   "git status"
 alias gsh  "git show"
+alias gsp  "git stash pop"
+alias gst  "git stash"
 
 # Fix emoji and others rendering
 set -g fish_emoji_width 2

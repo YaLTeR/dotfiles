@@ -54,8 +54,8 @@ naughty.config.defaults = {
 
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
-terminal = "konsole"
-terminal_cmd = terminal .. " -e fish"
+terminal = "alacritty"
+terminal_cmd = terminal
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 

@@ -84,6 +84,9 @@ set inccommand=split
 set foldmethod=syntax
 set foldlevelstart=1
 
+" Mouse
+set mouse=a
+
 " C highlighting settings
 let c_gnu = 1
 let c_space_errors = 1
@@ -129,6 +132,9 @@ for n in [1, 2, 3, 4, 5, 6, 7, 8, 9]
   call execute('inoremap <silent> <A-' . string(n) . '> <C-\><C-N>:tabnext ' . string(n) . '<CR>')
   call execute('tnoremap <silent> <A-' . string(n) . '> <C-\><C-N>:tabnext ' . string(n) . '<CR>')
 endfor
+
+" :TT to open a terminal in a new tab
+command! TT tabnew | execute 'terminal' | startinsert
 
 " F5 to refresh the current file
 nnoremap <F5> :e %<CR>
@@ -535,5 +541,5 @@ function! DeleteHiddenBuffers()
   echo "Closed ".closed." hidden buffers"
 endfunction
 
-let g:discord_blacklist = ['.*vm-malevich']
+let g:discord_blacklist = ['/home/yalter/Stuff/mnt/.*']
 let g:rooter_manual_only = 1
