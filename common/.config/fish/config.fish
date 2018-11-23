@@ -3,8 +3,7 @@ alias l "ls -l"
 
 alias p "pacaur"
 alias pr "p -Rscn"
-alias ps "p -S"
-alias pss "p -S"
+alias pss "p -Ss"
 alias psy "p -Sy"
 
 alias v "nvim"

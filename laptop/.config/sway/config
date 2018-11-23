@@ -6,8 +6,11 @@
 
 # Autostart
 exec lxpolkit
+exec nm-applet
 exec dropbox start
 exec mako
+
+font Cantarell 14
 
 ### Variables
 #
@@ -217,7 +220,7 @@ input "1133:49941:Logitech_Logitech_USB_Keyboard" {
         gaps outer all set 0; \
         gaps inner 0; \
         gaps outer 0
-    bindsym $mod+Ctrl+L exec swaylock
+    bindsym $mod+Ctrl+Shift+L exec swaylock
 
     # Screenshots
     bindsym Print exec way-shot
