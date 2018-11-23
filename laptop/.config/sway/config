@@ -271,4 +271,7 @@ bar {
     }
 }
 
+# Make wl-clipboard not disturb the tiling layout.
+for_window [title="wl-clipboard"] floating enable
+
 include /etc/sway/config.d/*
