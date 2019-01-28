@@ -13,18 +13,38 @@ alias la='ls -hal'
 PS1='[\u@\h \W]\$ '
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$HOME/.cargo/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/default
 export FZF_DEFAULT_COMMAND="rg --hidden --files -g '!.git'"
 
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-# base16_ashes
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
+# Set the Rust path.
+export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
+# Set the Base16 theme.
+export BASE16_THEME=ocean
+
+# Better font rendering in Java.
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+
+# Fix Java applications rendering.
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Neovim-gtk settings.
+export NVIM_GTK_DOUBLE_BUFFER=1
+export NVIM_GTK_NO_HEADERBAR=1
+export NVIM_GTK_PREFER_DARK_THEME=1
+
+# Fix redshift on AMDGPU
+export WLR_DRM_NO_ATOMIC=1
+# export WLR_DRM_NO_ATOMIC_GAMMA=1
 
 # added by travis gem
 [ -f /home/yalter/.travis/travis.sh ] && source /home/yalter/.travis/travis.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# If we're not going to start X, exec fish.
+# If we're not going to start a graphical environment, exec fish.
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] || exec fish

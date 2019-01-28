@@ -71,7 +71,11 @@ function display() {
     if [ $exit_code == 0 ]; then
         xdotool type --clearmodifiers "${line[0]}"
     elif [ $exit_code == 10 ]; then
-        echo -n "${line[0]}" | xsel -i -b
+        if [ -n "$WAYLAND_DISPLAY" ]; then
+            echo -n "${line[0]}" | wl-copy
+        else
+            echo -n "${line[0]}" | xsel -i -b
+        fi
     fi
 }
 

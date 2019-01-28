@@ -48,22 +48,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-redshift -l 55.6540919:37.4818654 &
+launch-redshift &
 # xinput set-prop "HUION 420 Pen" --type=float "Coordinate Transformation Matrix" 0.5333333333 0 0 0 1 0 0 0 1 &
 # xinput set-button-map "HUION 420 Pen" 1 0 0 &
 xinput set-button-map "UGTABLET TABLET G3 4x3 Pen Pen (0)" 1 0 0 &
 setxkbmap -layout us,ru -option grp:alt_shift_toggle -option compose:ralt &
 
-# export SSH_ASKPASS=lxqt-openssh-askpass
-# ssh-add ~/.ssh/id_rsa_gh &
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
-
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 numlockx on &
-rescuetime &
-dropbox &
+# rescuetime &
 nm-applet &
 
 steam &
@@ -72,28 +66,12 @@ telegram &
 fractal &
 discord &
 firefox &
-konsole -e tmux new -s irc irssi &
-xdotool search --sync --onlyvisible --class konsole set_desktop_for_window 12 &
-
-# Set the Rust paths.
-export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-export PATH=~/.cargo/bin:$PATH
-
-# Set the Base16 theme.
-export BASE16_THEME=ocean
+alacritty -t IRC -e tmux new -A -s irc irssi &
 
 # Fix VSync.
 export __GL_SYNC_TO_VBLANK=1
 export __GL_SYNC_DISPLAY_DEVICE=DP-0
 export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
-
-# Better font rendering in Java.
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
-
-# Neovim-gtk settings.
-export NVIM_GTK_DOUBLE_BUFFER=1
-export NVIM_GTK_NO_HEADERBAR=1
-export NVIM_GTK_PREFER_DARK_THEME=1
 
 exec awesome
 # exec awesome -a
