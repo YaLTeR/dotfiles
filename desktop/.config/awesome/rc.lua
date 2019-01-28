@@ -49,7 +49,8 @@ naughty.config.defaults = {
     ontop = true,
     margin = "5",
     border_width = "1",
-    position = "top_right"
+    position = "top_right",
+    icon_size = 100
 }
 
 -- {{{ Variable definitions
