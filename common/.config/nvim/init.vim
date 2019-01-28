@@ -210,6 +210,14 @@ let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
 function! DoNothingHandler(output)
 endfunction
 
+function! ShouldPreventNextAutoHover()
+  if !exists('b:prevent_next_auto_hover')
+    return 0
+  endif
+
+  return b:prevent_next_auto_hover
+endfunction
+
 function! IsDifferentHoverLineFromLast()
   if !exists('b:last_hover_line')
     return 1
@@ -218,15 +226,28 @@ function! IsDifferentHoverLineFromLast()
   return b:last_hover_line !=# line('.') || b:last_hover_col !=# col('.')
 endfunction
 
+function! UpdateLastHoverLine()
+  " echomsg "UpdateLastHoverLine() line=" line('.') "col=" col('.')
+
+  let b:last_hover_line = line('.')
+  let b:last_hover_col = col('.')
+endfunction
+
 function! GetHoverInfo()
+  " echomsg "Inside GetHoverInfo(), mode=" mode() "line=" line('.') "col=" col('.')
+
+  if ShouldPreventNextAutoHover()
+    let b:prevent_next_auto_hover = 0
+    return
+  endif
+
   " Only call hover if the cursor position changed.
   "
   " This is needed to prevent infinite loops, because hover info is displayed
   " in a popup window via nvim_buf_set_lines() which puts the cursor into the
   " popup window and back, which in turn calls CursorMoved again.
   if mode() == 'n' && IsDifferentHoverLineFromLast()
-    let b:last_hover_line = line('.')
-    let b:last_hover_col = col('.')
+    call UpdateLastHoverLine()
 
     call LanguageClient_textDocument_hover({'handle': v:true}, 'DoNothingHandler')
     call LanguageClient_clearDocumentHighlight()
@@ -455,17 +476,19 @@ cnoreabbrev RG Rg
 
 " UltiSnips+NCM function parameter expansion
 
-" We don't really want UltiSnips to map these two, but there's no option for
+" We don't really want UltiSnips to map these three, but there's no option for
 " that so just make it map them to a <Plug> key.
 let g:UltiSnipsExpandTrigger       = "<Plug>(ultisnips_expand_or_jump)"
 let g:UltiSnipsJumpForwardTrigger  = "<Plug>(ultisnips_expand_or_jump)"
-" Let UltiSnips bind the jump backward trigger as there's nothing special
-" about it.
-let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_back)"
+
+let g:UltiSnipsMappingsToIgnore = [ "SelectModeTab", "ShiftTab" ]
 
 " Try expanding snippet or jumping with UltiSnips and return <Tab> if nothing
 " worked.
 function! UltiSnipsExpandOrJumpOrTab()
+  " echomsg "UltiSnipsExpandOrJumpOrTab()"
+
   call UltiSnips#ExpandSnippetOrJump()
   if g:ulti_expand_or_jump_res > 0
     return ""
@@ -474,9 +497,44 @@ function! UltiSnipsExpandOrJumpOrTab()
   endif
 endfunction
 
-" First try expanding with ncm2_ultisnips. This does both LSP snippets and
-" normal snippets when there's a completion popup visible.
-inoremap <silent> <expr> <Tab> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_try_expand)")
+function! InsertModeTab()
+  " echomsg "InsertModeTab() line=" line('.') "col=" col('.')
+
+  " This mapping seems to always switch the mode to normal briefly which
+  " triggers autohover which in turn breaks snippets. To fix this, prevent the
+  " next autohover.
+  let b:prevent_next_auto_hover = 1
+
+  " First try expanding with ncm2_ultisnips. This does both LSP snippets and
+  " normal snippets when there's a completion popup visible.
+  return ncm2_ultisnips#expand_or("\<Plug>(ultisnips_try_expand)")
+endfunction
+
+function! SelectModeTab()
+  " echomsg "SelectModeTab() line=" line('.') "col=" col('.')
+
+  " This mapping seems to always switch the mode to normal briefly which
+  " triggers autohover which in turn breaks snippets. To fix this, prevent the
+  " next autohover.
+  let b:prevent_next_auto_hover = 1
+
+  call UltiSnips#ExpandSnippetOrJump()
+endfunction
+
+function! ShiftTab()
+  " echomsg "ShiftTab() line=" line('.') "col=" col('.')
+
+  " This mapping seems to always switch the mode to normal briefly which
+  " triggers autohover which in turn breaks snippets. To fix this, prevent the
+  " next autohover.
+  let b:prevent_next_auto_hover = 1
+
+  return UltiSnips#JumpBackwards()
+endfunction
+
+" Mapping for expanding snippets, jumping forwards in snippets or inserting
+" Tab if nothing else worked.
+inoremap <silent> <expr> <Tab> InsertModeTab()
 
 " If that failed, try the UltiSnips expand or jump function. This handles
 " short snippets when the completion popup isn't visible yet as well as
@@ -485,7 +543,11 @@ inoremap <silent> <expr> <Tab> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_try_e
 inoremap <silent> <Plug>(ultisnips_try_expand) <C-R>=UltiSnipsExpandOrJumpOrTab()<CR>
 
 " Select mode mapping for jumping forward with <Tab>.
-snoremap <silent> <Tab> <Esc>:call UltiSnips#ExpandSnippetOrJump()<cr>
+snoremap <silent> <Tab> <Esc>:call SelectModeTab()<cr>
+
+" Mappings for jumping backward.
+inoremap <silent> <S-Tab> <C-R>=ShiftTab()<CR>
+snoremap <silent> <S-Tab> <Esc>:call ShiftTab()<CR>
 
 " Visual mode mapping for expanding visual snippets.
 xnoremap <silent> <Tab> :call UltiSnips#SaveLastVisualSelection()<cr>gvs
