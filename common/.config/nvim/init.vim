@@ -149,6 +149,9 @@ vnoremap : ;
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
 
+" Map <leader>m to invoking make.
+nnoremap <leader>m :!make<CR>
+
 " Automatically start inserting in terminal
 autocmd BufEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
@@ -354,20 +357,19 @@ let g:vimtex_compiler_latexmk = {
 \ 'continuous' : 1,
 \ 'executable' : 'latexmk',
 \ 'options' : [
-\   '-pdf',
+\   '-lualatex',
 \   '-verbose',
 \   '-file-line-error',
 \   '-synctex=1',
 \   '-interaction=nonstopmode',
-\   '-lualatex',
 \ ],
 \}
 
 " Zathura as the PDF viewer
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_viewer_general_viewer = 'zathura'
+" let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'evince'
 
-" Okualr as the PDF viewer
+" Okular as the PDF viewer
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
@@ -390,10 +392,10 @@ augroup my_cm_setup
           \ 'complete_length': 1,
           \ 'scope': ['tex'],
           \ 'matcher': {'name': 'combine',
-          \           'matchers': [
-          \               {'name': 'abbrfuzzy', 'key': 'menu'},
-          \               {'name': 'prefix', 'key': 'word'},
-          \           ]},
+          \             'matchers': [
+          \                 {'name': 'abbrfuzzy', 'key': 'menu'},
+          \                 {'name': 'prefix', 'key': 'word'},
+          \             ]},
           \ 'mark': 'tex',
           \ 'word_pattern': '\w+',
           \ 'complete_pattern': g:vimtex#re#ncm,

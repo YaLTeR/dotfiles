@@ -58,5 +58,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-rooter'
 Plug 'takac/vim-hardtime'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 call plug#end()
