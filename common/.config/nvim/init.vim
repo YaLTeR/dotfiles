@@ -82,7 +82,7 @@ set inccommand=split
 
 " Folding
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=99
 
 " Mouse
 set mouse=a
