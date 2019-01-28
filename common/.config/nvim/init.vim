@@ -177,8 +177,8 @@ map <F12> :YcmCompleter GoTo<CR>
 
 " LanguageClient-neovim {{{
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['cquery'],
-   \ 'c': ['cquery'],
+   \ 'cpp': ['ccls'],
+   \ 'c': ['ccls'],
    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
    \ 'python': ['pyls'],
    \ }

@@ -1,8 +1,4 @@
 {
-        "initializationOptions": {
-                "cacheDirectory": "/tmp/cquery"
-        },
-
         "rust": {
                 "clippy_preference": "on",
                 "wait_to_build": 500,
