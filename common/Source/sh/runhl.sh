@@ -14,6 +14,8 @@ export STEAM_ROOT=~/.steam
 # Set this to the path to your Half-Life folder, usually $STEAM_ROOT/steam/steamapps/common/Half-Life
 export HL_ROOT=~/Half-Life
 
+export FFMPEG_LIBRARY_PATH=~/Stuff/ffmpeg-hlcapture
+
 if [ "$USE_STEAM_BUNDLED_LIBRARIES" -eq 1 ]; then
 	export PLATFORM=bin32
 	export STEAM_RUNTIME=$STEAM_ROOT/$PLATFORM/steam-runtime
@@ -45,6 +47,9 @@ if [ -n "$BXT" ]; then
 fi
 if [ -n "$HLCAPTURE" ]; then
 	export LD_PRELOAD=~/Source/rust/hl-capture/target/i686-unknown-linux-gnu/release/libhl_capture.so:$LD_PRELOAD
+fi
+if [ -n "$HLCAPTURE_DEBUG" ]; then
+	export LD_PRELOAD=~/Source/rust/hl-capture/target/i686-unknown-linux-gnu/debug/libhl_capture.so:$LD_PRELOAD
 fi
 if [ -n "$PRELOAD" ]; then
 	export LD_PRELOAD=$PRELOAD:$LD_PRELOAD
