@@ -2,7 +2,15 @@
 
 set filename $HOME"/Screenshots/"(date +%F-%T)".png"
 
-slurp | grim -c -g - $filename
+if test (count $argv) -ge 1
+	if test $argv[1] = "--screen"
+		grim - > $filename
+	else
+		exit 1
+	end
+else
+	slurp | grim -cg- - > $filename
+end
 
 if test -f $filename
 	# set url (imgurbash2 $filename)
@@ -14,5 +22,5 @@ if test -f $filename
 	# end
 
 	wl-copy < $filename
-	# notify-send "Screenshot captured."
+	notify-send -i $filename "Screenshot captured."
 end
