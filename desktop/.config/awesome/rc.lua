@@ -578,6 +578,10 @@ awful.rules.rules = {
     { rule = { name = "Fractal" },
       properties = { screen = 2, tag = "4" } },
 
+    -- IRC in the terminal
+    { rule = { name = "IRC" },
+      properties = { screen = 2, tag = "4" } },
+
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
