@@ -576,17 +576,18 @@ let g:netrw_bufsettings = "noma nomod nonu nowrap ro nobl relativenumber"
 "   \ 'case':   'smartcase' }
 
 " ncm2
-" Causes an error in nvim-gtk.
-" autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd BufEnter * call ncm2#enable_for_buffer()
 " Causes LanguageClient integration to not work right away.
 " autocmd InsertEnter * call ncm2#enable_for_buffer()
-function! s:ncm2_start(...)
-    if v:vim_did_enter
-        call ncm2#enable_for_buffer()
-    endif
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-endfunc
-call timer_start(500, function('s:ncm2_start'))
+" Start with a timeout (you used to need this to prevent an error in
+" nvim-gtk).
+" function! s:ncm2_start(...)
+"     if v:vim_did_enter
+"         call ncm2#enable_for_buffer()
+"     endif
+"     autocmd BufEnter * call ncm2#enable_for_buffer()
+" endfunc
+" call timer_start(500, function('s:ncm2_start'))
 
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
