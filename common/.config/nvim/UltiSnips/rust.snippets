@@ -24,15 +24,23 @@ pub extern "C" fn ${1:function_name}(${2})${3} {
 endsnippet
 
 # Smarter print snippets
-snippet pri "print!"
+snippet pri "print!" w
 print!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(?2:\);)/}
 endsnippet
 
-snippet pln "println!"
+snippet pln "println!" w
 println!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(?2:\);)/}
 endsnippet
 
-snippet plnd "println! some Debug objects"
+snippet epri "eprint!" w
+eprint!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(?2:\);)/}
+endsnippet
+
+snippet epln "eprintln!" w
+eprintln!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(?2:\);)/}
+endsnippet
+
+snippet plnd "println! some Debug objects" w
 println!("`!p
 expressions = filter(None, map(str.strip, t[1].split(',')))
 snip.rv = '\\n'.join([expr.strip() + ' = {:#?}' for expr in expressions])
@@ -43,13 +51,6 @@ endsnippet
 snippet ecm "extern crate with macro_use"
 #[macro_use]
 extern crate $1;
-endsnippet
-
-# new but the default is Self
-snippet new "Constructor function"
-pub fn new(${2}) -> ${1:Self} {
-	$1 { ${3} }
-}
 endsnippet
 
 # Copy-pasted to fix inner tabstop
@@ -65,20 +66,98 @@ snippet inl "Inline attribute"
 endsnippet
 
 # Option and Result with ${VISUAL}
-snippet opt "Option<T>"
+snippet opt "Option<T>" w
 Option<${1:${VISUAL:()}}>
 endsnippet
-snippet res "Result<T, E>"
+snippet res "Result<T, E>" w
 Result<${1:${VISUAL:()}}, ${2:()}>
 endsnippet
-snippet	ok "Ok()"
+snippet	some "Some()" w
+Some(${1:${VISUAL:()}})
+endsnippet
+snippet	ok "Ok()" w
 Ok(${1:${VISUAL:()}})
 endsnippet
-snippet	err "Err()"
+snippet	err "Err()" w
 Err(${1:${VISUAL:()}})
 endsnippet
 
 # Unsafe block
-snippet uns "unsafe { ... }"
+snippet uns "unsafe { ... }" w
 unsafe { ${1:${VISUAL}} }
+endsnippet
+
+# Shorter variable declarations
+snippet l "let variable declaration with type inference" w
+let ${1} = ${2};
+endsnippet
+snippet lt "let variable declaration with explicit type annotation" w
+let ${1}: ${2} = ${3};
+endsnippet
+snippet lm "let mut variable declaration with type inference" w
+let mut ${1} = ${2};
+endsnippet
+snippet ltm "let mut variable declaration with explicit type annotation" w
+let mut ${1}: ${2} = ${3};
+endsnippet
+
+# Control structures but without $0
+snippet if "if" w
+if ${1} {
+	${2:${VISUAL}}
+}
+endsnippet
+snippet ife "if / else" w
+if ${1} {
+	${2:${VISUAL}}
+} else {
+	${3}
+}
+endsnippet
+snippet el "else" w
+else {
+	${1:${VISUAL}}
+}
+endsnippet
+snippet eli "else if" w
+else if ${1} {
+	${2:${VISUAL}}
+}
+endsnippet
+
+# Same but if let ...
+snippet ifl "if let" w
+if let ${1} = ${2} {
+	${3:${VISUAL}}
+}
+endsnippet
+snippet ifle "if let / else" w
+if let ${1} = ${2} {
+	${3:${VISUAL}}
+} else {
+	${4}
+}
+endsnippet
+snippet elil "else if let" w
+else if let ${1} = ${2} {
+	${3:${VISUAL}}
+}
+endsnippet
+
+# Deref
+snippet deref "Deref trait implementation"
+impl Deref for ${1:Type} {
+	type Target = ${2:Target};
+
+	fn deref(&self) -> &Self::Target {
+		&self.${0:field}
+	}
+}
+endsnippet
+snippet derefm "DerefMut trait implementation"
+impl DerefMut for ${1:Type} {
+	fn deref_mut(&self) -> &mut Self::Target {
+		&mut self.${0:field}
+	}
+}
 endsnippet
