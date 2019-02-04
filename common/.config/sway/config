@@ -1,0 +1,208 @@
+# Variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+set $menu rofi -show run
+
+set $scripts ~/Source/sh
+
+set $ws_1 "1 — browser"
+set $ws_2 "2"
+set $ws_3 "3"
+set $ws_4 "4"
+set $ws_5 "5"
+set $ws_6 "6"
+set $ws_7 "7"
+set $ws_8 "8"
+set $ws_9 "9 — steam"
+set $ws_10 "10"
+
+# Include the local config
+# Do it here so it can use variables from above and set its own variables too
+include local
+
+# Autostart
+exec mako
+exec waybar
+exec launch-redshift
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# General settings
+title_align center
+gaps outer 20
+gaps inner 10
+
+# Idle configuration
+exec swayidle \
+     timeout 600 'swaymsg "output * dpms off"' \
+          resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -c 000000'
+
+# Inputs configuration
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_numlock enabled
+}
+
+input "1133:49941:Logitech_Logitech_USB_Keyboard" {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_numlock enabled
+}
+
+input "1133:49970:Logitech_Gaming_Mouse_G502" {
+    accel_profile flat
+}
+
+input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    dwt disabled
+}
+
+
+# Window settings
+for_window [title="FreeRDP.*"] floating enable
+for_window [app_id="mpv"] floating enable
+
+# Key bindings
+# Terminal
+bindsym $mod+Return exec $term
+# Kill focused window
+bindsym $mod+q kill
+# Application launcher
+bindsym $mod+d exec $menu
+# Emoji picker
+bindsym $mod+Shift+d exec $scripts/rofi-emoji.sh
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Exit sway
+bindsym $mod+Shift+e exec $scripts/sway-exit.sh
+# Lock the screen
+bindsym $mod+Ctrl+Shift+L exec swaylock
+
+# Brightness adjustment
+bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
+
+# Gaps adjustment
+bindsym $mod+plus \
+    gaps inner all set 10; \
+    gaps outer all set 20; \
+    gaps inner 10; \
+    gaps outer 20
+bindsym $mod+minus \
+    gaps inner all set 0; \
+    gaps outer all set 0; \
+    gaps inner 0; \
+    gaps outer 0
+
+# Screenshot with selection
+bindsym Print exec way-shot
+# Screenshot all outputs
+bindsym Ctrl+Print exec way-shot --screen
+
+# Drag and resize windows with this
+floating_modifier $mod normal
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+# Arrow keys
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window around
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Move the focused window between outputs
+bindsym $mod+Ctrl+$left focus output left
+bindsym $mod+Ctrl+$down focus output down
+bindsym $mod+Ctrl+$up focus output up
+bindsym $mod+Ctrl+$right focus output right
+# Arrow keys
+bindsym $mod+Ctrl+Left focus output left
+bindsym $mod+Ctrl+Down focus output down
+bindsym $mod+Ctrl+Up focus output up
+bindsym $mod+Ctrl+Right focus output right
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws_1
+bindsym $mod+2 workspace $ws_2
+bindsym $mod+3 workspace $ws_3
+bindsym $mod+4 workspace $ws_4
+bindsym $mod+5 workspace $ws_5
+bindsym $mod+6 workspace $ws_6
+bindsym $mod+7 workspace $ws_7
+bindsym $mod+8 workspace $ws_8
+bindsym $mod+9 workspace $ws_9
+bindsym $mod+0 workspace $ws_10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws_1
+bindsym $mod+Shift+2 move container to workspace $ws_2
+bindsym $mod+Shift+3 move container to workspace $ws_3
+bindsym $mod+Shift+4 move container to workspace $ws_4
+bindsym $mod+Shift+5 move container to workspace $ws_5
+bindsym $mod+Shift+6 move container to workspace $ws_6
+bindsym $mod+Shift+7 move container to workspace $ws_7
+bindsym $mod+Shift+8 move container to workspace $ws_8
+bindsym $mod+Shift+9 move container to workspace $ws_9
+bindsym $mod+Shift+0 move container to workspace $ws_10
+
+# Layout stuff
+# Split horizontally and vertically
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the focused window fullscreen
+bindsym $mod+f fullscreen
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Ctrl+Space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+Space focus mode_toggle
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+# Resizing containers
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to the default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+include /etc/sway/config.d/*

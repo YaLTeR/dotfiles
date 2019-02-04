@@ -1,0 +1,93 @@
+# Variables
+set $ws_11 "11 — discord"
+set $ws_12 "12 — telegram"
+set $ws_13 "13 — obs"
+set $ws_14 "14"
+set $ws_15 "15"
+set $ws_16 "16"
+set $ws_17 "17"
+set $ws_18 "18"
+set $ws_19 "19 — steam"
+set $ws_20 "20"
+
+set $first_monitor "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+set $second_monitor "Unknown G-SYNC 241910 #ASNWvgsHCG3d"
+
+# Autostart
+exec steam
+exec fractal
+exec org.telegram.desktop
+exec discord
+exec ff
+
+# General settings
+font Cantarell 12
+
+# Output configuration
+output $first_monitor mode 2560x1440@143.998001Hz position 0,0
+output $second_monitor mode 1920x1080@144.001007Hz position 2560,360
+
+# Binds to switch refresh rate
+bindsym $mod+u output $first_monitor  mode 2560x1440@119.998001Hz; \
+               output $second_monitor mode 1920x1080@119.982002Hz
+
+bindsym $mod+i output $first_monitor  mode 2560x1440@143.998001Hz; \
+               output $second_monitor mode 1920x1080@144.001007Hz
+
+# Wallpaper
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+# Window settings
+assign [class="discord"] → workspace $ws_11
+assign [class="Steam" title="Friends List"] → workspace $ws_19
+assign [class="Steam" title="Steam"] → workspace $ws_9
+assign [class="Telegram"] → workspace $ws_12
+assign [app_id="fractal"] → workspace $ws_12
+
+# Set first monitor workspaces to first monitor
+workspace $ws_1 output $first_monitor
+workspace $ws_2 output $first_monitor
+workspace $ws_3 output $first_monitor
+workspace $ws_4 output $first_monitor
+workspace $ws_5 output $first_monitor
+workspace $ws_6 output $first_monitor
+workspace $ws_7 output $first_monitor
+workspace $ws_8 output $first_monitor
+workspace $ws_9 output $first_monitor
+workspace $ws_10 output $first_monitor
+
+# Set second monitor workspaces to second monitor
+workspace $ws_11 output $second_monitor
+workspace $ws_12 output $second_monitor
+workspace $ws_13 output $second_monitor
+workspace $ws_14 output $second_monitor
+workspace $ws_15 output $second_monitor
+workspace $ws_16 output $second_monitor
+workspace $ws_17 output $second_monitor
+workspace $ws_18 output $second_monitor
+workspace $ws_19 output $second_monitor
+workspace $ws_20 output $second_monitor
+
+# Key bindings
+# Second monitor workspaces with F-keys
+bindsym $mod+F1 workspace $ws_11; mode "default"
+bindsym $mod+F2 workspace $ws_12; mode "default"
+bindsym $mod+F3 workspace $ws_13; mode "default"
+bindsym $mod+F4 workspace $ws_14; mode "default"
+bindsym $mod+F5 workspace $ws_15; mode "default"
+bindsym $mod+F6 workspace $ws_16; mode "default"
+bindsym $mod+F7 workspace $ws_17; mode "default"
+bindsym $mod+F8 workspace $ws_18; mode "default"
+bindsym $mod+F9 workspace $ws_19; mode "default"
+bindsym $mod+F10 workspace $ws_20; mode "default"
+
+bindsym $mod+Shift+F1 move container to workspace $ws_11; mode "default"
+bindsym $mod+Shift+F2 move container to workspace $ws_12; mode "default"
+bindsym $mod+Shift+F3 move container to workspace $ws_13; mode "default"
+bindsym $mod+Shift+F4 move container to workspace $ws_14; mode "default"
+bindsym $mod+Shift+F5 move container to workspace $ws_15; mode "default"
+bindsym $mod+Shift+F6 move container to workspace $ws_16; mode "default"
+bindsym $mod+Shift+F7 move container to workspace $ws_17; mode "default"
+bindsym $mod+Shift+F8 move container to workspace $ws_18; mode "default"
+bindsym $mod+Shift+F9 move container to workspace $ws_19; mode "default"
+bindsym $mod+Shift+F10 move container to workspace $ws_20; mode "default"

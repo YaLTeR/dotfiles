@@ -1,0 +1,8 @@
+# General settings
+font Cantarell 12
+
+# Output configuration
+output DP-1 position 1920,0
+
+# Wallpaper
+output * bg /usr/share/backgrounds/f29/default/tv-wide/f29.png fill
