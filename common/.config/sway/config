@@ -108,6 +108,8 @@ bindsym $mod+minus \
 bindsym Print exec way-shot
 # Screenshot all outputs
 bindsym Ctrl+Print exec way-shot --screen
+# Screenshot focused window
+bindsym Alt+Print exec way-shot --window
 
 # Drag and resize windows with this
 floating_modifier $mod normal
