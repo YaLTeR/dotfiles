@@ -209,5 +209,3 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-include /etc/sway/config.d/*
