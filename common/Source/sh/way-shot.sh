@@ -12,7 +12,7 @@ if test (count $argv) -ge 1
 		exit 1
 	end
 else
-	slurp | grim -cg- - > $filename
+	slurp | grim -g- - > $filename
 end
 
 if test -f $filename
