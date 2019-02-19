@@ -38,7 +38,7 @@ export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_PREFER_DARK_THEME=1
 
 # Fix redshift on AMDGPU
-export WLR_DRM_NO_ATOMIC=1
+# export WLR_DRM_NO_ATOMIC=1
 # export WLR_DRM_NO_ATOMIC_GAMMA=1
 
 # added by travis gem
