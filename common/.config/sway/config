@@ -209,3 +209,9 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Passthrough mode
+mode "passthrough" {
+    bindsym Pause mode "default"
+}
+bindsym $mod+p mode "passthrough"
