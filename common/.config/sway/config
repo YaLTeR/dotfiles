@@ -30,6 +30,7 @@ exec mako
 exec waybar
 exec launch-redshift
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec nm-applet
 
 # General settings
 title_align center
