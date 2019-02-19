@@ -188,6 +188,8 @@ bindsym $mod+Ctrl+Space floating toggle
 bindsym $mod+Space focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
+# Move focus to the last-focused child container
+bindsym $mod+Shift+a focus child
 
 # Resizing containers
 mode "resize" {
