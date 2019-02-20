@@ -56,6 +56,12 @@ input "1133:49941:Logitech_Logitech_USB_Keyboard" {
     xkb_numlock enabled
 }
 
+input "1267:259:HID_04f3:0103" {
+    xkb_layout us,ru
+    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_numlock enabled
+}
+
 input "1133:49970:Logitech_Gaming_Mouse_G502" {
     accel_profile flat
 }
