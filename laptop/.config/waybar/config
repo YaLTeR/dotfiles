@@ -16,11 +16,13 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "interval": 3
+        "interval": 3,
+        "on-click": "$HOME/Source/sh/top-cpu.sh"
     },
     "memory": {
         "format": "{}% ",
-        "interval": 4
+        "interval": 4,
+        "on-click": "$HOME/Source/sh/top-ram.sh"
     },
     "custom/free-space": {
         "format": "{} ",
