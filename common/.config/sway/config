@@ -78,6 +78,7 @@ input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
 # Window settings
 for_window [title="FreeRDP.*"] floating enable
 for_window [app_id="mpv"] floating enable
+for_window [title="Quaver.*"] floating disable
 
 # Key bindings
 # Terminal
