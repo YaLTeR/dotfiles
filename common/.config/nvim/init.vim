@@ -610,3 +610,4 @@ endfunction
 
 let g:discord_blacklist = ['/home/yalter/Stuff/mnt/.*', '/home/YaLTeR/Stuff/mnt/.*']
 let g:rooter_manual_only = 1
+let g:comfortable_motion_interval = 1000.0 / 144
