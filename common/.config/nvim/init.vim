@@ -609,5 +609,5 @@ function! DeleteHiddenBuffers()
   echo "Closed ".closed." hidden buffers"
 endfunction
 
-let g:discord_blacklist = ['/home/yalter/Stuff/mnt/.*']
+let g:discord_blacklist = ['/home/yalter/Stuff/mnt/.*', '/home/YaLTeR/Stuff/mnt/.*']
 let g:rooter_manual_only = 1
