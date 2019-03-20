@@ -47,19 +47,19 @@ exec swayidle \
 # Inputs configuration
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_layout us,ru
-    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
     xkb_numlock enabled
 }
 
 input "1133:49941:Logitech_Logitech_USB_Keyboard" {
     xkb_layout us,ru
-    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
     xkb_numlock enabled
 }
 
 input "1267:259:HID_04f3:0103" {
     xkb_layout us,ru
-    xkb_options grp:alt_shift_toggle,compose:ralt,ctrl:swapcaps
+    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
     xkb_numlock enabled
 }
 
