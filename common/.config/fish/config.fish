@@ -1,4 +1,5 @@
-alias ls "ls -hN --group-directories-first --color=auto"
+# alias ls "ls -hN --group-directories-first --color=auto"
+alias ls "exa --group-directories-first"
 alias l "ls -l"
 
 alias p "pacaur"
