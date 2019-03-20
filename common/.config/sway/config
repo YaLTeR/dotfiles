@@ -225,5 +225,6 @@ bindsym $mod+r mode "resize"
 # Passthrough mode
 mode "passthrough" {
     bindsym Pause mode "default"
+    bindsym Shift+Escape mode "default"
 }
 bindsym $mod+p mode "passthrough"
