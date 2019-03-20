@@ -76,9 +76,13 @@ input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
 
 
 # Window settings
-for_window [title="FreeRDP.*"] floating enable
+for_window [title="^FreeRDP"] floating enable
 for_window [app_id="mpv"] floating enable
-for_window [title="Quaver.*"] floating disable
+
+# Local Quaver
+for_window [title="^Quaver" class="dotnet"] floating disable; fullscreen enable
+# Steam Quaver
+for_window [class="Quaver"] floating disable; fullscreen enable
 
 # Key bindings
 # Terminal
