@@ -60,7 +60,7 @@ Plug 'airblade/vim-rooter'
 Plug 'takac/vim-hardtime'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'yuttie/comfortable-motion.vim'
+" Plug 'yuttie/comfortable-motion.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
