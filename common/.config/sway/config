@@ -37,6 +37,8 @@ title_align center
 floating_maximum_size -1 x -1
 gaps outer 20
 gaps inner 10
+default_border pixel
+default_floating_border pixel
 
 # Idle configuration
 exec swayidle \
