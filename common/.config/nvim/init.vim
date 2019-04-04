@@ -612,3 +612,38 @@ let g:discord_blacklist = ['/home/yalter/Stuff/mnt/.*', '/home/YaLTeR/Stuff/mnt/
 let g:rooter_manual_only = 1
 let g:comfortable_motion_interval = 1000.0 / 144
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+autocmd BufEnter * nested :call tagbar#autoopen(0)
+let g:rust_use_custom_ctags_defs = 1
+let g:tagbar_type_rust = {
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
