@@ -2,7 +2,7 @@
     "layer": "bottom", // Set to bottom so it's not above dmenu
 
     "modules-left": ["sway/workspaces", "sway/mode"],
-    // "modules-center": ["sway/window"],
+    "modules-center": ["sway/window"],
     "modules-right": ["cpu", "memory", "custom/free-space", "battery", "clock", "tray"],
 
     "sway/mode": {
