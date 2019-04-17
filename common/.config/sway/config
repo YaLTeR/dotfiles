@@ -150,7 +150,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Move the focused window between outputs
+# Move the focus between outputs
 bindsym $mod+Ctrl+$left focus output left
 bindsym $mod+Ctrl+$down focus output down
 bindsym $mod+Ctrl+$up focus output up
