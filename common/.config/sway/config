@@ -100,7 +100,7 @@ bindsym $mod+Shift+c reload
 # Exit sway
 bindsym $mod+Shift+e exec $scripts/sway-exit.sh
 # Lock the screen
-bindsym $mod+Ctrl+Shift+L exec swaylock
+bindsym $mod+Alt+L exec swaylock
 
 # Brightness adjustment
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
