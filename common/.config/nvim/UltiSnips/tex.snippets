@@ -1,0 +1,45 @@
+global !p
+
+def create_columns(snip):
+	line = snip.buffer[snip.line]
+	snippet_start = line.rfind('cols', 0, snip.column)
+	snippet_end = snip.column + 1
+	snippet = line[snippet_start:snippet_end]
+	columns = int(snippet[len('cols'):])
+	width = 1 / columns
+
+	indent = 0
+	while line[indent].isspace():
+		indent += 1
+
+	indent = line[:indent]
+
+	final = indent + '\\begin{columns}[T,onlytextwidth]'
+
+	for i in range(columns):
+		final += '\n' + indent + '\t\\begin{column}{%.2f\\textwidth}\n' % width
+		final += indent + '\t\t\\vskip1ex\n'
+		final += indent + '\t\t$%d\n' % (i + 1)
+		final += indent + '\t\\end{column}\n'
+
+	final += indent + '\\end{columns}$0'
+
+	snip.buffer[snip.line] = ''
+
+	snip.expand_anon(final)
+
+endglobal
+
+pre_expand "create_columns(snip)"
+snippet "cols(\d+)" "Generate columns" r
+endsnippet
+
+snippet fr "frame environment"
+\begin{frame}{${1:Title}}{${2:Subtitle}}
+	${0:${VISUAL}}
+\end{frame}
+endsnippet
+
+snippet ig "\includegraphics"
+\includegraphics{${1:media/${2:${VISUAL:image.png}}}}$0
+endsnippet
