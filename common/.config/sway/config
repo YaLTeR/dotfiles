@@ -78,6 +78,7 @@ input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
 
 
 # Window settings
+assign [instance="osu!.exe"] → workspace $ws_7
 for_window [title="^FreeRDP"] floating enable
 for_window [app_id="mpv"] floating enable; inhibit_idle visible
 
