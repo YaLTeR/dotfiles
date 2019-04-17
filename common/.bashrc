@@ -23,8 +23,10 @@ export SSH_AUTH_SOCK
 # Set the Rust path.
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 
-# Set the Base16 theme.
-export BASE16_THEME=ocean
+# Set the Base16 theme, but only if it hasn't been already set.
+if [ -z "$BASE16_THEME" ]; then
+	export BASE16_THEME=ocean
+fi
 
 # Better font rendering in Java.
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
