@@ -161,6 +161,17 @@ bindsym $mod+Ctrl+Down focus output down
 bindsym $mod+Ctrl+Up focus output up
 bindsym $mod+Ctrl+Right focus output right
 
+# Move the workspace between outputs
+bindsym $mod+Shift+Ctrl+$left move workspace to output left
+bindsym $mod+Shift+Ctrl+$down move workspace to output down
+bindsym $mod+Shift+Ctrl+$up move workspace to output up
+bindsym $mod+Shift+Ctrl+$right move workspace to output right
+# Arrow keys
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Down move workspace to output down
+bindsym $mod+Shift+Ctrl+Up move workspace to output up
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
+
 # Switch to workspace
 bindsym $mod+1 workspace $ws_1
 bindsym $mod+2 workspace $ws_2
