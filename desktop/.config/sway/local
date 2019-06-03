@@ -18,7 +18,7 @@ exec steam
 exec fractal
 exec org.telegram.desktop
 exec discord
-exec ff
+exec firefox
 
 # General settings
 font Cantarell 12
