@@ -35,6 +35,11 @@ bindsym --to-code $mod+u output $first_monitor  mode 2560x1440@119.998001Hz; \
 bindsym --to-code $mod+i output $first_monitor  mode 2560x1440@143.998001Hz; \
                output $second_monitor mode 1920x1080@144.001007Hz
 
+# Input configuration
+input "10429:117:UGTABLET_TABLET_G3_4x3_Pen" {
+    map_to_output $first_monitor
+}
+
 # Wallpaper
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 

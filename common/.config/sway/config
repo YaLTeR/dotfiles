@@ -64,6 +64,10 @@ input type:touchpad {
     dwt disabled
 }
 
+input "10429:117:UGTABLET_TABLET_G3_4x3_Pen" {
+    map_from_region 23.5x17mm 197x108mm
+}
+
 
 # Window settings
 assign [instance="osu!.exe"] → workspace $ws_7
