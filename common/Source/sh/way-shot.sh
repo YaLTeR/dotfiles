@@ -12,7 +12,7 @@ if test (count $argv) -ge 1
 		exit 1
 	end
 else
-	slurp | grim -g- - > $filename
+	sh $script_dir/sway/screenshot-pick-visible.sh > $filename
 end
 
 if test -f $filename
