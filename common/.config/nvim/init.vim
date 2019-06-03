@@ -191,12 +191,13 @@ map <F12> :YcmCompleter GoTo<CR>
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['ccls'],
    \ 'c': ['ccls'],
-   \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+   \ 'rust': ['rls'],
    \ 'python': ['pyls'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
+   " \ 'rust': ['ra_lsp_server'],
    " \ 'haskell': ['hie', '--lsp'],
 
 " Automatically start language servers.
