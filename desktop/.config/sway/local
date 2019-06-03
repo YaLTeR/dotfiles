@@ -41,7 +41,7 @@ input "10429:117:UGTABLET_TABLET_G3_4x3_Pen" {
 }
 
 # Wallpaper
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Documents/autumn_blaze_black.png fill
 
 # Window settings
 assign [class="discord"] → workspace $ws_11
