@@ -47,29 +47,17 @@ exec swayidle \
     before-sleep 'swaylock -c 000000'
 
 # Inputs configuration
-input "1:1:AT_Translated_Set_2_keyboard" {
+input type:keyboard {
     xkb_layout us,ru
     xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
     xkb_numlock enabled
 }
 
-input "1133:49941:Logitech_Logitech_USB_Keyboard" {
-    xkb_layout us,ru
-    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
-    xkb_numlock enabled
-}
-
-input "1267:259:HID_04f3:0103" {
-    xkb_layout us,ru
-    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
-    xkb_numlock enabled
-}
-
-input "1133:49970:Logitech_Gaming_Mouse_G502" {
+input type:pointer {
     accel_profile flat
 }
 
-input "1739:30381:DLL0665:01_06CB:76AD_Touchpad" {
+input type:touchpad {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
