@@ -2,6 +2,7 @@
 
 export WINEPREFIX=$HOME/.wine_osu
 export WINEARCH=win32
+export STAGING_AUDIO_DURATION=40000
 
 if [ $# -ge 1 ]
 then
