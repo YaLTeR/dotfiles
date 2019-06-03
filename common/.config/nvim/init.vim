@@ -154,7 +154,7 @@ nnoremap <leader>m :!make<CR>
 
 " Automatically start inserting in terminal
 autocmd BufEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
+" autocmd BufLeave term://* stopinsert
 
 " Increase the preview window height
 " set previewheight=24
