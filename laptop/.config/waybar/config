@@ -24,10 +24,10 @@
         "interval": 4,
         "on-click": "$HOME/Source/sh/top-ram.sh"
     },
-    "custom/free-space": {
+    "custom/free-space-root": {
         "format": "{} ",
         "interval": 5,
-        "exec": "$HOME/Source/sh/free-space.sh"
+        "exec": "$HOME/Source/sh/free-space.sh /"
     },
     "battery": {
         "states": {

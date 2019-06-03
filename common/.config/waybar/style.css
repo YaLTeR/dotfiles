@@ -30,7 +30,7 @@ window#waybar {
     border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-free-space {
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-free-space-root, #custom-free-space-home {
     padding: 0 10px;
     margin: 0 5px;
 }
@@ -104,7 +104,12 @@ window#waybar {
     background-color: #2980b9;
 }
 
-#custom-free-space {
+#custom-free-space-root {
+    background: #ae95c7;
+    color: #000000;
+}
+
+#custom-free-space-home {
     background: #ae95c7;
     color: #000000;
 }

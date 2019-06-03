@@ -1,3 +1,3 @@
 #!/bin/sh
 
-df -h --output=target,avail / | sed -E '1d; s#^/\s+##'
+df -h --output=target,avail "$1" | sed -E '1d; s#^/\S*\s+##'

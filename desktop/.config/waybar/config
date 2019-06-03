@@ -3,7 +3,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "custom/free-space", "clock", "tray"],
+    "modules-right": ["cpu", "memory", "custom/free-space-root", "custom/free-space-home", "clock", "tray"],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -24,9 +24,14 @@
         "interval": 4,
         "on-click": "$HOME/Source/sh/top-ram.sh"
     },
-    "custom/free-space": {
+    "custom/free-space-root": {
         "format": "{} ",
         "interval": 5,
-        "exec": "$HOME/Source/sh/free-space.sh"
+        "exec": "$HOME/Source/sh/free-space.sh /"
+    },
+    "custom/free-space-home": {
+        "format": "{} ",
+        "interval": 5,
+        "exec": "$HOME/Source/sh/free-space.sh /home"
     }
 }
