@@ -74,6 +74,7 @@ assign [instance="osu!.exe"] → workspace $ws_7
 for_window [title="^FreeRDP"] floating enable
 for_window [app_id="mpv"] floating enable; inhibit_idle visible
 for_window [app_id="Alacritty"] opacity 0.98
+for_window [app_id="Alacritty" title="^Recorder$"] move to scratchpad
 
 # Local Quaver
 for_window [title="^Quaver" class="dotnet"] floating disable; fullscreen enable
@@ -120,6 +121,13 @@ bindsym --to-code Print exec way-shot
 bindsym --to-code Ctrl+Print exec way-shot --screen
 # Screenshot focused window
 bindsym --to-code Alt+Print exec way-shot --window
+# Record with selection
+bindsym --to-code Shift+Print exec $term --title Recorder -e way-rec
+# Record focused window
+bindsym --to-code Shift+Alt+Print exec $term --title Recorder -e way-rec --window
+
+# Cycle through the scratchpad
+bindsym --to-code $mod+equal scratchpad show
 
 # Drag and resize windows with this
 floating_modifier $mod normal
