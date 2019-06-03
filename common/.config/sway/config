@@ -77,156 +77,156 @@ for_window [class="Quaver"] floating disable; fullscreen enable
 
 # Key bindings
 # Terminal
-bindsym $mod+Return exec $term
+bindsym --to-code $mod+Return exec $term
 # Kill focused window
-bindsym $mod+q kill
+bindsym --to-code $mod+q kill
 # Application launcher
-bindsym $mod+d exec $menu
+bindsym --to-code $mod+d exec $menu
 # Emoji picker
-bindsym $mod+Shift+d exec $scripts/rofi-emoji.sh
+bindsym --to-code $mod+Shift+d exec $scripts/rofi-emoji.sh
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym --to-code $mod+Shift+c reload
 # Exit sway
-bindsym $mod+Shift+e exec $scripts/sway-exit.sh
+bindsym --to-code $mod+Shift+e exec $scripts/sway-exit.sh
 # Lock the screen
-bindsym $mod+Alt+L exec swaylock
+bindsym --to-code $mod+Alt+L exec swaylock
 
 # Brightness adjustment
-bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
+bindsym --to-code XF86MonBrightnessDown exec brightnessctl set 20%-
+bindsym --to-code XF86MonBrightnessUp exec brightnessctl set 20%+
 
 # Gaps adjustment
-bindsym $mod+plus \
+bindsym --to-code $mod+plus \
     gaps inner all set 10; \
     gaps outer all set 20; \
     gaps inner 10; \
     gaps outer 20
-bindsym $mod+minus \
+bindsym --to-code $mod+minus \
     gaps inner all set 0; \
     gaps outer all set 0; \
     gaps inner 0; \
     gaps outer 0
 
 # Screenshot with selection
-bindsym Print exec way-shot
+bindsym --to-code Print exec way-shot
 # Screenshot all outputs
-bindsym Ctrl+Print exec way-shot --screen
+bindsym --to-code Ctrl+Print exec way-shot --screen
 # Screenshot focused window
-bindsym Alt+Print exec way-shot --window
+bindsym --to-code Alt+Print exec way-shot --window
 
 # Drag and resize windows with this
 floating_modifier $mod normal
 
 # Move your focus around
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym --to-code $mod+$left focus left
+bindsym --to-code $mod+$down focus down
+bindsym --to-code $mod+$up focus up
+bindsym --to-code $mod+$right focus right
 # Arrow keys
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym --to-code $mod+Left focus left
+bindsym --to-code $mod+Down focus down
+bindsym --to-code $mod+Up focus up
+bindsym --to-code $mod+Right focus right
 
 # Move the focused window around
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym --to-code $mod+Shift+$left move left
+bindsym --to-code $mod+Shift+$down move down
+bindsym --to-code $mod+Shift+$up move up
+bindsym --to-code $mod+Shift+$right move right
 # Arrow keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym --to-code $mod+Shift+Left move left
+bindsym --to-code $mod+Shift+Down move down
+bindsym --to-code $mod+Shift+Up move up
+bindsym --to-code $mod+Shift+Right move right
 
 # Move the focus between outputs
-bindsym $mod+Ctrl+$left focus output left
-bindsym $mod+Ctrl+$down focus output down
-bindsym $mod+Ctrl+$up focus output up
-bindsym $mod+Ctrl+$right focus output right
+bindsym --to-code $mod+Ctrl+$left focus output left
+bindsym --to-code $mod+Ctrl+$down focus output down
+bindsym --to-code $mod+Ctrl+$up focus output up
+bindsym --to-code $mod+Ctrl+$right focus output right
 # Arrow keys
-bindsym $mod+Ctrl+Left focus output left
-bindsym $mod+Ctrl+Down focus output down
-bindsym $mod+Ctrl+Up focus output up
-bindsym $mod+Ctrl+Right focus output right
+bindsym --to-code $mod+Ctrl+Left focus output left
+bindsym --to-code $mod+Ctrl+Down focus output down
+bindsym --to-code $mod+Ctrl+Up focus output up
+bindsym --to-code $mod+Ctrl+Right focus output right
 
 # Move the workspace between outputs
-bindsym $mod+Shift+Ctrl+$left move workspace to output left
-bindsym $mod+Shift+Ctrl+$down move workspace to output down
-bindsym $mod+Shift+Ctrl+$up move workspace to output up
-bindsym $mod+Shift+Ctrl+$right move workspace to output right
+bindsym --to-code $mod+Shift+Ctrl+$left move workspace to output left
+bindsym --to-code $mod+Shift+Ctrl+$down move workspace to output down
+bindsym --to-code $mod+Shift+Ctrl+$up move workspace to output up
+bindsym --to-code $mod+Shift+Ctrl+$right move workspace to output right
 # Arrow keys
-bindsym $mod+Shift+Ctrl+Left move workspace to output left
-bindsym $mod+Shift+Ctrl+Down move workspace to output down
-bindsym $mod+Shift+Ctrl+Up move workspace to output up
-bindsym $mod+Shift+Ctrl+Right move workspace to output right
+bindsym --to-code $mod+Shift+Ctrl+Left move workspace to output left
+bindsym --to-code $mod+Shift+Ctrl+Down move workspace to output down
+bindsym --to-code $mod+Shift+Ctrl+Up move workspace to output up
+bindsym --to-code $mod+Shift+Ctrl+Right move workspace to output right
 
 # Switch to workspace
-bindsym $mod+1 workspace $ws_1
-bindsym $mod+2 workspace $ws_2
-bindsym $mod+3 workspace $ws_3
-bindsym $mod+4 workspace $ws_4
-bindsym $mod+5 workspace $ws_5
-bindsym $mod+6 workspace $ws_6
-bindsym $mod+7 workspace $ws_7
-bindsym $mod+8 workspace $ws_8
-bindsym $mod+9 workspace $ws_9
-bindsym $mod+0 workspace $ws_10
+bindsym --to-code $mod+1 workspace $ws_1
+bindsym --to-code $mod+2 workspace $ws_2
+bindsym --to-code $mod+3 workspace $ws_3
+bindsym --to-code $mod+4 workspace $ws_4
+bindsym --to-code $mod+5 workspace $ws_5
+bindsym --to-code $mod+6 workspace $ws_6
+bindsym --to-code $mod+7 workspace $ws_7
+bindsym --to-code $mod+8 workspace $ws_8
+bindsym --to-code $mod+9 workspace $ws_9
+bindsym --to-code $mod+0 workspace $ws_10
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws_1
-bindsym $mod+Shift+2 move container to workspace $ws_2
-bindsym $mod+Shift+3 move container to workspace $ws_3
-bindsym $mod+Shift+4 move container to workspace $ws_4
-bindsym $mod+Shift+5 move container to workspace $ws_5
-bindsym $mod+Shift+6 move container to workspace $ws_6
-bindsym $mod+Shift+7 move container to workspace $ws_7
-bindsym $mod+Shift+8 move container to workspace $ws_8
-bindsym $mod+Shift+9 move container to workspace $ws_9
-bindsym $mod+Shift+0 move container to workspace $ws_10
+bindsym --to-code $mod+Shift+1 move container to workspace $ws_1
+bindsym --to-code $mod+Shift+2 move container to workspace $ws_2
+bindsym --to-code $mod+Shift+3 move container to workspace $ws_3
+bindsym --to-code $mod+Shift+4 move container to workspace $ws_4
+bindsym --to-code $mod+Shift+5 move container to workspace $ws_5
+bindsym --to-code $mod+Shift+6 move container to workspace $ws_6
+bindsym --to-code $mod+Shift+7 move container to workspace $ws_7
+bindsym --to-code $mod+Shift+8 move container to workspace $ws_8
+bindsym --to-code $mod+Shift+9 move container to workspace $ws_9
+bindsym --to-code $mod+Shift+0 move container to workspace $ws_10
 
 # Layout stuff
 # Split horizontally and vertically
-bindsym $mod+b splith
-bindsym $mod+v splitv
+bindsym --to-code $mod+b splith
+bindsym --to-code $mod+v splitv
 
 # Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym --to-code $mod+s layout stacking
+bindsym --to-code $mod+w layout tabbed
+bindsym --to-code $mod+e layout toggle split
 
 # Make the focused window fullscreen
-bindsym $mod+f fullscreen
+bindsym --to-code $mod+f fullscreen
 # Toggle the current focus between tiling and floating mode
-bindsym $mod+Ctrl+Space floating toggle
+bindsym --to-code $mod+Ctrl+Space floating toggle
 # Swap focus between the tiling area and the floating area
-bindsym $mod+Space focus mode_toggle
+bindsym --to-code $mod+Space focus mode_toggle
 # Move focus to the parent container
-bindsym $mod+a focus parent
+bindsym --to-code $mod+a focus parent
 # Move focus to the last-focused child container
-bindsym $mod+Shift+a focus child
+bindsym --to-code $mod+Shift+a focus child
 
 # Resizing containers
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym --to-code $left resize shrink width 10px
+    bindsym --to-code $down resize grow height 10px
+    bindsym --to-code $up resize shrink height 10px
+    bindsym --to-code $right resize grow width 10px
 
     # Arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym --to-code Left resize shrink width 10px
+    bindsym --to-code Down resize grow height 10px
+    bindsym --to-code Up resize shrink height 10px
+    bindsym --to-code Right resize grow width 10px
 
     # Return to the default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym --to-code Return mode "default"
+    bindsym --to-code Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym --to-code $mod+r mode "resize"
 
 # Passthrough mode
 mode "passthrough" {
-    bindsym Pause mode "default"
-    bindsym Shift+Escape mode "default"
+    bindsym --to-code Pause mode "default"
+    bindsym --to-code Shift+Escape mode "default"
 }
-bindsym $mod+p mode "passthrough"
+bindsym --to-code $mod+p mode "passthrough"
