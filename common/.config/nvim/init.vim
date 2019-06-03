@@ -87,6 +87,13 @@ set foldlevelstart=99
 " Mouse
 set mouse=a
 
+" Don't redraw the screen during macros
+set lazyredraw
+
+" Set leader to Space
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
+
 " C highlighting settings
 let c_gnu = 1
 let c_space_errors = 1
@@ -104,13 +111,13 @@ inoremap <C-S> <C-O>:update<CR>
 nnoremap <silent> <C-L> :nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-L>
 
 " Mapping for macro editing
-nnoremap <leader>m :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+nnoremap <leader>cm :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
 " Better vertical movement in normal and visual modes
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
 " Move between windows with Alt-hjkl
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -145,12 +152,14 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-" Set leader to Space
-let mapleader = "\<Space>"
-let maplocalleader = "\<Space>"
-
 " Map <leader>m to invoking make.
 nnoremap <leader>m :!make<CR>
+
+" Make Y behave like D.
+nnoremap Y y$
+
+" I can use gQ if I really need this.
+nnoremap Q @@
 
 " Automatically start inserting in terminal
 autocmd BufEnter term://* startinsert
@@ -435,6 +444,10 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 1
+let g:NERDCreateDefaultMappings = 0
+
+nmap <leader>cc <plug>NERDCommenterComment
+nmap <leader>cu <plug>NERDCommenterUncomment
 
 " Make ALE use cargo check
 " let g:ale_rust_cargo_use_check = 1
