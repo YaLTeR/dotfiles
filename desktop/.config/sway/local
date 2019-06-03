@@ -19,6 +19,7 @@ exec fractal
 exec org.telegram.desktop
 exec discord
 exec firefox
+exec alacritty --title IRC -e tmux new -A -s irc irssi
 
 # General settings
 font Cantarell 12
@@ -43,6 +44,7 @@ assign [class="Steam" title="Friends List"] → workspace $ws_19
 assign [class="Steam" title="Steam"] → workspace $ws_9
 assign [class="Telegram"] → workspace $ws_12
 assign [app_id="fractal"] → workspace $ws_12
+assign [app_id="Alacritty" title="IRC"] → workspace $ws_14
 
 # Set first monitor workspaces to first monitor
 workspace $ws_1 output $first_monitor
