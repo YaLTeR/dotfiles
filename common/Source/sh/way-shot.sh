@@ -5,14 +5,14 @@ set script_dir (dirname (readlink -f (status filename)))
 
 if test (count $argv) -ge 1
 	if test $argv[1] = "--window"
-		sh $script_dir/sway/screenshot-focused.sh > $filename
+		sh $script_dir/sway/screenshot-focused.sh > $filename || rm $filename
 	else if test $argv[1] = "--screen"
-		grim - > $filename
+		grim - > $filename || rm $filename
 	else
 		exit 1
 	end
 else
-	sh $script_dir/sway/screenshot-pick-visible.sh > $filename
+	sh $script_dir/sway/screenshot-pick-visible.sh > $filename || rm $filename
 end
 
 if test -f $filename
