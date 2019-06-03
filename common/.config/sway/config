@@ -87,6 +87,8 @@ bindsym --to-code $mod+Return exec $term
 bindsym --to-code $mod+q kill
 # Application launcher
 bindsym --to-code $mod+d exec $menu
+# Calculator
+bindsym --to-code $mod+c exec $scripts/rofi-calc.sh
 # Emoji picker
 bindsym --to-code $mod+Shift+d exec $scripts/rofi-emoji.sh
 # Reload the configuration file
