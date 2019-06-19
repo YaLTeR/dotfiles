@@ -180,6 +180,7 @@ augroup my
   " In text files, don't break in the middle of a word and enable spell
   " checking
   autocmd FileType markdown,text setlocal linebreak spell
+  autocmd FileType tex setlocal spell textwidth=79 colorcolumn=79
 augroup end
 
 " Increase the preview window height
