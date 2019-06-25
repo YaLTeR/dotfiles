@@ -39,7 +39,7 @@ export NVIM_GTK_DOUBLE_BUFFER=1
 export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_PREFER_DARK_THEME=1
 
-# Get rid of Qt window decorations.
+export QT_QPA_PLATFORM=wayland
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 
 # Fix redshift on AMDGPU
