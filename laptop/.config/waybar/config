@@ -3,7 +3,7 @@
 
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["cpu", "memory", "custom/free-space", "battery", "clock", "tray"],
+    "modules-right": ["cpu", "memory", "custom/free-space-root", "battery", "clock", "tray"],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
