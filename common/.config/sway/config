@@ -116,15 +116,15 @@ bindsym --to-code $mod+minus \
     gaps outer 0
 
 # Screenshot with selection
-bindsym --to-code Print exec way-shot
+bindsym --to-code Print exec $scripts/way-shot.sh
 # Screenshot all outputs
-bindsym --to-code Ctrl+Print exec way-shot --screen
+bindsym --to-code Ctrl+Print exec $scripts/way-shot.sh --screen
 # Screenshot focused window
-bindsym --to-code Alt+Print exec way-shot --window
+bindsym --to-code Alt+Print exec $scripts/way-shot.sh --window
 # Record with selection
-bindsym --to-code Shift+Print exec $term --title Recorder -e way-rec
+bindsym --to-code Shift+Print exec $term --title Recorder -e $scripts/way-rec.sh
 # Record focused window
-bindsym --to-code Shift+Alt+Print exec $term --title Recorder -e way-rec --window
+bindsym --to-code Shift+Alt+Print exec $term --title Recorder -e $scripts/way-rec.sh --window
 
 # Cycle through the scratchpad
 bindsym --to-code $mod+equal scratchpad show
