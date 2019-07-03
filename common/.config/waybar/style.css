@@ -9,7 +9,6 @@
 window#waybar {
     /* background: rgba(43, 48, 59, 0.5); */
     background: #1c2023;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
     color: white;
 }
 
@@ -17,17 +16,14 @@ window#waybar {
     padding: 0 5px;
     background: transparent;
     color: white;
-    border-bottom: 3px solid transparent;
 }
 
 #workspaces button.focused {
     background: #747c84;
-    border-bottom: 3px solid white;
 }
 
 #mode {
     background: #64727D;
-    border-bottom: 3px solid white;
 }
 
 #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode, #custom-free-space-root, #custom-free-space-home {
