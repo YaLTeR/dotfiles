@@ -449,6 +449,8 @@ let g:NERDCreateDefaultMappings = 0
 
 nmap <leader>cc <plug>NERDCommenterComment
 nmap <leader>cu <plug>NERDCommenterUncomment
+vmap <leader>cc <plug>NERDCommenterComment
+vmap <leader>cu <plug>NERDCommenterUncomment
 
 " Make ALE use cargo check
 " let g:ale_rust_cargo_use_check = 1
