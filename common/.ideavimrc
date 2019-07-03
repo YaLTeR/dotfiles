@@ -1,0 +1,30 @@
+set incsearch
+set ignorecase
+set smartcase
+set clipboard+=unnamedplus
+set gdefault
+set number
+set relativenumber
+
+set surround
+
+nnoremap : ;
+nnoremap ; :
+vnoremap : ;
+vnoremap ; :
+nnoremap Y y$
+nnoremap Q @@
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+vnoremap <space>cc :action CommentByLineComment<cr><esc>gv
+vnoremap <space>cu :action CommentByLineComment<cr><esc>gv
+
+nnoremap S :action KJumpAction.Char2<cr>
+
+nnoremap gu :action ShowUsages<cr>
