@@ -1,0 +1,15 @@
+# Output configuration
+output eDP-1 subpixel rgb scale 2 position 0 0
+output "Dell Inc. DELL U2718Q 4K8X78AV1FHL" subpixel rgb scale 2 position 1920 0
+
+exec firefox
+exec org.telegram.desktop
+exec geary
+exec polari
+exec steam
+
+assign [app_id="polari"] → workspace $ws_8
+assign [app_id="geary"] → workspace $ws_8
+assign [class="Steam" title="Friends List"] → workspace $ws_9
+assign [class="Steam" title="Steam"] → workspace $ws_9
+assign [class="Telegram"] → workspace $ws_10
