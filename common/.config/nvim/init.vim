@@ -708,3 +708,5 @@ augroup OmniSharpSettings
           \ 'on_complete': ['ncm2#on_complete#omni', 'OmniSharp#Complete'],
           \ })
 augroup END
+
+let g:highlightedyank_highlight_duration = 250
