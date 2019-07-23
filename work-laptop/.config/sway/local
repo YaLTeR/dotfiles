@@ -1,6 +1,13 @@
+set $monitor "Unknown 2460G4 0x00008265"
+
 # Output configuration
 output eDP-1 subpixel rgb scale 2 position 0 0
 output "Dell Inc. DELL U2718Q 4K8X78AV1FHL" subpixel rgb scale 2 position 1920 0
+output $monitor subpixel rgb mode 1920x1080@144.001007Hz
+
+# Binds to switch refresh rate
+bindsym --to-code $mod+u output $monitor mode 1920x1080@119.982002Hz
+bindsym --to-code $mod+i output $monitor mode 1920x1080@144.001007Hz
 
 exec firefox
 exec org.telegram.desktop
