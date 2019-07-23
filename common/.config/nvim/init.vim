@@ -500,6 +500,8 @@ cnoreabbrev rg Rg
 cnoreabbrev rG Rg
 cnoreabbrev RG Rg
 
+nnoremap <leader>* :execute "Rg" expand("<cword>")<CR>
+
 " UltiSnips+NCM function parameter expansion
 
 " We don't really want UltiSnips to map these three, but there's no option for
