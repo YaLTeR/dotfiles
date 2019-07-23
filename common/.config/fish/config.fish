@@ -60,6 +60,8 @@ alias gst    "git stash"
 
 # Fix emoji and others rendering
 set -g fish_emoji_width 2
+set -g fish_cursor_insert line
+set -g fish_cursor_replace_one underscore
 
 # Initialize the gnome-keyring-daemon and set PATH
 # This only happens when running through GDM which doesn't source stuff properly.
