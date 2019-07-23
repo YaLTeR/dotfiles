@@ -639,7 +639,7 @@ let g:rooter_manual_only = 1
 let g:comfortable_motion_interval = 1000.0 / 144
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-autocmd BufEnter * nested :call tagbar#autoopen(0)
+autocmd FileType c,cpp,cs,rust,python,tex nested TagbarOpen
 let g:tagbar_left = 1
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
