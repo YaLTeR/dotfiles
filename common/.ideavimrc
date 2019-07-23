@@ -22,9 +22,11 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-vnoremap <space>cc :action CommentByLineComment<cr><esc>gv
-vnoremap <space>cu :action CommentByLineComment<cr><esc>gv
+nnoremap <Space>cc :action CommentByLineComment<CR>
+nnoremap <Space>cu :action CommentByLineComment<CR>
+vnoremap <Space>cc :action CommentByLineComment<CR>
+vnoremap <Space>cu :action CommentByLineComment<CR>
 
 nnoremap S :action KJumpAction.Char2<cr>
 
-nnoremap gu :action ShowUsages<cr>
+nnoremap gr :action ShowUsages<cr>
