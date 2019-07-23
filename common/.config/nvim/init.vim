@@ -641,6 +641,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 autocmd FileType c,cpp,cs,rust,python,tex nested TagbarOpen
 let g:tagbar_left = 1
+let g:tagbar_show_linenumbers = 2
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
