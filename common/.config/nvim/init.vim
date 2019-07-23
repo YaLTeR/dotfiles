@@ -710,3 +710,5 @@ augroup OmniSharpSettings
 augroup END
 
 let g:highlightedyank_highlight_duration = 250
+
+let g:EditorConfig_preserve_formatoptions = 1
