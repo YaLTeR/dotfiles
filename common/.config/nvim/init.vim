@@ -675,3 +675,36 @@ let g:tagbar_type_rust = {
       \ 'P': 'method',
   \ },
 \ }
+
+" OmniSharp
+let g:OmniSharp_server_stdio = 1
+" let g:OmniSharp_loglevel = 'debug'
+
+augroup OmniSharpSettings
+  autocmd!
+  autocmd FileType cs nmap <buffer> gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <buffer> gi <Plug>(omnisharp_find_implementations)
+  autocmd FileType cs nmap <buffer> gr <Plug>(omnisharp_find_usages)
+  autocmd FileType cs nmap <buffer> <F17> <Plug>(omnisharp_code_actions)
+  autocmd FileType cs nmap <buffer> <S-F5> <Plug>(omnisharp_code_actions)
+  autocmd FileType cs vnoremap <buffer> <silent> <F17> :call OmniSharp#GetCodeActions('visual')<CR>
+  autocmd FileType cs vnoremap <buffer> <silent> <S-F5> :call OmniSharp#GetCodeActions('visual')<CR>
+  autocmd FileType cs nmap <buffer> <F18> <Plug>(omnisharp_rename)
+  autocmd FileType cs nmap <buffer> <S-F6> <Plug>(omnisharp_rename)
+  autocmd FileType cs nmap <buffer> <Leader>= <Plug>(omnisharp_code_format)
+  autocmd FileType cs nmap <buffer> <C-T> <Plug>(omnisharp_find_symbols)
+
+  autocmd FileType cs setlocal makeprg=dotnet\ build
+  autocmd FileType cs setlocal errorformat=%f(%l\\,%c):\ error\ CS%n:\ %m\ [%.%#],%-G%.%#
+
+  autocmd User Ncm2Plugin call ncm2#register_source({
+          \ 'name' : 'OmniSharp',
+          \ 'priority': 9,
+          \ 'subscope_enable': 1,
+          \ 'scope': ['cs'],
+          \ 'mark': 'cs',
+          \ 'word_pattern': '[\w\-]+',
+          \ 'complete_pattern': '.',
+          \ 'on_complete': ['ncm2#on_complete#omni', 'OmniSharp#Complete'],
+          \ })
+augroup END
