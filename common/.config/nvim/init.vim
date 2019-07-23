@@ -155,8 +155,8 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
-" Map <leader>m to invoking make.
-nnoremap <leader>m :!make<CR>
+" Map <leader>m to make.
+nnoremap <leader>m :make<CR>
 
 " Make Y behave like D.
 nnoremap Y y$
