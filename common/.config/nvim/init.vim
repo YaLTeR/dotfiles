@@ -590,6 +590,7 @@ let g:startify_bookmarks = [
 
 let g:startify_session_before_save = [
   \ 'silent! pclose',
+  \ 'silent! TagbarClose',
   \ ]
 
 " Netrw
