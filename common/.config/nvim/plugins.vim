@@ -65,5 +65,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 call plug#end()
