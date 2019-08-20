@@ -9,7 +9,7 @@ output $monitor subpixel rgb mode 1920x1080@144.001007Hz
 bindsym --to-code $mod+u output $monitor mode 1920x1080@119.982002Hz
 bindsym --to-code $mod+i output $monitor mode 1920x1080@144.001007Hz
 
-exec firefox
+exec firefox-nightly
 exec org.telegram.desktop
 exec geary
 exec polari
