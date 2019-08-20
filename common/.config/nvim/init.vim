@@ -17,7 +17,7 @@ let color = matchstr(color, 'guibg=#\zs[0-9a-fA-F]\+')
 execute "hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#" . color
 
 " Set the GUI font because GNvim doesn't read ginit.vim
-set guifont=Fira\ Code:h11
+set guifont=monospace:h11
 
 " Use the system clipboard
 set clipboard+=unnamedplus
