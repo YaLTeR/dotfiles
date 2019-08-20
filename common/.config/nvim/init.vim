@@ -190,7 +190,7 @@ let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 nnoremap <leader>v :tab Gstatus<CR>
 
 " Map F12 to go to definition / declaration
-map <F12> :YcmCompleter GoTo<CR>
+noremap <F12> :YcmCompleter GoTo<CR>
 
 " LanguageClient-neovim {{{
 let g:LanguageClient_serverCommands = {
