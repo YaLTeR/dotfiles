@@ -12,10 +12,10 @@ bindsym --to-code $mod+i output $monitor mode 1920x1080@144.001007Hz
 exec firefox-nightly
 exec org.telegram.desktop
 exec geary
-exec polari
+exec alacritty --class IRC -e weechat
 exec steam
 
-assign [app_id="polari"] → workspace $ws_8
+assign [app_id="Alacritty" app_id="IRC"] → workspace $ws_7
 assign [app_id="geary"] → workspace $ws_8
 assign [class="Steam" title="Friends List"] → workspace $ws_9
 assign [class="Steam" title="Steam"] → workspace $ws_9
