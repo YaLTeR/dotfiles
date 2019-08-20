@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-abolish'
 " Plug 'scrooloose/nerdtree'
 " Plug 'ctrlpvim/ctrlp.vim'
