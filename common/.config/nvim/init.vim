@@ -187,6 +187,8 @@ set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*.rs.bk,*/target/*
 " Highlight stuff in Markdown code blocks.
 let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 
+nnoremap <leader>v :tab Gstatus<CR>
+
 " Map F12 to go to definition / declaration
 map <F12> :YcmCompleter GoTo<CR>
 
