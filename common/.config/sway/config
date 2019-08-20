@@ -69,6 +69,8 @@ input "10429:117:UGTABLET_TABLET_G3_4x3_Pen" {
 
 
 # Window settings
+assign [app_id="qutebrowser"] → workspace $ws_1
+assign [app_id="firefox"] → workspace $ws_1
 assign [instance="osu!.exe"] → workspace $ws_7
 for_window [title="^FreeRDP"] floating enable
 for_window [app_id="mpv"] floating enable; inhibit_idle visible
