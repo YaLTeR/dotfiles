@@ -76,6 +76,7 @@ for_window [title="^FreeRDP"] floating enable
 for_window [app_id="mpv"] floating enable; inhibit_idle visible
 for_window [app_id="Alacritty"] opacity 0.98
 for_window [app_id="Alacritty" title="^Recorder$"] move to scratchpad
+for_window [app_id="gnvim"] opacity 0.98
 
 # Local Quaver
 for_window [title="^Quaver" class="dotnet"] floating disable; fullscreen enable
