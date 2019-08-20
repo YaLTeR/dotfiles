@@ -268,6 +268,7 @@ function! GetHoverInfo()
   if mode() == 'n' && IsDifferentHoverLineFromLast()
     call UpdateLastHoverLine()
 
+    call LanguageClient_closeFloatingHover()
     call LanguageClient_textDocument_hover({'handle': v:true}, 'DoNothingHandler')
     call LanguageClient_clearDocumentHighlight()
     call LanguageClient_textDocument_documentHighlight({'handle': v:true}, 'DoNothingHandler')
@@ -305,6 +306,12 @@ nnoremap <silent> <F20> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <S-F8> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
 vnoremap <silent> <Leader>= :call LanguageClient_textDocument_rangeFormatting()<CR>
+
+" Closing the hover window after the visual selection has started leads to
+" loss of the visual selection. So clear it before.
+nnoremap <silent> v :call LanguageClient_closeFloatingHover()<CR>v
+nnoremap <silent> V :call LanguageClient_closeFloatingHover()<CR>V
+nnoremap <silent> <C-V> :call LanguageClient_closeFloatingHover()<CR><C-V>
 
 let g:LanguageClient_diagnosticsDisplay = {
       \   1: {
