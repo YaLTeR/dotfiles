@@ -79,8 +79,12 @@ for_window [app_id="Alacritty" title="^Recorder$"] move to scratchpad
 for_window [app_id="gnvim"] opacity 0.98
 for_window [app_id="firefox"] inhibit_idle fullscreen
 
-# Local Quaver
+# Local X11 Quaver
 for_window [title="^Quaver" class="dotnet"] floating disable; fullscreen enable
+# Local Wayland Quaver
+for_window [title="^Quaver" app_id="dotnet"] floating disable; fullscreen enable
+# Local Wayland Quaver, published
+for_window [app_id="Quaver"] floating disable; fullscreen enable
 # Steam Quaver
 for_window [class="Quaver"] floating disable; fullscreen enable
 
