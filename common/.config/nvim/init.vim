@@ -252,6 +252,21 @@ function! UpdateLastHoverLine()
   let b:last_hover_col = col('.')
 endfunction
 
+function! IsDifferentSignatureHelpLineFromLast()
+  if !exists('b:last_signature_help_line')
+    return 1
+  endif
+
+  return b:last_signature_help_line !=# line('.') || b:last_signature_help_col !=# col('.')
+endfunction
+
+function! UpdateLastSignatureHelpLine()
+  " echomsg "UpdateLastSignatureHelpLine() line=" line('.') "col=" col('.')
+
+  let b:last_signature_help_line = line('.')
+  let b:last_signature_help_col = col('.')
+endfunction
+
 function! GetHoverInfo()
   " echomsg "Inside GetHoverInfo(), mode=" mode() "line=" line('.') "col=" col('.')
 
@@ -275,10 +290,21 @@ function! GetHoverInfo()
   endif
 endfunction
 
+function! GetSignatureHelp()
+  " echomsg "Inside GetSignatureHelp()"
+
+  if IsDifferentSignatureHelpLineFromLast()
+    call UpdateLastSignatureHelpLine()
+    call LanguageClient#textDocument_signatureHelp({'handle': v:true}, 'DoNothingHandler')
+  endif
+endfunction
+
 augroup LanguageClient_config
   autocmd!
   autocmd CursorMoved * call GetHoverInfo()
   autocmd CursorMovedI * call LanguageClient_clearDocumentHighlight()
+  " autocmd CursorMoved * call GetSignatureHelp()
+  " autocmd CursorMovedI * call GetSignatureHelp()
 augroup end
 
 " Go to definition, but with a fallback in case the language server isn't
