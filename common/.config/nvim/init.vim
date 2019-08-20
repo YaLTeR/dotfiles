@@ -28,7 +28,7 @@ set clipboard+=unnamedplus
 " set statusline+=%*
 set statusline=
 set statusline+=%<%f\ %h%m%r
-" set statusline+=%{PrependSpace(fugitive#statusline())}
+set statusline+=%{PrependSpace(fugitive#statusline())}
 set statusline+=%{PrependSpace(LanguageClient_statusLine())}
 set statusline+=%=%-14.(%l,%c%V%)\ %P
 
