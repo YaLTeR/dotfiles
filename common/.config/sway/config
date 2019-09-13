@@ -135,6 +135,7 @@ bindsym --to-code Shift+Alt+Print exec $term --title Recorder -e $scripts/way-re
 
 # Cycle through the scratchpad
 bindsym --to-code $mod+equal scratchpad show
+bindsym --to-code $mod+underscore move to scratchpad
 
 # Drag and resize windows with this
 floating_modifier $mod normal
