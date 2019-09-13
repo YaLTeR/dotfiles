@@ -96,6 +96,9 @@ set lazyredraw
 " Wrapped lines continue visually indented
 set breakindent
 
+" Spellcheck languages
+set spelllang=en,ru_yo
+
 " Set leader to Space
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
