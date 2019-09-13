@@ -93,6 +93,9 @@ set mouse=a
 " Don't redraw the screen during macros
 set lazyredraw
 
+" Wrapped lines continue visually indented
+set breakindent
+
 " Set leader to Space
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
