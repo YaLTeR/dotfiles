@@ -1,2 +1,3 @@
 output=DP-4
 default-timeout=5000
+border-radius=5
