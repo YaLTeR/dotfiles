@@ -766,3 +766,8 @@ augroup END
 let g:highlightedyank_highlight_duration = 250
 
 let g:EditorConfig_preserve_formatoptions = 1
+
+" Fix weird surround with whitespace.
+nmap ysa" ys2i"
+nmap ysa' ys2i'
+nmap ysa` ys2i`
