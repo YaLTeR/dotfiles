@@ -23,6 +23,13 @@ pub extern "C" fn ${1:function_name}(${2})${3} {
 }
 endsnippet
 
+# More struct declarations
+snippet pst "Struct definition (public)"
+pub struct ${1:`!v substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} {
+	${0}
+}
+endsnippet
+
 # Smarter print snippets
 snippet pri "print!" w
 print!("${2:\{\}}"${2/([^{]|{{)*({})?.*/(?2:, :\);)/}$3${2/([^{]|{{)*({})?.*/(?2:\);)/}
@@ -61,29 +68,35 @@ impl ${1:Type/Trait}${2: for ${3:Type}} {
 endsnippet
 
 # Inline attribute
-snippet inl "Inline attribute"
+snippet in "Inline attribute"
 #[inline]
+endsnippet
+snippet ina "Inline always"
+#[inline(always)]
+endsnippet
+snippet inn "Inline never"
+#[inline(never)]
 endsnippet
 
 # Option and Result with ${VISUAL}
-snippet opt "Option<T>" w
+snippet o "Option<T>" w
 Option<${1:${VISUAL:()}}>
 endsnippet
-snippet res "Result<T, E>" w
+snippet r "Result<T, E>" w
 Result<${1:${VISUAL:()}}, ${2:()}>
 endsnippet
-snippet	some "Some()" w
+snippet	s "Some()" w
 Some(${1:${VISUAL:()}})
 endsnippet
 snippet	ok "Ok()" w
 Ok(${1:${VISUAL:()}})
 endsnippet
-snippet	err "Err()" w
+snippet	er "Err()" w
 Err(${1:${VISUAL:()}})
 endsnippet
 
 # Unsafe block
-snippet uns "unsafe { ... }" w
+snippet u "unsafe { ... }" w
 unsafe { ${1:${VISUAL}} }
 endsnippet
 
@@ -102,43 +115,43 @@ let mut ${1}: ${2} = ${3};
 endsnippet
 
 # Control structures but without $0
-snippet if "if" w
+snippet i "if" w
 if ${1} {
 	${2:${VISUAL}}
 }
 endsnippet
-snippet ife "if / else" w
+snippet ie "if / else" w
 if ${1} {
 	${2:${VISUAL}}
 } else {
 	${3}
 }
 endsnippet
-snippet el "else" w
+snippet e "else" w
 else {
 	${1:${VISUAL}}
 }
 endsnippet
-snippet eli "else if" w
+snippet ei "else if" w
 else if ${1} {
 	${2:${VISUAL}}
 }
 endsnippet
 
 # Same but if let ...
-snippet ifl "if let" w
+snippet il "if let" w
 if let ${1} = ${2} {
 	${3:${VISUAL}}
 }
 endsnippet
-snippet ifle "if let / else" w
+snippet ile "if let / else" w
 if let ${1} = ${2} {
 	${3:${VISUAL}}
 } else {
 	${4}
 }
 endsnippet
-snippet elil "else if let" w
+snippet eil "else if let" w
 else if let ${1} = ${2} {
 	${3:${VISUAL}}
 }
