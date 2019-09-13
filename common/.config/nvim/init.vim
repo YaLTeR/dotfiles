@@ -170,9 +170,17 @@ nnoremap Y y$
 " I can use gQ if I really need this.
 nnoremap Q @@
 
-" Automatically start inserting in terminal
-autocmd BufEnter term://* startinsert
-" autocmd BufLeave term://* stopinsert
+augroup my
+  autocmd!
+
+  " Automatically start inserting in terminal
+  autocmd BufEnter term://* startinsert
+  " autocmd BufLeave term://* stopinsert
+
+  " In text files, don't break in the middle of a word and enable spell
+  " checking
+  autocmd FileType markdown,text setlocal linebreak spell
+augroup end
 
 " Increase the preview window height
 " set previewheight=24
