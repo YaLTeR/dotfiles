@@ -220,6 +220,10 @@ let g:LanguageClient_serverCommands = {
    " \ 'rust': ['ra_lsp_server'],
    " \ 'haskell': ['hie', '--lsp'],
 
+let g:LanguageClient_rootMarkers = {
+   \ 'rust': ['Cargo.lock'],
+   \ }
+
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
