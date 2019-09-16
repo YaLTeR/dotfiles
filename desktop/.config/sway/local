@@ -25,8 +25,10 @@ exec alacritty --title IRC -e tmux new -A -s irc irssi
 font Cantarell 12
 
 # Output configuration
-output $first_monitor mode 2560x1440@143.998001Hz position 0,0 subpixel rgb
-output $second_monitor mode 1920x1080@144.001007Hz position 2560,360 subpixel rgb
+# output $first_monitor mode 2560x1440@143.998001Hz position 0,0 subpixel rgb
+# output $second_monitor mode 1920x1080@144.001007Hz position 2560,360 subpixel rgb
+output $first_monitor mode 2560x1440@143.998001Hz position 0,75 subpixel rgb
+output $second_monitor mode 1920x1080@144.001007Hz position 2560,0 subpixel rgb transform 270
 
 # Binds to switch refresh rate
 bindsym --to-code $mod+u output $first_monitor  mode 2560x1440@119.998001Hz; \
