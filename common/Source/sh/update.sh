@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
-pacaur -Syu --noconfirm --devel --needed
-flatpak --user update
+yay -Syu --devel
+flatpak update
