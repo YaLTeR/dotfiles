@@ -1,5 +1,5 @@
 # General settings
-font Cantarell 12
+font sans-serif 12
 
 # Output configuration
 output eDP-1 subpixel rgb
