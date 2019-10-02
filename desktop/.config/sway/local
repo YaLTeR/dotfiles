@@ -20,6 +20,7 @@ exec flatpak run org.telegram.desktop
 exec discord
 exec firefox
 exec alacritty --class IRC -e tmux new -A -s irc weechat
+exec geary
 
 # General settings
 font Cantarell 12
