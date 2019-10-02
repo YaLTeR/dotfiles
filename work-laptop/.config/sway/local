@@ -18,7 +18,7 @@ exec geary
 exec alacritty --class IRC -e weechat
 exec steam
 
-assign [app_id="Alacritty" app_id="IRC"] → workspace $ws_7
+assign [app_id="IRC"] → workspace $ws_7
 assign [app_id="geary"] → workspace $ws_8
 assign [class="Steam" title="Friends List"] → workspace $ws_9
 assign [class="Steam" title="Steam"] → workspace $ws_9
