@@ -8,7 +8,7 @@ set $right l
 set $term alacritty
 set $menu rofi -show run
 
-set $scripts ~/Source/sh
+set $scripts ~/source/sh
 
 set $ws_1 "1 — browser"
 set $ws_2 "2"
