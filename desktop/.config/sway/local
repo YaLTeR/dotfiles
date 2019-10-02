@@ -53,6 +53,7 @@ assign [class="Steam" title="Steam"] → workspace $ws_9
 assign [app_id="org.telegram.desktop"] → workspace $ws_12
 assign [app_id="fractal"] → workspace $ws_12
 assign [app_id="IRC"] → workspace $ws_14
+assign [app_id="geary"] → workspace $ws_15
 
 # Set first monitor workspaces to first monitor
 workspace $ws_1 output $first_monitor
