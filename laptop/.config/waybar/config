@@ -17,17 +17,17 @@
     "cpu": {
         "format": "{usage}% ",
         "interval": 3,
-        "on-click": "$HOME/Source/sh/top-cpu.sh"
+        "on-click": "$HOME/source/sh/top-cpu.sh"
     },
     "memory": {
         "format": "{}% ",
         "interval": 4,
-        "on-click": "$HOME/Source/sh/top-ram.sh"
+        "on-click": "$HOME/source/sh/top-ram.sh"
     },
     "custom/free-space-root": {
         "format": "{} ",
         "interval": 5,
-        "exec": "$HOME/Source/sh/free-space.sh /"
+        "exec": "$HOME/source/sh/free-space.sh /"
     },
     "battery": {
         "states": {
