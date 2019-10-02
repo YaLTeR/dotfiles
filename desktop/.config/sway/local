@@ -15,8 +15,8 @@ set $second_monitor "Unknown G-SYNC 241910 #ASNWvgsHCG3d"
 
 # Autostart
 exec steam
-exec fractal
 exec org.telegram.desktop
+# exec fractal
 exec discord
 exec firefox
 exec alacritty --title IRC -e tmux new -A -s irc irssi
