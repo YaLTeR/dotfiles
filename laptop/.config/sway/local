@@ -2,7 +2,7 @@
 font sans-serif 12
 
 # Output configuration
-output eDP-1 subpixel rgb
+output eDP-1 subpixel rgb max_render_time 5
 output "Unknown BenQ XL2420T V4C01839SL0" subpixel rgb
 output "Samsung Electric Company SyncMaster HLJD700007" subpixel rgb
 
