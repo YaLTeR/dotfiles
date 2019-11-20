@@ -57,7 +57,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
+" Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins'}
 " Plug 'machakann/vim-highlightedyank'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-rooter'
