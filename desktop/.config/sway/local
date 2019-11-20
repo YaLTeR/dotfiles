@@ -18,7 +18,7 @@ exec steam
 # exec fractal
 exec flatpak run org.telegram.desktop
 exec discord
-exec firefox
+exec firefox-nightly
 exec alacritty --class IRC -e tmux new -A -s irc weechat
 exec geary
 
