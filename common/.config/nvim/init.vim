@@ -778,3 +778,6 @@ nmap ysa` ys2i`
 
 " VimWiki
 let g:vimwiki_list = [{'path': '~/sync/vimwiki/', 'path_html': '/tmp/vimwiki_html/'}]
+
+" vim-devicons
+let g:DevIconsEnableFoldersOpenClose = 1

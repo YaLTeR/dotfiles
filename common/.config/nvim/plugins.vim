@@ -69,5 +69,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
