@@ -111,9 +111,11 @@ function fish_prompt
 	end
 
 	# VCS prompt
-	set -l vcs (__fish_vcs_prompt)
-	if test -n "$vcs"
-		printf "%s " (string sub -s 2 (__fish_vcs_prompt))
+	if not pwd | string match -qr \^$HOME/stuff/mnt/
+		set -l vcs (__fish_vcs_prompt)
+		if test -n "$vcs"
+			printf "%s " (string sub -s 2 (__fish_vcs_prompt))
+		end
 	end
 
 	# PWD
