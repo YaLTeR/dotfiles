@@ -47,9 +47,10 @@ exec swayidle \
 
 # Inputs configuration
 input type:keyboard {
-    xkb_layout us,ru
-    xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
-    xkb_numlock enabled
+    # xkb_layout us,ru
+    # xkb_options compose:ralt,ctrl:swapcaps_and_switch_layout
+    # xkb_numlock enabled
+    xkb_file .config/sway/keymap-patched.xkb
 }
 
 input type:pointer {
