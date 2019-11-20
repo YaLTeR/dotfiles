@@ -781,3 +781,6 @@ let g:vimwiki_list = [{'path': '~/sync/vimwiki/', 'path_html': '/tmp/vimwiki_htm
 
 " vim-devicons
 let g:DevIconsEnableFoldersOpenClose = 1
+
+" Vebugger
+let g:vebugger_leader = "<leader>d"

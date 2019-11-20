@@ -71,4 +71,7 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'idanarye/vim-vebugger'
+
 call plug#end()
