@@ -60,6 +60,9 @@ alias gs     "git status"
 alias gsh    "git show"
 alias gsp    "git stash pop"
 alias gst    "git stash"
+alias gsu    "git submodule update"
+alias gsui   "git submodule update --init"
+alias gsuir  "git submodule update --init --recursive"
 
 # Fix emoji and others rendering
 set -g fish_emoji_width 2
