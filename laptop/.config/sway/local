@@ -5,6 +5,10 @@ font sans-serif 12
 output eDP-1 subpixel rgb max_render_time 5
 output "Unknown BenQ XL2420T V4C01839SL0" subpixel rgb
 output "Samsung Electric Company SyncMaster HLJD700007" subpixel rgb
+output "Samsung Electric Company SyncMaster HLJSA02048" subpixel rgb max_render_time 6
+output "Acer Technologies P246H LQK0D0168510" subpixel rgb max_render_time 5
+output "Unknown ZM-M220W(A) 20070716" subpixel rgb max_render_time 5
+output "Unknown 0x1D1A 0x00000101" subpixel rgb max_render_time 5 mode 1920x1080
 
 # Wallpaper
 output * bg /usr/share/backgrounds/f29/default/tv-wide/f29.png fill
