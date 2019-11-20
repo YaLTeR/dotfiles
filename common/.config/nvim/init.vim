@@ -54,10 +54,6 @@ set list listchars=tab:——,trail:·
 set wrap
 set showbreak=↪
 
-" Strip trailing whitespace on save
-autocmd BufWritePre *.rs :%s/\s\+$//e
-" autocmd BufWritePost *.rs Neomake
-
 " Show incomplete commands
 set showcmd
 
@@ -176,6 +172,10 @@ augroup my
   " Automatically start inserting in terminal
   autocmd BufEnter term://* startinsert
   " autocmd BufLeave term://* stopinsert
+
+  " Strip trailing whitespace on save
+  autocmd BufWritePre *.rs :%s/\s\+$//e
+  " autocmd BufWritePost *.rs Neomake
 
   " In text files, don't break in the middle of a word and enable spell
   " checking
