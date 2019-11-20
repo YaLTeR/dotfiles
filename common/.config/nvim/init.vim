@@ -772,3 +772,6 @@ let g:EditorConfig_preserve_formatoptions = 1
 nmap ysa" ys2i"
 nmap ysa' ys2i'
 nmap ysa` ys2i`
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/sync/vimwiki/', 'path_html': '/tmp/vimwiki_html/'}]
