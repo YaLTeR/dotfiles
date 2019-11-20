@@ -2,7 +2,7 @@
 
 export HL_ROOT="$HOME/Half-Life"
 export LD_LIBRARY_PATH=$HL_ROOT
-export LD_PRELOAD=/usr/lib32/libSDL2.so:~/Source/cpp/BunnymodXT/build/libBunnymodXT.so
+export LD_PRELOAD=/usr/lib32/libSDL2.so:~/source/cpp/BunnymodXT/build/libBunnymodXT.so
 if [ -n "$PRELOAD" ]; then
 	export LD_PRELOAD=$PRELOAD:$LD_PRELOAD
 fi
