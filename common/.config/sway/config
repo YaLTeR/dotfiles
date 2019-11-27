@@ -83,9 +83,9 @@ for_window [app_id="firefox"] inhibit_idle fullscreen
 # Local X11 Quaver
 for_window [title="^Quaver" class="dotnet"] floating disable; fullscreen enable
 # Local Wayland Quaver
-for_window [title="^Quaver" app_id="dotnet"] floating disable; fullscreen enable; max_render_time 3
+for_window [title="^Quaver" app_id="dotnet"] floating disable; fullscreen enable; max_render_time 4
 # Local Wayland Quaver, published
-for_window [app_id="Quaver"] floating disable; fullscreen enable; max_render_time 3
+for_window [app_id="Quaver"] floating disable; fullscreen enable; max_render_time 4
 # Steam Quaver
 for_window [class="Quaver"] floating disable; fullscreen enable
 
