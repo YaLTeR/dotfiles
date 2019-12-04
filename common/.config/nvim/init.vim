@@ -463,6 +463,8 @@ let g:vimtex_compiler_latexmk = {
 \ ],
 \}
 
+let g:vimtex_compiler_method = 'tectonic'
+
 " Zathura as the PDF viewer
 " let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'evince'
