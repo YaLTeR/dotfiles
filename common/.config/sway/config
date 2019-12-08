@@ -108,6 +108,8 @@ bindsym --to-code $mod+Shift+c reload
 bindsym --to-code $mod+Shift+e exec $scripts/sway-exit.sh
 # Lock the screen
 bindsym --to-code $mod+Alt+L exec swaylock
+# File manager
+bindsym --to-code $mod+n exec nautilus --new-window
 
 # Brightness adjustment
 bindsym --to-code XF86MonBrightnessDown exec brightnessctl set 20%-
