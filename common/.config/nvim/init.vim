@@ -166,6 +166,9 @@ nnoremap Y y$
 " I can use gQ if I really need this.
 nnoremap Q @@
 
+" Make Russian work in normal mode.
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+
 augroup my
   autocmd!
 
