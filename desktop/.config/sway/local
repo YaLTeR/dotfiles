@@ -81,24 +81,24 @@ workspace $ws_20 output $second_monitor
 
 # Key bindings
 # Second monitor workspaces with F-keys
-bindsym --to-code $mod+F1 workspace $ws_11; mode "default"
-bindsym --to-code $mod+F2 workspace $ws_12; mode "default"
-bindsym --to-code $mod+F3 workspace $ws_13; mode "default"
-bindsym --to-code $mod+F4 workspace $ws_14; mode "default"
-bindsym --to-code $mod+F5 workspace $ws_15; mode "default"
-bindsym --to-code $mod+F6 workspace $ws_16; mode "default"
-bindsym --to-code $mod+F7 workspace $ws_17; mode "default"
-bindsym --to-code $mod+F8 workspace $ws_18; mode "default"
-bindsym --to-code $mod+F9 workspace $ws_19; mode "default"
-bindsym --to-code $mod+F10 workspace $ws_20; mode "default"
+bindsym --to-code $mod+F1 workspace $ws_11
+bindsym --to-code $mod+F2 workspace $ws_12
+bindsym --to-code $mod+F3 workspace $ws_13
+bindsym --to-code $mod+F4 workspace $ws_14
+bindsym --to-code $mod+F5 workspace $ws_15
+bindsym --to-code $mod+F6 workspace $ws_16
+bindsym --to-code $mod+F7 workspace $ws_17
+bindsym --to-code $mod+F8 workspace $ws_18
+bindsym --to-code $mod+F9 workspace $ws_19
+bindsym --to-code $mod+F10 workspace $ws_20
 
-bindsym --to-code $mod+Shift+F1 move container to workspace $ws_11; mode "default"
-bindsym --to-code $mod+Shift+F2 move container to workspace $ws_12; mode "default"
-bindsym --to-code $mod+Shift+F3 move container to workspace $ws_13; mode "default"
-bindsym --to-code $mod+Shift+F4 move container to workspace $ws_14; mode "default"
-bindsym --to-code $mod+Shift+F5 move container to workspace $ws_15; mode "default"
-bindsym --to-code $mod+Shift+F6 move container to workspace $ws_16; mode "default"
-bindsym --to-code $mod+Shift+F7 move container to workspace $ws_17; mode "default"
-bindsym --to-code $mod+Shift+F8 move container to workspace $ws_18; mode "default"
-bindsym --to-code $mod+Shift+F9 move container to workspace $ws_19; mode "default"
-bindsym --to-code $mod+Shift+F10 move container to workspace $ws_20; mode "default"
+bindsym --to-code $mod+Shift+F1 move container to workspace $ws_11
+bindsym --to-code $mod+Shift+F2 move container to workspace $ws_12
+bindsym --to-code $mod+Shift+F3 move container to workspace $ws_13
+bindsym --to-code $mod+Shift+F4 move container to workspace $ws_14
+bindsym --to-code $mod+Shift+F5 move container to workspace $ws_15
+bindsym --to-code $mod+Shift+F6 move container to workspace $ws_16
+bindsym --to-code $mod+Shift+F7 move container to workspace $ws_17
+bindsym --to-code $mod+Shift+F8 move container to workspace $ws_18
+bindsym --to-code $mod+Shift+F9 move container to workspace $ws_19
+bindsym --to-code $mod+Shift+F10 move container to workspace $ws_20
