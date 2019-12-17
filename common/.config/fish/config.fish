@@ -76,7 +76,7 @@ if test -z $SSH_AUTH_SOCK
 	set -l gnome_keyring_vars_fish (echo $gnome_keyring_vars | sed -e 's/^\(.*\)$/set -x \\1;/' -e 's/=/ /')
 	eval $gnome_keyring_vars_fish
 
-	set -x PATH $PATH $HOME/.local/bin $HOME/.cargo/bin
+	set -x PATH $PATH $HOME/.local/bin
 end
 
 # Vi key bindings

@@ -13,7 +13,7 @@ alias la='ls -hal'
 PS1='[\u@\h \W]\$ '
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export JAVA_HOME=/usr/lib/jvm/default
 export FZF_DEFAULT_COMMAND="rg --hidden --files -g '!.git'"
 
