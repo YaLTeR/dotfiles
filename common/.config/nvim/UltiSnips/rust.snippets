@@ -1,24 +1,36 @@
 # More function declarations
 snippet ufn "Function declaration"
-unsafe fn ${1:function_name}(${2})${3} {
+unsafe fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
 	${0}
 }
 endsnippet
 
 snippet pufn "Function declaration"
-pub unsafe fn ${1:function_name}(${2})${3} {
+pub unsafe fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
 	${0}
 }
 endsnippet
 
 snippet ecfn "Function declaration"
-extern "C" fn ${1:function_name}(${2})${3} {
+extern "C" fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
 	${0}
 }
 endsnippet
 
 snippet pecfn "Function declaration"
-pub extern "C" fn ${1:function_name}(${2})${3} {
+pub extern "C" fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
+	${0}
+}
+endsnippet
+
+snippet uecfn "Function declaration"
+unsafe extern "C" fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
+	${0}
+}
+endsnippet
+
+snippet puecfn "Function declaration"
+pub unsafe extern "C" fn ${1:function_name}(${2})${3/..*/ -> /}$3 {
 	${0}
 }
 endsnippet
@@ -85,13 +97,13 @@ endsnippet
 snippet r "Result<T, E>" w
 Result<${1:${VISUAL:()}}, ${2:()}>
 endsnippet
-snippet	s "Some()" w
+snippet s "Some()" w
 Some(${1:${VISUAL:()}})
 endsnippet
-snippet	ok "Ok()" w
+snippet ok "Ok()" w
 Ok(${1:${VISUAL:()}})
 endsnippet
-snippet	er "Err()" w
+snippet er "Err()" w
 Err(${1:${VISUAL:()}})
 endsnippet
 
@@ -171,6 +183,18 @@ snippet derefm "DerefMut trait implementation"
 impl DerefMut for ${1:Type} {
 	fn deref_mut(&self) -> &mut Self::Target {
 		&mut self.${0:field}
+	}
+}
+endsnippet
+
+# From
+snippet from "From trait implementation"
+impl From<${1:From type}> for ${2:To type} {
+	#[inline]
+	fn from(x: $1) -> Self {
+		${0:use $1::*;
+		match x {
+		}}
 	}
 }
 endsnippet
