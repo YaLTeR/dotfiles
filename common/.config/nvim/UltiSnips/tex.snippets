@@ -28,6 +28,29 @@ def create_columns(snip):
 
 	snip.expand_anon(final)
 
+texMathZones = ['texMathZone' + x
+                for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E',
+                          'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS',
+                          'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W',
+                          'X', 'Y', 'Z']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids)
+		             if i in texIgnoreMathZoneIds
+		             or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+
 endglobal
 
 pre_expand "create_columns(snip)"
@@ -40,6 +63,87 @@ snippet fr "frame environment"
 \end{frame}
 endsnippet
 
-snippet ig "\includegraphics"
+snippet ig "\includegraphics" w
 \includegraphics{${1:media/${2:${VISUAL:image.png}}}}$0
+endsnippet
+
+snippet mk "inline math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "display math" wA
+\[
+$1
+.\] $0
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+context "math()"
+snippet // "fraction" iA
+\\frac{${1:${VISUAL}}}{$2}$0
+endsnippet
+
+context "math()"
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "fraction after simple expression" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+context "math()"
+snippet '^.*\)/' "fraction after ()" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+context "math()"
+snippet () "left( right)" iA
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+
+context "math()"
+snippet [] "left[ right]" iA
+\left[ ${1:${VISUAL}} \right] $0
+endsnippet
+
+context "math()"
+snippet || "left| right|" iA
+\left| ${1:${VISUAL}} \right| $0
+endsnippet
+
+context "math()"
+snippet <= "le" iA
+\le 
+endsnippet
+
+context "math()"
+snippet >= "ge" iA
+\ge 
+endsnippet
+
+context "math()"
+snippet != "neq" iA
+\neq 
 endsnippet
