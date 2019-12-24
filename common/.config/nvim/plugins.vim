@@ -70,6 +70,7 @@ Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'ryanoasis/vim-devicons'
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
