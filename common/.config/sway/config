@@ -111,6 +111,8 @@ bindsym --to-code $mod+Shift+e exec $scripts/sway-exit.sh
 bindsym --to-code $mod+Alt+L exec swaylock
 # File manager
 bindsym --to-code $mod+n exec nautilus --new-window
+# mpv from clipboard
+bindsym --to-code $mod+o exec mpv $(wl-paste)
 
 # Brightness adjustment
 bindsym --to-code XF86MonBrightnessDown exec brightnessctl set 20%-
