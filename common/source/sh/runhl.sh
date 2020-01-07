@@ -14,7 +14,7 @@ export STEAM_ROOT=~/.steam
 # Set this to the path to your Half-Life folder, usually $STEAM_ROOT/steam/steamapps/common/Half-Life
 export HL_ROOT=~/Half-Life
 
-export FFMPEG_LIBRARY_PATH=~/Stuff/ffmpeg-hlcapture
+export FFMPEG_LIBRARY_PATH=~/stuff/ffmpeg-hlcapture
 
 if [ "$USE_STEAM_BUNDLED_LIBRARIES" -eq 1 ]; then
 	export PLATFORM=bin32
@@ -40,16 +40,16 @@ if [ -n "$FFMPEG_LIBRARY_PATH" ]; then
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FFMPEG_LIBRARY_PATH
 fi
 
-export LD_PRELOAD=~/Source/rust/hlfixperf/target/i686-unknown-linux-gnu/release/libhlfixperf.so:/usr/lib32/libSDL2.so
+export LD_PRELOAD=~/source/rs/hlfixperf/target/i686-unknown-linux-gnu/release/libhlfixperf.so:/usr/lib32/libSDL2.so
 
 if [ -n "$BXT" ]; then
-	export LD_PRELOAD=~/Source/cpp/BunnymodXT/build/libBunnymodXT.so:$LD_PRELOAD
+	export LD_PRELOAD=~/source/cpp/BunnymodXT/build_release/libBunnymodXT.so:$LD_PRELOAD
 fi
 if [ -n "$HLCAPTURE" ]; then
-	export LD_PRELOAD=~/Source/rust/hl-capture/target/i686-unknown-linux-gnu/release/libhl_capture.so:$LD_PRELOAD
+	export LD_PRELOAD=~/source/rs/hl-capture/target/i686-unknown-linux-gnu/release/libhl_capture.so:$LD_PRELOAD
 fi
 if [ -n "$HLCAPTURE_DEBUG" ]; then
-	export LD_PRELOAD=~/Source/rust/hl-capture/target/i686-unknown-linux-gnu/debug/libhl_capture.so:$LD_PRELOAD
+	export LD_PRELOAD=~/source/rs/hl-capture/target/i686-unknown-linux-gnu/debug/libhl_capture.so:$LD_PRELOAD
 fi
 if [ -n "$PRELOAD" ]; then
 	export LD_PRELOAD=$PRELOAD:$LD_PRELOAD
