@@ -16,6 +16,8 @@ let color = execute("hi LineNr")
 let color = matchstr(color, 'guibg=#\zs[0-9a-fA-F]\+')
 execute "hi Whitespace cterm=bold ctermfg=8 gui=bold guifg=#" . color
 
+highlight Comment gui=italic
+
 " Set the GUI font because GNvim doesn't read ginit.vim
 set guifont=monospace:h11
 
