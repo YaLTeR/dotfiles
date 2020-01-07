@@ -5,6 +5,6 @@
                 "build_on_save": true
         },
         "rust-analyzer": {
-                "showWorkspaceLoadedNotification": true
+                "cargoWatchCommand": "clippy"
         }
 }
