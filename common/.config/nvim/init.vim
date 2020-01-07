@@ -399,16 +399,16 @@ function! CopySettingsFrom(target, source)
   call execute("highlight " . a:target . " " . settings)
 endfunction
 
-call CopySettingsFrom("VariableRead", "Visual")
+highlight VariableText gui=bold
 call CopySettingsFrom("VariableRead", "SpellLocal")
-
-call CopySettingsFrom("VariableWrite", "Visual")
+highlight VariableRead gui=bold
 call CopySettingsFrom("VariableWrite", "SpellRare")
+highlight VariableWrite gui=bold
 
 let g:LanguageClient_documentHighlightDisplay = {
       \   1: {
       \     "name": "Text",
-      \     "texthl": "Visual",
+      \     "texthl": "VariableText",
       \   },
       \   2: {
       \     "name": "Read",
