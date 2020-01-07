@@ -95,6 +95,10 @@ set breakindent
 " Spellcheck languages
 set spelllang=en,ru_yo
 
+" Tab size and shift width
+set tabstop=4
+set shiftwidth=0
+
 " Set leader to Space
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
