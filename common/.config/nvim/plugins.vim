@@ -71,6 +71,10 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'glts/vim-textobj-comment'
+Plug 'libclang-vim/libclang-vim', { 'do': 'make' }
+Plug 'libclang-vim/vim-textobj-clang'
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'

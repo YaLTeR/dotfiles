@@ -793,3 +793,17 @@ let g:DevIconsEnableFoldersOpenClose = 1
 
 " Vebugger
 let g:vebugger_leader = "<leader>d"
+
+" vim-textobj-user
+call textobj#user#plugin('custom', {
+\   'pipes-a': {
+\     'pattern': '|[^|]\+|',
+\     'select': 'a\|',
+\   },
+\   'pipes-i': {
+\     'pattern': '|\zs[^|]\+\ze|',
+\     'select': 'i\|',
+\   },
+\ })
+
+let g:textobj_clang_more_mappings = 1
