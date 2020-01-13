@@ -211,6 +211,9 @@ set ttimeoutlen=10
 " Remove some binary output paths from ctrl-p
 set wildignore+=*.o,*.dll,*.dylib,*.so,*.a,*.obj,*.rs.bk,*/target/*
 
+" Set up a terminal vsplit with a language client preview window on top.
+nnoremap <leader>s <C-W>v<C-W>l:pedit<CR>:terminal<CR><C-W>h:let g:LanguageClient_useFloatingHover=0<CR>
+
 " Highlight stuff in Markdown code blocks.
 let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 
