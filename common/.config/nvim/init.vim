@@ -226,7 +226,7 @@ noremap <F12> :YcmCompleter GoTo<CR>
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['ccls'],
    \ 'c': ['ccls'],
-   \ 'rust': ['rls'],
+   \ 'rust': ['ra_lsp_server'],
    \ 'python': ['pyls'],
    \ }
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
