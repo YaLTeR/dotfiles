@@ -1,4 +1,4 @@
 #!/bin/sh
 
-yay -Syu --devel firefox-nightly
+yay -Syu --devel
 flatpak update
