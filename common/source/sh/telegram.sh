@@ -1,3 +1,3 @@
-#!/usr/bin/bash
+#!/bin/sh
 
-flatpak run org.telegram.desktop
+exec flatpak run --env=QT_QPA_PLATFORM=wayland org.telegram.desktop
