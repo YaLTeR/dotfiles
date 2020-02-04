@@ -81,7 +81,7 @@ for_window [app_id="gnvim"] opacity 0.98
 for_window [app_id="NeovimGtk"] opacity 0.98
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable
-for_window [class="hl_linux"] floating enable
+for_window [class="hl_linux"] floating enable; # fullscreen disable; resize set 3844 2164
 for_window [instance="hl.exe"] floating enable
 for_window [title="^Water$"] floating enable
 
