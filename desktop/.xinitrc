@@ -66,12 +66,12 @@ telegram &
 fractal &
 discord &
 firefox &
-alacritty -t IRC -e tmux new -A -s irc irssi &
+alacritty --class IRC -e tmux new -A -s irc weechat &
 
 # Fix VSync.
-export __GL_SYNC_TO_VBLANK=1
-export __GL_SYNC_DISPLAY_DEVICE=DP-0
-export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
+#export __GL_SYNC_TO_VBLANK=1
+#export __GL_SYNC_DISPLAY_DEVICE=DP-0
+#export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE=DP-0
 
 exec awesome
 # exec awesome -a
