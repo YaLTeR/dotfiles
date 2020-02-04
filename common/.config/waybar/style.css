@@ -22,6 +22,11 @@ window#waybar {
     background: #747c84;
 }
 
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
 #mode {
     background: #64727D;
 }
