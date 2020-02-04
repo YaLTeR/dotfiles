@@ -6,6 +6,6 @@ then
 	exit 1
 fi
 
-cat >${1%.*}.avs <<EOF
+cat >"${1%.*}".avs <<EOF
 FFmpegSource2("$1")
 EOF

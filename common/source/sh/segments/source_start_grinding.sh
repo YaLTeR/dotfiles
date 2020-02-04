@@ -48,7 +48,7 @@ main () {
 	SEGMENT_NUMBER=$(printf "%03d" "$2")
 	SEGMENT_NAME="$SEGMENT_NUMBER-$NICKNAME-s"
 
-	SCRIPT_PATH="$(dirname $0)"
+	SCRIPT_PATH="$(dirname "$0")"
 
 	LISTDEMO="$(realpath "$SCRIPT_PATH/Listdemo.exe")"
 	if [ ! -f "$LISTDEMO" ]; then
@@ -107,7 +107,7 @@ main () {
 	DEMO_FILE="$(realpath "$CURRENT_ATTEMPT_FOLDER/$SEGMENT_NAME.dem")"
 
 	touch "$SAVE_FILE"
-	while $(inotifywait -qe close_write "$SAVE_FILE" >/dev/null 2>&1); do
+	while inotifywait -qe close_write "$SAVE_FILE" >/dev/null 2>&1; do
 		# Warning: possible race condition (demo file gets written to before two of the next lines).
 		# This isn't really an issue thanks to the wait 100 between the save and the stop in a usual
 		# segment stopping bind.

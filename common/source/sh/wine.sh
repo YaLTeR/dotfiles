@@ -9,16 +9,17 @@ function main {
 		echo "Downloading and extracting the source code..."
 		curl "$1" | tar xJ
 
-		local DIR=$(find -maxdepth 1 -type d -name "wine-*" | head -n1)
+		local DIR
+		DIR=$(find . -maxdepth 1 -type d -name "wine-*" | head -n1)
 
 		echo "Patching ALSA mmdevdrv.c..."
-		patch $DIR/dlls/winealsa.drv/mmdevdrv.c ~/Source/c/alsa_mmdevdrv.c.patch
+		patch "$DIR"/dlls/winealsa.drv/mmdevdrv.c ~/Source/c/alsa_mmdevdrv.c.patch
 
 		echo "Patching Pulse mmdevdrv.c..."
-		patch $DIR/dlls/winepulse.drv/mmdevdrv.c ~/Source/c/pulse_mmdevdrv.c.patch
+		patch "$DIR"/dlls/winepulse.drv/mmdevdrv.c ~/Source/c/pulse_mmdevdrv.c.patch
 
 		echo "Configuting..."
-		cd $DIR
+		cd "$DIR"
 		./configure --without-freetype
 
 		echo "Compiling winealsa.drv and winepulse.drv..."
@@ -30,8 +31,8 @@ function main {
 
 		echo "Removing the directory..."
 		cd ..
-		rm -rf $DIR
+		rm -rf "$DIR"
 	fi
 }
 
-main $@
+main "$@"
