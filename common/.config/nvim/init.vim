@@ -191,6 +191,9 @@ augroup my
   autocmd FileType markdown,text setlocal linebreak spell
   autocmd FileType tex setlocal spell textwidth=79 colorcolumn=79
 
+  " Set shellcheck as the make command for shell scripts.
+  autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
+
   " Automatically close vim if NERDTree is the only buffer left
   autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup end
