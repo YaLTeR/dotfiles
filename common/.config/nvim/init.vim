@@ -256,8 +256,8 @@ let g:LanguageClient_waitOutputTimeout = 5
 let g:LanguageClient_hasSnippetSupport = 1
 
 " let g:LanguageClient_devel = 1 "Use rust debug build
-let g:LanguageClient_loggingLevel = 'DEBUG'
-let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
+" let g:LanguageClient_loggingLevel = 'DEBUG'
+" let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
 
 " Automatic Hover
 function! DoNothingHandler(output)
