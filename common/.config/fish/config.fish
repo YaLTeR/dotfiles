@@ -2,6 +2,9 @@
 alias ls "exa --group-directories-first"
 alias l "ls -l"
 
+alias mkdir "mkdir -p"
+alias mv "mv -i"
+
 alias p    "pacman"
 alias pU   "sudo pacman -U"
 alias pq   "pacman -Q"
