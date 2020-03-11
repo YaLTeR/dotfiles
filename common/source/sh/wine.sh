@@ -13,10 +13,10 @@ function main {
 		DIR=$(find . -maxdepth 1 -type d -name "wine-*" | head -n1)
 
 		echo "Patching ALSA mmdevdrv.c..."
-		patch "$DIR"/dlls/winealsa.drv/mmdevdrv.c ~/Source/c/alsa_mmdevdrv.c.patch
+		patch "$DIR"/dlls/winealsa.drv/mmdevdrv.c ~/source/c/alsa_mmdevdrv.c.patch
 
 		echo "Patching Pulse mmdevdrv.c..."
-		patch "$DIR"/dlls/winepulse.drv/mmdevdrv.c ~/Source/c/pulse_mmdevdrv.c.patch
+		patch "$DIR"/dlls/winepulse.drv/mmdevdrv.c ~/source/c/pulse_mmdevdrv.c.patch
 
 		echo "Configuting..."
 		cd "$DIR"
@@ -26,8 +26,8 @@ function main {
 		make -j dlls/winealsa.drv dlls/winepulse.drv
 
 		echo "Copying winealsa.drv and winepulse.drv into the proper folder..."
-		sudo cp {dlls/winealsa.drv,/usr/lib32/wine}/winealsa.drv.so
-		sudo cp {dlls/winepulse.drv,/usr/lib32/wine}/winepulse.drv.so
+		sudo cp {dlls/winealsa.drv,/usr/lib/wine}/winealsa.drv.so
+		sudo cp {dlls/winepulse.drv,/usr/lib/wine}/winepulse.drv.so
 
 		echo "Removing the directory..."
 		cd ..
