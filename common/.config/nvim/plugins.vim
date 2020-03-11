@@ -79,6 +79,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'glts/vim-textobj-comment'
 Plug 'libclang-vim/libclang-vim', { 'do': 'make' }
 Plug 'libclang-vim/vim-textobj-clang'
+Plug 'arrufat/vala.vim'
+Plug 'igankevich/mesonic'
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
