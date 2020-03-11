@@ -27,14 +27,17 @@ Plug 'dag/vim-fish'
 Plug 'easymotion/vim-easymotion'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/echodoc.vim'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': './install.sh'
-    \ }
-" Plug 'YaLTeR/LanguageClient-neovim', {
-"     \ 'branch': 'rls-hover-fix-empty',
-"     \ 'do': 'make release'
-"     \ }
+
+if g:started_on_network_file != 1
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': './install.sh'
+      \ }
+  " Plug 'YaLTeR/LanguageClient-neovim', {
+  "     \ 'branch': 'rls-hover-fix-empty',
+  "     \ 'do': 'make release'
+  "     \ }
+endif
 
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'

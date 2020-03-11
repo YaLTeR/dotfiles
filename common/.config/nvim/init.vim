@@ -1,3 +1,8 @@
+let g:started_on_network_file = 0
+if match(expand('%'), '/run/user/1000/gvfs/') == 0
+  let g:started_on_network_file = 1
+endif
+
 let s:path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 execute 'source ' . s:path . '/plugins.vim'
 
@@ -378,11 +383,13 @@ nnoremap <silent> <S-F8> :call LanguageClient#rustDocument_implementations()<CR>
 nnoremap <silent> <Leader>= :call LanguageClient_textDocument_formatting()<CR>
 vnoremap <silent> <Leader>= :call LanguageClient_textDocument_rangeFormatting()<CR>
 
-" Closing the hover window after the visual selection has started leads to
-" loss of the visual selection. So clear it before.
-nnoremap <silent> v :call LanguageClient_closeFloatingHover()<CR>v
-nnoremap <silent> V :call LanguageClient_closeFloatingHover()<CR>V
-nnoremap <silent> <C-V> :call LanguageClient_closeFloatingHover()<CR><C-V>
+if g:started_on_network_file == 0
+  " Closing the hover window after the visual selection has started leads to
+  " loss of the visual selection. So clear it before.
+  nnoremap <silent> v :call LanguageClient_closeFloatingHover()<CR>v
+  nnoremap <silent> V :call LanguageClient_closeFloatingHover()<CR>V
+  nnoremap <silent> <C-V> :call LanguageClient_closeFloatingHover()<CR><C-V>
+endif
 
 let g:LanguageClient_diagnosticsDisplay = {
       \   1: {
@@ -449,6 +456,10 @@ let g:airline_powerline_fonts=1
 
 " Enable tabline
 let g:airline#extensions#tabline#enabled=1
+
+" Disable extensions that make network files very slow
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#fugitiveline#enabled = 0
 
 " Some symbol customization
 " let g:airline_left_sep='▓▒░'
