@@ -175,6 +175,14 @@ nnoremap Q @@
 " Make Russian work in normal mode.
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
+" Russian fixes for neovim-gtk:
+" https://github.com/daa84/neovim-gtk/issues/227
+imap <C-ц> <C-w>
+imap <C-х> <C-[>
+imap <C-г> <C-u>
+imap <C-ы> <C-s>
+nmap <C-ы> <C-s>
+
 augroup my
   autocmd!
 
