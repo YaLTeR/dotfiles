@@ -351,10 +351,13 @@ endfunction
 
 augroup LanguageClient_config
   autocmd!
-  autocmd CursorMoved * call GetHoverInfo()
-  autocmd CursorMovedI * call LanguageClient_clearDocumentHighlight()
-  " autocmd CursorMoved * call GetSignatureHelp()
-  " autocmd CursorMovedI * call GetSignatureHelp()
+
+  if g:started_on_network_file == 0
+    autocmd CursorMoved * call GetHoverInfo()
+    autocmd CursorMovedI * call LanguageClient_clearDocumentHighlight()
+    " autocmd CursorMoved * call GetSignatureHelp()
+    " autocmd CursorMovedI * call GetSignatureHelp()
+  endif
 augroup end
 
 " Go to definition, but with a fallback in case the language server isn't
