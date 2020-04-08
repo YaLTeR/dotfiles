@@ -72,15 +72,6 @@ set -g fish_emoji_width 2
 set -g fish_cursor_insert line
 set -g fish_cursor_replace_one underscore
 
-# Initialize the gnome-keyring-daemon and set PATH
-# This only happens when running through GDM which doesn't source stuff properly.
-if test -z $SSH_AUTH_SOCK
-	set -l gnome_keyring_vars (gnome-keyring-daemon --start)
-	set -l gnome_keyring_vars_fish (echo $gnome_keyring_vars | sed -e 's/^\(.*\)$/set -x \\1;/' -e 's/=/ /')
-	eval $gnome_keyring_vars_fish
-
-	set -x PATH $PATH $HOME/.local/bin
-end
 
 # Vi key bindings
 fish_vi_key_bindings
