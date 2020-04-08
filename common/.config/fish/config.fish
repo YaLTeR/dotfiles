@@ -100,7 +100,7 @@ function fish_prompt
 	end
 
 	# VCS prompt
-	if not pwd | string match -qr \^$HOME/stuff/mnt/
+	if not pwd | string match -qr "^($HOME/stuff/mnt/|/run/user/1000/gvfs/)"
 		set -l vcs (__fish_vcs_prompt)
 		if test -n "$vcs"
 			printf "%s " (string sub -s 2 (__fish_vcs_prompt))
