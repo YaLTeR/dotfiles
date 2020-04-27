@@ -489,21 +489,6 @@ nmap S <Plug>(easymotion-s2)
 let g:deoplete#enable_at_startup = 1
 
 " Set up vimtex stuff
-let g:vimtex_compiler_latexmk = {
-\ 'backend' : 'nvim',
-\ 'background' : 1,
-\ 'build_dir' : '',
-\ 'callback' : 1,
-\ 'continuous' : 1,
-\ 'executable' : 'latexmk',
-\ 'options' : [
-\   '-verbose',
-\   '-file-line-error',
-\   '-synctex=1',
-\   '-interaction=nonstopmode',
-\ ],
-\}
-
 let g:vimtex_compiler_method = 'tectonic'
 
 " Zathura as the PDF viewer
