@@ -6,4 +6,5 @@ if exists('g:GtkGuiLoaded')
 
     call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
     NGTransparency .98 .98
+    NGPreferDarkTheme on
 endif
