@@ -72,6 +72,12 @@ set -g fish_emoji_width 2
 set -g fish_cursor_insert line
 set -g fish_cursor_replace_one underscore
 
+set -x EDITOR nvim
+set -x VISUAL nvim
+set -x BASE16_THEME ashes
+set -x RUST_SRC_PATH ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+set -x PATH ~/.local/bin $PATH ~/.cargo/bin
+
 
 # Vi key bindings
 # fish_vi_key_bindings
