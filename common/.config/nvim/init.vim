@@ -573,6 +573,14 @@ let g:fzf_colors =
 " Map Ctrl-P to FZF
 nnoremap <C-P> :Files<CR>
 
+" Better Files
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(
+  \   <q-args>,
+  \   <bang>0 ? fzf#vim#with_preview({'source': 'rg --files'}, 'up:60%')
+  \           : fzf#vim#with_preview({'source': 'rg --files'}, 'right:50%', '?'),
+  \   <bang>0)
+
 " Rg integration with FZF
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
