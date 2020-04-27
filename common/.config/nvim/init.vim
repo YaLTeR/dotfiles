@@ -106,6 +106,10 @@ set spelllang=en,ru_yo
 set tabstop=4
 set shiftwidth=0
 
+" Split position
+set splitbelow
+set splitright
+
 " Set leader to Space
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
