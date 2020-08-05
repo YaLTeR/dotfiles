@@ -275,6 +275,8 @@ let g:LanguageClient_waitOutputTimeout = 5
 " Yes I do have my snippets working.
 let g:LanguageClient_hasSnippetSupport = 1
 
+let g:LanguageClient_useFloatingHover = 0
+
 " let g:LanguageClient_devel = 1 "Use rust debug build
 " let g:LanguageClient_loggingLevel = 'DEBUG'
 " let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
