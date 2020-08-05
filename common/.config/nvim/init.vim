@@ -86,10 +86,6 @@ set hidden
 " Live preview of some commands.
 set inccommand=split
 
-" Folding
-set foldmethod=syntax
-set foldlevelstart=99
-
 " Mouse
 set mouse=a
 
