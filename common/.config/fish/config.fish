@@ -76,7 +76,7 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 set -x BASE16_THEME ashes
 set -x RUST_SRC_PATH ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
-set -x PATH ~/.local/bin $PATH ~/.cargo/bin
+set -x PATH ~/.cargo/bin ~/.local/bin $PATH
 
 
 # Vi key bindings
