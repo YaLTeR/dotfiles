@@ -8,5 +8,5 @@ fi
 
 cd $HL_ROOT
 # exec perf record --call-graph dwarf,65528 -F 100 -D 5000 ./hl_linux -steam "$@"
-# exec ~/.steam/bin/steam-runtime/run.sh ./hl_linux -steam "$@"
-exec ~/.steam/bin/steam-runtime/run.sh gdb ./hl_linux
+exec ~/.steam/bin/steam-runtime/run.sh ./hl_linux -steam "$@"
+# exec ~/.steam/bin/steam-runtime/run.sh gdb ./hl_linux
