@@ -23,10 +23,9 @@ function main {
 		./configure --without-freetype
 
 		echo "Compiling winealsa.drv and winepulse.drv..."
-		make -j dlls/winealsa.drv dlls/winepulse.drv
+		make -j dlls/winepulse.drv
 
 		echo "Copying winealsa.drv and winepulse.drv into the proper folder..."
-		sudo cp {dlls/winealsa.drv,/usr/lib/wine}/winealsa.drv.so
 		sudo cp {dlls/winepulse.drv,/usr/lib/wine}/winepulse.drv.so
 
 		echo "Removing the directory..."
