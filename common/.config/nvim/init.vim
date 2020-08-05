@@ -838,3 +838,6 @@ call textobj#user#plugin('custom', {
 \ })
 
 let g:textobj_clang_more_mappings = 1
+
+" vim-orgmode
+let g:org_agenda_files = ['~/sync/org/notes.org']

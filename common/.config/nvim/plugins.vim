@@ -82,6 +82,9 @@ Plug 'libclang-vim/vim-textobj-clang'
 Plug 'arrufat/vala.vim'
 Plug 'igankevich/mesonic'
 
+Plug 'jceb/vim-orgmode'
+Plug 'inkarkat/vim-SyntaxRange'
+
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'idanarye/vim-vebugger'
 
