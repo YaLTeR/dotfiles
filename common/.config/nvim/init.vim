@@ -359,8 +359,8 @@ augroup LanguageClient_config
   autocmd!
 
   if g:started_on_network_file == 0
-    autocmd CursorMoved * call GetHoverInfo()
-    autocmd CursorMovedI * call LanguageClient_clearDocumentHighlight()
+    autocmd CursorHold * call GetHoverInfo()
+    autocmd CursorHoldI * call LanguageClient_clearDocumentHighlight()
     " autocmd CursorMoved * call GetSignatureHelp()
     " autocmd CursorMovedI * call GetSignatureHelp()
   endif
