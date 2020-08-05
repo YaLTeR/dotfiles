@@ -106,6 +106,9 @@ set shiftwidth=0
 set splitbelow
 set splitright
 
+" Faster CursorHold
+set updatetime=100
+
 " Set leader to Space
 let mapleader = "\<Space>"
 let maplocalleader = "\<Space>"
