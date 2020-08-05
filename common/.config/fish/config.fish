@@ -78,6 +78,8 @@ set -x BASE16_THEME ashes
 set -x RUST_SRC_PATH ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 set -x PATH ~/.cargo/bin ~/.local/bin $PATH
 
+# Link FlatHub Discord's IPC socket to the place where apps expect it
+ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-0
 
 # Vi key bindings
 # fish_vi_key_bindings
