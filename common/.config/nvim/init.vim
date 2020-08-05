@@ -204,7 +204,7 @@ augroup my
 
   " In text files, don't break in the middle of a word and enable spell
   " checking
-  autocmd FileType markdown,text setlocal linebreak spell
+  autocmd FileType markdown,text,org setlocal linebreak spell
   autocmd FileType tex setlocal linebreak spell colorcolumn=79
 
   " Set shellcheck as the make command for shell scripts.
