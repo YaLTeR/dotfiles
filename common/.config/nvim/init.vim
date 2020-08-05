@@ -385,6 +385,8 @@ nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <C-T> :call LanguageClient_workspace_symbol()<CR>
 nnoremap <silent> <F17> :call LanguageClient#textDocument_codeAction()<CR>
 nnoremap <silent> <S-F5> :call LanguageClient#textDocument_codeAction()<CR>
+vnoremap <silent> <F17> :call LanguageClient#textDocument_visualCodeAction()<CR>
+vnoremap <silent> <S-F5> :call LanguageClient#textDocument_visualCodeAction()<CR>
 nnoremap <silent> <F18> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <S-F6> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <F20> :call LanguageClient#rustDocument_implementations()<CR>
