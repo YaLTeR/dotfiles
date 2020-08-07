@@ -137,6 +137,10 @@ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 vnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+nnoremap <expr> л (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> о (v:count == 0 ? 'gj' : 'j')
+vnoremap <expr> л (v:count == 0 ? 'gk' : 'k')
+vnoremap <expr> о (v:count == 0 ? 'gj' : 'j')
 
 " Move between windows with Alt-hjkl
 tnoremap <A-h> <C-\><C-N><C-w>h
