@@ -75,7 +75,6 @@ set -g fish_cursor_replace_one underscore
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x BASE16_THEME ashes
-set -x RUST_SRC_PATH ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 set -x PATH ~/.cargo/bin ~/.local/bin $PATH
 
 # Link FlatHub Discord's IPC socket to the place where apps expect it
