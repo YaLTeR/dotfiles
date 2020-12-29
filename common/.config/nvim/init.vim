@@ -497,6 +497,9 @@ nmap S <Plug>(easymotion-s2)
 let g:deoplete#enable_at_startup = 1
 
 " Set up vimtex stuff
+" Make it not complain at startup
+let g:tex_flavor = 'latex'
+
 let g:vimtex_compiler_method = 'tectonic'
 
 " Zathura as the PDF viewer
