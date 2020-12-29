@@ -23,7 +23,7 @@ function main {
 		./configure --without-freetype
 
 		echo "Compiling winealsa.drv and winepulse.drv..."
-		make -j dlls/winepulse.drv
+		make -j dlls/winepulse.drv/winepulse.drv.so
 
 		echo "Copying winealsa.drv and winepulse.drv into the proper folder..."
 		sudo cp {dlls/winepulse.drv,/usr/lib/wine}/winepulse.drv.so
