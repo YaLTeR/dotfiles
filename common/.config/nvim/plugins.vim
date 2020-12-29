@@ -72,7 +72,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'majutsushi/tagbar'
 Plug 'OmniSharp/omnisharp-vim'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+" Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kana/vim-textobj-user'
