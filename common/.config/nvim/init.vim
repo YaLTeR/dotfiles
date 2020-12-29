@@ -501,6 +501,7 @@ let g:deoplete#enable_at_startup = 1
 let g:tex_flavor = 'latex'
 
 let g:vimtex_compiler_method = 'tectonic'
+" let g:vimtex_compiler_method = 'latexmk'
 
 " Zathura as the PDF viewer
 " let g:vimtex_view_method = 'general'
