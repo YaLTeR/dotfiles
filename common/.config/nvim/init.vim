@@ -467,7 +467,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_java_javac_config_file_enabled = 1
 
 " Use powerline symbols
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 
 " Enable tabline
 let g:airline#extensions#tabline#enabled=1
