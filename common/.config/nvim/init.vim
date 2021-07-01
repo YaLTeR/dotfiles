@@ -247,11 +247,13 @@ noremap <F12> :YcmCompleter GoTo<CR>
 
 " LanguageClient-neovim {{{
 let g:LanguageClient_serverCommands = {
-   \ 'cpp': ['ccls'],
-   \ 'c': ['ccls'],
+   \ 'cpp': ['clangd'],
+   \ 'c': ['clangd'],
    \ 'rust': ['rust-analyzer'],
    \ 'python': ['pyls'],
    \ }
+   " \ 'cpp': ['ccls'],
+   " \ 'c': ['ccls'],
    " \ 'cpp': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'c': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-cquery.sh', '--language-server', '--enable-comments'],
    " \ 'rust': ['bash', '~/.config/nvim/plugged/LanguageClient-neovim/wrapper-rls.sh'],
