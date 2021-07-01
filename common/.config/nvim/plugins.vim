@@ -28,10 +28,10 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Shougo/echodoc.vim'
 
-if g:started_on_network_file != 1
+if !exists("g:started_on_network_file") || g:started_on_network_file != 1
   Plug 'autozimu/LanguageClient-neovim', {
       \ 'branch': 'next',
-      \ 'do': './install.sh'
+      \ 'do': 'bash install.sh'
       \ }
   " Plug 'YaLTeR/LanguageClient-neovim', {
   "     \ 'branch': 'rls-hover-fix-empty',
