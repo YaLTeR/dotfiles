@@ -249,7 +249,15 @@ noremap <F12> :YcmCompleter GoTo<CR>
 let g:LanguageClient_serverCommands = {
    \ 'cpp': ['clangd'],
    \ 'c': ['clangd'],
-   \ 'rust': ['rust-analyzer'],
+   \ 'rust': {
+   \   'name': 'rust-analyzer',
+   \   'command': ['rust-analyzer'],
+   \   'initializationOptions': {
+   \     'inlayHints': {
+   \       'enable': v:true,
+   \     },
+   \   },
+   \ },
    \ 'python': ['pyls'],
    \ }
    " \ 'cpp': ['ccls'],
@@ -262,28 +270,11 @@ let g:LanguageClient_serverCommands = {
    " \ 'rust': ['rust-analyzer'],
    " \ 'haskell': ['hie', '--lsp'],
 
-let g:LanguageClient_rootMarkers = {
-   \ 'rust': ['Cargo.lock'],
-   \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" Load settings from a global file (a setting is required by cquery).
-let g:LanguageClient_loadSettings = 1
-let g:LanguageClient_settingsPath = s:path . '/langserver_settings.json'
-
-" Set a short timeout (5 seconds) so the client doesn't hang when servers don't
-" respond for some reason. Note that this affects how fast you have to type
-" the new name in refactor rename.
-let g:LanguageClient_waitOutputTimeout = 5
-
 " Yes I do have my snippets working.
 let g:LanguageClient_hasSnippetSupport = 1
-
 let g:LanguageClient_useFloatingHover = 0
+let g:LanguageClient_preferredMarkupKind = ['markdown']
 
-" let g:LanguageClient_devel = 1 "Use rust debug build
 " let g:LanguageClient_loggingLevel = 'DEBUG'
 " let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
 
@@ -408,25 +399,6 @@ if g:started_on_network_file == 0
   nnoremap <silent> <C-V> :call LanguageClient_closeFloatingHover()<CR><C-V>
 endif
 
-let g:LanguageClient_diagnosticsDisplay = {
-      \   1: {
-      \     "name": "Error",
-      \     "texthl": "SpellBad",
-      \   },
-      \   2: {
-      \     "name": "Warning",
-      \     "texthl": "SpellCap",
-      \   },
-      \   3: {
-      \     "name": "Information",
-      \     "texthl": "SpellCap",
-      \   },
-      \   4: {
-      \     "name": "Hint",
-      \     "texthl": "SpellCap",
-      \   },
-      \ }
-
 function! GetColorSettings(group)
   let settings = execute("highlight " . a:group)
   return matchstr(settings, 'xxx \zs.*')
@@ -442,6 +414,11 @@ call CopySettingsFrom("VariableRead", "SpellLocal")
 highlight VariableRead gui=bold
 call CopySettingsFrom("VariableWrite", "SpellRare")
 highlight VariableWrite gui=bold
+
+call CopySettingsFrom("LanguageClientError", "SpellBad")
+call CopySettingsFrom("LanguageClientWarning", "SpellCap")
+call CopySettingsFrom("LanguageClientInformation", "SpellCap")
+call CopySettingsFrom("LanguageClientHint", "SpellCap")
 
 let g:LanguageClient_documentHighlightDisplay = {
       \   1: {
