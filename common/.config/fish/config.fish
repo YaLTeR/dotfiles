@@ -34,7 +34,7 @@ alias gcaa   "git commit -a --amend"
 alias gcam   "git commit -am"
 alias gch    "git checkout"
 alias gchb   "git checkout -b"
-alias gchm   "git checkout master"
+alias gchm   "git checkout main"
 alias gcm    "git commit -m"
 alias gd     "git diff"
 alias gdc    "git diff --cached"
@@ -46,11 +46,7 @@ alias glo    "git log --oneline"
 alias gm     "git merge"
 alias gpul   "git pull"
 alias gpulo  "git pull origin"
-alias gpulod "git pull origin develop"
-alias gpulom "git pull origin master"
 alias gpulu  "git pull upstream"
-alias gpulud "git pull upstream develop"
-alias gpulum "git pull upstream master"
 alias gpus   "git push"
 alias gpusf  "git push --force-with-lease"
 alias gpusu  "git push -u"
@@ -82,6 +78,12 @@ ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-0
 
 # Vi key bindings
 # fish_vi_key_bindings
+
+function fish_user_key_bindings
+	# VSCode terminal Alt+up and down
+	bind --preset \e\[1\;5A history-token-search-backward
+	bind --preset \e\[1\;5B history-token-search-forward
+end
 
 function fish_prompt
 	set -l last_status $status
