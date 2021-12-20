@@ -240,7 +240,7 @@ nnoremap <leader>s <C-W>v<C-W>l:pedit<CR>:terminal<CR><C-W>h:let g:LanguageClien
 " Highlight stuff in Markdown code blocks.
 let g:markdown_fenced_languages = ['c', 'cpp', 'rust', 'python']
 
-nnoremap <leader>v :tab Gstatus<CR>
+nnoremap <leader>v :tab Git<CR>
 
 " Map F12 to go to definition / declaration
 noremap <F12> :YcmCompleter GoTo<CR>
