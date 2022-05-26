@@ -1,6 +1,7 @@
 # alias ls "ls -hN --group-directories-first --color=auto"
 alias ls "exa --group-directories-first"
 alias l "ls -l"
+alias la "l -a"
 
 alias mkdir "mkdir -p"
 alias mv "mv -i"
