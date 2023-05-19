@@ -69,9 +69,6 @@ set -g fish_emoji_width 2
 set -g fish_cursor_insert line
 set -g fish_cursor_replace_one underscore
 
-set -x EDITOR nvim
-set -x VISUAL nvim
-set -x BASE16_THEME ashes
 set -x PATH ~/.cargo/bin ~/.local/bin $PATH
 
 # Link FlatHub Discord's IPC socket to the place where apps expect it
