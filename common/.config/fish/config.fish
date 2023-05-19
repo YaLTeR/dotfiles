@@ -72,7 +72,7 @@ set -g fish_cursor_replace_one underscore
 set -x PATH ~/.cargo/bin ~/.local/bin $PATH
 
 # Link FlatHub Discord's IPC socket to the place where apps expect it
-ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-0
+# ln -sf {app/com.discordapp.Discord,$XDG_RUNTIME_DIR}/discord-ipc-0
 
 # Vi key bindings
 # fish_vi_key_bindings
