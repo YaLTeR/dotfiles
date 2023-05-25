@@ -3,6 +3,7 @@ theme = "adwaita-dark"
 [editor]
 line-number = "relative"
 auto-save = true
+auto-format = false
 
 [editor.cursor-shape]
 insert = "bar"
@@ -19,4 +20,7 @@ tab = "all"
 nbsp = "all"
 
 [keys.normal]
-C-s = ":w"
+C-s = ":update"
+C-p = "file_picker"
+A-z = ":toggle soft-wrap.enable"
+

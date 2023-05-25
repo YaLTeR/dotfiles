@@ -2,3 +2,7 @@
 name = "rust"
 rulers = [100]
 config.rust-analyzer.check.command = "clippy"
+
+[[language]]
+name = "markdown"
+soft-wrap.enable = true
