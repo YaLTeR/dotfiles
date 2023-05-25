@@ -1,0 +1,4 @@
+[[language]]
+name = "rust"
+rulers = [100]
+config.rust-analyzer.check.command = "clippy"

@@ -1,0 +1,22 @@
+theme = "adwaita-dark"
+
+[editor]
+line-number = "relative"
+auto-save = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+tab = "all"
+nbsp = "all"
+
+[keys.normal]
+C-s = ":w"
