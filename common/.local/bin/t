@@ -1,7 +1,9 @@
 #!/bin/sh
 
 if [ $# -eq 0 ]; then
-    exec toolbox run -c fedora-toolbox-38 bash -ic fish
+    command=fish
 else
-    exec toolbox run -c fedora-toolbox-38 bash -ic "$*"
+    command="$(printf "%q " "$@")"
 fi
+
+exec toolbox run -c fedora-toolbox-38 bash -ic "$command"
