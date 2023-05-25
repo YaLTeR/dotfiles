@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -f /usr/bin/hx ]; then
+    /usr/bin/hx "$@"
+else
+    t hx "$@"
+fi
