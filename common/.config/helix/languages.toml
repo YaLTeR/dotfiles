@@ -2,6 +2,7 @@
 name = "rust"
 rulers = [100]
 config.rust-analyzer.check.command = "clippy"
+config.rust-analyzer.rustfmt.overrideCommand = ["rustfmt", "+nightly"]
 
 [[language]]
 name = "markdown"
