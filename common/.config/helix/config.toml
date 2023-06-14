@@ -8,6 +8,7 @@ auto-format = false
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
+select = "underline"
 
 [editor.lsp]
 display-inlay-hints = true
@@ -23,4 +24,8 @@ nbsp = "all"
 C-s = ":update"
 C-p = "file_picker"
 A-z = ":toggle soft-wrap.enable"
+F5 = ":reload"
+
+[keys.normal."'"]
+f = ":format"
 
