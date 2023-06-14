@@ -19,6 +19,11 @@ alias psyu "sudo pacman -Syu"
 alias pa   "pacaur -S"
 alias pas  "pacaur -Ss"
 
+alias f   "flatpak"
+alias fu  "flatpak update"
+alias fi  "flatpak install"
+alias fiu "flatpak install -u"
+
 alias v "nvim"
 alias nvim-update "nvim -u ~/.config/nvim/plugins.vim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa"
 
