@@ -1,4 +1,4 @@
-theme = "adwaita-dark"
+theme = "catppuccin_mocha"
 
 [editor]
 line-number = "relative"
@@ -24,6 +24,7 @@ nbsp = "all"
 C-s = ":update"
 C-p = "file_picker"
 A-z = ":toggle soft-wrap.enable"
+A-q = ":reflow"
 F5 = ":reload"
 
 [keys.normal."'"]
