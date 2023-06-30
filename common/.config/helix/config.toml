@@ -27,6 +27,10 @@ A-z = ":toggle soft-wrap.enable"
 A-q = ":reflow"
 F5 = ":reload"
 
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-k = "jump_view_up"
+C-j = "jump_view_down"
+
 [keys.normal."'"]
 f = ":format"
-
