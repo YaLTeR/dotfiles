@@ -15,3 +15,161 @@ check.command = "clippy"
 rustfmt.overrideCommand = ["rustfmt", "+nightly", "--edition", "2021"]
 completion.callable.snippets = "add_parentheses"
 diagnostics.disabled = ["inactive-code"]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."if let Err(err) ="]
+postfix = ["ile"]
+body = [
+  "if let Err(err) = ${receiver} {",
+  "\twarn!(\"error $0: {err:?}\");",
+  "}",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."let Some(x) else"]
+postfix = ["lse"]
+body = [
+  "let Some($0) = ${receiver} else {",
+  "\treturn",
+  "};",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."match Some, None"]
+postfix = ["msn"]
+body = [
+  "match ${receiver} {",
+  "\tSome($0) => {",
+  "\t\t",
+  "\t}",
+  "\tNone => {",
+  "\t\t",
+  "\t}",
+  "}",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."match Ok, Err"]
+postfix = ["moe"]
+body = [
+  "match ${receiver} {",
+  "\tOk($0) => {",
+  "\t\t",
+  "\t}",
+  "\tErr(err) => {",
+  "\t\twarn!(\"error: {err:?}\");",
+  "\t}",
+  "}",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."info_span scope"]
+postfix = ["iss"]
+body = [
+  "info_span!(\"$0\").in_scope(|| ${receiver})",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."tracy_client span"]
+prefix = ["tspan"]
+body = [
+  "let _span = tracy_client::span!(\"$0\");",
+]
+
+[language-server.rust-analyzer.config.completion.snippets.custom."instrument"]
+prefix = ["instrument"]
+body = [
+  "#[instrument(\"$0\", skip_all)]",
+]
+requires = ["tracing::instrument"]
+scope = "item"
+
+[language-server.rust-analyzer.config.completion.snippets.custom."gobject subclass"]
+prefix = ["gobject"]
+body = [
+  "use glib::subclass::prelude::*;",
+  "use gtk::glib;",
+  "",
+  "mod imp {",
+  "\tuse super::*;",
+  "",
+  "\t#[derive(Debug, Default)]",
+  "\tpub struct ${1:Name} {",
+  "\t}",
+  "",
+  "\t#[glib::object_subclass]",
+  "\timpl ObjectSubclass for $1 {",
+  "\t\tconst NAME: &'static str = \"${2:FullName}\";",
+  "\t\ttype Type = super::$1;",
+  "\t\ttype ParentType = glib::Object;",
+  "\t}",
+  "",
+  "\timpl ObjectImpl for $1 {}",
+  "}",
+  "",
+  "glib::wrapper! {",
+  "\tpub struct $1(ObjectSubclass<imp::$1>);",
+  "}",
+  "",
+  "impl $1 {",
+  "\tpub fn new() -> Self {",
+  "\t\tglib::Object::builder().build()",
+  "\t}",
+  "}",
+]
+description = "Generate GObject subclass boilerplate"
+scope = "item"
+
+[language-server.rust-analyzer.config.completion.snippets.custom."widget subclass"]
+prefix = ["widget"]
+body = [
+  "use gtk::glib;",
+  "use gtk::subclass::prelude::*;",
+  "",
+  "mod imp {",
+  "\tuse gtk::prelude::*;",
+  "",
+  "\tuse super::*;",
+  "",
+  "\t#[derive(Debug, Default, Properties)]",
+  "\t#[properties(wrapper_type = super::$1)]",
+  "\tpub struct ${1:Name} {",
+  "\t}",
+  "",
+  "\t#[glib::object_subclass]",
+  "\timpl ObjectSubclass for $1 {",
+  "\t\tconst NAME: &'static str = \"${2:FullName}\";",
+  "\t\ttype Type = super::$1;",
+  "\t\ttype ParentType = gtk::Widget;",
+  "\t}",
+  "",
+  "\timpl ObjectImpl for $1 {",
+  "\t\tfn constructed(&self) {",
+  "\t\t\tlet obj = self.obj();",
+  "",
+  "\t\t\tself.parent_constructed();",
+  "\t\t}",
+  "",
+  "\t\tfn properties() -> &'static [glib::ParamSpec] {",
+  "\t\t\tSelf::derived_properties()",
+  "\t\t}",
+  "",
+  "\t\tfn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {",
+  "\t\t\tself.derived_set_property(id, value, pspec);",
+  "\t\t}",
+  "",
+  "\t\tfn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {",
+  "\t\t\tself.derived_property(id, pspec)",
+  "\t\t}",
+  "\t}",
+  "",
+  "\timpl WidgetImpl for $1 {}",
+  "}",
+  "",
+  "glib::wrapper! {",
+  "\tpub struct $1(ObjectSubclass<imp::$1>)",
+  "\t\t@extends gtk::Widget;",
+  "}",
+  "",
+  "impl $1 {",
+  "\tpub fn new() -> Self {",
+  "\t\tglib::Object::builder().build()",
+  "\t}",
+  "}",
+]
+description = "Generate GTK Widget subclass boilerplate"
+scope = "item"
