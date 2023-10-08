@@ -5,5 +5,9 @@ config.rust-analyzer.check.command = "clippy"
 config.rust-analyzer.rustfmt.overrideCommand = ["rustfmt", "+nightly"]
 
 [[language]]
+name = "kdl"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
 name = "markdown"
 soft-wrap.enable = true
