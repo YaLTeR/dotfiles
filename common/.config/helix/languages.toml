@@ -1,8 +1,6 @@
 [[language]]
 name = "rust"
 rulers = [100]
-config.rust-analyzer.check.command = "clippy"
-config.rust-analyzer.rustfmt.overrideCommand = ["rustfmt", "+nightly"]
 
 [[language]]
 name = "kdl"
@@ -11,3 +9,9 @@ indent = { tab-width = 4, unit = "    " }
 [[language]]
 name = "markdown"
 soft-wrap.enable = true
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+rustfmt.overrideCommand = ["rustfmt", "+nightly", "--edition", "2021"]
+completion.callable.snippets = "add_parentheses"
+diagnostics.disabled = ["inactive-code"]
