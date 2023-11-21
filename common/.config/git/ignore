@@ -1,6 +1,10 @@
 .ccls-cache/
 compile_commands.json
 /builddir/
+/_build/
 .idea/
 .vscode/
 .cache/
+node_modules/
+venv/
+.nvim.lua
