@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -n "$TOOLBOX_PATH" ]; then
+    nvim "$@"
+else
+    t nvim "$@"
+fi
