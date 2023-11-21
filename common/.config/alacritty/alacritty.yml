@@ -215,8 +215,8 @@ github_light: &github_light
     - { index: 16, color: '0xd18616' }
     - { index: 17, color: '0xcb2431' }
 
-# colors: *catppuccin_mocha
-colors: *github_light
+colors: *catppuccin_mocha
+# colors: *github_light
 # colors: *adwaita_dark
 # colors: *github_dark
 
