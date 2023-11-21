@@ -24,8 +24,8 @@ alias fu  "flatpak update"
 alias fi  "flatpak install"
 alias fiu "flatpak install -u"
 
-alias v "nvim"
-alias nvim-update "nvim -u ~/.config/nvim/plugins.vim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa"
+# alias v "nvim"
+# alias nvim-update "nvim -u ~/.config/nvim/plugins.vim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa"
 
 alias g      "git"
 alias ga     "git add"
