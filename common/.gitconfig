@@ -3,3 +3,5 @@
 	email = yalterz@gmail.com
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
