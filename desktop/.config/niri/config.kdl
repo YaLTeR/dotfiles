@@ -38,13 +38,19 @@ output "eDP-1" {
     scale 2.0
     position x=0 y=0
     // mode "1920x1200"
+    // mode "2560x1600@60.002"
+    // mode "1280x1024@165.004"
 }
 
 output "HDMI-A-1" {
     // position x=-1920 y=520
     // position x=2560 y=0
+
     position x=1280 y=-640
     mode "2560x1440@143.912"
+
+    // position x=2000 y=-640
+    // mode "2560x1440@119.998"
 }
 
 output "DP-2" {
@@ -78,6 +84,7 @@ preset-column-widths {
 }
 
 default-column-width { proportion 0.333; }
+// default-column-width { }
 
 gaps 8
 
