@@ -132,6 +132,7 @@ vim.o.scrolloff = 1  -- Always show a few characters around the cursor
 vim.o.sidescrolloff = 5
 vim.o.autoread = true  -- Auto reload files on change
 vim.o.exrc = true  -- Load trusted project-local .nvim.lua
+vim.o.spelllang = 'en,ru_yo'  -- Spellcheck languages
 
 vim.keymap.set({ 'n', 'v' }, '<C-h>', '<C-w>h')
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '<C-w>j')
@@ -168,6 +169,13 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'rust',
   callback = function()
     vim.opt_local.colorcolumn = { 100 }
+  end
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'text', 'markdown', 'tex'},
+  callback = function()
+    vim.opt_local.linebreak = true
+    vim.opt_local.spell = true
   end
 })
 
