@@ -166,7 +166,7 @@ vim.keymap.set('x', '<C-c>', '<Plug>(comment_toggle_linewise_visual)')
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'rust',
-  callback = function(args)
+  callback = function()
     vim.opt_local.colorcolumn = { 100 }
   end
 })
