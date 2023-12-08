@@ -1,4 +1,10 @@
 theme = "catppuccin_mocha"
+# theme = "onelight"
+# theme = "solarized_light"
+# theme = "github_light"
+# theme = "onedark"
+# theme = "github_dark"
+# theme = "adwaita-dark"
 
 [editor]
 line-number = "relative"
