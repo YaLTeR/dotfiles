@@ -105,6 +105,9 @@ require('lazy').setup({
 
   'imsnif/kdl.vim',
   'tpope/vim-fugitive',
+
+  'tpope/vim-eunuch',  -- :Rename, etc.
+  'tpope/vim-abolish',  -- Case conversion, :Subvert
 })
 
 vim.cmd.colorscheme 'catppuccin'
