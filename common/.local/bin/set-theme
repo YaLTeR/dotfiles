@@ -13,6 +13,6 @@ else
 fi
 
 dconf write /org/gnome/desktop/interface/color-scheme "\"$COLOR_SCHEME\""
-sed -i --follow-symlinks "s/^\(colors:\)/# \1/;s/^# \(colors: \*$ALACRITTY_COLORS\)/\1/" ~/.config/alacritty/alacritty.yml
+sed -i --follow-symlinks "s/^    \"~/    # \"~/;s/^    # \(\"~.*$ALACRITTY_COLORS.toml\",\)/    \1/" ~/.config/alacritty/alacritty.toml
 sed -i --follow-symlinks "s/^\(theme =\)/# \1/;s/^# \(theme = \"$HELIX_THEME\"\)/\1/" ~/.config/helix/config.toml
 pkill -USR1 hx
