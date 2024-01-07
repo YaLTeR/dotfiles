@@ -99,6 +99,7 @@ require('lazy').setup({
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
   },
+  'nvim-telescope/telescope-ui-select.nvim',  -- Telescope for native pickers such as LSP code actions
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   'WhoIsSethDaniel/lualine-lsp-progress',
@@ -194,9 +195,15 @@ telescope.setup {
         ['<C-up>'] = telescope_actions.cycle_history_prev,
       },
     },
+    layout_strategy = 'flex',
+    layout_config = {
+      flip_columns = 180,
+      horizontal = { preview_width = { 0.6, max = 100 } },
+    },
   }
 }
 telescope.load_extension('fzf')
+telescope.load_extension('ui-select')
 vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
 vim.keymap.set('n', '<space>/', telescope_builtin.live_grep)
 vim.keymap.set('n', '<space>d', function() telescope_builtin.diagnostics {bufnr=0} end)
