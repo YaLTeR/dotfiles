@@ -1,0 +1,38 @@
+shell.program = "/usr/bin/fish"
+hints.alphabet = "ntesiroahdlpufywc.x;q/z"
+
+import = [
+    "~/.config/alacritty/catppuccin_mocha.toml",
+    # "~/.config/alacritty/github_light.toml",
+    # "~/.config/alacritty/adwaita_dark.toml",
+    # "~/.config/alacritty/github_dark.toml",
+
+    # "~/.config/alacritty/latency.toml",
+]
+
+[window]
+# dimensions = { columns = 120, lines = 36 }
+# padding = { x = 1, y = 1 }
+opacity = 0.95
+
+[font]
+size = 10.5
+# size = 11
+# size = 12
+# size = 20
+# normal.family = "IosevkaTerm NFM Medium"
+# normal.family = "Iosevka Term Medium Extended"
+# builtin_box_drawing = false
+
+[[hints.enabled]]
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+hyperlinks = true
+command = "xdg-open"
+post_processing = true
+binding = { key = "T", mods = "Control|Shift" }
+mouse = { enabled = true, mods = "None" }
+
+[[hints.enabled]]
+regex = "[0-9a-f]{12,128}|[a-f0-9]{7,8}"
+action = "Copy"
+binding = { key = "H", mods = "Control|Shift" }
