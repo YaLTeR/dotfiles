@@ -2,7 +2,9 @@ debug {
     // dbus-interfaces-in-non-session-instances
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
+    // disable-cursor-plane
     // animation-slowdown 3.0
+    // render-drm-device "/dev/dri/renderD129"
 }
 
 input {
@@ -27,6 +29,8 @@ input {
         // map-to-output "eDP-1"
         map-to-output "HDMI-A-1"
     }
+
+    // disable-power-key-handling
 }
 
 output "winit" {
@@ -35,40 +39,84 @@ output "winit" {
 }
 
 output "eDP-1" {
+    // off
+
     scale 2.0
     position x=0 y=0
     // mode "1920x1200"
     // mode "2560x1600@60.002"
     // mode "1280x1024@165.004"
+    // mode "1280x720@165.004"
 }
 
 output "HDMI-A-1" {
+    // off
+
     // position x=-1920 y=520
     // position x=2560 y=0
 
     position x=1280 y=-640
     mode "2560x1440@143.912"
+    // mode "2560x1440@119.998"
+    // mode "1280x720@60.000"
 
     // position x=2000 y=-640
     // mode "2560x1440@119.998"
+}
+
+output "DP-1" {
+    position x=-1920 y=0
+    mode "1920x1080@60.000"
+}
+output "DP-3" {
+    position x=-1920 y=0
+    mode "1920x1080@60.000"
 }
 
 output "DP-2" {
     // mode "3440x1440@99.982"
 }
 
-// spawn-at-startup "alacritty" "-e" "fish"
+layout {
+    focus-ring {
+        off
+        width 2
+        // catppuccin-mocha Sapphire
+        active-color 116 199 236 255
+        // catppuccin-mocha Surface2
+        inactive-color 88 91 112 255
+    }
 
-focus-ring {
-    // off
-    width 2
-    // catppuccin-mocha Sapphire
-    active-color 116 199 236 255
-    // catppuccin-mocha Surface2
-    inactive-color 88 91 112 255
+    border {
+        // off
+        width 3
+        // width 128
+
+        // catppuccin-mocha Peach
+        active-color 250 179 135 255
+        // catppuccin-mocha Surface2
+        inactive-color 88 91 112 255
+    }
+
+    preset-column-widths {
+        proportion 0.333
+        proportion 0.5
+        proportion 0.667
+        // proportion 0.25
+    }
+
+    default-column-width { proportion 0.333; }
+    // default-column-width { }
+
+    gaps 8
+
+    struts {
+        // left 64
+        // right 64
+        // top 44
+        // bottom 64
+    }
 }
-
-prefer-no-csd
 
 cursor {
     // xcursor-theme "breeze_cursors"
@@ -76,17 +124,9 @@ cursor {
     // xcursor-size 48
 }
 
-preset-column-widths {
-    proportion 0.333
-    proportion 0.5
-    proportion 0.667
-    // proportion 0.25
-}
+prefer-no-csd
 
-default-column-width { proportion 0.333; }
-// default-column-width { }
-
-gaps 8
+// spawn-at-startup "alacritty" "-e" "fish"
 
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -117,6 +157,11 @@ binds {
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
 
     Mod+Shift+M     { focus-monitor-left; }
     Mod+Shift+N     { focus-monitor-down; }
