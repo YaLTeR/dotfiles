@@ -13,3 +13,7 @@ border-color=#f38ba8
 [desktop-entry="org.telegram.desktop"]
 layer=top
 border-color=#74c7ec
+
+[desktop-entry="org.gnome.Fractal"]
+layer=top
+border-color=#74c7ec
