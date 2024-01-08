@@ -138,6 +138,12 @@ vim.o.autoread = true  -- Auto reload files on change
 vim.o.exrc = true  -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo'  -- Spellcheck languages
 
+-- Change signs to colored dots
+vim.fn.sign_define('DiagnosticSignError', { text = '●', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn',  { text = '●', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo',  { text = '●', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint',  { text = '●', texthl = 'DiagnosticSignHint' })
+
 vim.keymap.set({ 'n', 'v' }, '<C-h>', '<C-w>h')
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '<C-w>j')
 vim.keymap.set({ 'n', 'v' }, '<C-k>', '<C-w>k')
