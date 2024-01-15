@@ -105,6 +105,7 @@ require('lazy').setup({
   'WhoIsSethDaniel/lualine-lsp-progress',
 
   'imsnif/kdl.vim',
+  'kaarmu/typst.vim',
   'tpope/vim-fugitive',
 
   'tpope/vim-eunuch',  -- :Rename, etc.
@@ -243,6 +244,10 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+lspconfig.typst_lsp.setup {
+  capabilities = capabilities,
+  settings = { exportPdf = "onType" },
+}
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
