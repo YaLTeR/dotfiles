@@ -169,7 +169,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 vim.keymap.set('n', '<space>g', ':tab Git<CR>')
 
-require('leap').add_default_mappings()
+require('leap').create_default_mappings()
 
 require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
