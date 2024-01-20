@@ -17,12 +17,23 @@ input {
 
         repeat-delay 500
         repeat-rate 30
+
+        // track-layout "window"
     }
 
     touchpad {
         tap
+        // dwt
         natural-scroll
         accel-speed 0.2
+        // accel-profile "flat"
+        // tap-button-map "left-middle-right"
+    }
+
+    mouse {
+        // natural-scroll
+        // accel-speed -1.0
+        // accel-profile "flat"
     }
 
     tablet {
@@ -35,6 +46,7 @@ input {
 
 output "winit" {
     // scale 2.0
+    // scale 3.0
     position x=100 y=200
 }
 
@@ -51,6 +63,7 @@ output "eDP-1" {
 
 output "HDMI-A-1" {
     // off
+    // scale 2.0
 
     // position x=-1920 y=520
     // position x=2560 y=0
@@ -59,14 +72,19 @@ output "HDMI-A-1" {
     mode "2560x1440@143.912"
     // mode "2560x1440@119.998"
     // mode "1280x720@60.000"
+    // mode "2560x1440"
+    // mode "3840x2160"
 
     // position x=2000 y=-640
     // mode "2560x1440@119.998"
 }
 
 output "DP-1" {
+    // off
     position x=-1920 y=0
     mode "1920x1080@60.000"
+    // mode "800x600@72.188"
+    // mode "100x100"
 }
 output "DP-3" {
     position x=-1920 y=0
@@ -116,6 +134,9 @@ layout {
         // top 44
         // bottom 64
     }
+
+    // center-focused-column "on-overflow"
+    // center-focused-column "always"
 }
 
 cursor {
@@ -130,8 +151,16 @@ prefer-no-csd
 
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
+hotkey-overlay {
+    // skip-at-startup
+}
+
 binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
     Mod+T { spawn "alacritty"; }
+    // Mod+T { spawn "flatpak" "run" "org.gnome.Prompt.Devel" "--new-window"; }
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+H { spawn "nautilus"; }
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
@@ -172,23 +201,23 @@ binds {
     Mod+Shift+Up    { focus-monitor-up; }
     Mod+Shift+Right { focus-monitor-right; }
 
-    Mod+Shift+Ctrl+M     { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+N     { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+E     { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+I     { move-window-to-monitor-right; }
-    Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    Mod+Shift+Ctrl+Down  { move-window-to-monitor-down; }
-    Mod+Shift+Ctrl+Up    { move-window-to-monitor-up; }
-    Mod+Shift+Ctrl+Right { move-window-to-monitor-right; }
+    Mod+Shift+Ctrl+M     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+N     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+E     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+I     { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
 
     Mod+L              { focus-workspace-down; }
     Mod+U              { focus-workspace-up; }
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+Ctrl+L         { move-window-to-workspace-down; }
-    Mod+Ctrl+U         { move-window-to-workspace-up; }
-    Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-window-to-workspace-up; }
+    Mod+Ctrl+L         { move-column-to-workspace-down; }
+    Mod+Ctrl+U         { move-column-to-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
 
     Mod+Shift+L         { move-workspace-down; }
     Mod+Shift+U         { move-workspace-up; }
@@ -204,15 +233,15 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
-    Mod+Ctrl+1 { move-window-to-workspace 1; }
-    Mod+Ctrl+2 { move-window-to-workspace 2; }
-    Mod+Ctrl+3 { move-window-to-workspace 3; }
-    Mod+Ctrl+4 { move-window-to-workspace 4; }
-    Mod+Ctrl+5 { move-window-to-workspace 5; }
-    Mod+Ctrl+6 { move-window-to-workspace 6; }
-    Mod+Ctrl+7 { move-window-to-workspace 7; }
-    Mod+Ctrl+8 { move-window-to-workspace 8; }
-    Mod+Ctrl+9 { move-window-to-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
