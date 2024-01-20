@@ -124,6 +124,7 @@ require('lazy').setup({
 
   'tpope/vim-eunuch',  -- :Rename, etc.
   'tpope/vim-abolish',  -- Case conversion, :Subvert
+  'tpope/vim-sleuth',  -- Heuristic indent options
 })
 
 vim.cmd.colorscheme 'catppuccin'
