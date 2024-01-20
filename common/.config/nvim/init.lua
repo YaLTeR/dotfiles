@@ -301,7 +301,7 @@ require('luasnip.loaders.from_lua').lazy_load()
 
 vim.keymap.set('i', '<Tab>', function()
   -- Try to expand or jump, or fall back to tab
-  if luasnip.expand_or_jumpable() then
+  if luasnip.expand_or_locally_jumpable() then
     luasnip.expand_or_jump()
   else
     vim.cmd 'call feedkeys("\\<Tab>", "n")'
