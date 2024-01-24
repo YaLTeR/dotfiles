@@ -51,6 +51,8 @@ require('lazy').setup({
     end,
   },
 
+  'barreiroleo/ltex-extra.nvim',
+
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -254,7 +256,6 @@ local lspconfig = require('lspconfig')
 local servers = {
   'clangd',
   'marksman',
-  'ltex',
   'texlab',
 }
 for _, lsp in ipairs(servers) do
@@ -265,6 +266,15 @@ end
 lspconfig.typst_lsp.setup {
   capabilities = capabilities,
   settings = { exportPdf = "onType" },
+}
+lspconfig.ltex.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    require('ltex_extra').setup {
+      load_langs = { 'en-US', 'ru-RU' },
+      path = vim.fn.expand("~") .. "/.local/share/ltex",
+    }
+  end
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
