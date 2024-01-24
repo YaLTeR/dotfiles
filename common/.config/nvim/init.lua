@@ -154,6 +154,9 @@ vim.o.autoread = true  -- Auto reload files on change
 vim.o.exrc = true  -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo'  -- Spellcheck languages
 
+-- Map Russian to Colemak-DH
+vim.o.langmap = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
+
 -- Change signs to colored dots
 vim.fn.sign_define('DiagnosticSignError', { text = '●', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn',  { text = '●', texthl = 'DiagnosticSignWarn' })
