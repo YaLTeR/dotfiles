@@ -47,6 +47,7 @@ input {
 output "winit" {
     // scale 2.0
     // scale 3.0
+    // transform "flipped-90"
     position x=100 y=200
 }
 
@@ -54,16 +55,19 @@ output "eDP-1" {
     // off
 
     scale 2.0
+    // transform "90"
     position x=0 y=0
     // mode "1920x1200"
     // mode "2560x1600@60.002"
     // mode "1280x1024@165.004"
     // mode "1280x720@165.004"
+    // mode "640x480"
 }
 
 output "HDMI-A-1" {
     // off
     // scale 2.0
+    // transform "normal"
 
     // position x=-1920 y=520
     // position x=2560 y=0
