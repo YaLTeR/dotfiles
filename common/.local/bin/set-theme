@@ -4,10 +4,12 @@ if [ "$1" = "dark" ]; then
   COLOR_SCHEME="prefer-dark"
   ALACRITTY_COLORS="catppuccin_mocha"
   HELIX_THEME="catppuccin_mocha"
+  NVIM_THEME="catppuccin"
 elif [ "$1" = "light" ]; then
   COLOR_SCHEME="default"
   ALACRITTY_COLORS="github_light"
   HELIX_THEME="github_light"
+  NVIM_THEME="github_light"
 else
   exit 1
 fi
@@ -16,3 +18,4 @@ dconf write /org/gnome/desktop/interface/color-scheme "\"$COLOR_SCHEME\""
 sed -i --follow-symlinks "s/^    \"~/    # \"~/;s/^    # \(\"~.*$ALACRITTY_COLORS.toml\",\)/    \1/" ~/.config/alacritty/alacritty.toml
 sed -i --follow-symlinks "s/^\(theme =\)/# \1/;s/^# \(theme = \"$HELIX_THEME\"\)/\1/" ~/.config/helix/config.toml
 pkill -USR1 hx
+sed -i --follow-symlinks "s/^\(vim.cmd.colorscheme\)/-- \1/;s/^-- \(vim.cmd.colorscheme '$NVIM_THEME'\)/\1/" ~/.config/nvim/init.lua
