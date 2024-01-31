@@ -11,8 +11,8 @@ window#waybar {
     /* border-bottom: 2px solid rgba(147, 153, 178, 0.5); */
     /* border: 1px solid rgba(166, 173, 200, 1.0); */
     color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    /* transition-property: background-color; */
+    /* transition-duration: .5s; */
 }
 
 window#waybar.hidden {
@@ -39,16 +39,21 @@ window#waybar.chromium {
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    box-shadow: none;
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
+    transition-property: none;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    -gtk-icon-effect: none;
+    -gtk-icon-shadow: none;
 }
 
 #workspaces button {
@@ -185,6 +190,39 @@ label:focus {
     background-color: #f53c3c;
 }
 */
+
+#taskbar {
+    margin-left: 4px;
+}
+
+#taskbar button {
+    color: #f0f0ff;
+    background-color: rgba(30, 30, 46, 0.6);
+}
+
+#taskbar button:first-child {
+    border-radius: 99px 0 0 99px;
+}
+
+#taskbar button:last-child {
+    border-radius: 0 99px 99px 0;
+}
+
+#taskbar button:first-child:last-child {
+    border-radius: 99px;
+}
+
+#taskbar button:hover {
+    background-color: rgba(49, 50, 68, 0.6);
+}
+
+#taskbar button.active {
+    background-color: rgba(88, 91, 112, 0.6);
+}
+
+#taskbar button.active:hover {
+    background-color: rgba(108, 112, 134, 0.6);
+}
 
 #pulseaudio {
     background-color: #f1c40f;
