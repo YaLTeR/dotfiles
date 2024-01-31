@@ -106,8 +106,8 @@ layout {
     }
 
     border {
-        // off
-        width 3
+        off
+        width 2
         // width 128
 
         // catppuccin-mocha Peach
@@ -126,7 +126,7 @@ layout {
     default-column-width { proportion 0.3333333333333333; }
     // default-column-width { }
 
-    gaps 8
+    gaps 4
 
     struts {
         // left 64
@@ -145,7 +145,7 @@ cursor {
     // xcursor-size 48
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
