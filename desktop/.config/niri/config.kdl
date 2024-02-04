@@ -67,7 +67,7 @@ output "eDP-1" {
 output "HDMI-A-1" {
     // off
     // scale 2.0
-    // transform "normal"
+    // transform "90"
 
     // position x=-1920 y=520
     // position x=2560 y=0
@@ -213,6 +213,15 @@ binds {
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+
+    Mod+Shift+Alt+M     { move-workspace-to-monitor-left; }
+    Mod+Shift+Alt+N     { move-workspace-to-monitor-down; }
+    Mod+Shift+Alt+E     { move-workspace-to-monitor-up; }
+    Mod+Shift+Alt+I     { move-workspace-to-monitor-right; }
+    Mod+Shift+Alt+Left  { move-workspace-to-monitor-left; }
+    Mod+Shift+Alt+Down  { move-workspace-to-monitor-down; }
+    Mod+Shift+Alt+Up    { move-workspace-to-monitor-up; }
+    Mod+Shift+Alt+Right { move-workspace-to-monitor-right; }
 
     Mod+L              { focus-workspace-down; }
     Mod+U              { focus-workspace-up; }
