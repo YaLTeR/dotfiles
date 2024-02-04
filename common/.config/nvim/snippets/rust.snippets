@@ -34,6 +34,7 @@ snippet widget 'Generate GTK Widget subclass boilerplate'
 	use gtk::subclass::prelude::*;
 	
 	mod imp {
+		use glib::Properties;
 		use gtk::prelude::*;
 	
 		use super::*;
