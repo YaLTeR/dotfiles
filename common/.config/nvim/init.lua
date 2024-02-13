@@ -263,6 +263,7 @@ local servers = {
   'clangd',
   'marksman',
   'texlab',
+  'pylsp',
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
