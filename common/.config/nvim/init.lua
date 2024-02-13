@@ -40,6 +40,11 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'RRethy/nvim-base16',
+    priority = 1000,
+  },
+
   'neovim/nvim-lspconfig',
   'simrat39/rust-tools.nvim',
 
@@ -131,6 +136,7 @@ require('lazy').setup({
 
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd.colorscheme 'github_light'
+-- vim.cmd.colorscheme 'base16-classic-dark'
 
 vim.o.clipboard = 'unnamedplus'  -- Use the system clipboard
 vim.o.number = true  -- Show line numbers
