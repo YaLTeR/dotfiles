@@ -4,14 +4,14 @@
     // "position": "right",
     // "position": "left",
     // "output": "eDP-1",
-    "height": 32, // Waybar height (to be removed for auto height)
+    "height": 24, // Waybar height (to be removed for auto height)
     "margin-top": 4,
     "margin-left": 4,
     "margin-right": 4,
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["network", "wlr/taskbar"],
+    "modules-left": ["network"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory", "battery"],
     // "modules-right": ["cpu", "memory", "battery", "network", "tray"],
