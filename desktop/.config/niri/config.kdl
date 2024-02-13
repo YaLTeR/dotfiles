@@ -3,7 +3,6 @@ debug {
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
     // disable-cursor-plane
-    // animation-slowdown 3.0
     // render-drm-device "/dev/dri/renderD129"
 }
 
@@ -24,6 +23,7 @@ input {
     touchpad {
         tap
         // dwt
+        // dwtp
         natural-scroll
         accel-speed 0.2
         // accel-profile "flat"
@@ -110,7 +110,7 @@ layout {
     }
 
     border {
-        off
+        // off
         width 2
         // width 128
 
@@ -118,6 +118,9 @@ layout {
         active-color 250 179 135 255
         // catppuccin-mocha Surface2
         inactive-color 88 91 112 255
+        // catppuccin-mocha Subtext0
+        // inactive-color 166 173 200 255
+        // inactive-color 60 60 80 255
     }
 
     preset-column-widths {
@@ -149,7 +152,7 @@ cursor {
     // xcursor-size 48
 }
 
-// prefer-no-csd
+prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
@@ -157,6 +160,35 @@ cursor {
 
 hotkey-overlay {
     // skip-at-startup
+}
+
+animations {
+    // off
+    // slowdown 10.0
+
+    workspace-switch {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
+
+    horizontal-view-movement {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
+
+    window-open {
+        // off
+        // duration-ms 150
+        // curve "ease-out-expo"
+    }
+
+    config-notification-open-close {
+        // off
+        // duration-ms 250
+        // curve "ease-out-cubic"
+    }
 }
 
 binds {
@@ -167,6 +199,8 @@ binds {
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+H { spawn "nautilus"; }
+    Super+Alt+L { spawn "swaylock"; }
+
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
 
@@ -259,6 +293,9 @@ binds {
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
     Mod+R { switch-preset-column-width; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
@@ -292,7 +329,6 @@ binds {
 
     Mod+Shift+Y { quit; }
     Mod+Shift+P { power-off-monitors; }
-    Mod+Alt+L { spawn "swaylock"; }
 
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
 }
