@@ -5,6 +5,7 @@ border-color=#74c7ec
 border-radius=8
 default-timeout=5000
 font=Cantarell 12
+#output=eDP-1
 
 [urgency=high]
 layer=overlay
