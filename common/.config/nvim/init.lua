@@ -215,6 +215,12 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.spell = true
   end
 })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {'kdl'},
+  callback = function()
+    vim.opt_local.spell = true
+  end
+})
 
 local telescope = require('telescope')
 local telescope_actions = require('telescope.actions')
