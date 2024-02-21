@@ -124,6 +124,11 @@ layout {
         // catppuccin-mocha Subtext0
         // inactive-color 166 173 200 255
         // inactive-color 60 60 80 255
+
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f00" to="#0f0" angle=90
     }
 
     preset-column-widths {
