@@ -194,6 +194,27 @@ animations {
     }
 }
 
+/-window-rule {
+    match app-id="Alacritty"
+
+    open-on-output "eDP-1"
+    // default-column-width { proportion 0.5; }
+    // default-column-width {}
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id=r#"^com\.obsproject\.Studio$"#
+
+    default-column-width {}
+}
+
+window-rule {
+    match app-id="^blender$"
+
+    default-column-width { fixed 1280; }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
