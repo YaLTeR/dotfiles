@@ -127,6 +127,7 @@ require('lazy').setup({
 
   'imsnif/kdl.vim',
   'kaarmu/typst.vim',
+  'tikhomirov/vim-glsl',
   'tpope/vim-fugitive',
 
   'tpope/vim-eunuch',  -- :Rename, etc.
