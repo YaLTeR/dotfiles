@@ -5,6 +5,7 @@ debug {
     // disable-cursor-plane
     // render-drm-device "/dev/dri/renderD129"
     // enable-color-transformations-capability
+    // emulate-zero-presentation-time
 }
 
 input {
@@ -26,7 +27,7 @@ input {
         // dwt
         // dwtp
         natural-scroll
-        accel-speed 0.2
+        accel-speed 0.4
         // accel-profile "flat"
         // tap-button-map "left-middle-right"
     }
@@ -90,6 +91,7 @@ output "DP-1" {
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
+    // mode "1280x720"
 }
 output "DP-3" {
     position x=-1920 y=0
@@ -107,9 +109,9 @@ layout {
         off
         width 2
         // catppuccin-mocha Sapphire
-        active-color 116 199 236 255
+        active-color "#74c7ec"
         // catppuccin-mocha Surface2
-        inactive-color 88 91 112 255
+        inactive-color "#585b70"
     }
 
     border {
@@ -118,17 +120,18 @@ layout {
         // width 128
 
         // catppuccin-mocha Peach
-        active-color 250 179 135 255
+        active-color "#fab387"
         // catppuccin-mocha Surface2
-        inactive-color 88 91 112 255
-        // catppuccin-mocha Subtext0
-        // inactive-color 166 173 200 255
-        // inactive-color 60 60 80 255
+        inactive-color "#585b70"
 
         active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#f00" to="#0f0" angle=90
+
+        // active-gradient from="yellow" to="red" angle=45
+        // inactive-gradient from="yellow" to="red" angle=45
     }
 
     preset-column-widths {
@@ -164,6 +167,11 @@ prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
+environment {
+    // GSK_RENDERER "cairo"
+    // WAYLAND_DISPLAY null
+}
+
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 hotkey-overlay {
@@ -178,33 +186,53 @@ animations {
         // off
         // duration-ms 250
         // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
 
     horizontal-view-movement {
         // off
         // duration-ms 250
         // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=800.0 epsilon=0.00001
     }
 
     window-open {
         // off
         // duration-ms 150
         // curve "ease-out-expo"
+        spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
     }
 
     config-notification-open-close {
         // off
         // duration-ms 250
         // curve "ease-out-cubic"
+        // spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
     }
 }
 
-/-window-rule {
+window-rule {
     match app-id="Alacritty"
 
-    open-on-output "eDP-1"
+    // open-on-output "eDP-1"
     // default-column-width { proportion 0.5; }
+    // default-column-width { fixed 400; }
     // default-column-width {}
+    // open-maximized true
+    // open-fullscreen true
+}
+
+// window-rule {
+    // match app-id="mpv"
+    // open-on-output "HDMI-A-1"
+    // open-maximized true
+    // default-column-width { proportion 0.5; }
+    // open-fullscreen false
+// }
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+    open-fullscreen false
 }
 
 window-rule {
@@ -216,19 +244,41 @@ window-rule {
 
 window-rule {
     match app-id="^blender$"
+    match app-id="^gimp"
+    default-column-width { fixed 1200; }
+}
 
-    default-column-width { fixed 1280; }
+window-rule {
+    match app-id="^obsidian$"
+    default-column-width { fixed 1000; }
+}
+
+window-rule {
+    match app-id=r#"^org\.mozilla\.firefox$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+
+    open-on-output "HDMI-A-1"
+}
+
+window-rule {
+    match app-id=r#"^org\.mozilla\.firefox$"#
+
+    default-column-width { proportion 0.66667; }
 }
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "alacritty"; }
-    // Mod+T { spawn "flatpak" "run" "org.gnome.Prompt.Devel" "--new-window"; }
+    // Mod+Return { spawn "~/arst"; }
+    // Mod+T { spawn "flatpak" "run" "org.gnome.Ptyxis.Devel" "-s"; }
+    // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+H { spawn "nautilus"; }
     Super+Alt+L { spawn "swaylock"; }
+
+    Mod+W { spawn "sh" "-c" "t mpv $(wl-paste)"; }
 
     XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
