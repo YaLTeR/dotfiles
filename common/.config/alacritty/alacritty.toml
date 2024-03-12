@@ -11,8 +11,11 @@ import = [
 ]
 
 [window]
-# dimensions = { columns = 120, lines = 36 }
+# dimensions = { columns = 120, lines = 76 }
+# dimensions = { columns = 360, lines = 76 }
 # padding = { x = 1, y = 1 }
+# padding = { x = 9, y = 14 }
+# dynamic_padding = true
 opacity = 0.95
 # startup_mode = "Fullscreen"
 
@@ -25,6 +28,7 @@ size = 10.5
 # size = 12
 # size = 16
 # size = 20
+# size = 30
 # normal.family = "IosevkaTerm NFM Medium"
 # normal.family = "Iosevka Term Medium Extended"
 # builtin_box_drawing = false
