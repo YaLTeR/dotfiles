@@ -5,3 +5,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+[merge]
+	conflictStyle = zdiff3
+[rerere]
+	enabled = true
