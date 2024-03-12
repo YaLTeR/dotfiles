@@ -41,12 +41,17 @@ require('lazy').setup({
   },
 
   {
-    'RRethy/nvim-base16',
+    'RRethy/base16-nvim',
     priority = 1000,
   },
 
   'neovim/nvim-lspconfig',
-  'simrat39/rust-tools.nvim',
+
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+    ft = { 'rust' },
+  },
 
   {
     'saecki/crates.nvim', version = '*',
@@ -138,6 +143,7 @@ require('lazy').setup({
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd.colorscheme 'github_light'
 -- vim.cmd.colorscheme 'base16-classic-dark'
+-- vim.cmd.colorscheme 'alacritty'
 
 vim.o.clipboard = 'unnamedplus'  -- Use the system clipboard
 vim.o.number = true  -- Show line numbers
@@ -162,6 +168,7 @@ vim.o.sidescrolloff = 5
 vim.o.autoread = true  -- Auto reload files on change
 vim.o.exrc = true  -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo'  -- Spellcheck languages
+-- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
 -- Map Russian to Colemak-DH
 vim.o.langmap = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
@@ -372,15 +379,10 @@ cmp.setup {
 }
 
 -- Rust LSP
-local rt = require('rust-tools')
-rt.setup({
+vim.g.rustaceanvim = {
   tools = {
-    inlay_hints = {
-      auto = false,
-    },
   },
   server = {
-    capabilities = capabilities,
     settings = {
       ['rust-analyzer'] = {
         check = { command = 'clippy' },
@@ -439,4 +441,4 @@ rt.setup({
       }
     }
   },
-})
+}
