@@ -8,7 +8,7 @@
     "margin-top": 4,
     "margin-left": 4,
     "margin-right": 4,
-    // "width": 1280, // Waybar width
+    // "width": 300, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["network", "wlr/taskbar"],
@@ -32,6 +32,11 @@
     //         "default": ""
     //     }
     // },
+    "custom/logout": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "niri msg action quit"
+    },
     "wlr/taskbar": {
         // "all-outputs": true,
         // "format": "{icon} {title} {short_state}",
