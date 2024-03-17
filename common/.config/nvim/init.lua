@@ -128,7 +128,7 @@ require('lazy').setup({
   'nvim-telescope/telescope-ui-select.nvim',  -- Telescope for native pickers such as LSP code actions
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  'WhoIsSethDaniel/lualine-lsp-progress',
+  { 'j-hui/fidget.nvim', opts = {} },
 
   'imsnif/kdl.vim',
   'kaarmu/typst.vim',
