@@ -163,6 +163,7 @@ label:focus {
     /* color: #000000; */
     border-radius: 99px 0px 0px 99px;
     padding: 0 0 0 10px;
+    margin-left: 4px;
 }
 
 #memory {
@@ -266,7 +267,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    /* background-color: #2980b9; */
 }
 
 #tray > .passive {
