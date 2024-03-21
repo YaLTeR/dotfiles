@@ -28,6 +28,7 @@ input {
         // dwtp
         natural-scroll
         accel-speed 0.4
+        // click-method "clickfinger"
         // accel-profile "flat"
         // tap-button-map "left-middle-right"
     }
@@ -44,6 +45,9 @@ input {
     }
 
     // disable-power-key-handling
+    warp-mouse-to-focus
+    focus-follows-mouse
+    // workspace-auto-back-and-forth
 }
 
 output "winit" {
@@ -95,7 +99,7 @@ output "DP-1" {
 }
 output "DP-3" {
     position x=-1920 y=0
-    mode "1920x1080@60.000"
+    // mode "1920x1080@60.000"
 
     // transform "90"
 }
@@ -200,7 +204,7 @@ animations {
         // off
         // duration-ms 150
         // curve "ease-out-expo"
-        spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+        // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
     }
 
     config-notification-open-close {
@@ -220,26 +224,40 @@ window-rule {
     // default-column-width {}
     // open-maximized true
     // open-fullscreen true
+
+    // min-width 400
+    // max-width 400
+    // min-height 400
+    // max-height 400
+
+    // draw-border-with-background true
+    // draw-border-with-background false
 }
 
-// window-rule {
+window-rule {
+    // draw-border-with-background false
     // match app-id="mpv"
     // open-on-output "HDMI-A-1"
     // open-maximized true
     // default-column-width { proportion 0.5; }
     // open-fullscreen false
-// }
+}
 
 window-rule {
     match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
     open-fullscreen false
+    default-column-width { proportion 0.5; }
 }
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    match app-id=r#"^com\.obsproject\.Studio$"#
-
     default-column-width {}
+}
+
+// Qt used by OBS doesn't signal min size yet, so do it manually.
+window-rule {
+    match app-id=r#"^com\.obsproject\.Studio$"#
+    min-width 876
 }
 
 window-rule {
@@ -256,6 +274,7 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"#
     match app-id=r#"^org\.telegram\.desktop$"#
+    exclude app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
 
     open-on-output "HDMI-A-1"
 }
@@ -369,6 +388,8 @@ binds {
     Mod+Ctrl+7 { move-column-to-workspace 7; }
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    // Mod+Tab { focus-workspace-previous; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
