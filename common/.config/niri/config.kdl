@@ -1,9 +1,12 @@
 debug {
+    // preview-render "screencast"
+    // preview-render "screen-capture"
     // dbus-interfaces-in-non-session-instances
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
     // disable-cursor-plane
     // render-drm-device "/dev/dri/renderD129"
+    // render-drm-device "/dev/dri/card1"
     // enable-color-transformations-capability
     // emulate-zero-presentation-time
 }
@@ -81,6 +84,7 @@ output "HDMI-A-1" {
     position x=1280 y=-640
     mode "2560x1440@143.912"
     // mode "2560x1440@119.998"
+    // mode "2560x1440@48.002"
     // mode "1280x720@60.000"
     // mode "2560x1440"
     // mode "3840x2160"
@@ -143,6 +147,7 @@ layout {
         proportion 0.5
         proportion 0.66667
         // proportion 0.25
+        // fixed 1000
     }
 
     default-column-width { proportion 0.3333333333333333; }
@@ -217,6 +222,7 @@ animations {
 
 window-rule {
     match app-id="Alacritty"
+    // opacity 0.5
 
     // open-on-output "eDP-1"
     // default-column-width { proportion 0.5; }
@@ -236,11 +242,26 @@ window-rule {
 
 window-rule {
     // draw-border-with-background false
+    // min-width 128
+    // max-width 128
+    // min-height 128
+    // max-height 128
+    // match is-focused=true
+    // match is-active=false
+    // opacity 0.9
+    // block-out-from "screencast"
+    // block-out-from "screen-capture"
+    // min-width 1000
     // match app-id="mpv"
     // open-on-output "HDMI-A-1"
     // open-maximized true
     // default-column-width { proportion 0.5; }
     // open-fullscreen false
+}
+
+window-rule {
+    match is-active=false
+    // opacity 0.95
 }
 
 window-rule {
@@ -251,6 +272,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="^mpv$"
     default-column-width {}
 }
 
@@ -283,6 +305,19 @@ window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"#
 
     default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+
+    // Doesn't quite work: Firefox changes the title one frame early.
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME \* \| "#
+    match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
+
+    block-out-from "screencast"
+    // block-out-from "screen-capture"
 }
 
 binds {
@@ -364,6 +399,26 @@ binds {
     Mod+Ctrl+U         { move-column-to-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+    Mod+WheelScrollDown            cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp              cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown       cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp         cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight           { focus-column-right; }
+    Mod+WheelScrollLeft            { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight      { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft       { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Mod+TouchpadScrollLeft  { focus-column-left; }
+    // Mod+TouchpadScrollRight { focus-column-right; }
 
     Mod+Shift+L         { move-workspace-down; }
     Mod+Shift+U         { move-workspace-up; }
