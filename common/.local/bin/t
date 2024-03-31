@@ -6,4 +6,4 @@ else
     command="$(printf "%q " "$@")"
 fi
 
-exec toolbox run -c fedora-toolbox-39 bash -ic "$command"
+exec toolbox run -c fedora-toolbox-40 bash -ic "$command"
