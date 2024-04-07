@@ -323,16 +323,23 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+T { spawn "alacritty"; }
+    Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
+    Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
+
+    Mod+T { spawn "alacritty" "-e" "fish" "-C" "t"; }
+    // Mod+Shift+T { spawn "alacritty"; }
     // Mod+Return { spawn "~/arst"; }
     // Mod+T { spawn "flatpak" "run" "org.gnome.Ptyxis.Devel" "-s"; }
     // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    // Mod+T { spawn "kgx" "-e" "fish -C t"; }
     Mod+D { spawn "fuzzel"; }
     Mod+H { spawn "nautilus"; }
     Super+Alt+L { spawn "swaylock"; }
 
     Mod+W { spawn "sh" "-c" "t mpv $(wl-paste)"; }
+    Super+Alt+H     { spawn "refresh.sh" "144"; }
+    Super+Alt+Comma { spawn "refresh.sh" "120"; }
 
     XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
