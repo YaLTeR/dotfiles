@@ -13,7 +13,7 @@ import = [
 [window]
 # dimensions = { columns = 120, lines = 76 }
 # dimensions = { columns = 360, lines = 76 }
-# padding = { x = 1, y = 1 }
+padding = { x = 2, y = 2 }
 # padding = { x = 9, y = 14 }
 # dynamic_padding = true
 opacity = 0.95
