@@ -2,8 +2,8 @@ shell.program = "/usr/bin/fish"
 hints.alphabet = "ntesiroahdlpufywc.x;q/z"
 
 import = [
-    "~/.config/alacritty/catppuccin_mocha.toml",
-    # "~/.config/alacritty/github_light.toml",
+    # "~/.config/alacritty/catppuccin_mocha.toml",
+    "~/.config/alacritty/github_light.toml",
     # "~/.config/alacritty/adwaita_dark.toml",
     # "~/.config/alacritty/github_dark.toml",
 
@@ -11,12 +11,14 @@ import = [
 ]
 
 [window]
-# dimensions = { columns = 120, lines = 76 }
-# dimensions = { columns = 360, lines = 76 }
+# dimensions = { columns = 120, lines = 74 }
+# dimensions = { columns = 300, lines = 74 }
+# dimensions = { columns = 42, lines = 26 }
 padding = { x = 2, y = 2 }
 # padding = { x = 9, y = 14 }
 # dynamic_padding = true
 opacity = 0.95
+# opacity = 0.5
 # startup_mode = "Fullscreen"
 
 [colors]
