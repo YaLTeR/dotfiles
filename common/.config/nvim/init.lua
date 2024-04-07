@@ -128,11 +128,18 @@ require('lazy').setup({
   'nvim-telescope/telescope-ui-select.nvim',  -- Telescope for native pickers such as LSP code actions
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  { 'j-hui/fidget.nvim', opts = {} },
+  { 'j-hui/fidget.nvim', opts = { progress = { ignore = { 'ltex' } } } },
 
   'imsnif/kdl.vim',
   'kaarmu/typst.vim',
   'tikhomirov/vim-glsl',
+  {
+    'preservim/vim-markdown',
+    config = function()
+      vim.g.vim_markdown_folding_disabled = 1
+      vim.g.vim_markdown_no_default_key_mappings = 1
+    end,
+  },
   'tpope/vim-fugitive',
 
   'tpope/vim-eunuch',  -- :Rename, etc.
@@ -278,6 +285,7 @@ local servers = {
   'marksman',
   'texlab',
   'pylsp',
+  'bashls',
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
