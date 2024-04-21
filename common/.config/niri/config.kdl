@@ -4,7 +4,7 @@ debug {
     // dbus-interfaces-in-non-session-instances
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
-    // disable-cursor-plane
+    disable-cursor-plane
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/card1"
     // enable-color-transformations-capability
@@ -44,12 +44,12 @@ input {
 
     tablet {
         // map-to-output "eDP-1"
-        map-to-output "HDMI-A-1"
+        // map-to-output "HDMI-A-1"
     }
 
     // disable-power-key-handling
-    warp-mouse-to-focus
-    focus-follows-mouse
+    // warp-mouse-to-focus
+    // focus-follows-mouse
     // workspace-auto-back-and-forth
 }
 
@@ -71,6 +71,8 @@ output "eDP-1" {
     // mode "1280x1024"
     // mode "1280x720"
     // mode "640x480"
+
+    // variable-refresh-rate
 }
 
 output "HDMI-A-1" {
@@ -80,26 +82,28 @@ output "HDMI-A-1" {
 
     // position x=-1920 y=520
     // position x=2560 y=0
+    position x=-1920 y=0
 
-    position x=1280 y=-640
-    mode "2560x1440@143.912"
+    // position x=1280 y=-640
+    // mode "2560x1440@143.912"
     // mode "2560x1440@119.998"
     // mode "2560x1440@48.002"
     // mode "1280x720@60.000"
     // mode "2560x1440"
     // mode "3840x2160"
 
-    // position x=2000 y=-640
-    // mode "2560x1440@119.998"
+    // variable-refresh-rate
 }
 
 output "DP-1" {
     // off
-    position x=-1920 y=0
+    // position x=-1920 y=0
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
     // mode "1280x720"
+
+    // variable-refresh-rate
 }
 output "DP-3" {
     position x=-1920 y=0
@@ -109,7 +113,13 @@ output "DP-3" {
 }
 
 output "DP-2" {
+    // off
+
+    position x=1280 y=-640
     // mode "3440x1440@99.982"
+    // mode "2560x1440@119.998"
+
+    variable-refresh-rate
 }
 
 layout {
@@ -127,13 +137,11 @@ layout {
         width 2
         // width 128
 
-        // catppuccin-mocha Peach
-        active-color "#fab387"
-        // catppuccin-mocha Surface2
+        active-color "#f38ba8"
         inactive-color "#585b70"
 
-        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#f00" to="#0f0" angle=90
@@ -190,38 +198,65 @@ hotkey-overlay {
 animations {
     // off
     // slowdown 10.0
+    // slowdown 4.0
+    // slowdown 2.0
 
     workspace-switch {
         // off
-        // duration-ms 250
+        // duration-ms 2500
         // curve "ease-out-cubic"
         // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
 
-    horizontal-view-movement {
-        // off
-        // duration-ms 250
-        // curve "ease-out-cubic"
-        // spring damping-ratio=1.0 stiffness=800.0 epsilon=0.00001
-    }
-
     window-open {
         // off
-        // duration-ms 150
+        // duration-ms 2500
         // curve "ease-out-expo"
+        spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+    }
+
+    window-close {
+        // off
+        // duration-ms 2500
+        // curve "ease-out-cubic"
         // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+    }
+
+    horizontal-view-movement {
+        // off
+        // duration-ms 500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
+        // spring damping-ratio=10.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        // off
+        // duration-ms 750
+        // curve "ease-out-cubic"
+        // spring damping-ratio=1.0 stiffness=20 epsilon=0.00001
+        // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        // off
+        // duration-ms 500
+        // duration-ms 2500
+        // curve "ease-out-cubic"
+        // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
     }
 
     config-notification-open-close {
         // off
         // duration-ms 250
         // curve "ease-out-cubic"
-        // spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+        // spring damping-ratio=0.1 stiffness=1000 epsilon=0.001
     }
 }
 
 window-rule {
     match app-id="Alacritty"
+    // match app-id="Adwaita"
     // opacity 0.5
 
     // open-on-output "eDP-1"
@@ -230,6 +265,7 @@ window-rule {
     // default-column-width {}
     // open-maximized true
     // open-fullscreen true
+    // block-out-from "screencast"
 
     // min-width 400
     // max-width 400
@@ -241,7 +277,7 @@ window-rule {
 }
 
 window-rule {
-    // draw-border-with-background false
+    match title="simple-egl"
     // min-width 128
     // max-width 128
     // min-height 128
@@ -252,6 +288,7 @@ window-rule {
     // block-out-from "screencast"
     // block-out-from "screen-capture"
     // min-width 1000
+    draw-border-with-background false
     // match app-id="mpv"
     // open-on-output "HDMI-A-1"
     // open-maximized true
@@ -298,7 +335,7 @@ window-rule {
     match app-id=r#"^org\.telegram\.desktop$"#
     exclude app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
 
-    open-on-output "HDMI-A-1"
+    open-on-output "DP-2"
 }
 
 window-rule {
@@ -315,6 +352,7 @@ window-rule {
     // Doesn't quite work: Firefox changes the title one frame early.
     match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME \* \| "#
     match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"Discord \| "#
 
     block-out-from "screencast"
     // block-out-from "screen-capture"
@@ -326,8 +364,10 @@ binds {
     Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
     Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
 
-    Mod+T { spawn "alacritty" "-e" "fish" "-C" "t"; }
-    // Mod+Shift+T { spawn "alacritty"; }
+    // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
+    Mod+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
+    Mod+Shift+T { spawn "alacritty"; }
+    // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
     // Mod+T { spawn "flatpak" "run" "org.gnome.Ptyxis.Devel" "-s"; }
     // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
@@ -335,15 +375,16 @@ binds {
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
     Mod+D { spawn "fuzzel"; }
     Mod+H { spawn "nautilus"; }
-    Super+Alt+L { spawn "swaylock"; }
+    Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
 
-    Mod+W { spawn "sh" "-c" "t mpv $(wl-paste)"; }
+    Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
     Super+Alt+H     { spawn "refresh.sh" "144"; }
     Super+Alt+Comma { spawn "refresh.sh" "120"; }
 
-    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
@@ -422,8 +463,8 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
-    Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    Mod+TouchpadScrollUp   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    Mod+TouchpadScrollDown allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
     // Mod+TouchpadScrollLeft  { focus-column-left; }
     // Mod+TouchpadScrollRight { focus-column-right; }
 
