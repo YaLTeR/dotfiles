@@ -147,8 +147,9 @@ require('lazy').setup({
   'tpope/vim-sleuth',  -- Heuristic indent options
 })
 
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'catppuccin-mocha'
 -- vim.cmd.colorscheme 'github_light'
+-- vim.cmd.colorscheme 'catppuccin-latte'
 -- vim.cmd.colorscheme 'base16-classic-dark'
 -- vim.cmd.colorscheme 'alacritty'
 

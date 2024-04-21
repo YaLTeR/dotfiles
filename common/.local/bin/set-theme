@@ -2,9 +2,9 @@
 
 if [ "$1" = "dark" ]; then
   COLOR_SCHEME="prefer-dark"
-  ALACRITTY_COLORS="catppuccin_mocha"
+  ALACRITTY_COLORS="catppuccin-mocha"
   HELIX_THEME="catppuccin_mocha"
-  NVIM_THEME="catppuccin"
+  NVIM_THEME="catppuccin-mocha"
 elif [ "$1" = "light" ]; then
   COLOR_SCHEME="default"
   ALACRITTY_COLORS="github_light"

@@ -2,8 +2,9 @@ shell.program = "/usr/bin/fish"
 hints.alphabet = "ntesiroahdlpufywc.x;q/z"
 
 import = [
-    # "~/.config/alacritty/catppuccin_mocha.toml",
-    "~/.config/alacritty/github_light.toml",
+    "~/.config/alacritty/catppuccin-mocha.toml",
+    # "~/.config/alacritty/catppuccin-latte.toml",
+    # "~/.config/alacritty/github_light.toml",
     # "~/.config/alacritty/adwaita_dark.toml",
     # "~/.config/alacritty/github_dark.toml",
 
@@ -28,6 +29,7 @@ transparent_background_colors = true
 size = 10.5
 # size = 11
 # size = 12
+# size = 14
 # size = 16
 # size = 20
 # size = 30
