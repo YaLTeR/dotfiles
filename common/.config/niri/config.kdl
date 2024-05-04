@@ -5,6 +5,7 @@ debug {
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
     disable-cursor-plane
+    // disable-direct-scanout
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/card1"
     // enable-color-transformations-capability
@@ -91,6 +92,7 @@ output "HDMI-A-1" {
     // mode "1280x720@60.000"
     // mode "2560x1440"
     // mode "3840x2160"
+    // mode "1920x1080@23.976"
 
     // variable-refresh-rate
 }
@@ -130,6 +132,8 @@ layout {
         active-color "#74c7ec"
         // catppuccin-mocha Surface2
         inactive-color "#585b70"
+
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
     }
 
     border {
@@ -137,16 +141,16 @@ layout {
         width 2
         // width 128
 
-        active-color "#f38ba8"
-        inactive-color "#585b70"
+        // active-color "#f38ba8"
+        // inactive-color "#585b70"
 
-        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
-        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#f00" to="#0f0" angle=90
 
-        // active-gradient from="yellow" to="red" angle=45
+        // active-gradient from="yellow" to="red" angle=45 relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
     }
 
@@ -168,6 +172,7 @@ layout {
         // right 64
         // top 44
         // bottom 64
+        // top 64
     }
 
     // center-focused-column "on-overflow"
@@ -200,6 +205,7 @@ animations {
     // slowdown 10.0
     // slowdown 4.0
     // slowdown 2.0
+    // slowdown 1.5
 
     workspace-switch {
         // off
@@ -212,7 +218,7 @@ animations {
         // off
         // duration-ms 2500
         // curve "ease-out-expo"
-        spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+        // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
     }
 
     window-close {
@@ -244,6 +250,50 @@ animations {
         // duration-ms 2500
         // curve "ease-out-cubic"
         // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
+
+        custom-shader r"
+            vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+                vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
+                vec3 coords_prev_geo = niri_curr_geo_to_prev_geo * coords_curr_geo;
+
+                vec3 coords_crop = niri_geo_to_tex_next * coords_next_geo;
+                vec3 coords_stretch = niri_geo_to_tex_next * coords_curr_geo;
+                vec3 coords_stretch_prev = niri_geo_to_tex_prev * coords_curr_geo;
+
+                // We can crop if the current window size is smaller than the next window
+                // size. One way to tell is by comparing to 1.0 the X and Y scaling
+                // coefficients in the current-to-next transformation matrix.
+                bool can_crop_by_x = niri_curr_geo_to_next_geo[0][0] <= 1.0;
+                bool can_crop_by_y = niri_curr_geo_to_next_geo[1][1] <= 1.0;
+                bool crop = can_crop_by_x && can_crop_by_y;
+
+                vec4 color;
+
+                if (crop) {
+                    // However, when we crop, we also want to crop out anything outside the
+                    // current geometry. This is because the area of the shader is unspecified
+                    // and usually bigger than the current geometry, so if we don't fill pixels
+                    // outside with transparency, the texture will leak out.
+                    //
+                    // When stretching, this is not an issue because the area outside will
+                    // correspond to client-side decoration shadows, which are already supposed
+                    // to be outside.
+                    if (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x ||
+                            coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y) {
+                        color = vec4(0.0);
+                    } else {
+                        color = texture2D(niri_tex_next, coords_crop.st);
+                    }
+                } else {
+                    // If we can't crop, then crossfade.
+                    color = texture2D(niri_tex_next, coords_stretch.st);
+                    vec4 color_prev = texture2D(niri_tex_prev, coords_stretch_prev.st);
+                    color = mix(color_prev, color, niri_clamped_progress);
+                }
+
+                return color;
+            }
+        "
     }
 
     config-notification-open-close {
@@ -255,9 +305,11 @@ animations {
 }
 
 window-rule {
-    match app-id="Alacritty"
+    // match app-id="Alacritty"
     // match app-id="Adwaita"
+    // opacity 0.9
     // opacity 0.5
+    // opacity 0.98
 
     // open-on-output "eDP-1"
     // default-column-width { proportion 0.5; }
@@ -272,9 +324,76 @@ window-rule {
     // min-height 400
     // max-height 400
 
+    focus-ring {
+        // on
+        // active-gradient from="red" to="green"
+        // active-color "lightgreen"
+        // width 1
+    }
+
+    border {
+        // off
+        // on
+        // width 12
+        // width 0
+        // active-color "#ff808080"
+        // active-color "red"
+    }
+
     // draw-border-with-background true
     // draw-border-with-background false
+
+    // geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    // geometry-corner-radius 1
+    geometry-corner-radius 6
+    clip-to-geometry true
 }
+
+/-window-rule {
+    match app-id="Adwaita"
+    // opacity 0.5
+    block-out-from "screencast"
+    geometry-corner-radius 12
+    clip-to-geometry false
+    border {
+        // off
+        width 12
+    }
+}
+
+/-window-rule {
+    match app-id="terminal"
+    clip-to-geometry false
+    geometry-corner-radius 8 8 0 0
+    border {
+        // width 4
+    }
+}
+
+/-window-rule {
+    match app-id="code"
+    // opacity 0.98
+    border {
+        // off
+    }
+}
+
+/-window-rule {
+    match app-id="weston."
+    // block-out-from "screencast"
+    geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    clip-to-geometry true
+}
+
+// window-rule {
+//     match app-id="Alacritty"
+//     geometry-corner-radius 12 12 0 0
+//     border {
+//         width 2
+//     }
+// }
 
 window-rule {
     match title="simple-egl"
@@ -350,12 +469,19 @@ window-rule {
     match app-id=r#"^org\.telegram\.desktop$"#
 
     // Doesn't quite work: Firefox changes the title one frame early.
-    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME \* \| "#
     match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
+    match app-id=r#"^org\.mozilla\.firefox$"# title="^Google Calendar "
+    match app-id=r#"^org\.mozilla\.firefox$"# title="Todoist "
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME( \*)? \| "#
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^Element "#
     match app-id=r#"^org\.mozilla\.firefox$"# title=r#"Discord \| "#
 
     block-out-from "screencast"
     // block-out-from "screen-capture"
+
+    border {
+        // active-color "red"
+    }
 }
 
 binds {
@@ -535,4 +661,6 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
+    Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
+    Mod+Shift+Ctrl+D { debug-toggle-damage; }
 }
