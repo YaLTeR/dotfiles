@@ -1,13 +1,13 @@
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    // "position": "right",
+    "position": "right",
     // "position": "left",
     // "output": "eDP-1",
-    "height": 32, // Waybar height (to be removed for auto height)
-    "margin-top": 4,
-    "margin-left": 4,
-    "margin-right": 4,
+    // "height": 32, // Waybar height (to be removed for auto height)
+    //"margin-top": 4,
+    //"margin-left": 4,
+    //"margin-bottom": 4,
     // "width": 300, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -104,14 +104,15 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%e %B %H:%M}"
+        // "format": "{:%e %B %H:%M}"
+        "format": "{:%e\n%m\n\n<b>%H\n%M</b>}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -132,9 +133,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format": "{capacity}",
+        "format-charging": "{capacity}",
+        "format-plugged": "{capacity}",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",

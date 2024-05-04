@@ -7,12 +7,18 @@
 
 window#waybar {
     background: transparent;
-    /* background-color: rgba(30, 30, 46, 0.5); */
+    background-color: rgba(30, 30, 46, 1.0);
+    border-left: 1px solid #6c7086;
+    /* background-color: black; */
     /* border-bottom: 2px solid rgba(147, 153, 178, 0.5); */
     /* border: 1px solid rgba(166, 173, 200, 1.0); */
     color: #ffffff;
     /* transition-property: background-color; */
     /* transition-duration: .5s; */
+}
+
+window#waybar > box {
+    /* padding: 4px 0; */
 }
 
 window#waybar.hidden {
@@ -44,6 +50,7 @@ button {
     border: none;
     border-radius: 0;
     transition-property: none;
+    /* padding: 10px 0; */
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -96,15 +103,16 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-    padding: 0 10px;
+    /* padding: 0 10px; */
     color: #f0f0ff;
-    background-color: rgba(30, 30, 46, 0.6);
-    border-radius: 99px;
+    /* background-color: rgba(255, 30, 46, 1.0); */
+    /* border-radius: 99px; */
+    padding: 8px 8px;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    /* margin: 0 4px; */
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -119,15 +127,17 @@ button:hover {
 
 #clock {
     /* background-color: #64727D; */
-    font-weight: bold;
+    /* font-weight: bold; */
     /* background-color: rgba(0, 0, 0, 0.3); */
     /* border-radius: 99px; */
 }
 
 #battery {
-    /* background-color: #f9e2af; */
+    /* background-color: #585b70; */
+    background-color: #313244;
+    border-left: 1px solid #6c7086;
     /* color: #000000; */
-    margin-left: 4px;
+    /* margin-top: 4px; */
 }
 
 /*
@@ -159,17 +169,20 @@ label:focus {
 }
 
 #cpu {
-    /* background-color: #f38ba8; */
+    background-color: #313244;
+    border-left: 1px solid #6c7086;
     /* color: #000000; */
-    border-radius: 99px 0px 0px 99px;
-    padding: 0 0 0 10px;
-    margin-left: 4px;
+    /* border-radius: 99px 99px 0px 0px; */
+    /* padding: 10px 0 0 0; */
+    /* margin-top: 4px; */
 }
 
 #memory {
-    /* background-color: #fab387; */
+    /* background-color: #45475a; */
+    background-color: #313244;
+    border-left: 1px solid #6c7086;
     /* color: #000000; */
-    border-radius: 0px 99px 99px 0px;
+    /* border-radius: 0px 99px 99px 0px; */
     /* padding: 0 10px 0 0; */
 }
 
@@ -193,36 +206,38 @@ label:focus {
 */
 
 #taskbar {
-    margin-left: 4px;
+    /* margin-left: 4px; */
 }
 
 #taskbar button {
     color: #f0f0ff;
-    background-color: rgba(30, 30, 46, 0.6);
+    padding: 8px 8px 0 8px;
+    /* background-color: rgba(30, 30, 46, 1.0); */
+    /* padding: 0; */
 }
 
 #taskbar button:first-child {
-    border-radius: 99px 0 0 99px;
+    /* border-radius: 99px 0 0 99px; */
 }
 
 #taskbar button:last-child {
-    border-radius: 0 99px 99px 0;
+    /* border-radius: 0 99px 99px 0; */
 }
 
 #taskbar button:first-child:last-child {
-    border-radius: 99px;
+    /* border-radius: 99px; */
 }
 
 #taskbar button:hover {
-    background-color: rgba(49, 50, 68, 0.6);
+    background-color: rgba(49, 50, 68, 1.0);
 }
 
 #taskbar button.active {
-    background-color: rgba(88, 91, 112, 0.6);
+    background-color: rgba(88, 91, 112, 1.0);
 }
 
 #taskbar button.active:hover {
-    background-color: rgba(108, 112, 134, 0.6);
+    background-color: rgba(108, 112, 134, 1.0);
 }
 
 #pulseaudio {
