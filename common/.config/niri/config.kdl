@@ -43,6 +43,12 @@ input {
         // accel-profile "flat"
     }
 
+    trackpoint {
+        // natural-scroll
+        // accel-speed -1.0
+        // accel-profile "flat"
+    }
+
     tablet {
         // map-to-output "eDP-1"
         // map-to-output "HDMI-A-1"
