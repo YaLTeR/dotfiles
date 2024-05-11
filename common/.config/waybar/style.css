@@ -102,7 +102,8 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
-#mpd {
+#mpd,
+#custom-style {
     /* padding: 0 10px; */
     color: #f0f0ff;
     /* background-color: rgba(255, 30, 46, 1.0); */
@@ -212,6 +213,7 @@ label:focus {
 #taskbar button {
     color: #f0f0ff;
     padding: 8px 8px 0 8px;
+    border-left: 1px solid #6c7086;
     /* background-color: rgba(30, 30, 46, 1.0); */
     /* padding: 0; */
 }
@@ -238,6 +240,14 @@ label:focus {
 
 #taskbar button.active:hover {
     background-color: rgba(108, 112, 134, 1.0);
+}
+
+#custom-style {
+    border-left: 1px solid #6c7086;
+}
+
+#custom-style:hover {
+    background-color: rgba(49, 50, 68, 1.0);
 }
 
 #pulseaudio {

@@ -32,6 +32,11 @@
     //         "default": ""
     //     }
     // },
+    "custom/style": {
+        "format": "S",
+        "tooltip": false,
+        "on-click": "set-theme"
+    },
     "custom/logout": {
         "format": "⏻",
         "tooltip": false,
@@ -151,7 +156,7 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "",
         "format-disconnected": "⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
