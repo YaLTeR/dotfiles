@@ -151,6 +151,7 @@ layout {
         // inactive-color "#585b70"
 
         active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
@@ -357,24 +358,45 @@ window-rule {
 }
 
 /-window-rule {
+    match is-active-in-column=false
+
+    min-height 100
+    max-height 100
+}
+
+window-rule {
     match app-id="Adwaita"
     // opacity 0.5
-    block-out-from "screencast"
+    // block-out-from "screencast"
     geometry-corner-radius 12
+    // geometry-corner-radius 0 0 8 8
     clip-to-geometry false
     border {
         // off
         width 12
+        // width 2
+    }
+}
+
+window-rule {
+    match app-id="terminal"
+    // opacity 0.5
+    // block-out-from "screen-capture"
+    clip-to-geometry false
+    geometry-corner-radius 8 8 0 0
+    border {
+        // width 24
     }
 }
 
 /-window-rule {
-    match app-id="terminal"
-    clip-to-geometry false
-    geometry-corner-radius 8 8 0 0
-    border {
-        // width 4
-    }
+    match title="~/source"
+    geometry-corner-radius 12 24 32 64
+}
+
+/-window-rule {
+    match title="presentation-shm"
+    geometry-corner-radius 999
 }
 
 /-window-rule {
@@ -486,8 +508,12 @@ window-rule {
     // block-out-from "screen-capture"
 
     border {
+        // off
         // active-color "red"
     }
+
+    // clip-to-geometry false
+    // geometry-corner-radius 12
 }
 
 binds {
@@ -501,6 +527,7 @@ binds {
     Mod+Shift+T { spawn "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
+    // Mod+Return { do-screen-transition; }
     // Mod+T { spawn "flatpak" "run" "org.gnome.Ptyxis.Devel" "-s"; }
     // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
@@ -512,6 +539,8 @@ binds {
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
     Super+Alt+H     { spawn "refresh.sh" "144"; }
     Super+Alt+Comma { spawn "refresh.sh" "120"; }
+
+    Mod+Shift+S { spawn "set-theme"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -633,6 +662,7 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
