@@ -4,7 +4,7 @@ debug {
     // dbus-interfaces-in-non-session-instances
     // wait-for-frame-completion-before-queueing
     // enable-overlay-planes
-    disable-cursor-plane
+    // disable-cursor-plane
     // disable-direct-scanout
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/card1"
@@ -35,12 +35,14 @@ input {
         // click-method "clickfinger"
         // accel-profile "flat"
         // tap-button-map "left-middle-right"
+        // left-handed
     }
 
     mouse {
         // natural-scroll
         // accel-speed -1.0
         // accel-profile "flat"
+        // left-handed
     }
 
     trackpoint {
@@ -52,6 +54,7 @@ input {
     tablet {
         // map-to-output "eDP-1"
         // map-to-output "HDMI-A-1"
+        // left-handed
     }
 
     // disable-power-key-handling
@@ -59,6 +62,22 @@ input {
     // focus-follows-mouse
     // workspace-auto-back-and-forth
 }
+
+workspace "notes" {
+    open-on-output "eDP-1"
+}
+
+workspace "chat" {
+    open-on-output "DP-2"
+}
+
+workspace "browser" {
+    open-on-output "DP-2"
+}
+
+// workspace "dash" {
+//     open-on-output "eDP-1"
+// }
 
 output "winit" {
     // scale 2.0
@@ -151,6 +170,7 @@ layout {
         // inactive-color "#585b70"
 
         active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
@@ -226,13 +246,59 @@ animations {
         // duration-ms 2500
         // curve "ease-out-expo"
         // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+        // duration-ms 1000
+        // curve "linear"
+
+        /-custom-shader r"
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
+                coords = coords / length(size_geo.xy);
+                float p = niri_clamped_progress;
+                if (p * p <= dot(coords, coords))
+                    color = vec4(0.0);
+
+                return color;
+            }
+        "
     }
 
     window-close {
         // off
         // duration-ms 2500
-        // curve "ease-out-cubic"
+        duration-ms 250
+        curve "linear"
         // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
+
+        custom-shader r"
+            mat2 rotate(float angle) {
+                return mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+            }
+
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                float progress = niri_clamped_progress * niri_clamped_progress;
+
+                vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+
+                coords.y -= progress * 200.0;
+
+                float random = (niri_random_seed - 0.5) / 2.0;
+                random = sign(random) - random;
+                float max_angle = 0.05 * random;
+
+                float angle = progress * max_angle;
+                coords = rotate(angle) * coords;
+
+                coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                return color * (1.0 - niri_clamped_progress);
+            }
+        "
     }
 
     horizontal-view-movement {
@@ -314,6 +380,7 @@ animations {
 window-rule {
     // match app-id="Alacritty"
     // match app-id="Adwaita"
+    // match at-startup=true
     // opacity 0.9
     // opacity 0.5
     // opacity 0.98
@@ -366,6 +433,7 @@ window-rule {
 
 window-rule {
     match app-id="Adwaita"
+    // match app-id="TextEditor"
     // opacity 0.5
     // block-out-from "screencast"
     geometry-corner-radius 12
@@ -373,19 +441,19 @@ window-rule {
     clip-to-geometry false
     border {
         // off
-        width 12
+        // width 12
         // width 2
     }
 }
 
 window-rule {
-    match app-id="terminal"
+    match app-id="^gnome-terminal-server$"
     // opacity 0.5
     // block-out-from "screen-capture"
     clip-to-geometry false
     geometry-corner-radius 8 8 0 0
     border {
-        // width 24
+        width 4
     }
 }
 
@@ -478,18 +546,41 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^org\.mozilla\.firefox$"#
-    match app-id=r#"^org\.telegram\.desktop$"#
-    exclude app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+    match at-startup=true app-id="^obsidian$"
+    open-on-workspace "notes"
+}
 
-    open-on-output "DP-2"
+window-rule {
+    match at-startup=true app-id=r#"^org\.telegram\.desktop$"#
+    exclude title="^Media viewer$"
+
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.gnome\.Fractal$"#
+    open-on-workspace "chat"
 }
 
 window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"#
 
-    default-column-width { proportion 0.66667; }
+    default-column-width { proportion 0.5; }
 }
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.mozilla\.firefox$"#
+
+    open-on-workspace "browser"
+    open-maximized true
+}
+
+// window-rule {
+//     match app-id=r#"^org\.mozilla\.firefox$"# title=" Grafana "
+//
+//     open-on-workspace "dash"
+//     open-maximized true
+// }
 
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
@@ -500,7 +591,7 @@ window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
     match app-id=r#"^org\.mozilla\.firefox$"# title="^Google Calendar "
     match app-id=r#"^org\.mozilla\.firefox$"# title="Todoist "
-    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME( \*)? \| "#
+    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME( \*)?( \[\d+\])? \| "#
     match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^Element "#
     match app-id=r#"^org\.mozilla\.firefox$"# title=r#"Discord \| "#
 
