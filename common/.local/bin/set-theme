@@ -34,7 +34,7 @@ fi
 
 niri msg action do-screen-transition
 dconf write /org/gnome/desktop/interface/color-scheme "\"$COLOR_SCHEME\""
-sed -i --follow-symlinks "s/^    \"~/    # \"~/;s/^    # \(\"~.*$ALACRITTY_COLORS.toml\",\)/    \1/" ~/.config/alacritty/alacritty.toml
-sed -i --follow-symlinks "s/^\(theme =\)/# \1/;s/^# \(theme = \"$HELIX_THEME\"\)/\1/" ~/.config/helix/config.toml
-pkill -USR1 hx
-sed -i --follow-symlinks "s/^\(vim.cmd.colorscheme\)/-- \1/;s/^-- \(vim.cmd.colorscheme '$NVIM_THEME'\)/\1/" ~/.config/nvim/init.lua
+# sed -i --follow-symlinks "s/^    \"~/    # \"~/;s/^    # \(\"~.*$ALACRITTY_COLORS.toml\",\)/    \1/" ~/.config/alacritty/alacritty.toml
+# sed -i --follow-symlinks "s/^\(theme =\)/# \1/;s/^# \(theme = \"$HELIX_THEME\"\)/\1/" ~/.config/helix/config.toml
+# pkill -USR1 hx
+# sed -i --follow-symlinks "s/^\(vim.cmd.colorscheme\)/-- \1/;s/^-- \(vim.cmd.colorscheme '$NVIM_THEME'\)/\1/" ~/.config/nvim/init.lua
