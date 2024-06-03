@@ -45,7 +45,33 @@ require('lazy').setup({
     priority = 1000,
   },
 
+  {
+    'nvim-treesitter/nvim-treesitter', build = ":TSUpdate", config = function()
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown" },
+        highlight = { enable = true },
+      })
+    end
+  },
+
+  'williamboman/mason.nvim',
+  'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
+
+  {
+    'nvimtools/none-ls.nvim',
+    config = function()
+      local nls = require('null-ls')
+      nls.setup {
+        sources = {
+          nls.builtins.formatting.stylua,
+          nls.builtins.diagnostics.actionlint,
+        }
+      }
+    end
+  },
 
   {
     'mrcjkb/rustaceanvim',
@@ -73,17 +99,17 @@ require('lazy').setup({
   'saadparwaiz1/cmp_luasnip',
   'honza/vim-snippets',
 
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
-    end,
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  --   config = function()
+  --     require('copilot').setup {
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     }
+  --   end,
+  -- },
   {
     'zbirenbaum/copilot-cmp',
     config = function ()
@@ -279,10 +305,12 @@ require('lualine').setup {
 }
 
 -- LSP
+require('mason').setup()
+require('mason-lspconfig').setup()
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local servers = {
-  'clangd',
   'marksman',
   'texlab',
   'pylsp',
@@ -293,6 +321,10 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+  cmd = { "clangd", "--header-insertion=never" },
+}
 lspconfig.typst_lsp.setup {
   capabilities = capabilities,
   settings = { exportPdf = "onType" },
