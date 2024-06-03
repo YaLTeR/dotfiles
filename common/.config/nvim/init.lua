@@ -1,20 +1,25 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git',
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
     lazypath,
-  })
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Should be done before loading lazy
 vim.g.mapleader = ' '
 
-require('lazy').setup({
+require('lazy').setup {
   {
-    'catppuccin/nvim', name = 'catppuccin', priority = 1000,
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     config = function()
       require('catppuccin').setup {
         integrations = {
@@ -46,14 +51,16 @@ require('lazy').setup({
   },
 
   {
-    'nvim-treesitter/nvim-treesitter', build = ":TSUpdate", config = function()
-      local configs = require("nvim-treesitter.configs")
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      local configs = require('nvim-treesitter.configs')
 
-      configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown" },
+      configs.setup {
+        ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown' },
         highlight = { enable = true },
-      })
-    end
+      }
+    end,
   },
 
   'williamboman/mason.nvim',
@@ -68,9 +75,9 @@ require('lazy').setup({
         sources = {
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.actionlint,
-        }
+        },
       }
-    end
+    end,
   },
 
   {
@@ -80,7 +87,8 @@ require('lazy').setup({
   },
 
   {
-    'saecki/crates.nvim', version = '*',
+    'saecki/crates.nvim',
+    version = '*',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('crates').setup {}
@@ -112,7 +120,7 @@ require('lazy').setup({
   -- },
   {
     'zbirenbaum/copilot-cmp',
-    config = function ()
+    config = function()
       require('copilot_cmp').setup {}
     end,
   },
@@ -122,21 +130,21 @@ require('lazy').setup({
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
     event = 'VeryLazy',
     config = function()
-        require('nvim-surround').setup {
-          keymaps = {
-            insert = "<C-g>z",
-            insert_line = "<C-g>Z",
-            normal = "yz",
-            normal_cur = "yzz",
-            normal_line = "yZ",
-            normal_cur_line = "yZZ",
-            visual = "Z",
-            visual_line = "gZ",
-            delete = "dz",
-            change = "cz",
-            change_line = "cZ",
-          },
-        }
+      require('nvim-surround').setup {
+        keymaps = {
+          insert = '<C-g>z',
+          insert_line = '<C-g>Z',
+          normal = 'yz',
+          normal_cur = 'yzz',
+          normal_line = 'yZ',
+          normal_cur_line = 'yZZ',
+          visual = 'Z',
+          visual_line = 'gZ',
+          delete = 'dz',
+          change = 'cz',
+          change_line = 'cZ',
+        },
+      }
     end,
   },
 
@@ -144,14 +152,15 @@ require('lazy').setup({
   'numToStr/Comment.nvim',
 
   {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-     dependencies = { 'nvim-lua/plenary.nvim' },
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
   },
-  'nvim-telescope/telescope-ui-select.nvim',  -- Telescope for native pickers such as LSP code actions
+  'nvim-telescope/telescope-ui-select.nvim', -- Telescope for native pickers such as LSP code actions
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   { 'j-hui/fidget.nvim', opts = { progress = { ignore = { 'ltex' } } } },
@@ -168,50 +177,51 @@ require('lazy').setup({
   },
   'tpope/vim-fugitive',
 
-  'tpope/vim-eunuch',  -- :Rename, etc.
-  'tpope/vim-abolish',  -- Case conversion, :Subvert
-  'tpope/vim-sleuth',  -- Heuristic indent options
-})
+  'tpope/vim-eunuch', -- :Rename, etc.
+  'tpope/vim-abolish', -- Case conversion, :Subvert
+  'tpope/vim-sleuth', -- Heuristic indent options
+}
 
-vim.cmd.colorscheme 'catppuccin-mocha'
+vim.cmd.colorscheme('catppuccin-mocha')
 -- vim.cmd.colorscheme 'github_light'
 -- vim.cmd.colorscheme 'catppuccin-latte'
 -- vim.cmd.colorscheme 'base16-classic-dark'
 -- vim.cmd.colorscheme 'alacritty'
 
-vim.o.clipboard = 'unnamedplus'  -- Use the system clipboard
-vim.o.number = true  -- Show line numbers
+vim.o.clipboard = 'unnamedplus' -- Use the system clipboard
+vim.o.number = true -- Show line numbers
 vim.o.relativenumber = true
-vim.o.signcolumn = 'yes'  -- Avoid sign column shifting
-vim.o.expandtab = true  -- Tab settings
+vim.o.signcolumn = 'yes' -- Avoid sign column shifting
+vim.o.expandtab = true -- Tab settings
 vim.o.tabstop = 2
 vim.o.shiftwidth = 0
-vim.o.list = true  -- Show whitespace
+vim.o.list = true -- Show whitespace
 vim.o.listchars = 'tab:——,trail:·'
 vim.o.showbreak = '↪'
-vim.o.ignorecase = true  -- Smart case search
+vim.o.ignorecase = true -- Smart case search
 vim.o.smartcase = true
-vim.o.gdefault = true  -- /g by default
-vim.o.undofile = true  -- Persistent undo
-vim.o.inccommand = 'split'  -- Live preview for :s
-vim.o.breakindent = true  -- Indent wrapped lines
-vim.o.splitbelow = true  -- Split down and right
+vim.o.gdefault = true -- /g by default
+vim.o.undofile = true -- Persistent undo
+vim.o.inccommand = 'split' -- Live preview for :s
+vim.o.breakindent = true -- Indent wrapped lines
+vim.o.splitbelow = true -- Split down and right
 vim.o.splitright = true
-vim.o.scrolloff = 1  -- Always show a few characters around the cursor
+vim.o.scrolloff = 1 -- Always show a few characters around the cursor
 vim.o.sidescrolloff = 5
-vim.o.autoread = true  -- Auto reload files on change
-vim.o.exrc = true  -- Load trusted project-local .nvim.lua
-vim.o.spelllang = 'en,ru_yo'  -- Spellcheck languages
+vim.o.autoread = true -- Auto reload files on change
+vim.o.exrc = true -- Load trusted project-local .nvim.lua
+vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
 -- Map Russian to Colemak-DH
-vim.o.langmap = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
+vim.o.langmap =
+  'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
 
 -- Change signs to colored dots
 vim.fn.sign_define('DiagnosticSignError', { text = '●', texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn',  { text = '●', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo',  { text = '●', texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint',  { text = '●', texthl = 'DiagnosticSignHint' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '●', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '●', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '●', texthl = 'DiagnosticSignHint' })
 
 vim.keymap.set({ 'n', 'v' }, '<C-h>', '<C-w>h')
 vim.keymap.set({ 'n', 'v' }, '<C-j>', '<C-w>j')
@@ -222,7 +232,9 @@ for i = 1, 9 do
 end
 
 vim.keymap.set('n', '<C-s>', vim.cmd.update)
-vim.keymap.set('n', '<F5>', function() vim.cmd.edit '%' end)
+vim.keymap.set('n', '<F5>', function()
+  vim.cmd.edit('%')
+end)
 vim.keymap.set('n', 'U', vim.cmd.redo)
 vim.keymap.set('n', '<A-l>', ':nohlsearch<CR>:diffupdate<CR>:syntax sync fromstart<CR><C-L>')
 vim.keymap.set('n', '<A-z>', ':set invwrap<CR>')
@@ -248,20 +260,20 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'rust',
   callback = function()
     vim.opt_local.colorcolumn = { 100 }
-  end
+  end,
 })
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'text', 'markdown', 'tex'},
+  pattern = { 'text', 'markdown', 'tex' },
   callback = function()
     vim.opt_local.linebreak = true
     vim.opt_local.spell = true
-  end
+  end,
 })
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = {'kdl'},
+  pattern = { 'kdl' },
   callback = function()
     vim.opt_local.spell = true
-  end
+  end,
 })
 
 local telescope = require('telescope')
@@ -281,13 +293,15 @@ telescope.setup {
       flip_columns = 180,
       horizontal = { preview_width = { 0.6, max = 100 } },
     },
-  }
+  },
 }
 telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
 vim.keymap.set('n', '<space>/', telescope_builtin.live_grep)
-vim.keymap.set('n', '<space>d', function() telescope_builtin.diagnostics {bufnr=0} end)
+vim.keymap.set('n', '<space>d', function()
+  telescope_builtin.diagnostics { bufnr = 0 }
+end)
 vim.keymap.set('n', '<space>D', telescope_builtin.diagnostics)
 vim.keymap.set('n', '<space>b', telescope_builtin.buffers)
 
@@ -297,7 +311,7 @@ require('lualine').setup {
       'filename',
       {
         'lsp_progress',
-        hide = { 'ltex' },  -- Spammy LSPs
+        hide = { 'ltex' }, -- Spammy LSPs
         spinner_symbols = { '🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘' },
       },
     },
@@ -323,20 +337,20 @@ for _, lsp in ipairs(servers) do
 end
 lspconfig.clangd.setup {
   capabilities = capabilities,
-  cmd = { "clangd", "--header-insertion=never" },
+  cmd = { 'clangd', '--header-insertion=never' },
 }
 lspconfig.typst_lsp.setup {
   capabilities = capabilities,
-  settings = { exportPdf = "onType" },
+  settings = { exportPdf = 'onType' },
 }
 lspconfig.ltex.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     require('ltex_extra').setup {
       load_langs = { 'en-US', 'ru-RU' },
-      path = vim.fn.expand("~") .. "/.local/share/ltex",
+      path = vim.fn.expand('~') .. '/.local/share/ltex',
     }
-  end
+  end,
 }
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -365,12 +379,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Snippets
-local luasnip = require 'luasnip'
+local luasnip = require('luasnip')
 luasnip.setup {
   -- Live-update parts of the snippet when typing
-  update_events = {"TextChanged", "TextChangedI"},
+  update_events = { 'TextChanged', 'TextChangedI' },
   -- Visual selection expansion support
-  store_selection_keys = "<Tab>",
+  store_selection_keys = '<Tab>',
 }
 require('luasnip.loaders.from_snipmate').lazy_load()
 require('luasnip.loaders.from_lua').lazy_load()
@@ -380,11 +394,13 @@ vim.keymap.set('i', '<Tab>', function()
   if luasnip.expand_or_locally_jumpable() then
     luasnip.expand_or_jump()
   else
-    vim.cmd 'call feedkeys("\\<Tab>", "n")'
+    vim.cmd('call feedkeys("\\<Tab>", "n")')
   end
 end)
 vim.keymap.set('s', '<Tab>', luasnip.expand_or_jump)
-vim.keymap.set({ 'i', 's' }, '<S-Tab>', function() luasnip.jump(-1) end)
+vim.keymap.set({ 'i', 's' }, '<S-Tab>', function()
+  luasnip.jump(-1)
+end)
 vim.keymap.set({ 'i', 's' }, '<C-e>', function()
   if luasnip.choice_active() then
     luasnip.change_choice(1)
@@ -392,14 +408,14 @@ vim.keymap.set({ 'i', 's' }, '<C-e>', function()
 end)
 
 -- Completion
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup {
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({
+  mapping = cmp.mapping.preset.insert {
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -407,7 +423,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
-  }),
+  },
   sources = {
     { name = 'copilot' },
     { name = 'nvim_lsp' },
@@ -421,65 +437,68 @@ cmp.setup {
 
 -- Rust LSP
 vim.g.rustaceanvim = {
-  tools = {
-  },
+  tools = {},
   server = {
     settings = {
       ['rust-analyzer'] = {
         check = { command = 'clippy' },
         rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
         diagnostics = { disabled = { 'inactive-code' } },
-        completion = { snippets = { custom = {
-          ['if let Err(err) ='] = {
-            postfix = 'ile',
-            body = {
-              "if let Err(err) = ${receiver} {",
-              "\twarn!(\"error $0: {err:?}\");",
-              "}",
-            }
+        completion = {
+          snippets = {
+            custom = {
+              ['if let Err(err) ='] = {
+                postfix = 'ile',
+                body = {
+                  'if let Err(err) = ${receiver} {',
+                  '\twarn!("error $0: {err:?}");',
+                  '}',
+                },
+              },
+              ['let Some(x) else'] = {
+                postfix = 'lse',
+                body = {
+                  'let Some($0) = ${receiver} else {',
+                  '\treturn',
+                  '};',
+                },
+              },
+              ['match Some, None'] = {
+                postfix = 'msn',
+                body = {
+                  'match ${receiver} {',
+                  '\tSome($1) => {',
+                  '\t\t$2',
+                  '\t}',
+                  '\tNone => {',
+                  '\t\t$3',
+                  '\t}',
+                  '}',
+                },
+              },
+              ['match Ok, Err'] = {
+                postfix = 'moe',
+                body = {
+                  'match ${receiver} {',
+                  '\tOk($1) => {',
+                  '\t\t$2',
+                  '\t}',
+                  '\tErr(err) => {',
+                  '\t\twarn!("error $3: {err:?}");',
+                  '\t}',
+                  '}',
+                },
+              },
+              ['info_span scope'] = {
+                postfix = 'iss',
+                body = {
+                  'info_span!("$0").in_scope(|| ${receiver})',
+                },
+              },
+            },
           },
-          ['let Some(x) else'] = {
-            postfix = 'lse',
-            body = {
-              "let Some($0) = ${receiver} else {",
-              "\treturn",
-              "};",
-            }
-          },
-          ['match Some, None'] = {
-            postfix = 'msn',
-            body = {
-              "match ${receiver} {",
-              "\tSome($1) => {",
-              "\t\t$2",
-              "\t}",
-              "\tNone => {",
-              "\t\t$3",
-              "\t}",
-              "}",
-            }
-          },
-          ['match Ok, Err'] = {
-            postfix = 'moe',
-            body = {
-              "match ${receiver} {",
-              "\tOk($1) => {",
-              "\t\t$2",
-              "\t}",
-              "\tErr(err) => {",
-              "\t\twarn!(\"error $3: {err:?}\");",
-              "\t}",
-              "}",
-            }
-          },
-          ['info_span scope'] = {
-            postfix = 'iss',
-            body = {
-              "info_span!(\"$0\").in_scope(|| ${receiver})",
-            }
-          },
-        } } },
-      }
-    }
+        },
+      },
+    },
   },
 }
