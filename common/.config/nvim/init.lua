@@ -57,8 +57,16 @@ require('lazy').setup {
       local configs = require('nvim-treesitter.configs')
 
       configs.setup {
-        ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'markdown' },
+        ensure_installed = { 'c', 'cpp', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'rust', 'kdl', 'glsl', 'comment' },
         highlight = { enable = true },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<A-o>',
+            node_incremental = '<A-o>',
+            node_decremental = '<A-i>',
+          },
+        },
       }
     end,
   },
