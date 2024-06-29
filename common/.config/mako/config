@@ -21,3 +21,7 @@ border-color=#74c7ec
 
 [mode=dnd]
 invisible=1
+
+[mode=laptop]
+#output=eDP-1
+output=eDP-2
