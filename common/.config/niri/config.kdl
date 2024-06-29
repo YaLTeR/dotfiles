@@ -53,7 +53,9 @@ input {
 
     tablet {
         // map-to-output "eDP-1"
+        // map-to-output "eDP-2"
         // map-to-output "HDMI-A-1"
+        map-to-output "DP-2"
         // left-handed
     }
 
@@ -64,11 +66,13 @@ input {
 }
 
 workspace "notes" {
-    open-on-output "eDP-1"
+    // open-on-output "eDP-1"
+    open-on-output "eDP-2"
 }
 
 workspace "chat" {
-    open-on-output "DP-2"
+    // open-on-output "DP-2"
+    open-on-output "eDP-2"
 }
 
 workspace "browser" {
@@ -82,6 +86,8 @@ workspace "browser" {
 output "winit" {
     // scale 2.0
     // scale 3.0
+    // scale 1.25
+    // scale 1.333
     // transform "flipped-90"
     position x=100 y=200
 }
@@ -90,6 +96,7 @@ output "eDP-1" {
     // off
 
     scale 2.0
+    // scale 1.5
     // transform "90"
     position x=0 y=0
     // mode "1920x1200"
@@ -101,6 +108,12 @@ output "eDP-1" {
     // variable-refresh-rate
 }
 
+output "eDP-2" {
+    scale 2
+    // scale 1.5
+    position x=0 y=0
+}
+
 output "HDMI-A-1" {
     // off
     // scale 2.0
@@ -108,7 +121,7 @@ output "HDMI-A-1" {
 
     // position x=-1920 y=520
     // position x=2560 y=0
-    position x=-1920 y=0
+    // position x=-1920 y=0
 
     // position x=1280 y=-640
     // mode "2560x1440@143.912"
@@ -142,11 +155,15 @@ output "DP-3" {
 output "DP-2" {
     // off
 
-    position x=1280 y=-640
+    // position x=1280 y=-640
     // mode "3440x1440@99.982"
     // mode "2560x1440@119.998"
 
-    variable-refresh-rate
+    // position x=2560 y=0
+    // mode "2560x1440@143.998"
+    // scale 1.25
+
+    // variable-refresh-rate
 }
 
 layout {
@@ -222,6 +239,7 @@ environment {
 }
 
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path "~/Pictures/niri-scale/%M-%S.png"
 
 hotkey-overlay {
     // skip-at-startup
@@ -263,11 +281,21 @@ animations {
                 return color;
             }
         "
+
+        /-custom-shader r"
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                return color;
+            }
+        "
     }
 
     window-close {
         // off
         // duration-ms 2500
+        // duration-ms 1000
         duration-ms 250
         curve "linear"
         // spring damping-ratio=0.8 stiffness=1000 epsilon=0.0001
@@ -297,6 +325,15 @@ animations {
                 vec4 color = texture2D(niri_tex, coords_tex.st);
 
                 return color * (1.0 - niri_clamped_progress);
+            }
+        "
+
+        /-custom-shader r"
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 color = texture2D(niri_tex, coords_tex.st);
+
+                return color;
             }
         "
     }
@@ -356,6 +393,7 @@ animations {
                         color = vec4(0.0);
                     } else {
                         color = texture2D(niri_tex_next, coords_crop.st);
+                        // color = texture2D(niri_tex_prev, (niri_geo_to_tex_prev * coords_prev_geo).st);
                     }
                 } else {
                     // If we can't crop, then crossfade.
@@ -420,8 +458,8 @@ window-rule {
     // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
     // geometry-corner-radius 1
-    geometry-corner-radius 6
-    clip-to-geometry true
+    // geometry-corner-radius 6
+    // clip-to-geometry true
 }
 
 /-window-rule {
@@ -431,7 +469,7 @@ window-rule {
     max-height 100
 }
 
-window-rule {
+/-window-rule {
     match app-id="Adwaita"
     // match app-id="TextEditor"
     // opacity 0.5
@@ -628,7 +666,7 @@ binds {
     Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
 
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
-    Super+Alt+H     { spawn "refresh.sh" "144"; }
+    Super+Alt+H     { spawn "refresh.sh" "170"; }
     Super+Alt+Comma { spawn "refresh.sh" "120"; }
 
     Mod+Shift+S { spawn "set-theme"; }
@@ -751,6 +789,8 @@ binds {
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+    // Mod+BracketLeft  { focus-column-or-monitor-left; }
+    // Mod+BracketRight { focus-column-or-monitor-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
