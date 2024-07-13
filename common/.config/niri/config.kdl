@@ -59,9 +59,14 @@ input {
         // left-handed
     }
 
+    touch {
+        map-to-output "DP-3"
+    }
+
     // disable-power-key-handling
     // warp-mouse-to-focus
     // focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
     // workspace-auto-back-and-forth
 }
 
@@ -95,7 +100,8 @@ output "winit" {
 output "eDP-1" {
     // off
 
-    scale 2.0
+    // scale 2.0
+    scale 1.75
     // scale 1.5
     // transform "90"
     position x=0 y=0
@@ -109,7 +115,8 @@ output "eDP-1" {
 }
 
 output "eDP-2" {
-    scale 2
+    // scale 2
+    scale 1.75
     // scale 1.5
     position x=0 y=0
 }
@@ -145,8 +152,9 @@ output "DP-1" {
 
     // variable-refresh-rate
 }
+
 output "DP-3" {
-    position x=-1920 y=0
+    // position x=-1920 y=0
     // mode "1920x1080@60.000"
 
     // transform "90"
@@ -160,7 +168,7 @@ output "DP-2" {
     // mode "2560x1440@119.998"
 
     // position x=2560 y=0
-    // mode "2560x1440@143.998"
+    mode "2560x1440@143.998"
     // scale 1.25
 
     // variable-refresh-rate
@@ -249,6 +257,7 @@ animations {
     // off
     // slowdown 10.0
     // slowdown 4.0
+    // slowdown 3.0
     // slowdown 2.0
     // slowdown 1.5
 
@@ -412,6 +421,12 @@ animations {
         // duration-ms 250
         // curve "ease-out-cubic"
         // spring damping-ratio=0.1 stiffness=1000 epsilon=0.001
+    }
+
+    /-screenshot-ui-open {
+        // off
+        // duration-ms 200
+        // curve "ease-out-quad"
     }
 }
 
@@ -791,6 +806,8 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
     // Mod+BracketLeft  { focus-column-or-monitor-left; }
     // Mod+BracketRight { focus-column-or-monitor-right; }
+    // Mod+BracketLeft  { focus-window-or-monitor-up; }
+    // Mod+BracketRight { focus-window-or-monitor-down; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { reset-window-height; }
