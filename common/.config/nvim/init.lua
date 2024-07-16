@@ -221,9 +221,12 @@ vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
--- Map Russian to Colemak-DH
+-- Map Russian to
 vim.o.langmap =
-  'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
+  --   Colemak-DH
+  --   'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
+  --   QWERTY
+  'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
 
 -- Change signs to colored dots
 vim.fn.sign_define('DiagnosticSignError', { text = '●', texthl = 'DiagnosticSignError' })
