@@ -18,7 +18,7 @@ import = [
 padding = { x = 2, y = 2 }
 # padding = { x = 9, y = 14 }
 # dynamic_padding = true
-opacity = 0.98
+# opacity = 0.98
 # opacity = 0.5
 # startup_mode = "Fullscreen"
 
