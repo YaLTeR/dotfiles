@@ -36,6 +36,7 @@ input {
         // accel-profile "flat"
         // tap-button-map "left-middle-right"
         // left-handed
+        // middle-emulation
     }
 
     mouse {
@@ -43,12 +44,14 @@ input {
         // accel-speed -1.0
         // accel-profile "flat"
         // left-handed
+        // middle-emulation
     }
 
     trackpoint {
         // natural-scroll
         // accel-speed -1.0
         // accel-profile "flat"
+        // middle-emulation
     }
 
     tablet {
@@ -168,7 +171,7 @@ output "DP-2" {
     // mode "2560x1440@119.998"
 
     // position x=2560 y=0
-    mode "2560x1440@143.998"
+    // mode "2560x1440@143.998"
     // scale 1.25
 
     // variable-refresh-rate
@@ -176,7 +179,7 @@ output "DP-2" {
 
 layout {
     focus-ring {
-        off
+        // off
         width 2
         // catppuccin-mocha Sapphire
         active-color "#74c7ec"
@@ -184,11 +187,13 @@ layout {
         inactive-color "#585b70"
 
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
     }
 
     border {
-        // off
-        width 2
+        off
+        width 4
         // width 128
 
         // active-color "#f38ba8"
@@ -200,9 +205,11 @@ layout {
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
-        // active-gradient from="#f00" to="#0f0" angle=90
+        // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
+        // active-gradient from="#ff0000ff" to="transparent" angle=90 in="srgb"
+        // active-gradient from="red" to="orange" angle=45 in="oklch longer hue"
 
-        // active-gradient from="yellow" to="red" angle=45 relative-to="workspace-view"
+        // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
     }
 
@@ -217,7 +224,7 @@ layout {
     default-column-width { proportion 0.3333333333333333; }
     // default-column-width { }
 
-    gaps 4
+    gaps 8
 
     struts {
         // left 64
@@ -237,7 +244,7 @@ cursor {
     // xcursor-size 48
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
@@ -473,8 +480,9 @@ window-rule {
     // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
     // geometry-corner-radius 1
+    geometry-corner-radius 12
     // geometry-corner-radius 6
-    // clip-to-geometry true
+    clip-to-geometry true
 }
 
 /-window-rule {
