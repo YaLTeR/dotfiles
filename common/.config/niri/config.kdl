@@ -7,6 +7,7 @@ debug {
     // disable-cursor-plane
     // disable-direct-scanout
     // render-drm-device "/dev/dri/renderD129"
+    // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
     // enable-color-transformations-capability
     // emulate-zero-presentation-time
@@ -156,13 +157,6 @@ output "DP-1" {
     // variable-refresh-rate
 }
 
-output "DP-3" {
-    // position x=-1920 y=0
-    // mode "1920x1080@60.000"
-
-    // transform "90"
-}
-
 output "DP-2" {
     // off
 
@@ -171,10 +165,17 @@ output "DP-2" {
     // mode "2560x1440@119.998"
 
     // position x=2560 y=0
-    // mode "2560x1440@143.998"
+    mode "2560x1440@143.998"
     // scale 1.25
 
     // variable-refresh-rate
+}
+
+output "DP-3" {
+    // position x=-1920 y=0
+    // mode "1920x1080@60.000"
+
+    // transform "90"
 }
 
 layout {
