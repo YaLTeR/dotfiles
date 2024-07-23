@@ -1,3 +1,4 @@
+// vim: ft=jsonc
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -11,7 +12,8 @@
     // "width": 300, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["network", "wlr/taskbar"],
+    "modules-left": ["network"],
+    // "modules-left": ["network", "wlr/taskbar"],
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory", "battery", "tray"],
     // "modules-right": ["cpu", "memory", "battery", "network", "tray"],
