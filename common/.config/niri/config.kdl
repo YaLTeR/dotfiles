@@ -59,12 +59,13 @@ input {
         // map-to-output "eDP-1"
         // map-to-output "eDP-2"
         // map-to-output "HDMI-A-1"
-        map-to-output "DP-2"
+        map-to-output "DP-1"
         // left-handed
     }
 
     touch {
-        map-to-output "DP-3"
+        // map-to-output "DP-3"
+        map-to-output "HDMI-A-2"
     }
 
     // disable-power-key-handling
@@ -74,18 +75,23 @@ input {
     // workspace-auto-back-and-forth
 }
 
-workspace "notes" {
+/-workspace "notes" {
     // open-on-output "eDP-1"
     open-on-output "eDP-2"
 }
 
+workspace "discord" {
+    open-on-output "DP-2"
+}
+
 workspace "chat" {
-    // open-on-output "DP-2"
-    open-on-output "eDP-2"
+    open-on-output "DP-2"
+    // open-on-output "eDP-2"
 }
 
 workspace "browser" {
-    open-on-output "DP-2"
+    open-on-output "DP-1"
+    // open-on-output "DP-2"
 }
 
 // workspace "dash" {
@@ -99,6 +105,7 @@ output "winit" {
     // scale 1.333
     // transform "flipped-90"
     position x=100 y=200
+    // background-color "#030"
 }
 
 output "eDP-1" {
@@ -155,6 +162,7 @@ output "DP-1" {
     // mode "1280x720"
 
     // variable-refresh-rate
+    // background-color "#030"
 }
 
 output "DP-2" {
@@ -169,6 +177,7 @@ output "DP-2" {
     // scale 1.25
 
     // variable-refresh-rate
+    // background-color "#003"
 }
 
 output "DP-3" {
@@ -176,10 +185,6 @@ output "DP-3" {
     // mode "1920x1080@60.000"
 
     // transform "90"
-}
-
-output "DP-5" {
-    mode "2560x1440@143.998"
 }
 
 layout {
@@ -613,7 +618,8 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id="^obsidian$"
-    open-on-workspace "notes"
+    // open-on-workspace "notes"
+    open-on-workspace "chat"
 }
 
 window-rule {
@@ -629,6 +635,13 @@ window-rule {
 }
 
 window-rule {
+    match at-startup=true app-id=r#"^discord"#
+
+    open-on-workspace "discord"
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"#
 
     default-column-width { proportion 0.5; }
@@ -639,6 +652,12 @@ window-rule {
 
     open-on-workspace "browser"
     open-maximized true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.keepassxc\.KeePassXC$"#
+
+    open-on-workspace "browser"
 }
 
 // window-rule {
@@ -694,8 +713,8 @@ binds {
     Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
 
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
-    Super+Alt+H     { spawn "refresh.sh" "170"; }
-    Super+Alt+Comma { spawn "refresh.sh" "120"; }
+    Super+Alt+M     { spawn "~/source/sh/refresh.sh" "170"; }
+    Super+Alt+Comma { spawn "~/source/sh/refresh.sh" "120"; }
 
     Mod+Shift+S { spawn "set-theme"; }
 
