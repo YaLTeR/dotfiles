@@ -11,10 +11,10 @@ fi
 
 case $1 in
     170)
-        niri msg output DP-2 mode '2560x1440@170.071'
+        niri msg output DP-1 mode '2560x1440@170.071'
         ;;
     120)
-        niri msg output DP-2 mode '2560x1440@119.998'
+        niri msg output DP-1 mode '2560x1440@119.998'
         ;;
     *)
         usage
