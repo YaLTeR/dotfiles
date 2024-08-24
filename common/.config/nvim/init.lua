@@ -219,6 +219,7 @@ vim.o.sidescrolloff = 5
 vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
+vim.o.guifont = 'monospace:h10.5' -- Font for GUI frontends
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
 -- Map Russian to
@@ -227,6 +228,13 @@ vim.o.langmap =
   --   'ЙЦУКЕНГШЩЗФЫВАПРОЛДЖЭЯЧСМИТЬ;QWFPBJLUY:ARSTGMNEIO"ZXCDVKH,йцукенгшщзфывапролджэячсмить;qwfpbjluy\\;arstgmneio\'zxcdvkh'
   --   QWERTY
   'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+
+-- Neovide settings
+if vim.g.neovide then
+  vim.g.neovide_cursor_animation_length = 0.02
+  vim.g.neovide_position_animation_length = 0.1
+  vim.g.neovide_scroll_animation_length = 0.1
+end
 
 -- Change signs to colored dots
 vim.fn.sign_define('DiagnosticSignError', { text = '●', texthl = 'DiagnosticSignError' })
@@ -260,6 +268,42 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 vim.keymap.set('n', '<space>g', ':tab Git<CR>')
 
+vim.keymap.set('n', '<leader>vps', function()
+  vim.cmd([[
+    :profile start /tmp/nvim-profile.log
+    :profile func *
+    :profile file *
+  ]])
+end)
+vim.keymap.set('n', '<leader>vpe', function()
+  vim.cmd([[
+    :profile stop
+    :e /tmp/nvim-profile.log
+  ]])
+end)
+
+local plenary_profile = require('plenary.profile')
+vim.keymap.set('n', '<leader>lps', function()
+  print('starting lua profiling')
+  plenary_profile.start('/tmp/nvim-profile-flame.log', { flame = true })
+end)
+vim.keymap.set('n', '<leader>lpe', function()
+  plenary_profile.stop()
+  vim.system(
+    { 'sh', '-c', 'inferno-flamegraph /tmp/nvim-profile-flame.log >/tmp/nvim-profile-flame.svg' },
+    { text = true },
+    function(obj)
+      vim.schedule(function()
+        if obj.code == 0 then
+          print('flamegraph saved to /tmp/nvim-profile-flame.svg')
+        else
+          vim.api.nvim_echo({ { obj.stderr } }, true, {})
+        end
+      end)
+    end
+  )
+end)
+
 require('leap').create_default_mappings()
 
 require('Comment').setup {}
@@ -274,7 +318,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'text', 'markdown', 'tex' },
+  pattern = { 'text', 'markdown', 'tex', 'typst' },
   callback = function()
     vim.opt_local.linebreak = true
     vim.opt_local.spell = true
