@@ -9,8 +9,9 @@ debug {
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
-    // enable-color-transformations-capability
     // emulate-zero-presentation-time
+    // disable-transactions
+    // disable-resize-throttling
 }
 
 input {
@@ -161,7 +162,7 @@ output "DP-1" {
     // mode "100x100"
     // mode "1280x720"
 
-    // variable-refresh-rate
+    variable-refresh-rate on-demand=true
     // background-color "#030"
 }
 
@@ -202,17 +203,21 @@ layout {
     }
 
     border {
-        off
-        width 4
+        // off
+        width 2
+        // width 4
         // width 128
 
         // active-color "#f38ba8"
         // inactive-color "#585b70"
 
-        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        active-color "#000"
+        inactive-color "#000"
+
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
-        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
@@ -469,6 +474,7 @@ window-rule {
     // max-height 400
 
     focus-ring {
+        // off
         // on
         // active-gradient from="red" to="green"
         // active-color "lightgreen"
@@ -595,8 +601,12 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    match app-id="^mpv$"
     default-column-width {}
+}
+
+window-rule {
+    match app-id="^mpv$"
+    variable-refresh-rate true
 }
 
 // Qt used by OBS doesn't signal min size yet, so do it manually.
