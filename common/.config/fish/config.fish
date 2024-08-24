@@ -27,6 +27,15 @@ alias fiu "flatpak install -u"
 alias c "cargo"
 alias cn "cargo +nightly"
 
+alias sc  "systemctl"
+alias scu "systemctl --user"
+
+alias jc    "journalctl"
+alias jcn   "journalctl --no-hostname"
+alias jcnb  "journalctl --no-hostname -b"
+alias jcneb "journalctl --no-hostname -eb"
+alias jcnuu "journalctl --no-hostname --user-unit"
+
 # alias v "nvim"
 # alias nvim-update "nvim -u ~/.config/nvim/plugins.vim +PlugInstall +PlugUpdate +UpdateRemotePlugins +qa"
 
