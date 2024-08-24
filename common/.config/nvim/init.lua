@@ -58,7 +58,7 @@ require('lazy').setup {
 
       configs.setup {
         ensure_installed = { 'c', 'cpp', 'lua', 'vim', 'vimdoc', 'query', 'markdown', 'rust', 'kdl', 'glsl', 'comment' },
-        highlight = { enable = true },
+        -- highlight = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
