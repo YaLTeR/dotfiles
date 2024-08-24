@@ -350,9 +350,13 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
   cmd = { 'clangd', '--header-insertion=never' },
 }
-lspconfig.typst_lsp.setup {
+-- lspconfig.typst_lsp.setup {
+--   capabilities = capabilities,
+--   settings = { exportPdf = 'onType' },
+-- }
+lspconfig.tinymist.setup {
   capabilities = capabilities,
-  settings = { exportPdf = 'onType' },
+  settings = { exportPdf = 'onType', systemFonts = true },
 }
 lspconfig.ltex.setup {
   capabilities = capabilities,
@@ -385,6 +389,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>S', telescope_builtin.lsp_dynamic_workspace_symbols, opts)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
+    end, opts)
+
+    -- Tinymist
+    vim.keymap.set('n', '<space>tp', function()
+      vim.lsp.buf.execute_command {
+        command = 'tinymist.pinMain',
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      }
+    end, opts)
+    vim.keymap.set('n', '<space>tu', function()
+      vim.lsp.buf.execute_command {
+        command = 'tinymist.pinMain',
+        arguments = { nil },
+      }
     end, opts)
   end,
 })
