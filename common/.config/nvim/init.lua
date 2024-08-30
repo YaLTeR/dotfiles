@@ -188,6 +188,37 @@ require('lazy').setup {
   'tpope/vim-eunuch', -- :Rename, etc.
   'tpope/vim-abolish', -- Case conversion, :Subvert
   'tpope/vim-sleuth', -- Heuristic indent options
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        config = {
+          shortcut = {
+            {
+              desc = 'update',
+              group = '@property',
+              action = 'Lazy update',
+              key = 'u',
+            },
+            {
+              desc = 'niri config',
+              group = 'Number',
+              action = 'edit ~/.config/niri/config.kdl',
+              key = 'n',
+            },
+            {
+              desc = 'nvim config',
+              group = 'Number',
+              action = 'edit ~/.config/nvim/init.lua',
+              key = 'v',
+            },
+          },
+        },
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  },
 }
 
 vim.cmd.colorscheme('catppuccin-mocha')
