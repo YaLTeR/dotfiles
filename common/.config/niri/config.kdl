@@ -156,7 +156,7 @@ output "HDMI-A-1" {
 
 output "DP-1" {
     // off
-    // position x=-1920 y=0
+    // position x=-2560 y=-1440
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
@@ -169,7 +169,7 @@ output "DP-1" {
 output "DP-2" {
     // off
 
-    // position x=1280 y=-640
+    // position x=0 y=-1440
     // mode "3440x1440@99.982"
     // mode "2560x1440@119.998"
 
@@ -217,6 +217,8 @@ layout {
         // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
         // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
@@ -721,6 +723,7 @@ binds {
     Mod+D { spawn "fuzzel"; }
     Mod+M { spawn "nautilus"; }
     Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
+    Mod+E { spawn "t" "neovide"; }
 
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
     Super+Alt+M     { spawn "~/source/sh/refresh.sh" "170"; }
