@@ -67,7 +67,7 @@ input {
 
     touch {
         // map-to-output "DP-3"
-        map-to-output "HDMI-A-2"
+        map-to-output "Interaction Systems, Inc TYPE-C TCH00562020"
     }
 
     // disable-power-key-handling
@@ -112,12 +112,12 @@ output "winit" {
     // background-color "#030"
 }
 
-output "eDP-1" {
+output "BOE 0x0A9B Unknown" {
     // off
 
     // scale 2.0
-    scale 1.75
-    // scale 1.5
+    // scale 1.75
+    scale 1.5
     // transform "90"
     position x=0 y=0
     // mode "1920x1200"
@@ -126,14 +126,7 @@ output "eDP-1" {
     // mode "1280x720"
     // mode "640x480"
 
-    // variable-refresh-rate
-}
-
-output "eDP-2" {
-    // scale 2
-    scale 1.75
-    // scale 1.5
-    position x=0 y=0
+    // variable-refresh-rate on-demand=true
 }
 
 output "Acer Technologies XV320QU LV 420615FCD4200" {
