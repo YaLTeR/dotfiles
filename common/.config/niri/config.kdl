@@ -88,8 +88,8 @@ workspace "discord" {
 }
 
 workspace "chat" {
-    open-on-output "DP-2"
-    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    // open-on-output "DP-2"
+    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-output "eDP-2"
 }
 
