@@ -1,7 +1,9 @@
 // vim: ft=jsonc
 {
     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "mode": "overlay",
+    // "position": "top",
+    // "position": "bottom",
     "position": "right",
     // "position": "left",
     // "output": "eDP-1",
@@ -13,9 +15,9 @@
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     // "modules-left": ["network"],
-    "modules-left": ["network", "wlr/taskbar"],
+    "modules-left": ["niri/workspaces", "wlr/taskbar"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "memory", "battery", "tray"],
+    "modules-right": ["custom/keyboard-layout", "cpu", "memory", "battery", "tray"],
     // "modules-right": ["cpu", "memory", "battery", "network", "tray"],
     // Modules configuration
     // "sway/workspaces": {
@@ -43,6 +45,41 @@
         "format": "⏻",
         "tooltip": false,
         "on-click": "niri msg action quit"
+    },
+    "custom/workspaces": {
+        "exec": "~/source/py/niri-ipc/workspaces.py \"$WAYBAR_OUTPUT_NAME\"",
+        "return-type": "json"
+    },
+    "custom/keyboard-layout": {
+        "exec": "~/source/py/niri-ipc/keyboard-layout.py",
+        "return-type": "json",
+        "exec-on-event": false,
+        "on-click": "niri msg action switch-layout next",
+        "on-click-right": "niri msg action switch-layout prev"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "discord": "",
+            "chat": "<b></b>",
+            // "2": "Two",
+            // "focused": "F",
+            "default": "◦",
+        },
+        // "current-only": true,
+        // "all-outputs": true,
+    },
+    "niri/window": {
+        // "format": "{app_id}",
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16,
+    },
+    "niri/language": {
+        "format": "{shortDescription}",
+        // "format-en": ":)",
+        // "format-ru": ":P",
     },
     "wlr/taskbar": {
         // "all-outputs": true,
