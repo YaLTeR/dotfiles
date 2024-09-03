@@ -60,7 +60,8 @@ input {
         // map-to-output "eDP-1"
         // map-to-output "eDP-2"
         // map-to-output "HDMI-A-1"
-        map-to-output "DP-1"
+        // map-to-output "DP-1"
+        map-to-output "Acer Technologies XV320QU LV 420615FCD4200"
         // left-handed
     }
 
@@ -82,16 +83,18 @@ input {
 }
 
 workspace "discord" {
-    open-on-output "DP-2"
+    // open-on-output "DP-2"
+    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
 }
 
 workspace "chat" {
     open-on-output "DP-2"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-output "eDP-2"
 }
 
 workspace "browser" {
-    open-on-output "DP-1"
+    open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     // open-on-output "DP-2"
 }
 
@@ -133,28 +136,7 @@ output "eDP-2" {
     position x=0 y=0
 }
 
-output "HDMI-A-1" {
-    // off
-    // scale 2.0
-    // transform "90"
-
-    // position x=-1920 y=520
-    // position x=2560 y=0
-    // position x=-1920 y=0
-
-    // position x=1280 y=-640
-    // mode "2560x1440@143.912"
-    // mode "2560x1440@119.998"
-    // mode "2560x1440@48.002"
-    // mode "1280x720@60.000"
-    // mode "2560x1440"
-    // mode "3840x2160"
-    // mode "1920x1080@23.976"
-
-    // variable-refresh-rate
-}
-
-output "DP-1" {
+output "Acer Technologies XV320QU LV 420615FCD4200" {
     // off
     // position x=-2560 y=-1440
     // mode "1920x1080@60.000"
@@ -166,7 +148,7 @@ output "DP-1" {
     // background-color "#030"
 }
 
-output "DP-2" {
+output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
     // off
 
     // position x=0 y=-1440
@@ -179,13 +161,6 @@ output "DP-2" {
 
     // variable-refresh-rate
     // background-color "#003"
-}
-
-output "DP-3" {
-    // position x=-1920 y=0
-    // mode "1920x1080@60.000"
-
-    // transform "90"
 }
 
 layout {
@@ -463,6 +438,7 @@ window-rule {
     // opacity 0.98
 
     // open-on-output "eDP-1"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // default-column-width { proportion 0.5; }
     // default-column-width { fixed 400; }
     // default-column-width {}
