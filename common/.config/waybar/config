@@ -15,7 +15,7 @@
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     // "modules-left": ["network"],
-    "modules-left": ["niri/workspaces", "wlr/taskbar"],
+    "modules-left": ["niri/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["custom/keyboard-layout", "cpu", "memory", "battery", "tray"],
     // "modules-right": ["cpu", "memory", "battery", "network", "tray"],
