@@ -158,7 +158,7 @@ output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
 
 layout {
     focus-ring {
-        // off
+        off
         width 2
         // catppuccin-mocha Sapphire
         active-color "#74c7ec"
@@ -171,7 +171,7 @@ layout {
     }
 
     border {
-        // off
+        off
         width 2
         // width 4
         // width 128
@@ -221,6 +221,8 @@ layout {
 
     // center-focused-column "on-overflow"
     // center-focused-column "always"
+
+    // always-center-single-column
 }
 
 cursor {
@@ -467,9 +469,9 @@ window-rule {
     // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
     // geometry-corner-radius 1
-    geometry-corner-radius 12
+    // geometry-corner-radius 12
     // geometry-corner-radius 6
-    clip-to-geometry true
+    // clip-to-geometry true
 }
 
 /-window-rule {
@@ -560,8 +562,11 @@ window-rule {
 }
 
 window-rule {
-    match is-active=false
-    // opacity 0.95
+    match app-id="^Alacritty$"
+    match app-id="^neovide$"
+    exclude is-active=true
+
+    opacity 0.95
 }
 
 window-rule {
