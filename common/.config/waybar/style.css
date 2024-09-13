@@ -49,6 +49,9 @@ window#waybar.solo {
 /* window#waybar.Alacritty { */
 /*     border: 2px solid green; */
 /* } */
+/* window#waybar.chromium-browser { */
+/*     border: 2px solid red; */
+/* } */
 
 button {
     /* Use box-shadow instead of border so the text isn't offset */
