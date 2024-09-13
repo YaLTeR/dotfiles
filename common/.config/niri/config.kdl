@@ -206,6 +206,14 @@ layout {
         // fixed 1000
     }
 
+    /-preset-window-heights {
+        proportion 0.3333333333333333
+        proportion 0.5
+        proportion 0.66667
+        // fixed 200
+        // fixed 300
+    }
+
     default-column-width { proportion 0.3333333333333333; }
     // default-column-width { }
 
@@ -685,7 +693,7 @@ binds {
     Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
-    Mod+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
+    Mod+T { spawn "sh" "-c" "alacritty msg create-window --working-directory ~ || alacritty"; }
     Mod+Shift+T { spawn "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
@@ -696,7 +704,7 @@ binds {
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
     Mod+D { spawn "fuzzel"; }
     Mod+M { spawn "nautilus"; }
-    Super+Alt+L allow-when-locked=true { spawn "swaylock"; }
+    Super+Alt+L allow-when-locked=true { spawn "sh" "-c" "niri msg action do-screen-transition; hyprlock"; }
     Mod+E { spawn "t" "neovide"; }
 
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
@@ -829,7 +837,8 @@ binds {
     // Mod+BracketRight { focus-window-or-monitor-down; }
 
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { reset-window-height; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+C { center-column; }
