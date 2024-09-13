@@ -173,8 +173,17 @@ require('lazy').setup {
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   { 'j-hui/fidget.nvim', opts = { progress = { ignore = { 'ltex' } } } },
 
-  'imsnif/kdl.vim',
   'kaarmu/typst.vim',
+  {
+    'chomosuke/typst-preview.nvim',
+    lazy = false,
+    version = '0.3.*',
+    build = function()
+      require('typst-preview').update()
+    end,
+  },
+
+  'imsnif/kdl.vim',
   'tikhomirov/vim-glsl',
   {
     'preservim/vim-markdown',
