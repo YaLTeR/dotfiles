@@ -704,7 +704,7 @@ binds {
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
     Mod+D { spawn "fuzzel"; }
     Mod+M { spawn "nautilus"; }
-    Super+Alt+L allow-when-locked=true { spawn "sh" "-c" "niri msg action do-screen-transition; hyprlock"; }
+    Super+Alt+L allow-when-locked=true { spawn "hyprlock"; }
     Mod+E { spawn "t" "neovide"; }
 
     Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
