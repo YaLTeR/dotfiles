@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily clean-up of the Downloads folder
+
+[Timer]
+OnStartupSec=1min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
+
