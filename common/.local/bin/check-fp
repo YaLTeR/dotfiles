@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <path to binary>"
+    exit 1
+fi
+
+exec objdump -Cd "$1" | grep -E '>:$|\$0x1,%bpl' | grep -B1 bpl | head -n 50
