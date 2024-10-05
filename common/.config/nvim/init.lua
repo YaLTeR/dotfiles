@@ -178,6 +178,9 @@ require('lazy').setup {
     'chomosuke/typst-preview.nvim',
     lazy = false,
     version = '0.3.*',
+    opts = {
+      dependencies_bin = { ['typst-preview'] = 'tinymist' },
+    },
     build = function()
       require('typst-preview').update()
     end,
@@ -260,6 +263,7 @@ vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
 vim.o.guifont = 'monospace:h10.5' -- Font for GUI frontends
+-- vim.o.guifont = 'monospace:h14'
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
 -- Map Russian to
@@ -440,7 +444,14 @@ lspconfig.clangd.setup {
 -- }
 lspconfig.tinymist.setup {
   capabilities = capabilities,
-  settings = { exportPdf = 'onType', systemFonts = true },
+  root_dir = function(filename, bufnr)
+    return vim.fn.getcwd()
+  end,
+  settings = {
+    exportPdf = 'onType',
+    systemFonts = true,
+    formatterMode = 'typstyle',
+  },
 }
 lspconfig.ltex.setup {
   capabilities = capabilities,
