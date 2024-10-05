@@ -19,7 +19,7 @@ function prev_line_fn()
 end
 
 return {
-  s('inst', fmt('#[instrument("{}"){}]', {
+  s('inst', fmt('#[instrument("{}"{})]', {
     d(1, function() return sn(nil, { i(1, next_line_fn()) }) end),
     i(2, ', skip_all'),
   })),
