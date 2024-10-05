@@ -630,8 +630,11 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id=r#"^discord"#
-
     open-on-workspace "discord"
+}
+
+window-rule {
+    match app-id=r#"^discord"#
     default-column-width { proportion 0.66667; }
 }
 
@@ -652,6 +655,11 @@ window-rule {
     match at-startup=true app-id=r#"^org\.keepassxc\.KeePassXC$"#
 
     open-on-workspace "browser"
+}
+
+window-rule {
+    match app-id="^code"
+    default-column-width { proportion 0.66667; }
 }
 
 // window-rule {
