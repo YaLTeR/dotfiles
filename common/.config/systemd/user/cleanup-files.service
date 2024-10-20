@@ -4,6 +4,7 @@ Description=Clean-up of the Downloads folder
 [Service]
 Type=oneshot
 ExecStart=find %h/Downloads/ -mindepth 1 -maxdepth 1 -exec gio trash {} +
+ExecStart=trash-empty -f 7
 IOSchedulingClass=idle
 Slice=background.slice
 
