@@ -174,20 +174,21 @@ layout {
         off
         width 2
         // width 4
+        // width 32
         // width 128
 
         // active-color "#f38ba8"
         // inactive-color "#585b70"
 
-        active-color "#000"
-        inactive-color "#000"
+        // active-color "#000"
+        // inactive-color "#000"
 
-        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
 
         // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
@@ -197,6 +198,11 @@ layout {
         // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
     }
+
+    // insert-hint {
+    //     // off
+    //     color "#ffc87f80"
+    // }
 
     preset-column-widths {
         proportion 0.3333333333333333
@@ -217,6 +223,7 @@ layout {
     default-column-width { proportion 0.3333333333333333; }
     // default-column-width { }
 
+    // gaps 0
     gaps 8
 
     struts {
@@ -237,6 +244,8 @@ cursor {
     // xcursor-theme "breeze_cursors"
     // xcursor-theme "arstieonart"
     // xcursor-size 48
+    // hide-when-typing
+    // hide-after-inactive-ms 1000
 }
 
 // prefer-no-csd
@@ -261,7 +270,7 @@ animations {
     // slowdown 4.0
     // slowdown 3.0
     // slowdown 2.0
-    // slowdown 1.5
+    slowdown 1.5
 
     workspace-switch {
         // off
@@ -591,6 +600,7 @@ window-rule {
 window-rule {
     match app-id="^mpv$"
     variable-refresh-rate true
+    default-column-width {}
 }
 
 // Qt used by OBS doesn't signal min size yet, so do it manually.
