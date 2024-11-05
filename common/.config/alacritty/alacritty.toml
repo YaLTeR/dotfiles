@@ -1,5 +1,5 @@
 shell.program = "/usr/bin/fish"
-hints.alphabet = "ntesiroahdlpufywc.x;q/z"
+# hints.alphabet = "ntesiroahdlpufywc.x;q/z"
 
 import = [
     "~/.config/alacritty/catppuccin-mocha.toml",
