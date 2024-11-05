@@ -573,6 +573,7 @@ lspconfig.tinymist.setup {
     systemFonts = true,
     formatterMode = 'typstyle',
   },
+  offset_encoding = 'utf-8', -- Work around nvim bug, see https://github.com/Myriad-Dreamin/tinymist/issues/638
 }
 lspconfig.ltex.setup {
   capabilities = capabilities,
