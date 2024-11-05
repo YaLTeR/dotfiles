@@ -1,7 +1,7 @@
-shell.program = "/usr/bin/fish"
+terminal.shell.program = "/usr/bin/fish"
 # hints.alphabet = "ntesiroahdlpufywc.x;q/z"
 
-import = [
+general.import = [
     "~/.config/alacritty/catppuccin-mocha.toml",
     # "~/.config/alacritty/catppuccin-latte.toml",
     # "~/.config/alacritty/github_light.toml",
