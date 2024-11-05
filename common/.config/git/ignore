@@ -8,3 +8,4 @@ compile_commands.json
 node_modules/
 venv/
 .nvim.lua
+mutants.out*/
