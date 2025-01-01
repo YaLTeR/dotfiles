@@ -7,6 +7,7 @@
     "position": "right",
     // "position": "left",
     // "output": "eDP-1",
+    // "output": "eDP-2",
     // "height": 32, // Waybar height (to be removed for auto height)
     //"margin-top": 4,
     //"margin-left": 4,
