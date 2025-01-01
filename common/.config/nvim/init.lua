@@ -22,6 +22,7 @@ require('lazy').setup {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
+        term_colors = true,
         integrations = {
           native_lsp = {
             underlines = {
