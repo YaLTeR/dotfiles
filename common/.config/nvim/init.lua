@@ -197,6 +197,38 @@ require('lazy').setup {
     end,
   },
   'tpope/vim-fugitive',
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      local gitsigns = require('gitsigns')
+      gitsigns.setup {
+        on_attach = function(bufnr)
+          local function map(mode, l, r, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, l, r, opts)
+          end
+
+          -- Jump between hunks
+          map('n', ']c', function()
+            if vim.wo.diff then
+              vim.cmd.normal { ']c', bang = true }
+            else
+              gitsigns.nav_hunk('next')
+            end
+          end)
+
+          map('n', '[c', function()
+            if vim.wo.diff then
+              vim.cmd.normal { '[c', bang = true }
+            else
+              gitsigns.nav_hunk('prev')
+            end
+          end)
+        end,
+      }
+    end,
+  },
 
   'tpope/vim-eunuch', -- :Rename, etc.
   'tpope/vim-abolish', -- Case conversion, :Subvert
@@ -231,127 +263,6 @@ require('lazy').setup {
       }
     end,
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-  },
-
-  {
-    'jake-stewart/multicursor.nvim',
-    branch = '1.0',
-    config = function()
-      local mc = require('multicursor-nvim')
-      local tbl = require('multicursor-nvim.tbl')
-      local util = require('multicursor-nvim.util')
-
-      mc.setup()
-
-      -- Like mc.matchCursors but preserves visual mode.
-      function matchCursorsVisual(pattern)
-        mc.action(function(ctx)
-          pattern = pattern or vim.fn.input('Match: ')
-          if not pattern or pattern == '' then
-            return
-          end
-          local newCursors = {}
-          ctx:forEachCursor(function(cursor)
-            if cursor:hasSelection() then
-              newCursors = tbl.concat(newCursors, cursor:splitVisualLines())
-            else
-              newCursors[#newCursors + 1] = cursor
-              cursor:setMode('v')
-            end
-          end)
-          for _, cursor in ipairs(newCursors) do
-            local selection = cursor:getVisualLines()
-            local matches = util.matchlist(selection, pattern, {
-              userConfig = true,
-            })
-            local vs = cursor:getVisual()
-            for _, match in ipairs(matches) do
-              if #match.text > 0 then
-                local newCursor = cursor:clone()
-                newCursor:setVisual(
-                  { vs[1], vs[2] + match.byteidx + #match.text - 1 },
-                  { vs[1], vs[2] + match.byteidx }
-                )
-              end
-            end
-            cursor:delete()
-          end
-        end)
-      end
-
-      local set = vim.keymap.set
-
-      set({ 'n', 'v' }, '<A-c>', function()
-        mc.lineAddCursor(-1)
-      end)
-      set({ 'n', 'v' }, 'C', function()
-        mc.lineAddCursor(1)
-      end)
-
-      set('v', '&', mc.alignCursors)
-      set({ 'n', 'v' }, ')', mc.nextCursor)
-      set({ 'n', 'v' }, '(', mc.prevCursor)
-      set('v', '<A-(>', function()
-        mc.transposeCursors(-1)
-      end)
-      set('v', '<A-)>', function()
-        mc.transposeCursors(1)
-      end)
-      set({ 'n', 'v' }, ',', mc.clearCursors)
-      set({ 'n', 'v' }, '<A-,>', mc.deleteCursor)
-      set('v', '<leader>S', mc.splitCursors)
-      set('v', '<leader>s', matchCursorsVisual)
-
-      set('v', 'I', mc.insertVisual)
-      set('v', 'A', mc.appendVisual)
-
-      set({ 'v', 'n' }, '<c-i>', mc.jumpForward)
-      set({ 'v', 'n' }, '<c-o>', mc.jumpBackward)
-
-      set('n', '<esc>', function()
-        if not mc.cursorsEnabled() then
-          mc.enableCursors()
-        elseif mc.hasCursors() then
-          mc.clearCursors()
-        else
-          -- Default <esc> handler.
-        end
-      end)
-
-      -- Add cursors with mouse
-      set('n', '<c-leftmouse>', mc.handleMouse)
-
-      -- Easy way to add and remove cursors using the main cursor
-      set({ 'n', 'v' }, '<c-q>', mc.toggleCursor)
-
-      -- Bring back cursors if you accidentally clear them
-      set('n', '<leader>gv', mc.restoreCursors)
-
-      -- Add or skip adding a new cursor by matching word/selection
-      set({ 'n', 'v' }, '<leader>n', function()
-        mc.matchAddCursor(1)
-      end)
-      set({ 'n', 'v' }, '<leader>kn', function()
-        mc.matchSkipCursor(1)
-      end)
-      set({ 'n', 'v' }, '<leader>N', function()
-        mc.matchAddCursor(-1)
-      end)
-      set({ 'n', 'v' }, '<leader>KN', function()
-        mc.matchSkipCursor(-1)
-      end)
-
-      -- Add all matches in the document
-      set({ 'n', 'v' }, '<leader>A', mc.matchAllAddCursors)
-
-      -- You can also add cursors with any motion you prefer:
-      -- set("n", "<right>", function()
-      --     mc.addCursor("w")
-      -- end)
-      -- set("n", "<leader><right>", function()
-      --     mc.skipCursor("w")
-      -- end)
-    end,
   },
 }
 
