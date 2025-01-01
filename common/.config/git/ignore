@@ -2,6 +2,7 @@
 compile_commands.json
 /builddir/
 /_build/
+/build/
 .idea/
 .vscode/
 .cache/
@@ -9,3 +10,4 @@ node_modules/
 venv/
 .nvim.lua
 mutants.out*/
+proptest-regressions/
