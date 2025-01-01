@@ -409,12 +409,14 @@ vim.fn.sign_define('DiagnosticSignWarn', { text = '●', texthl = 'DiagnosticSig
 vim.fn.sign_define('DiagnosticSignInfo', { text = '●', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '●', texthl = 'DiagnosticSignHint' })
 
-vim.keymap.set({ 'n', 'v' }, '<C-h>', '<C-w>h')
-vim.keymap.set({ 'n', 'v' }, '<C-j>', '<C-w>j')
-vim.keymap.set({ 'n', 'v' }, '<C-k>', '<C-w>k')
-vim.keymap.set({ 'n', 'v' }, '<C-l>', '<C-w>l')
+vim.keymap.set({ 'n', 'v', 't' }, '<C-h>', '<C-\\><C-n><C-w>h')
+vim.keymap.set({ 'n', 'v', 't' }, '<C-j>', '<C-\\><C-n><C-w>j')
+vim.keymap.set({ 'n', 'v', 't' }, '<C-k>', '<C-\\><C-n><C-w>k')
+vim.keymap.set({ 'n', 'v', 't' }, '<C-l>', '<C-\\><C-n><C-w>l')
 for i = 1, 9 do
-  vim.keymap.set('n', '<A-' .. i .. '>', ':tabnext ' .. i .. '<CR>')
+  vim.keymap.set({ 'n', 'v', 't' }, '<A-' .. i .. '>', function()
+    vim.cmd.tabnext(i)
+  end)
 end
 
 vim.keymap.set('n', '<C-s>', vim.cmd.update)
@@ -434,6 +436,16 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 vim.keymap.set('n', '<space>g', ':tab Git<CR>')
+vim.keymap.set('n', '<space>t', ':tab terminal /usr/bin/fish<CR>')
+vim.keymap.set('n', '<space>j', ':tab terminal jj-fzf<CR>')
+
+vim.api.nvim_create_autocmd({ 'TermOpen', 'BufEnter' }, {
+  callback = function()
+    if vim.opt.buftype:get() == 'terminal' then
+      vim.cmd.startinsert()
+    end
+  end,
+})
 
 vim.keymap.set('n', '<leader>vps', function()
   vim.cmd([[
