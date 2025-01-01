@@ -26,7 +26,8 @@ padding = { x = 2, y = 2 }
 transparent_background_colors = true
 
 [font]
-size = 10.5
+size = 10
+# size = 10.5
 # size = 11
 # size = 12
 # size = 14
@@ -35,6 +36,7 @@ size = 10.5
 # size = 30
 # normal.family = "IosevkaTerm NFM Medium"
 # normal.family = "Iosevka Term Medium Extended"
+# normal.family = "JetBrains Mono Medium Nerd Font"
 # builtin_box_drawing = false
 
 [[hints.enabled]]

@@ -384,7 +384,8 @@ vim.o.sidescrolloff = 5
 vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
-vim.o.guifont = 'monospace:h10.5' -- Font for GUI frontends
+-- vim.o.guifont = 'monospace:h10.5' -- Font for GUI frontends
+vim.o.guifont = 'monospace:h9.7'
 -- vim.o.guifont = 'monospace:h14'
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
