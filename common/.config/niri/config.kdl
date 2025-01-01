@@ -474,66 +474,6 @@ animations {
     open-floating true
 }
 
-window-rule {
-    // match app-id="Alacritty"
-    // match app-id="Adwaita"
-    // match title="About GTK Demo"
-    // match at-startup=true
-    // opacity 0.9
-    // opacity 0.5
-    // opacity 0.98
-
-    // open-on-output "eDP-1"
-    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
-    // open-on-workspace "browser"
-    // default-column-width { proportion 0.5; }
-    // default-column-width { fixed 400; }
-    // default-column-width {}
-    // default-window-height { proportion 0.25; }
-    // default-window-height { proportion 1.1; }
-    // default-window-height { fixed 100; }
-    // open-maximized true
-    // open-fullscreen true
-    // open-floating false
-    // open-floating true
-    // open-focused false
-    // open-focused true
-    // block-out-from "screencast"
-    // default-floating-position x=0 y=0 relative-to="bottom-right"
-
-    // min-width 600
-    // max-width 600
-    // min-height 600
-    // max-height 600
-
-    focus-ring {
-        // off
-        // on
-        // active-gradient from="red" to="green"
-        // active-color "lightgreen"
-        // width 1
-    }
-
-    border {
-        // off
-        // on
-        // width 12
-        // width 0
-        // active-color "#ff808080"
-        // active-color "red"
-    }
-
-    // draw-border-with-background true
-    // draw-border-with-background false
-
-    // geometry-corner-radius 12 24 32 64
-    // geometry-corner-radius 999
-    // geometry-corner-radius 1
-    // geometry-corner-radius 12
-    // geometry-corner-radius 6
-    // clip-to-geometry true
-}
-
 /-window-rule {
     match is-active-in-column=false
 
@@ -794,6 +734,66 @@ window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC$"
 
     open-focused true
+}
+
+window-rule {
+    // match app-id="Alacritty"
+    // match app-id="Adwaita"
+    // match title="About GTK Demo"
+    // match at-startup=true
+    // opacity 0.9
+    // opacity 0.5
+    // opacity 0.98
+
+    // open-on-output "eDP-1"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    // open-on-workspace "browser"
+    // default-column-width { proportion 0.5; }
+    // default-column-width { fixed 400; }
+    // default-column-width {}
+    // default-window-height { proportion 0.25; }
+    // default-window-height { proportion 1.1; }
+    // default-window-height { fixed 100; }
+    // open-maximized true
+    // open-fullscreen true
+    // open-floating false
+    // open-floating true
+    // open-focused false
+    // open-focused true
+    // block-out-from "screencast"
+    // default-floating-position x=0 y=0 relative-to="bottom-right"
+
+    // min-width 600
+    // max-width 600
+    // min-height 600
+    // max-height 600
+
+    focus-ring {
+        // off
+        // on
+        // active-gradient from="red" to="green"
+        // active-color "lightgreen"
+        // width 1
+    }
+
+    border {
+        // off
+        // on
+        // width 12
+        // width 0
+        // active-color "#ff808080"
+        // active-color "red"
+    }
+
+    // draw-border-with-background true
+    // draw-border-with-background false
+
+    // geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    // geometry-corner-radius 1
+    // geometry-corner-radius 12
+    // geometry-corner-radius 6
+    // clip-to-geometry true
 }
 
 /-layer-rule {
