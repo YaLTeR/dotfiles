@@ -9,10 +9,13 @@ debug {
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
+    // force-pipewire-invalid-modifier
     // emulate-zero-presentation-time
     // disable-transactions
     // disable-resize-throttling
     // keep-laptop-panel-on-when-lid-is-closed
+    // disable-monitor-names
+    // strict-new-window-focus-policy
 }
 
 input {
@@ -143,6 +146,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     // mode "1280x720"
 
     variable-refresh-rate on-demand=true
+    // variable-refresh-rate
     // background-color "#030"
 }
 
@@ -171,12 +175,14 @@ output "PNP(BNQ) BenQ XL2420T V4C01839SL0" {
 
 layout {
     focus-ring {
-        // off
-        width 2
+        off
+        // width 2
+        // width 8
         // catppuccin-mocha Sapphire
         active-color "#74c7ec"
         // catppuccin-mocha Surface2
         inactive-color "#585b70"
+        // inactive-color "green"
 
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
         active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
@@ -196,11 +202,11 @@ layout {
         // active-color "#000"
         // inactive-color "#000"
 
-        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
 
-        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
         inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
@@ -249,6 +255,8 @@ layout {
         // top 64
     }
 
+    // empty-workspace-above-first
+
     // center-focused-column "on-overflow"
     // center-focused-column "always"
 
@@ -263,7 +271,7 @@ cursor {
     // hide-after-inactive-ms 1000
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
@@ -281,11 +289,12 @@ hotkey-overlay {
 
 animations {
     // off
+    // slowdown 100.0
     // slowdown 10.0
     // slowdown 4.0
     // slowdown 3.0
     // slowdown 2.0
-    slowdown 1.5
+    // slowdown 1.5
 
     workspace-switch {
         // off
@@ -389,7 +398,7 @@ animations {
         // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
     }
 
-    window-resize {
+    /-window-resize {
         // off
         // duration-ms 500
         // duration-ms 2500
@@ -456,9 +465,19 @@ animations {
     }
 }
 
+/-window-rule {
+    match at-startup=false
+    exclude app-id="^Alacritty$"
+    exclude app-id="^neovide$"
+    exclude app-id="firefox$"
+
+    open-floating true
+}
+
 window-rule {
     // match app-id="Alacritty"
     // match app-id="Adwaita"
+    // match title="About GTK Demo"
     // match at-startup=true
     // opacity 0.9
     // opacity 0.5
@@ -466,17 +485,26 @@ window-rule {
 
     // open-on-output "eDP-1"
     // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    // open-on-workspace "browser"
     // default-column-width { proportion 0.5; }
     // default-column-width { fixed 400; }
     // default-column-width {}
+    // default-window-height { proportion 0.25; }
+    // default-window-height { proportion 1.1; }
+    // default-window-height { fixed 100; }
     // open-maximized true
     // open-fullscreen true
+    // open-floating false
+    // open-floating true
+    // open-focused false
+    // open-focused true
     // block-out-from "screencast"
+    // default-floating-position x=0 y=0 relative-to="bottom-right"
 
-    // min-width 400
-    // max-width 400
-    // min-height 400
-    // max-height 400
+    // min-width 600
+    // max-width 600
+    // min-height 600
+    // max-height 600
 
     focus-ring {
         // off
@@ -574,7 +602,7 @@ window-rule {
 // }
 
 window-rule {
-    match title="simple-egl"
+    match app-id="org.freedesktop.weston.simple-egl"
     // min-width 128
     // max-width 128
     // min-height 128
@@ -590,10 +618,19 @@ window-rule {
     // open-on-output "HDMI-A-1"
     // open-maximized true
     // default-column-width { proportion 0.5; }
+    // default-window-height { fixed 100; }
     // open-fullscreen false
+    // open-floating false
+    // open-floating true
 }
 
 window-rule {
+    match app-id="^gimp" title="^GIMP Startup$"
+
+    open-focused false
+}
+
+/-window-rule {
     match app-id="^Alacritty$"
     match app-id="^neovide$"
     exclude is-active=true
@@ -602,9 +639,29 @@ window-rule {
 }
 
 window-rule {
+    match app-id="^Alacritty$"
+    match app-id="^neovide$"
+    match app-id="^code$"
+    // match title="^niri$"
+
+    border { on; }
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+// window-rule {
+//     match app-id="^Alacritty$"
+//     match app-id="^neovide$"
+//     exclude is-floating=false
+//
+//     border { off; }
+// }
+
+window-rule {
     match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
     open-fullscreen false
-    default-column-width { proportion 0.5; }
+    open-floating true
+    // default-column-width { proportion 0.5; }
 }
 
 window-rule {
@@ -614,14 +671,10 @@ window-rule {
 
 window-rule {
     match app-id="^mpv$"
+    match app-id="^hl_linux$"
+    match app-id="^steam_app_524220$" // NieR:Automata
     variable-refresh-rate true
     default-column-width {}
-}
-
-// Qt used by OBS doesn't signal min size yet, so do it manually.
-window-rule {
-    match app-id=r#"^com\.obsproject\.Studio$"#
-    min-width 876
 }
 
 window-rule {
@@ -655,16 +708,19 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id=r#"^discord"#
+    match at-startup=true app-id=r#"^com\.discordapp\.Discord$"#
     open-on-workspace "discord"
 }
 
 window-rule {
     match app-id=r#"^discord"#
+    match app-id=r#"^com\.discordapp\.Discord$"#
     default-column-width { proportion 0.66667; }
 }
 
 window-rule {
     match app-id=r#"^org\.mozilla\.firefox$"#
+    exclude title="^Picture-in-Picture$"
 
     default-column-width { proportion 0.5; }
 }
@@ -719,14 +775,49 @@ window-rule {
     // geometry-corner-radius 12
 }
 
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match app-id=r#"^AmneziaVPN$"#
+    match app-id="^mpv$"
+    match app-id=r#"^org\.gnome\.Loupe$"#
+    match app-id=r#"^org\.gnome\.Calculator$"#
+
+    open-floating true
+}
+
+// Always focus the KeePassXC-Browser unlock dialog.
+//
+// This dialog opens parented to the KeePassXC window rather than the browser,
+// so it doesn't get auto-focused by default.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^KeePassXC - Browser Access Request$"
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC$"
+
+    open-focused true
+}
+
+/-layer-rule {
+    // match namespace="waybar"
+    // match namespace="launcher"
+    // match namespace="^notifications$"
+    opacity 0.5
+    block-out-from "screencast"
+}
+
+layer-rule {
+    // mako
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
-    Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
+    // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
+    // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
-    Mod+T { spawn "sh" "-c" "alacritty msg create-window --working-directory ~ || alacritty"; }
+    Mod+T { spawn "sh" "-c" "alacritty msg create-window --working-directory \"$PWD\" || alacritty"; }
     Mod+Shift+T { spawn "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
@@ -746,13 +837,19 @@ binds {
 
     Mod+Shift+S { spawn "set-theme"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute        allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    // XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    // XF86AudioMute        allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "+10"; }
+    XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "-10"; }
+    XF86AudioMute        allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--input-volume" "mute-toggle"; }
 
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
+
+    Mod+Tab { focus-window-previous; }
 
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -896,6 +993,9 @@ binds {
     Mod+Space       { switch-layout "next"; }
     Mod+Shift+Space { switch-layout "prev"; }
 
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
@@ -903,6 +1003,7 @@ binds {
     Mod+P { screenshot; }
 
     Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
 
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
