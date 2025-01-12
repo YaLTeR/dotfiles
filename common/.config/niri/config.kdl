@@ -6,6 +6,7 @@ debug {
     // enable-overlay-planes
     // disable-cursor-plane
     // disable-direct-scanout
+    // restrict-primary-scanout-to-matching-format
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
@@ -246,10 +247,13 @@ layout {
 
     // gaps 0
     gaps 8
+    // gaps 16
 
     struts {
         // left 64
         // right 64
+        // top 16
+        // bottom 16
         // top 44
         // bottom 64
         // top 64
@@ -583,9 +587,11 @@ window-rule {
     match app-id="^neovide$"
     match app-id="^code$"
     // match title="^niri$"
+    match app-id="^labwc$"
 
     border { on; }
     geometry-corner-radius 8
+    // geometry-corner-radius 12
     clip-to-geometry true
 }
 
@@ -819,6 +825,7 @@ binds {
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
     Mod+T { spawn "sh" "-c" "alacritty msg create-window --working-directory \"$PWD\" || alacritty"; }
     Mod+Shift+T { spawn "alacritty"; }
+    Mod+Ctrl+T { spawn "t" "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
     // Mod+Return { do-screen-transition; }
@@ -1009,4 +1016,7 @@ binds {
     Mod+Shift+Ctrl+T { toggle-debug-tint; }
     Mod+Shift+Ctrl+O { debug-toggle-opaque-regions; }
     Mod+Shift+Ctrl+D { debug-toggle-damage; }
+
+    // Mod+Ctrl+MouseLeft { close-window; }
+    // Mod+MouseMiddle    { maximize-column; }
 }
