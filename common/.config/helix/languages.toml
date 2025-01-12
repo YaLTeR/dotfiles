@@ -12,8 +12,7 @@ soft-wrap.enable = true
 
 [language-server.rust-analyzer.config]
 check.command = "clippy"
-rustfmt.overrideCommand = ["rustfmt", "+nightly", "--edition", "2021"]
-completion.callable.snippets = "add_parentheses"
+rustfmt.overrideCommand = ["rustfmt", "+nightly", "--edition=2021"]
 diagnostics.disabled = ["inactive-code"]
 
 [language-server.rust-analyzer.config.completion.snippets.custom."if let Err(err) ="]

@@ -42,3 +42,6 @@ C-j = "jump_view_down"
 f = ":format"
 i = ":toggle lsp.display-inlay-hints"
 
+[keys.normal.Z]
+Z = ":write-quit-all"
+
