@@ -17,6 +17,7 @@ debug {
     // keep-laptop-panel-on-when-lid-is-closed
     // disable-monitor-names
     // strict-new-window-focus-policy
+    // honor-xdg-activation-with-invalid-serial
 }
 
 input {
@@ -72,9 +73,13 @@ input {
         // map-to-output "DP-1"
         map-to-output "Acer Technologies XV320QU LV 420615FCD4200"
         // left-handed
+        /-calibration-matrix 0.0 -1.0 1.0 \
+                           1.0  0.0 0.0
+        /-calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
     }
 
     touch {
+        // off
         // map-to-output "DP-3"
         map-to-output "Interaction Systems, Inc TYPE-C TCH00562020"
     }
@@ -113,12 +118,16 @@ workspace "browser" {
 
 output "winit" {
     // scale 2.0
+    // scale 2.333
     // scale 3.0
     // scale 1.25
     // scale 1.333
     // transform "flipped-90"
     position x=100 y=200
+    // background-color "#000"
     // background-color "#030"
+    // background-color "#ccc"
+    // background-color "#fff"
 }
 
 output "BOE 0x0A9B Unknown" {
@@ -176,23 +185,27 @@ output "PNP(BNQ) BenQ XL2420T V4C01839SL0" {
 
 layout {
     focus-ring {
-        off
-        // width 2
+        // off
+        width 2
         // width 8
-        // catppuccin-mocha Sapphire
-        active-color "#74c7ec"
+        active-color "#f9e2af"
         // catppuccin-mocha Surface2
-        inactive-color "#585b70"
+        // inactive-color "#585b70"
         // inactive-color "green"
+        inactive-color "transparent"
 
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
-        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f00" to="#fc0" angle=45 relative-to="workspace-view" in="oklch longer hue"
         // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // active-gradient from="red" to="orange" angle=45 in="oklch longer hue"
+        active-gradient from="#E5989B" to="#FFB4A2" angle=45 relative-to="workspace-view" in="oklch longer hue"
     }
 
     border {
-        off
-        width 2
+        // off
+        width 1
+        // width 2
         // width 4
         // width 32
         // width 128
@@ -200,15 +213,15 @@ layout {
         // active-color "#f38ba8"
         // inactive-color "#585b70"
 
-        // active-color "#000"
-        // inactive-color "#000"
+        active-color "#000"
+        inactive-color "#000"
 
         // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
 
-        active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
-        inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
 
         // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
         // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
@@ -217,6 +230,89 @@ layout {
 
         // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
+    }
+
+    // default-column-display "tabbed"
+
+    tab-indicator {
+        width 2
+        // width 4
+        // width 8
+        // width 64
+        // width 128
+
+        // gap -8
+        // gap 0
+        // gap 2
+        // gap 3
+        gap 4
+
+        // gaps-between-tabs 0.1
+        gaps-between-tabs 2
+        // gaps-between-tabs 64
+
+        // corner-radius 8
+        // corner-radius 64
+
+        // hide-when-single-tab
+
+        // place-within-column
+
+        // position "right"
+        // position "top"
+        // position "bottom"
+
+        // length total-proportion=0.0
+        // length total-proportion=1.0
+        // length total-proportion=1.3
+
+        // active-color "#f9e2af"
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // inactive-color "red"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f007" to="#fc07" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // inactive-color "#f9e2af90"
+        inactive-color "#585b70"
+    }
+
+    shadow {
+        on
+
+        // draw-behind-window false
+        // draw-behind-window true
+
+        // softness 0
+        // softness 1
+        // softness 10
+        // softness 15
+        // softness 23
+        // softness 20
+        // softness 40
+        // softness 30
+        // softness 100
+        // softness 200
+        // softness 1000
+
+        // spread 0
+        // spread 2
+        // spread 5
+        // spread 35
+        // spread 50
+
+        // color "#00000070"
+        // color "#f007"
+        // color "#f00f"
+        // inactive-color "#00000054"
+
+        // color "#4007"
+
+        // offset x=0 y=0
+        // offset x=0 y=5
+        // offset x=0 y=50
+        // offset x=-50 y=-50
+        // offset y=200
     }
 
     insert-hint {
@@ -248,6 +344,8 @@ layout {
     // gaps 0
     gaps 8
     // gaps 16
+    // gaps 32
+    // gaps 64
 
     struts {
         // left 64
@@ -275,7 +373,7 @@ cursor {
     // hide-after-inactive-ms 1000
 }
 
-// prefer-no-csd
+prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
@@ -289,6 +387,10 @@ environment {
 
 hotkey-overlay {
     // skip-at-startup
+}
+
+clipboard {
+    // disable-primary
 }
 
 animations {
@@ -320,8 +422,15 @@ animations {
                 vec3 coords_tex = niri_geo_to_tex * coords_geo;
                 vec4 color = texture2D(niri_tex, coords_tex.st);
 
-                vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-                coords = coords / length(size_geo.xy);
+                vec2 size = size_geo.xy;
+                vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size * 2.0;
+
+                // Some padding for borders and shadows.
+                float pad = 8.0;
+                coords = coords + vec2(pad, pad);
+                size = size + vec2(pad, pad) * 2.0;
+
+                coords = coords / length(size);
                 float p = niri_clamped_progress;
                 if (p * p <= dot(coords, coords))
                     color = vec4(0.0);
@@ -402,14 +511,14 @@ animations {
         // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
     }
 
-    /-window-resize {
+    window-resize {
         // off
         // duration-ms 500
         // duration-ms 2500
         // curve "ease-out-cubic"
         // spring damping-ratio=0.2 stiffness=800 epsilon=0.0001
 
-        custom-shader r"
+        /-custom-shader r"
             vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
                 vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
                 vec3 coords_prev_geo = niri_curr_geo_to_prev_geo * coords_curr_geo;
@@ -469,6 +578,24 @@ animations {
     }
 }
 
+gestures {
+    dnd-edge-view-scroll {
+        // trigger-width 0
+        // trigger-width 1
+        // trigger-width 10000
+        // max-speed 100000
+        // delay-ms 0
+        // delay-ms 100
+        // delay-ms 1000
+    }
+}
+
+window-rule {
+    // geometry-corner-radius 6
+    // geometry-corner-radius 12
+    clip-to-geometry true
+}
+
 /-window-rule {
     match at-startup=false
     exclude app-id="^Alacritty$"
@@ -486,13 +613,18 @@ animations {
 }
 
 /-window-rule {
+    match is-floating=true
+    shadow { on; }
+}
+
+/-window-rule {
     match app-id="Adwaita"
     // match app-id="TextEditor"
     // opacity 0.5
     // block-out-from "screencast"
-    geometry-corner-radius 12
+    geometry-corner-radius 15
     // geometry-corner-radius 0 0 8 8
-    clip-to-geometry false
+    // clip-to-geometry false
     border {
         // off
         // width 12
@@ -509,6 +641,11 @@ window-rule {
     border {
         width 4
     }
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    geometry-corner-radius 6
 }
 
 /-window-rule {
@@ -582,7 +719,7 @@ window-rule {
     opacity 0.95
 }
 
-window-rule {
+/-window-rule {
     match app-id="^Alacritty$"
     match app-id="^neovide$"
     match app-id="^code$"
@@ -590,9 +727,9 @@ window-rule {
     match app-id="^labwc$"
 
     border { on; }
-    geometry-corner-radius 8
+    // geometry-corner-radius 8
     // geometry-corner-radius 12
-    clip-to-geometry true
+    // clip-to-geometry true
 }
 
 // window-rule {
@@ -665,14 +802,14 @@ window-rule {
 }
 
 window-rule {
-    match app-id=r#"^org\.mozilla\.firefox$"#
+    match app-id=r#"firefox$"#
     exclude title="^Picture-in-Picture$"
 
     default-column-width { proportion 0.5; }
 }
 
 window-rule {
-    match at-startup=true app-id=r#"^org\.mozilla\.firefox$"#
+    match at-startup=true app-id=r#"firefox$"#
 
     open-on-workspace "browser"
     open-maximized true
@@ -686,11 +823,12 @@ window-rule {
 
 window-rule {
     match app-id="^code"
+    match app-id="^cursor"
     default-column-width { proportion 0.66667; }
 }
 
 // window-rule {
-//     match app-id=r#"^org\.mozilla\.firefox$"# title=" Grafana "
+//     match app-id=r#"firefox$"# title=" Grafana "
 //
 //     open-on-workspace "dash"
 //     open-maximized true
@@ -702,12 +840,12 @@ window-rule {
     match app-id=r#"^org\.telegram\.desktop$"#
 
     // Doesn't quite work: Firefox changes the title one frame early.
-    match app-id=r#"^org\.mozilla\.firefox$"# title="- Gmail "
-    match app-id=r#"^org\.mozilla\.firefox$"# title="^Google Calendar "
-    match app-id=r#"^org\.mozilla\.firefox$"# title="Todoist "
-    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^GNOME( \*)?( \[\d+\])? \| "#
-    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"^Element "#
-    match app-id=r#"^org\.mozilla\.firefox$"# title=r#"Discord \| "#
+    match app-id=r#"firefox$"# title="- Gmail "
+    match app-id=r#"firefox$"# title="^Google Calendar "
+    match app-id=r#"firefox$"# title="Todoist "
+    match app-id=r#"firefox$"# title=r#"^GNOME( \*)?( \[\d+\])? \| "#
+    match app-id=r#"firefox$"# title=r#"^Element "#
+    match app-id=r#"firefox$"# title=r#"Discord \| "#
 
     block-out-from "screencast"
     // block-out-from "screen-capture"
@@ -725,10 +863,26 @@ window-rule {
     match app-id="firefox$" title="^Picture-in-Picture$"
     match app-id=r#"^AmneziaVPN$"#
     match app-id="^mpv$"
-    match app-id=r#"^org\.gnome\.Loupe$"#
-    match app-id=r#"^org\.gnome\.Calculator$"#
+    match app-id=r#"^org\.gnome\.Loupe"#
+    match app-id=r#"^org\.gnome\.Calculator"#
+    match app-id=r#"^org\.gnome\.Decibels"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
+    match app-id=r#"^app\.drey\.Warp"#
+    match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+    // match app-id="pavucontrol"
+    // match title="^niri$"
 
     open-floating true
+
+    // focus-ring { on; }
+}
+
+window-rule {
+    match app-id="^explorer.exe$"
+    default-column-width {}
+    default-window-height {}
+    // open-floating true
 }
 
 // Always focus the KeePassXC-Browser unlock dialog.
@@ -743,17 +897,87 @@ window-rule {
 }
 
 window-rule {
+    match app-id="foot"
+
+    // geometry-corner-radius 0
+    // geometry-corner-radius 12
+    // clip-to-geometry true
+    // opacity 0.5
+    // opacity 0.05
+    // opacity 0.0
+
+    /-shadow {
+        off
+        draw-behind-window true
+        softness 2
+        offset x=5 y=5
+        spread 0
+        // softness 100
+        // spread 0
+        // inactive-color "#000"
+    }
+
+    /-focus-ring {
+        off
+    }
+
+    /-border {
+        // on
+        off
+        // width 1
+        width 256
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+    }
+
+    /-tab-indicator {
+        inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+    }
+}
+
+/-window-rule {
+    match app-id="circle"
+    opacity 0.05
+
+    geometry-corner-radius 999
+
+    shadow {
+        // off
+        // draw-behind-window true
+        inactive-color "#000"
+    }
+}
+
+/-window-rule {
+    match app-id="osu"
+    geometry-corner-radius 999
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 1000; }
+    // open-floating true
+    open-fullscreen false
+    focus-ring {
+        on
+        active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+    }
+}
+
+window-rule {
     // match app-id="Alacritty"
     // match app-id="Adwaita"
     // match title="About GTK Demo"
+    // match title="GTK Demo"
+    // match title="sleep"
     // match at-startup=true
+    // match is-floating=true
     // opacity 0.9
     // opacity 0.5
+    // opacity 0.0
     // opacity 0.98
 
     // open-on-output "eDP-1"
     // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-workspace "browser"
+    // open-on-workspace "discord"
     // default-column-width { proportion 0.5; }
     // default-column-width { fixed 400; }
     // default-column-width {}
@@ -768,6 +992,9 @@ window-rule {
     // open-focused true
     // block-out-from "screencast"
     // default-floating-position x=0 y=0 relative-to="bottom-right"
+    // scroll-factor 0.1
+    // scroll-factor 0
+    // baba-is-float true
 
     // min-width 600
     // max-width 600
@@ -791,15 +1018,48 @@ window-rule {
         // active-color "red"
     }
 
+    shadow {
+        // off
+        // draw-behind-window true
+    }
+
+    tab-indicator {
+        // inactive-color "red"
+        // inactive-gradient from="yellow" to="yellow"
+    }
+
     // draw-border-with-background true
     // draw-border-with-background false
 
     // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
+    // geometry-corner-radius 30
     // geometry-corner-radius 1
     // geometry-corner-radius 12
     // geometry-corner-radius 6
     // clip-to-geometry true
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
 }
 
 /-layer-rule {
@@ -807,7 +1067,30 @@ window-rule {
     // match namespace="launcher"
     // match namespace="^notifications$"
     opacity 0.5
+    // opacity 0.05
     block-out-from "screencast"
+
+    // geometry-corner-radius 12
+    // geometry-corner-radius 999
+
+    shadow {
+        on
+        // draw-behind-window true
+    }
+}
+
+layer-rule {
+    // fuzzel
+    match namespace="^launcher$"
+
+    // opacity 0.05
+
+    shadow {
+        on
+    }
+
+    // geometry-corner-radius 14
+    // geometry-corner-radius 8
 }
 
 layer-rule {
@@ -819,13 +1102,22 @@ layer-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    Super+Shift+S hotkey-overlay-title="Toggle Dark/Light Style" { spawn "set-theme"; }
+    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn "fuzzel"; }
+    Mod+M hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
+
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
     // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
-    Mod+T { spawn "sh" "-c" "alacritty msg create-window --working-directory \"$PWD\" || alacritty"; }
-    Mod+Shift+T { spawn "alacritty"; }
-    Mod+Ctrl+T { spawn "t" "alacritty"; }
+    Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "spawn-alacritty.bash" "toolbox"; }
+    Mod+Shift+T hotkey-overlay-title="Open Terminal on the Host" { spawn "spawn-alacritty.bash" "host"; }
+    Mod+E hotkey-overlay-title="Open Neovide" { spawn "t" "neovide"; }
+    // Mod+Ctrl+T { spawn "spawn-alacritty.bash" "toolbox"; }
+    Mod+Return { spawn "alacritty"; }
+    // Mod+Shift+T { spawn "alacritty"; }
+    // Mod+Ctrl+T { spawn "t" "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
     // Mod+Return { spawn "~/arst"; }
     // Mod+Return { do-screen-transition; }
@@ -833,16 +1125,10 @@ binds {
     // Mod+T { spawn "~/.local/bin/spawn-ptyxis.sh"; }
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
-    Mod+D { spawn "fuzzel"; }
-    Mod+M { spawn "nautilus"; }
-    Super+Alt+L allow-when-locked=true { spawn "hyprlock"; }
-    Mod+E { spawn "t" "neovide"; }
 
-    Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
-    Super+Alt+M     { spawn "~/source/sh/refresh.sh" "170"; }
-    Super+Alt+Comma { spawn "~/source/sh/refresh.sh" "120"; }
-
-    Mod+Shift+S { spawn "set-theme"; }
+    // Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
+    Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "~/source/sh/refresh.sh" "170"; }
+    Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "~/source/sh/refresh.sh" "120"; }
 
     // XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -965,6 +1251,8 @@ binds {
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
+    // Mod+Comma  { swap-window-left; }
+    // Mod+Period { swap-window-right; }
 
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
@@ -978,6 +1266,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+C { center-column; }
 
     Mod+Minus { set-column-width "-10%"; }
@@ -1003,11 +1292,15 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
+    Mod+W { toggle-column-tabbed-display; }
+
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
     Mod+P { screenshot; }
+
+    Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
