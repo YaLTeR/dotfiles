@@ -20,10 +20,10 @@ alias pa   "pacaur -S"
 alias pas  "pacaur -Ss"
 
 # flatpak autocomplete is broken with an alias
-abbr --add f flatpak
-alias fu  "flatpak update"
-alias fi  "flatpak install"
-alias fiu "flatpak install -u"
+abbr --add f   flatpak
+abbr --add fu  flatpak update
+abbr --add fi  flatpak install
+abbr --add fiu flatpak install --user
 
 alias c "cargo"
 alias cn "cargo +nightly"
