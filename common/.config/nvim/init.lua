@@ -439,6 +439,14 @@ telescope.setup {
       horizontal = { preview_width = { 0.6, max = 100 } },
     },
   },
+  pickers = {
+    find_files = {
+      hidden = true,
+    },
+    live_grep = {
+      additional_args = { '--hidden' },
+    },
+  },
 }
 telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
