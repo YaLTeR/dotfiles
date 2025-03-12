@@ -7,3 +7,14 @@
   type: file
   url: "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/IosevkaTerm.tar.xz"
   refreshPediod: 672h
+
+".local/bin/jj":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "jj-vcs/jj" "jj-v*-x86_64-unknown-linux-musl.tar.gz" | quote }}
+  path: ./jj
+  executable: true
+
+".local/bin/jj-fzf":
+  type: file
+  url: "https://raw.githubusercontent.com/tim-janik/jj-fzf/refs/heads/trunk/jj-fzf"
+  executable: true
