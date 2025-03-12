@@ -377,7 +377,7 @@ cursor {
     // hide-after-inactive-ms 1000
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
