@@ -1,0 +1,116 @@
+{{- $choices := list "desktop" "laptop" "server" "uni" -}}
+{{- $hosttype := promptChoiceOnce . "hosttype" "What type of host are you on" $choices -}}
+
+{{- $osid := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- $email := "yalterz@gmail.com" -}}
+{{- if eq $hosttype "uni" -}}
+{{-   $email = "ivan.molodetskikh@graphics.cs.msu.ru" -}}
+{{- end -}}
+
+encryption: age
+age:
+  identity: "~/.config/chezmoi/key.txt"
+  recipient: age1ckewaedkxlvag3w8spsxr5a6ssk3wf5yzerevspeala9mmaqfatqpyd762
+
+{{ if eq $hosttype "desktop" "laptop" -}}
+hooks:
+  read-source-state:
+    pre:
+      command: ".local/share/chezmoi/.decrypt-private-key.sh"
+{{- end }}
+
+merge:
+  command: nvim
+  args:
+    - "-d"
+
+data:
+  hosttype: {{ $hosttype | quote }}
+  osid: {{ $osid | quote }}
+  email: {{ $email | quote }}
+
+  packages:
+    rpm-ostree:
+      # Essentials
+      - fish
+      - eza
+      - tmux
+      - dnf
+      - htop
+      - fzf
+      - gdb
+      - perf
+      - syncthing
+      - trash-cli
+
+      # Various
+      - distrobox
+      - brightnessctl
+      - fastfetch
+      - sysprof
+      - lm_sensors
+      - libinput-utils
+      - netconsole-service
+
+      # Compositors & WMs
+      - sway
+      - labwc
+      - i3
+
+      # Terminals
+      - alacritty
+      - foot
+      - gnome-console
+
+      # Wayland utils
+      - fuzzel
+      - waybar
+      - wlsunset
+      - kanshi
+      - hyprlock
+      - gamescope
+
+    toolbox:
+      dnf:
+        - git
+        - git-lfs
+        - git-delta
+        - fish
+        - fzf
+        - eza
+        - tmux
+        - ripgrep
+        - neovim
+        - python3-neovim
+        - fedpkg
+        - sassc
+        - cmake
+        - mold
+        - clang
+        - ccache
+        - glycin-loaders
+        - default-fonts
+        - perf
+        - valgrind
+        - gdb
+        - rr
+        - alacritty
+        - libadwaita-devel
+        - libadwaita-demo
+        - /usr/bin/gh
+        - /usr/bin/gtk4-demo
+        - /usr/bin/wayland-info
+        - /usr/bin/vulkaninfo
+        - /usr/bin/vainfo
+        - /usr/bin/eglinfo
+        - /usr/bin/glxinfo
+        - /usr/bin/weston-presentation-shm
+        - /usr/bin/radeontop
+
+      builddep:
+        - gtk4
+        - libadwaita

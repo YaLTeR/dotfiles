@@ -1,0 +1,12 @@
+#!/bin/sh
+set -ex
+
+{{ $filename := joinPath .chezmoi.homeDir ".local/share/fonts/JetBrainsMono-Nerd.tar.xz" }}
+# Hash: {{ include $filename | sha256sum }}
+tar xf {{ $filename | quote }} --one-top-level
+
+{{ $filename := joinPath .chezmoi.homeDir ".local/share/fonts/IosevkaTerm-Nerd.tar.xz" }}
+# Hash: {{ include $filename | sha256sum }}
+tar xf {{ $filename | quote }} --one-top-level
+
+fc-cache -f

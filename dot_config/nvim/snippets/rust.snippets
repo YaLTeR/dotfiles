@@ -1,0 +1,239 @@
+snippet gobject 'Generate GObject subclass boilerplate'
+	use glib::subclass::prelude::*;
+	use gtk::glib;
+	
+	mod imp {
+		use super::*;
+	
+		#[derive(Debug, Default)]
+		pub struct ${1:Name} {
+		}
+	
+		#[glib::object_subclass]
+		impl ObjectSubclass for $1 {
+			const NAME: &'static str = "${2:FullName}";
+			type Type = super::$1;
+			type ParentType = glib::Object;
+		}
+	
+		impl ObjectImpl for $1 {}
+	}
+	
+	glib::wrapper! {
+		pub struct $1(ObjectSubclass<imp::$1>);
+	}
+	
+	impl $1 {
+		pub fn new() -> Self {
+			glib::Object::builder().build()
+		}
+	}
+
+snippet widget 'Generate GTK Widget subclass boilerplate'
+	use gtk::glib;
+	use gtk::subclass::prelude::*;
+	
+	mod imp {
+		use glib::Properties;
+		use gtk::prelude::*;
+	
+		use super::*;
+	
+		#[derive(Debug, Default, Properties)]
+		#[properties(wrapper_type = super::$1)]
+		pub struct ${1:Name} {
+		}
+	
+		#[glib::object_subclass]
+		impl ObjectSubclass for $1 {
+			const NAME: &'static str = "${2:FullName}";
+			type Type = super::$1;
+			type ParentType = gtk::Widget;
+		}
+	
+		impl ObjectImpl for $1 {
+			fn constructed(&self) {
+				let obj = self.obj();
+	
+				self.parent_constructed();
+			}
+	
+			fn properties() -> &'static [glib::ParamSpec] {
+				Self::derived_properties()
+			}
+	
+			fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+				self.derived_set_property(id, value, pspec);
+			}
+	
+			fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+				self.derived_property(id, pspec)
+			}
+		}
+	
+		impl WidgetImpl for $1 {}
+	}
+	
+	glib::wrapper! {
+		pub struct $1(ObjectSubclass<imp::$1>)
+			@extends gtk::Widget;
+	}
+	
+	impl $1 {
+		pub fn new() -> Self {
+			glib::Object::builder().build()
+		}
+	}
+
+# More function declarations
+snippet ufn
+	unsafe fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet pufn
+	pub unsafe fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet ecfn
+	extern "C" fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet pecfn
+	pub extern "C" fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet uecfn
+	unsafe extern "C" fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet puecfn
+	pub unsafe extern "C" fn ${1:function_name}(${2})$3 {
+		${0}
+	}
+
+snippet pst
+	pub struct ${1:`substitute(vim_snippets#Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} {
+		${0}
+	}
+
+# extern crate with macro_use
+snippet ecm "extern crate with macro_use"
+	#[macro_use]
+	extern crate $1;
+
+# Inline attribute
+snippet in "Inline attribute"
+	#[inline]
+
+snippet ina "Inline always"
+	#[inline(always)]
+
+snippet inn "Inline never"
+	#[inline(never)]
+
+# Option and Result with ${VISUAL}
+snippet o "Option<T>" w
+	Option<${1:${VISUAL}}>
+
+snippet r "Result<T, E>" w
+	Result<${1:${VISUAL}}, ${2:()}>
+
+snippet s "Some()" w
+	Some(${1:${VISUAL}})
+
+snippet ok "Ok()" w
+	Ok(${1:${VISUAL}})
+
+snippet er "Err()" w
+	Err(${1:${VISUAL}})
+
+# Unsafe block
+snippet u "unsafe { ... }" w
+	unsafe { ${1:${VISUAL}} }
+
+# Shorter variable declarations
+snippet l "let variable declaration with type inference" w
+	let ${1} = ${2};
+
+snippet lt "let variable declaration with explicit type annotation" w
+	let ${1}: ${2} = ${3};
+
+snippet lm "let mut variable declaration with type inference" w
+	let mut ${1} = ${2};
+
+snippet ltm "let mut variable declaration with explicit type annotation" w
+	let mut ${1}: ${2} = ${3};
+
+# Control structures but without $0
+snippet i "if" w
+	if ${1} {
+		${2:${VISUAL}}
+	}
+
+snippet ie "if / else" w
+	if ${1} {
+		${2:${VISUAL}}
+	} else {
+		${3}
+	}
+
+snippet e "else" w
+	else {
+		${1:${VISUAL}}
+	}
+
+snippet ei "else if" w
+	else if ${1} {
+		${2:${VISUAL}}
+	}
+
+# Same but if let ...
+snippet il "if let" w
+	if let ${1} = ${2} {
+		${3:${VISUAL}}
+	}
+
+snippet ile "if let / else" w
+	if let ${1} = ${2} {
+		${3:${VISUAL}}
+	} else {
+		${4}
+	}
+
+snippet eil "else if let" w
+	else if let ${1} = ${2} {
+		${3:${VISUAL}}
+	}
+
+# Deref
+snippet deref "Deref trait implementation"
+	impl Deref for ${1:Type} {
+		type Target = ${2:Target};
+
+		fn deref(&self) -> &Self::Target {
+			&self.${0:field}
+		}
+	}
+
+snippet derefm "DerefMut trait implementation"
+	impl DerefMut for ${1:Type} {
+		fn deref_mut(&self) -> &mut Self::Target {
+			&mut self.${0:field}
+		}
+	}
+
+# From
+snippet from "From trait implementation"
+	impl From<${1:FromType}> for ${2:ToType} {
+		#[inline]
+		fn from(x: $1) -> Self {
+			${0:use $1::*;
+			match x {
+			}}
+		}
+	}

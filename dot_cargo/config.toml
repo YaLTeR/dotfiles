@@ -1,0 +1,5 @@
+[build]
+rustflags = ["-C", "link-arg=-fuse-ld=mold", "-C", "force-frame-pointers=yes"]
+
+[resolver]
+incompatible-rust-versions = "fallback"

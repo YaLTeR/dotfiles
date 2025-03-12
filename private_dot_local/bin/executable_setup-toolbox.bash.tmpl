@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eufo pipefail 
+
+sudo dnf update
+sudo dnf install {{- range .packages.toolbox.dnf }} {{ . | quote }}{{ end }}
+sudo dnf builddep {{- range .packages.toolbox.builddep }} {{ . | quote }}{{ end }}
+
+# rpmfusion, codecs, ffmpeg, mpv
+# vscode

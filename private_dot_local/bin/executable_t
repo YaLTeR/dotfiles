@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    command=fish
+else
+    command="$(printf "%q " "$@")"
+fi
+
+exec toolbox run -c fedora-toolbox-41 bash -ic "$command"

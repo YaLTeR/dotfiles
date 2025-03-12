@@ -1,0 +1,113 @@
+// vim: ft=jsonc
+{
+    "layer": "top",
+    // "mode": "overlay",
+    // "position": "top",
+    // "position": "bottom",
+    "position": "right",
+    // "position": "left",
+    // "output": "eDP-1",
+    // "output": "eDP-2",
+    // "margin-top": 4,
+    // "margin-left": 4,
+    // "margin-bottom": 4,
+    // "height": 32,
+    // "width": 300,
+    "spacing": 0, // Gaps between modules
+    "modules-left": [
+        {{- if eq .hosttype "laptop" }}
+        "network",
+        {{ end -}}
+        "niri/workspaces"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/keyboard-layout", "cpu", "memory", "battery", "tray"],
+    "custom/style": {
+        "format": "S",
+        "tooltip": false,
+        "on-click": "set-theme"
+    },
+    "custom/logout": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "niri msg action quit"
+    },
+    "custom/workspaces": {
+        "exec": "~/source/py/niri-ipc/workspaces.py \"$WAYBAR_OUTPUT_NAME\"",
+        "return-type": "json"
+    },
+    "custom/keyboard-layout": {
+        "exec": "~/source/py/niri-ipc/keyboard-layout.py",
+        "return-type": "json",
+        "exec-on-event": false,
+        "on-click": "niri msg action switch-layout next",
+        "on-click-right": "niri msg action switch-layout prev"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "discord": "",
+            "chat": "<b></b>",
+            // "2": "Two",
+            // "focused": "F",
+            "default": "◦",
+        },
+        // "current-only": true,
+        // "all-outputs": true,
+    },
+    "niri/window": {
+        // "format": "{app_id}",
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16,
+    },
+    "niri/language": {
+        "format": "{shortDescription}",
+        // "format-en": ":)",
+        // "format-ru": ":P",
+    },
+    "wlr/taskbar": {
+        // "all-outputs": true,
+        // "format": "{icon} {title} {short_state}",
+        "format": "{icon}",
+        "tooltip-format": "{title} | {app_id}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "fullscreen"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format": "{:%e %B %H:%M}"
+        "format": "{:%e\n%m\n\n<b>%H\n%M</b>}"
+    },
+    "cpu": {
+        "format": "{usage}",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}",
+        "format-charging": "{capacity}",
+        "format-plugged": "{capacity}",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+    }
+}

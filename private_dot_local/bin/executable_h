@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -n "$TOOLBOX_PATH" ]; then
+    ~/.cargo/bin/hx "$@"
+else
+    t hx "$@"
+fi

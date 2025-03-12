@@ -1,0 +1,12 @@
+key.txt.age
+
+{{ if eq .hosttype "desktop" "laptop" | not }}
+**
+!.config
+!.config/git
+!.config/git/*
+!.config/tmux
+!.config/tmux/*
+!.ssh
+!.ssh/authorized_keys
+{{ end }}

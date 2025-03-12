@@ -1,0 +1,47 @@
+theme = "catppuccin_mocha"
+# theme = "onelight"
+# theme = "solarized_light"
+# theme = "github_light"
+# theme = "onedark"
+# theme = "github_dark"
+# theme = "adwaita-dark"
+
+[editor]
+line-number = "relative"
+auto-save = true
+auto-format = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.lsp]
+# display-inlay-hints = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+tab = "all"
+nbsp = "all"
+
+[keys.normal]
+C-s = ":update"
+C-p = "file_picker"
+A-z = ":toggle soft-wrap.enable"
+A-q = ":reflow"
+F5 = ":reload"
+
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+C-k = "jump_view_up"
+C-j = "jump_view_down"
+
+[keys.normal."'"]
+f = ":format"
+i = ":toggle lsp.display-inlay-hints"
+
+[keys.normal.Z]
+Z = ":write-quit-all"
+

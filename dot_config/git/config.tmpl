@@ -1,0 +1,34 @@
+[user]
+	email = {{ .email }}
+	name = Ivan Molodetskikh
+[pull]
+	rebase = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[core]
+	autocrlf = input
+{{- if eq .hosttype "desktop" "laptop" }}
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+{{ end -}}
+[rerere]
+	enabled = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
