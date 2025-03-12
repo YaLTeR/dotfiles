@@ -20,6 +20,7 @@ padding = { x = 2, y = 2 }
 # dynamic_padding = true
 # opacity = 0.98
 # opacity = 0.5
+# opacity = 0.0
 # startup_mode = "Fullscreen"
 
 [colors]
@@ -37,6 +38,7 @@ size = 10
 # normal.family = "IosevkaTerm NFM Medium"
 # normal.family = "Iosevka Term Medium Extended"
 # normal.family = "JetBrains Mono Medium Nerd Font"
+# normal.family = "Fira Code"
 # builtin_box_drawing = false
 
 [[hints.enabled]]
