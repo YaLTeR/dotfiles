@@ -15,7 +15,7 @@
     // "width": 300,
     "spacing": 0, // Gaps between modules
     "modules-left": [
-        {{- if eq .hosttype "laptop" }}
+        {{ if eq .hosttype "laptop" -}}
         "network",
         {{ end -}}
         "niri/workspaces"
