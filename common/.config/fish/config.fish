@@ -19,7 +19,8 @@ alias psyu "sudo pacman -Syu"
 alias pa   "pacaur -S"
 alias pas  "pacaur -Ss"
 
-alias f   "flatpak"
+# flatpak autocomplete is broken with an alias
+abbr --add f flatpak
 alias fu  "flatpak update"
 alias fi  "flatpak install"
 alias fiu "flatpak install -u"
