@@ -11,4 +11,10 @@ README.md
 !.config/tmux/*
 !.ssh
 !.ssh/authorized_keys
+
+{{ if eq .hosttype "uni" }}
+!.local/bin/jj
+!.local/bin/jj-fzf
+{{ end }}
+
 {{ end }}
