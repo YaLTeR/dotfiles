@@ -1,6 +1,0 @@
-window.opacity = 1
-font.size = 50
-
-[colors.primary]
-background = '0x000000'
-foreground = '0xffffff'
