@@ -598,6 +598,13 @@ window-rule {
     // geometry-corner-radius 6
     // geometry-corner-radius 12
     clip-to-geometry true
+    tiled-state true
+}
+
+// I want mpv's window dragging, and it disables that on tiled state.
+window-rule {
+    match app-id="^mpv$"
+    tiled-state false
 }
 
 /-window-rule {
@@ -618,7 +625,24 @@ window-rule {
 
 /-window-rule {
     match is-floating=true
-    shadow { on; }
+    exclude app-id="^mpv$"
+    exclude app-id="^foot$"
+
+    tiled-state false
+    clip-to-geometry false
+
+    shadow {
+        off;
+        // on;
+    }
+
+    border { off; }
+    focus-ring { off; }
+}
+
+/-window-rule {
+    match is-floating=true app-id="^foot$"
+    tiled-state false
 }
 
 /-window-rule {
@@ -999,6 +1023,8 @@ window-rule {
     // scroll-factor 0.1
     // scroll-factor 0
     // baba-is-float true
+    // tiled-state true
+    // tiled-state false
 
     // min-width 600
     // max-width 600

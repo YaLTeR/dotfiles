@@ -22,6 +22,8 @@ padding = { x = 2, y = 2 }
 # opacity = 0.5
 # opacity = 0.0
 # startup_mode = "Fullscreen"
+# decorations = "Full"
+# decorations = "None"
 
 [colors]
 transparent_background_colors = true
