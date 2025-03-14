@@ -1131,8 +1131,8 @@ binds {
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
 
     // Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
-    Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "~/source/sh/refresh.sh" "170"; }
-    Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "~/source/sh/refresh.sh" "120"; }
+    Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "refresh.sh" "170"; }
+    Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "refresh.sh" "120"; }
 
     // XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
