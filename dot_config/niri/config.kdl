@@ -1143,8 +1143,8 @@ binds {
     // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
-    Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "spawn-alacritty.bash" "toolbox"; }
-    Mod+Shift+T hotkey-overlay-title="Open Terminal on the Host" { spawn "spawn-alacritty.bash" "host"; }
+    Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "~/source/sh/spawn-alacritty.bash" "toolbox"; }
+    Mod+Shift+T hotkey-overlay-title="Open Terminal on the Host" { spawn "~/source/sh/spawn-alacritty.bash" "host"; }
     Mod+E hotkey-overlay-title="Open Neovide" { spawn "t" "neovide"; }
     // Mod+Ctrl+T { spawn "spawn-alacritty.bash" "toolbox"; }
     Mod+Return { spawn "alacritty"; }
@@ -1159,8 +1159,8 @@ binds {
     // Mod+T { spawn "kgx" "-e" "fish -C t"; }
 
     // Mod+W { spawn "sh" "-c" "t mpv --pause $(wl-paste)"; }
-    Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "refresh.sh" "170"; }
-    Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "refresh.sh" "120"; }
+    Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "~/source/refresh.sh" "170"; }
+    Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "~/source/refresh.sh" "120"; }
 
     Super+Alt+O hotkey-overlay-title="Set Dynamic Cast Output" { set-dynamic-cast-monitor; }
     Super+Alt+W hotkey-overlay-title="Set Dynamic Cast Window" { set-dynamic-cast-window; }

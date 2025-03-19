@@ -4,5 +4,5 @@ After=graphical-session.target
 Requisite=graphical-session.target
 
 [Service]
-ExecStart=%h/.local/bin/spawn-alacritty.bash toolbox --daemon
+ExecStart=%h/source/sh/spawn-alacritty.bash toolbox --daemon
 Restart=on-failure
