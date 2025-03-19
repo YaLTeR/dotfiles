@@ -3,6 +3,7 @@ debug {
     // preview-render "screen-capture"
     // dbus-interfaces-in-non-session-instances
     // wait-for-frame-completion-before-queueing
+    // wait-for-frame-completion-in-pipewire
     // enable-overlay-planes
     // disable-cursor-plane
     // disable-direct-scanout
@@ -150,6 +151,7 @@ output "BOE 0x0A9B Unknown" {
 output "Acer Technologies XV320QU LV 420615FCD4200" {
     // off
     // position x=-2560 y=-1440
+    // position x=2500 y=0
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
@@ -1160,6 +1162,11 @@ binds {
     Super+Alt+M     hotkey-overlay-title="Switch to 170 Hz" { spawn "refresh.sh" "170"; }
     Super+Alt+Comma hotkey-overlay-title="Switch to 120 Hz" { spawn "refresh.sh" "120"; }
 
+    Super+Alt+O hotkey-overlay-title="Set Dynamic Cast Output" { set-dynamic-cast-monitor; }
+    Super+Alt+W hotkey-overlay-title="Set Dynamic Cast Window" { set-dynamic-cast-window; }
+    Super+Alt+P hotkey-overlay-title="Pick Dynamic Cast Window" { spawn "~/source/sh/pick-dynamic-cast-window.sh"; }
+    Super+Alt+C hotkey-overlay-title="Clear Dynamic Cast Target" { clear-dynamic-cast-target; }
+
     // XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     // XF86AudioMute        allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
@@ -1297,6 +1304,7 @@ binds {
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
 
     Mod+Minus { set-column-width "-10%"; }
