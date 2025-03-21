@@ -295,8 +295,12 @@ vim.o.sidescrolloff = 5
 vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
--- vim.o.guifont = 'monospace:h10.5' -- Font for GUI frontends
-vim.o.guifont = 'monospace:h9.7'
+
+ -- Font for GUI frontends
+-- vim.o.guifont = 'monospace:h9.7'
+-- vim.o.guifont = 'monospace:h10.2'
+vim.o.guifont = 'monospace:h10.5'
+-- vim.o.guifont = 'monospace:h11.3'
 -- vim.o.guifont = 'monospace:h14'
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
 
@@ -313,6 +317,11 @@ if vim.g.neovide then
   vim.g.neovide_position_animation_length = 0.1
   vim.g.neovide_scroll_animation_length = 0.1
   -- vim.g.neovide_normal_opacity = 0.98
+
+  -- Suggested settings to match Alacritty.
+  -- This fixes text looking too thin in light themes.
+  -- vim.g.neovide_text_gamma = 0.8
+  -- vim.g.neovide_text_contrast = 0.1
 end
 
 -- Change signs to colored dots
