@@ -15,7 +15,7 @@ general.import = [
 # dimensions = { columns = 120, lines = 74 }
 # dimensions = { columns = 300, lines = 74 }
 # dimensions = { columns = 42, lines = 26 }
-padding = { x = 2, y = 2 }
+# padding = { x = 2, y = 2 }
 # padding = { x = 9, y = 14 }
 # dynamic_padding = true
 # opacity = 0.98
