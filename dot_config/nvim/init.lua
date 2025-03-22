@@ -466,6 +466,7 @@ vim.keymap.set('n', '<space>d', function()
   telescope_builtin.diagnostics { bufnr = 0 }
 end)
 vim.keymap.set('n', '<space>D', telescope_builtin.diagnostics)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>b', telescope_builtin.buffers)
 
 require('lualine').setup {
