@@ -87,9 +87,15 @@ input {
 
     // disable-power-key-handling
     // warp-mouse-to-focus
+    // warp-mouse-to-focus mode="center-xy"
+    // warp-mouse-to-focus mode="center-xy-always"
     // focus-follows-mouse
     focus-follows-mouse max-scroll-amount="0%"
     // workspace-auto-back-and-forth
+
+    // mod-key "Alt"
+    // mod-key "Ctrl"
+    // mod-key-nested "Ctrl"
 }
 
 /-workspace "notes" {
