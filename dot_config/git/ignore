@@ -12,4 +12,6 @@ venv/
 mutants.out*/
 proptest-regressions/
 .git/
+perf.data
+perf.data.old
 CLAUDE.md
