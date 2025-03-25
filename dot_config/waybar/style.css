@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Cantarell, 'Font Awesome 6 Free';
+    font-family: 'Adwaita Sans', 'Font Awesome 6 Free';
     font-size: 14px;
     font-feature-settings: "tnum";
 }
