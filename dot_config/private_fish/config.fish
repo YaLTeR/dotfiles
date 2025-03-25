@@ -1,5 +1,5 @@
-# alias ls "ls -hN --group-directories-first --color=auto"
-alias ls "eza --group-directories-first"
+alias ls "ls --human-readable --literal --group-directories-first --color=auto"
+# alias ls "eza --group-directories-first"
 alias l "ls -l"
 alias la "l -a"
 
