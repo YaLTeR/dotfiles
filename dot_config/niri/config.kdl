@@ -915,6 +915,20 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^org\.gnome\.Loupe"#
+    match app-id=r#"^org\.gnome\.Calculator"#
+    match app-id=r#"^org\.gnome\.Decibels"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
+    match app-id=r#"^app\.drey\.Warp"#
+    match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+
+    geometry-corner-radius 15
+    // clip-to-geometry false
+    tiled-state false
+}
+
+window-rule {
     match app-id="^explorer.exe$"
     default-column-width {}
     default-window-height {}
