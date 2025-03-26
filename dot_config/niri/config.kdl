@@ -919,7 +919,9 @@ window-rule {
     match app-id=r#"^org\.gnome\.Calculator"#
     match app-id=r#"^org\.gnome\.Decibels"#
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
+    match app-id=r#"^video-trimmer"#
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
+    match app-id=r#"^identity"#
     match app-id=r#"^app\.drey\.Warp"#
     match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
 
