@@ -1,0 +1,8 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/home/yalter/source/rs/SwayOSD/build/src/swayosd-server --style /home/yalter/source/rs/SwayOSD/build/data/style.css
+Restart=on-failure
