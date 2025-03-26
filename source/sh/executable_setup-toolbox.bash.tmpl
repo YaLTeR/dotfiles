@@ -1,9 +1,21 @@
 #!/bin/bash
 set -eufo pipefail 
 
+if ! grep --silent defaultyes /etc/dnf/dnf.conf; then
+  echo "defaultyes=True" | sudo tee --append /etc/dnf/dnf.conf
+fi
+
 sudo dnf update
 sudo dnf install {{- range .packages.toolbox.dnf }} {{ . | quote }}{{ end }}
 sudo dnf builddep {{- range .packages.toolbox.builddep }} {{ . | quote }}{{ end }}
 
-# rpmfusion, codecs, ffmpeg, mpv
+# rpmfusion
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
+sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
+sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+
 # vscode
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+sudo dnf install code
