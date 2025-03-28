@@ -296,7 +296,7 @@ vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
 
- -- Font for GUI frontends
+-- Font for GUI frontends
 -- vim.o.guifont = 'monospace:h9.7'
 -- vim.o.guifont = 'monospace:h10.2'
 vim.o.guifont = 'monospace:h10.5'
