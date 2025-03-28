@@ -1,0 +1,15 @@
+[git]
+private-commits = "description(glob:\"private:*\")"
+
+[user]
+name = "Ivan Molodetskikh"
+email = {{ .email | quote }}
+
+[ui]
+default-command = "log"
+{{- if eq .hosttype "desktop" "laptop" }}
+pager = "delta"
+
+[ui.diff]
+format = "git"
+{{- end }}
