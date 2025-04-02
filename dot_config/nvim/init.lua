@@ -313,6 +313,9 @@ vim.o.sidescrolloff = 5
 vim.o.autoread = true -- Auto reload files on change
 vim.o.exrc = true -- Load trusted project-local .nvim.lua
 vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
+vim.o.winborder = 'rounded' -- Add border to LSP hover
+
+vim.diagnostic.config { virtual_text = true } -- Show diagnostic messages next to source
 
 -- Font for GUI frontends
 -- vim.o.guifont = 'monospace:h9.7'
