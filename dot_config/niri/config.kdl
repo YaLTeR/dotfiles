@@ -1206,6 +1206,9 @@ binds {
     XF86AudioMute        allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "mute-toggle"; }
     XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--input-volume" "mute-toggle"; }
 
+    XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "+10"; }
+    XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "-10"; }
+
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
 
