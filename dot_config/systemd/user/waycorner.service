@@ -1,0 +1,8 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/home/yalter/source/rs/waycorner/target/release/waycorner
+Restart=on-failure
