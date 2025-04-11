@@ -10,6 +10,8 @@ theme = "catppuccin_mocha"
 line-number = "relative"
 auto-save = true
 auto-format = false
+end-of-line-diagnostics = "hint"
+# true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
