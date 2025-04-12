@@ -1,6 +1,0 @@
-[left]
-# enter_command = ["notify-send", "enter"]
-enter_command = ["niri", "msg", "action", "toggle-overview"]
-locations = ["top_left"]
-timeout_ms = 0
-size = 1
