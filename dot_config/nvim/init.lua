@@ -109,7 +109,7 @@ require('lazy').setup {
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^4',
+    version = '*',
     ft = { 'rust' },
   },
 
@@ -196,13 +196,10 @@ require('lazy').setup {
   {
     'chomosuke/typst-preview.nvim',
     lazy = false,
-    version = '0.3.*',
+    version = '*',
     opts = {
-      dependencies_bin = { ['typst-preview'] = 'tinymist' },
+      dependencies_bin = { ['tinymist'] = 'tinymist' },
     },
-    build = function()
-      require('typst-preview').update()
-    end,
   },
 
   'imsnif/kdl.vim',
@@ -425,7 +422,7 @@ vim.keymap.set('n', '<leader>lpe', function()
   )
 end)
 
-require('leap').create_default_mappings()
+require('leap').set_default_mappings()
 
 require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
