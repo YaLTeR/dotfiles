@@ -48,6 +48,7 @@ input {
         // middle-emulation
         // scroll-factor 0.1
         // scroll-factor 2
+        // scroll-method "edge"
     }
 
     mouse {
@@ -419,8 +420,17 @@ animations {
     workspace-switch {
         // off
         // duration-ms 2500
+        // curve "linear"
         // curve "ease-out-cubic"
         // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    /-overview-open-close {
+        // spring damping-ratio=1.0 stiffness=400 epsilon=0.0001
+        // spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+        // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+        // curve "linear"
+        // duration-ms 50
     }
 
     window-open {
@@ -602,6 +612,18 @@ gestures {
         // delay-ms 100
         // delay-ms 1000
     }
+
+    /-hot-corners {
+        off
+    }
+}
+
+overview {
+    // zoom 0.0001
+    // zoom 0.01
+    // zoom 0.1
+    zoom 0.5
+    // zoom 0.75
 }
 
 window-rule {
@@ -910,6 +932,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
     // match app-id="pavucontrol"
     // match title="^niri$"
+    match app-id=r#"^lxqt-policykit-agent$"#
 
     open-floating true
 
@@ -1208,6 +1231,8 @@ binds {
 
     XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "+10"; }
     XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "-10"; }
+
+    Mod+O { toggle-overview; }
 
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
