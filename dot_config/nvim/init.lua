@@ -20,21 +20,19 @@ require('lazy').setup {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    config = function()
-      require('catppuccin').setup {
-        term_colors = true,
-        integrations = {
-          native_lsp = {
-            underlines = {
-              errors = { 'undercurl' },
-              hints = { 'undercurl' },
-              warnings = { 'undercurl' },
-              information = { 'undercurl' },
-            },
+    opts = {
+      term_colors = true,
+      integrations = {
+        native_lsp = {
+          underlines = {
+            errors = { 'undercurl' },
+            hints = { 'undercurl' },
+            warnings = { 'undercurl' },
+            information = { 'undercurl' },
           },
         },
-      }
-    end,
+      },
+    },
   },
 
   {
@@ -90,8 +88,8 @@ require('lazy').setup {
     end,
   },
 
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
+  'mason-org/mason.nvim',
+  'mason-org/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
 
   {
@@ -117,9 +115,7 @@ require('lazy').setup {
     'saecki/crates.nvim',
     version = '*',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('crates').setup {}
-    end,
+    opts = {},
   },
 
   'barreiroleo/ltex-extra.nvim',
@@ -134,45 +130,25 @@ require('lazy').setup {
   'saadparwaiz1/cmp_luasnip',
   'honza/vim-snippets',
 
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   event = 'InsertEnter',
-  --   config = function()
-  --     require('copilot').setup {
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --     }
-  --   end,
-  -- },
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup {}
-    end,
-  },
-
   {
     'kylechui/nvim-surround',
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
     event = 'VeryLazy',
-    config = function()
-      require('nvim-surround').setup {
-        keymaps = {
-          insert = '<C-g>z',
-          insert_line = '<C-g>Z',
-          normal = 'yz',
-          normal_cur = 'yzz',
-          normal_line = 'yZ',
-          normal_cur_line = 'yZZ',
-          visual = 'Z',
-          visual_line = 'gZ',
-          delete = 'dz',
-          change = 'cz',
-          change_line = 'cZ',
-        },
-      }
-    end,
+    opts = {
+      keymaps = {
+        insert = '<C-g>z',
+        insert_line = '<C-g>Z',
+        normal = 'yz',
+        normal_cur = 'yzz',
+        normal_line = 'yZ',
+        normal_cur_line = 'yZZ',
+        visual = 'Z',
+        visual_line = 'gZ',
+        delete = 'dz',
+        change = 'cz',
+        change_line = 'cZ',
+      },
+    },
   },
 
   'ggandor/leap.nvim',
@@ -214,35 +190,32 @@ require('lazy').setup {
   'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      local gitsigns = require('gitsigns')
-      gitsigns.setup {
-        on_attach = function(bufnr)
-          local function map(mode, l, r, opts)
-            opts = opts or {}
-            opts.buffer = bufnr
-            vim.keymap.set(mode, l, r, opts)
+    opts = {
+      on_attach = function(bufnr)
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Jump between hunks
+        map('n', ']c', function()
+          if vim.wo.diff then
+            vim.cmd.normal { ']c', bang = true }
+          else
+            gitsigns.nav_hunk('next')
           end
+        end)
 
-          -- Jump between hunks
-          map('n', ']c', function()
-            if vim.wo.diff then
-              vim.cmd.normal { ']c', bang = true }
-            else
-              gitsigns.nav_hunk('next')
-            end
-          end)
-
-          map('n', '[c', function()
-            if vim.wo.diff then
-              vim.cmd.normal { '[c', bang = true }
-            else
-              gitsigns.nav_hunk('prev')
-            end
-          end)
-        end,
-      }
-    end,
+        map('n', '[c', function()
+          if vim.wo.diff then
+            vim.cmd.normal { '[c', bang = true }
+          else
+            gitsigns.nav_hunk('prev')
+          end
+        end)
+      end,
+    },
   },
 
   'tpope/vim-eunuch', -- :Rename, etc.
@@ -251,32 +224,30 @@ require('lazy').setup {
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        config = {
-          shortcut = {
-            {
-              desc = 'update',
-              group = '@property',
-              action = 'Lazy update',
-              key = 'u',
-            },
-            {
-              desc = 'niri config',
-              group = 'Number',
-              action = 'edit ~/.config/niri/config.kdl',
-              key = 'n',
-            },
-            {
-              desc = 'nvim config',
-              group = 'Number',
-              action = 'edit ~/.config/nvim/init.lua',
-              key = 'v',
-            },
+    opts = {
+      config = {
+        shortcut = {
+          {
+            desc = 'update',
+            group = '@property',
+            action = 'Lazy update',
+            key = 'u',
+          },
+          {
+            desc = 'niri config',
+            group = 'Number',
+            action = 'edit ~/.config/niri/config.kdl',
+            key = 'n',
+          },
+          {
+            desc = 'nvim config',
+            group = 'Number',
+            action = 'edit ~/.config/nvim/init.lua',
+            key = 'v',
           },
         },
-      }
-    end,
+      },
+    },
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
 }
@@ -521,10 +492,6 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
   cmd = { 'clangd', '--header-insertion=never' },
 }
--- lspconfig.typst_lsp.setup {
---   capabilities = capabilities,
---   settings = { exportPdf = 'onType' },
--- }
 lspconfig.tinymist.setup {
   capabilities = capabilities,
   root_dir = function(filename, bufnr)
@@ -535,7 +502,6 @@ lspconfig.tinymist.setup {
     systemFonts = true,
     formatterMode = 'typstyle',
   },
-  offset_encoding = 'utf-8', -- Work around nvim bug, see https://github.com/Myriad-Dreamin/tinymist/issues/638
 }
 lspconfig.ltex.setup {
   capabilities = capabilities,
@@ -650,7 +616,7 @@ cmp.setup {
 vim.g.rustaceanvim = {
   tools = {},
   server = {
-    settings = {
+    default_settings = {
       ['rust-analyzer'] = {
         check = { command = 'clippy' },
         rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
