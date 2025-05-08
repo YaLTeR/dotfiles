@@ -69,11 +69,12 @@ require('lazy').setup {
           'glsl',
           'comment',
           'blueprint',
+          'regex',
         },
         highlight = {
           enable = true,
           disable = function(lang, bufnr)
-            return lang ~= 'blueprint'
+            return lang ~= 'blueprint' and lang ~= 'kdl'
           end,
         },
         incremental_selection = {
@@ -284,6 +285,9 @@ vim.o.spelllang = 'en,ru_yo' -- Spellcheck languages
 vim.o.winborder = 'rounded' -- Add border to LSP hover
 
 vim.diagnostic.config { virtual_text = true } -- Show diagnostic messages next to source
+
+-- @normal is used in the custom KDL injection/highlight to override @string
+vim.cmd([[highlight link @normal Normal]])
 
 -- Font for GUI frontends
 -- vim.o.guifont = 'monospace:h9.7'
