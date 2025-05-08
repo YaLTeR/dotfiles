@@ -323,6 +323,13 @@ vim.fn.sign_define('DiagnosticSignWarn', { text = '●', texthl = 'DiagnosticSig
 vim.fn.sign_define('DiagnosticSignInfo', { text = '●', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = '●', texthl = 'DiagnosticSignHint' })
 
+-- Briefly highlight yanked text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.hl.on_yank {}
+  end,
+})
+
 vim.keymap.set({ 'n', 'v', 't' }, '<C-h>', '<C-\\><C-n><C-w>h')
 vim.keymap.set({ 'n', 'v', 't' }, '<C-j>', '<C-\\><C-n><C-w>j')
 vim.keymap.set({ 'n', 'v', 't' }, '<C-k>', '<C-\\><C-n><C-w>k')
