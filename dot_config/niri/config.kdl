@@ -74,6 +74,7 @@ input {
         // map-to-output "HDMI-A-1"
         // map-to-output "DP-1"
         map-to-output "Acer Technologies XV320QU LV 420615FCD4200"
+        // map-to-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
         // left-handed
         /-calibration-matrix 0.0 -1.0 1.0 \
                            1.0  0.0 0.0
@@ -136,6 +137,8 @@ output "winit" {
     // background-color "#030"
     // background-color "#ccc"
     // background-color "#fff"
+    // background-color "#0000"
+    // backdrop-color "#999"
 }
 
 output "BOE 0x0A9B Unknown" {
@@ -167,6 +170,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     variable-refresh-rate on-demand=true
     // variable-refresh-rate
     // background-color "#030"
+    // backdrop-color "#777777"
     // focus-at-startup
 }
 
@@ -199,6 +203,9 @@ output "Samsung Electric Company SyncMaster HLPB800375" {
 }
 
 layout {
+    // background-color "#5005"
+    // background-color "transparent"
+
     focus-ring {
         // off
         width 2
@@ -245,6 +252,8 @@ layout {
 
         // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
+
+        // urgent-gradient from="#800" to="#a33" angle=45
     }
 
     // default-column-display "tabbed"
@@ -257,7 +266,10 @@ layout {
         // width 128
 
         // gap -8
+        // gap -2
+        // gap -0.1
         // gap 0
+        // gap 0.1
         // gap 2
         // gap 3
         gap 4
@@ -385,7 +397,7 @@ cursor {
     // xcursor-theme "arstieonart"
     // xcursor-size 48
     // hide-when-typing
-    // hide-after-inactive-ms 1000
+    // hide-after-inactive-ms 100
 }
 
 // prefer-no-csd
@@ -425,10 +437,11 @@ animations {
         // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
     }
 
-    /-overview-open-close {
+    overview-open-close {
         // spring damping-ratio=1.0 stiffness=400 epsilon=0.0001
         // spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
         // spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+        // spring damping-ratio=6.0 stiffness=1200 epsilon=0.0001
         // curve "linear"
         // duration-ms 50
     }
@@ -613,8 +626,12 @@ gestures {
         // delay-ms 1000
     }
 
-    /-hot-corners {
-        off
+    dnd-edge-workspace-switch {
+        // max-speed 500
+    }
+
+    hot-corners {
+        // off
     }
 }
 
@@ -622,8 +639,38 @@ overview {
     // zoom 0.0001
     // zoom 0.01
     // zoom 0.1
-    zoom 0.5
+    // zoom 0.25
+    // zoom 0.5
+    // zoom 0.333
     // zoom 0.75
+
+    // backdrop-color "#ffffff"
+    // backdrop-color "#444"
+    // backdrop-color "#900"
+    // backdrop-color "#262626"
+
+    workspace-shadow {
+        // off
+
+        // softness 0
+        // softness 40
+        // softness 45
+        // softness 50
+        // softness 60
+        // softness 80
+        // softness 100
+
+        // spread 5
+        // spread 10
+        // spread 50
+
+        // offset x=0 y=10
+        // offset x=20 y=20
+
+        // color "#0005"
+        // color "#000d"
+        // color "#000a"
+    }
 }
 
 window-rule {
@@ -631,6 +678,16 @@ window-rule {
     // geometry-corner-radius 12
     clip-to-geometry true
     tiled-state true
+}
+
+window-rule {
+    match is-urgent=true
+
+    baba-is-float true
+
+    shadow {
+        color "#7d0d2d70"
+    }
 }
 
 // I want mpv's window dragging, and it disables that on tiled state.
@@ -1147,6 +1204,10 @@ window-rule {
     }
 }
 
+// layer-rule {
+//     baba-is-float true
+// }
+
 /-layer-rule {
     // match namespace="waybar"
     // match namespace="launcher"
@@ -1179,9 +1240,24 @@ layer-rule {
 }
 
 layer-rule {
+    match namespace="^launcher$"
+    match namespace="^notifications$"
+
+    baba-is-float true
+}
+
+layer-rule {
     // mako
     match namespace="^notifications$"
     block-out-from "screencast"
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    // match namespace="^desktop$"
+    // match namespace="^desktop-icons$"
+
+    place-within-backdrop true
 }
 
 binds {
@@ -1237,7 +1313,7 @@ binds {
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
 
-    Mod+Tab { focus-window-previous; }
+    // Mod+Tab { focus-window-previous; }
 
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -1342,7 +1418,7 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-    // Mod+Tab { focus-workspace-previous; }
+    Mod+Tab { focus-workspace-previous; }
 
     Mod+Comma  { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
@@ -1364,6 +1440,7 @@ binds {
     Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
     Mod+C { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
 
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
