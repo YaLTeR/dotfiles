@@ -89,8 +89,17 @@ require('lazy').setup {
     end,
   },
 
-  'mason-org/mason.nvim',
-  'mason-org/mason-lspconfig.nvim',
+  { 'mason-org/mason.nvim', opts = {} },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    opts = {
+      automatic_enable = {
+        exclude = {
+          'rust_analyzer', -- rustaceanvim handles this.
+        },
+      },
+    },
+  },
   'neovim/nvim-lspconfig',
 
   {
@@ -483,9 +492,6 @@ require('lualine').setup {
 }
 
 -- LSP
-require('mason').setup()
-require('mason-lspconfig').setup()
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 local servers = {
