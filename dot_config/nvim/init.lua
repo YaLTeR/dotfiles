@@ -89,6 +89,7 @@ require('lazy').setup {
     end,
   },
 
+  'neovim/nvim-lspconfig',
   { 'mason-org/mason.nvim', opts = {} },
   {
     'mason-org/mason-lspconfig.nvim',
@@ -100,7 +101,6 @@ require('lazy').setup {
       },
     },
   },
-  'neovim/nvim-lspconfig',
 
   {
     'nvimtools/none-ls.nvim',
@@ -495,23 +495,15 @@ require('lualine').setup {
 
 -- LSP
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-local servers = {
-  'marksman',
-  'texlab',
-  'bashls',
-}
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    capabilities = capabilities,
-  }
-end
-lspconfig.clangd.setup {
+vim.lsp.config('*', {
   capabilities = capabilities,
+})
+
+vim.lsp.config.clangd = {
   cmd = { 'clangd', '--header-insertion=never' },
 }
-lspconfig.tinymist.setup {
-  capabilities = capabilities,
+
+vim.lsp.config.tinymist = {
   root_dir = function(filename, bufnr)
     return vim.fn.getcwd()
   end,
@@ -521,8 +513,8 @@ lspconfig.tinymist.setup {
     formatterMode = 'typstyle',
   },
 }
-lspconfig.ltex.setup {
-  capabilities = capabilities,
+
+vim.lsp.config.ltex = {
   on_attach = function(client, bufnr)
     require('ltex_extra').setup {
       load_langs = { 'en-US', 'ru-RU' },
@@ -631,64 +623,61 @@ cmp.setup {
 }
 
 -- Rust LSP
-vim.g.rustaceanvim = {
-  tools = {},
-  server = {
-    default_settings = {
-      ['rust-analyzer'] = {
-        check = { command = 'clippy' },
-        rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
-        diagnostics = { disabled = { 'inactive-code' } },
-        completion = {
-          snippets = {
-            custom = {
-              ['if let Err(err) ='] = {
-                postfix = 'ile',
-                body = {
-                  'if let Err(err) = ${receiver} {',
-                  '\twarn!("error $0: {err:?}");',
-                  '}',
-                },
+vim.lsp.config('rust-analyzer', {
+  settings = {
+    ['rust-analyzer'] = {
+      check = { command = 'clippy' },
+      rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
+      diagnostics = { disabled = { 'inactive-code' } },
+      completion = {
+        snippets = {
+          custom = {
+            ['if let Err(err) ='] = {
+              postfix = 'ile',
+              body = {
+                'if let Err(err) = ${receiver} {',
+                '\twarn!("error $0: {err:?}");',
+                '}',
               },
-              ['let Some(x) else'] = {
-                postfix = 'lse',
-                body = {
-                  'let Some($0) = ${receiver} else {',
-                  '\treturn',
-                  '};',
-                },
+            },
+            ['let Some(x) else'] = {
+              postfix = 'lse',
+              body = {
+                'let Some($0) = ${receiver} else {',
+                '\treturn',
+                '};',
               },
-              ['match Some, None'] = {
-                postfix = 'msn',
-                body = {
-                  'match ${receiver} {',
-                  '\tSome($1) => {',
-                  '\t\t$2',
-                  '\t}',
-                  '\tNone => {',
-                  '\t\t$3',
-                  '\t}',
-                  '}',
-                },
+            },
+            ['match Some, None'] = {
+              postfix = 'msn',
+              body = {
+                'match ${receiver} {',
+                '\tSome($1) => {',
+                '\t\t$2',
+                '\t}',
+                '\tNone => {',
+                '\t\t$3',
+                '\t}',
+                '}',
               },
-              ['match Ok, Err'] = {
-                postfix = 'moe',
-                body = {
-                  'match ${receiver} {',
-                  '\tOk($1) => {',
-                  '\t\t$2',
-                  '\t}',
-                  '\tErr(err) => {',
-                  '\t\twarn!("error $3: {err:?}");',
-                  '\t}',
-                  '}',
-                },
+            },
+            ['match Ok, Err'] = {
+              postfix = 'moe',
+              body = {
+                'match ${receiver} {',
+                '\tOk($1) => {',
+                '\t\t$2',
+                '\t}',
+                '\tErr(err) => {',
+                '\t\twarn!("error $3: {err:?}");',
+                '\t}',
+                '}',
               },
-              ['info_span scope'] = {
-                postfix = 'iss',
-                body = {
-                  'info_span!("$0").in_scope(|| ${receiver})',
-                },
+            },
+            ['info_span scope'] = {
+              postfix = 'iss',
+              body = {
+                'info_span!("$0").in_scope(|| ${receiver})',
               },
             },
           },
@@ -696,4 +685,4 @@ vim.g.rustaceanvim = {
       },
     },
   },
-}
+})
