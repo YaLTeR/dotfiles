@@ -497,7 +497,6 @@ local lspconfig = require('lspconfig')
 local servers = {
   'marksman',
   'texlab',
-  'pylsp',
   'bashls',
 }
 for _, lsp in ipairs(servers) do
