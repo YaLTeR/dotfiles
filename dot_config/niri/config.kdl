@@ -400,7 +400,7 @@ cursor {
     // hide-after-inactive-ms 100
 }
 
-// prefer-no-csd
+prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
@@ -674,8 +674,8 @@ overview {
 }
 
 window-rule {
-    // geometry-corner-radius 6
-    // geometry-corner-radius 12
+    geometry-corner-radius 6
+    // geometry-corner-radius 15
     clip-to-geometry true
     tiled-state true
 }
@@ -1239,9 +1239,9 @@ layer-rule {
     // geometry-corner-radius 8
 }
 
-layer-rule {
+/-layer-rule {
     match namespace="^launcher$"
-    match namespace="^notifications$"
+    // match namespace="^notifications$"
 
     baba-is-float true
 }
