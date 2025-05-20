@@ -683,7 +683,7 @@ window-rule {
 window-rule {
     match is-urgent=true
 
-    baba-is-float true
+    // baba-is-float true
 
     shadow {
         color "#7d0d2d70"
@@ -1095,7 +1095,7 @@ window-rule {
     default-window-height { fixed 1000; }
     // open-floating true
     open-fullscreen false
-    focus-ring {
+    /-focus-ring {
         on
         active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
     }
