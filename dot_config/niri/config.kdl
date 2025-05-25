@@ -33,6 +33,7 @@ input {
         repeat-rate 30
 
         // track-layout "window"
+        numlock
     }
 
     touchpad {
@@ -873,6 +874,7 @@ window-rule {
     match app-id="^mpv$"
     match app-id="^hl_linux$"
     match app-id="^steam_app_524220$" // NieR:Automata
+    match app-id="^steam_app_1299460$" // Wanderstop
     variable-refresh-rate true
     default-column-width {}
 }
