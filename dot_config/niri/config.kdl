@@ -487,7 +487,7 @@ animations {
         "
     }
 
-    window-close {
+    /-window-close {
         // off
         // duration-ms 2500
         // duration-ms 1000
@@ -882,7 +882,9 @@ window-rule {
 window-rule {
     match app-id="^blender$"
     match app-id="^gimp"
+    match app-id=r#"^org\.musescore\.MuseScore$"#
     default-column-width { fixed 1200; }
+    open-maximized true
 }
 
 window-rule {
