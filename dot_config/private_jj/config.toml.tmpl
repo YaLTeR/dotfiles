@@ -9,7 +9,5 @@ email = {{ .email | quote }}
 default-command = "log"
 {{- if eq .hosttype "desktop" "laptop" }}
 pager = "delta"
-
-[ui.diff]
-format = "git"
+diff-formatter = ":git"
 {{- end }}
