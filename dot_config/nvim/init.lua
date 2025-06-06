@@ -502,6 +502,7 @@ vim.lsp.config('*', {
 vim.lsp.config.clangd = {
   cmd = { 'clangd', '--header-insertion=never' },
 }
+vim.lsp.enable('clangd') -- I install this from packages rather than Mason
 
 vim.lsp.config.tinymist = {
   root_dir = function(filename, bufnr)
