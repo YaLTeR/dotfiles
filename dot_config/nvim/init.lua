@@ -70,11 +70,13 @@ require('lazy').setup {
           'comment',
           'blueprint',
           'regex',
+          'vala',
+          'meson',
         },
         highlight = {
           enable = true,
           disable = function(lang, bufnr)
-            return lang ~= 'blueprint' and lang ~= 'kdl'
+            return lang ~= 'blueprint' and lang ~= 'kdl' and lang ~= 'vala'
           end,
         },
         incremental_selection = {
@@ -84,6 +86,12 @@ require('lazy').setup {
             node_incremental = '<A-o>',
             node_decremental = '<A-i>',
           },
+        },
+        indent = {
+          enable = true,
+          disable = function(lang, bufnr)
+            return lang ~= 'meson'
+          end,
         },
       }
     end,
@@ -494,6 +502,10 @@ require('lualine').setup {
 }
 
 -- LSP
+
+-- These are installed from packages rather than Mason.
+vim.lsp.enable { 'clangd', 'vala_ls', 'blueprint_ls' }
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('*', {
   capabilities = capabilities,
@@ -502,7 +514,6 @@ vim.lsp.config('*', {
 vim.lsp.config.clangd = {
   cmd = { 'clangd', '--header-insertion=never' },
 }
-vim.lsp.enable('clangd') -- I install this from packages rather than Mason
 
 vim.lsp.config.tinymist = {
   root_dir = function(filename, bufnr)
