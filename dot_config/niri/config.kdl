@@ -21,6 +21,11 @@ debug {
     // honor-xdg-activation-with-invalid-serial
 }
 
+xwayland-satellite {
+    // off
+    path "~/source/rs/xwayland-satellite/target/release/xwayland-satellite"
+}
+
 input {
     keyboard {
         xkb {
@@ -209,7 +214,7 @@ layout {
 
     focus-ring {
         // off
-        width 2
+        width 1
         // width 8
         active-color "#f9e2af"
         // catppuccin-mocha Surface2
@@ -236,8 +241,8 @@ layout {
         // active-color "#f38ba8"
         // inactive-color "#585b70"
 
-        active-color "#000"
-        inactive-color "#000"
+        active-color "#6c7086"
+        inactive-color "#6c7086"
 
         // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
@@ -250,6 +255,7 @@ layout {
         // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
         // active-gradient from="#ff0000ff" to="transparent" angle=90 in="srgb"
         // active-gradient from="red" to="orange" angle=45 in="oklch longer hue"
+        active-gradient from="#E5989B" to="#FFB4A2" angle=45 relative-to="workspace-view" in="oklch longer hue"
 
         // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
         // inactive-gradient from="yellow" to="red" angle=45
