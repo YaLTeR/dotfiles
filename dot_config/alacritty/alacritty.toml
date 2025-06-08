@@ -15,6 +15,7 @@ general.import = [
 # dimensions = { columns = 120, lines = 74 }
 # dimensions = { columns = 300, lines = 74 }
 # dimensions = { columns = 42, lines = 26 }
+padding = { x = 1, y = 0 }
 # padding = { x = 2, y = 2 }
 # padding = { x = 9, y = 14 }
 # dynamic_padding = true
@@ -29,6 +30,7 @@ opacity = 0.98
 transparent_background_colors = true
 
 [font]
+# size = 9.3
 # size = 10
 size = 10.5
 # size = 11
@@ -46,6 +48,7 @@ size = 10.5
 # normal.family = "JetBrainsMono Nerd Font"
 # normal.family = "Fira Code"
 # normal.family = "Monaspace Argon Frozen Medium"
+# normal.family = "Maple Mono NF"
 # builtin_box_drawing = false
 
 [[hints.enabled]]
