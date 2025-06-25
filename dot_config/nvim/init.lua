@@ -504,7 +504,7 @@ require('lualine').setup {
 -- LSP
 
 -- These are installed from packages rather than Mason.
-vim.lsp.enable { 'clangd', 'vala_ls', 'blueprint_ls' }
+vim.lsp.enable { 'clangd', 'vala_ls', 'blueprint_ls', 'qmlls' }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('*', {
@@ -513,6 +513,10 @@ vim.lsp.config('*', {
 
 vim.lsp.config.clangd = {
   cmd = { 'clangd', '--header-insertion=never' },
+}
+
+vim.lsp.config.qmlls = {
+  cmd = { 'qmlls', '-E' },
 }
 
 vim.lsp.config.tinymist = {
