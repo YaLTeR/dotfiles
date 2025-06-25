@@ -19,6 +19,7 @@ debug {
     // disable-monitor-names
     // strict-new-window-focus-policy
     // honor-xdg-activation-with-invalid-serial
+    // deactivate-unfocused-windows
 }
 
 xwayland-satellite {
@@ -59,7 +60,7 @@ input {
 
     mouse {
         // natural-scroll
-        // accel-speed -1.0
+        // accel-speed -1
         // accel-profile "flat"
         // left-handed
         // middle-emulation
@@ -429,11 +430,11 @@ clipboard {
 
 animations {
     // off
-    // slowdown 100.0
-    // slowdown 10.0
-    // slowdown 4.0
-    // slowdown 3.0
-    // slowdown 2.0
+    // slowdown 100
+    // slowdown 10
+    // slowdown 4
+    // slowdown 3
+    // slowdown 2
     // slowdown 1.5
 
     workspace-switch {
@@ -683,6 +684,7 @@ overview {
 window-rule {
     geometry-corner-radius 6
     // geometry-corner-radius 15
+    // geometry-corner-radius 32
     clip-to-geometry true
     tiled-state true
 }
@@ -1021,6 +1023,9 @@ window-rule {
     geometry-corner-radius 15
     // clip-to-geometry false
     tiled-state false
+
+    // focus-ring { off; }
+    // border { off; }
 }
 
 window-rule {
@@ -1189,6 +1194,8 @@ window-rule {
     // geometry-corner-radius 1
     // geometry-corner-radius 12
     // geometry-corner-radius 6
+    // geometry-corner-radius 32
+    // geometry-corner-radius 25
     // clip-to-geometry true
 }
 
