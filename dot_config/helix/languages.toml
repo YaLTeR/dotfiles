@@ -1,6 +1,7 @@
 [[language]]
 name = "rust"
 rulers = [100]
+text-width = 100
 
 [[language]]
 name = "kdl"
