@@ -126,7 +126,7 @@ require('lazy').setup {
   {
     'mrcjkb/rustaceanvim',
     version = '*',
-    ft = { 'rust' },
+    lazy = false,
   },
 
   {
@@ -649,66 +649,78 @@ cmp.setup {
 }
 
 -- Rust LSP
-vim.lsp.config('rust-analyzer', {
-  settings = {
-    ['rust-analyzer'] = {
-      check = { command = 'clippy' },
-      rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
-      diagnostics = { disabled = { 'inactive-code' } },
-      completion = {
-        snippets = {
-          custom = {
-            ['if let Err(err) ='] = {
-              postfix = 'ile',
-              body = {
-                'if let Err(err) = ${receiver} {',
-                '\twarn!("error $0: {err:?}");',
-                '}',
-              },
+local ra_settings = {
+  ['rust-analyzer'] = {
+    check = { command = 'clippy' },
+    rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
+    diagnostics = { disabled = { 'inactive-code' } },
+    completion = {
+      snippets = {
+        custom = {
+          ['if let Err(err) ='] = {
+            postfix = 'ile',
+            body = {
+              'if let Err(err) = ${receiver} {',
+              '\twarn!("error $0: {err:?}");',
+              '}',
             },
-            ['let Some(x) else'] = {
-              postfix = 'lse',
-              body = {
-                'let Some($0) = ${receiver} else {',
-                '\treturn',
-                '};',
-              },
+          },
+          ['let Some(x) else'] = {
+            postfix = 'lse',
+            body = {
+              'let Some($0) = ${receiver} else {',
+              '\treturn',
+              '};',
             },
-            ['match Some, None'] = {
-              postfix = 'msn',
-              body = {
-                'match ${receiver} {',
-                '\tSome($1) => {',
-                '\t\t$2',
-                '\t}',
-                '\tNone => {',
-                '\t\t$3',
-                '\t}',
-                '}',
-              },
+          },
+          ['match Some, None'] = {
+            postfix = 'msn',
+            body = {
+              'match ${receiver} {',
+              '\tSome($1) => {',
+              '\t\t$2',
+              '\t}',
+              '\tNone => {',
+              '\t\t$3',
+              '\t}',
+              '}',
             },
-            ['match Ok, Err'] = {
-              postfix = 'moe',
-              body = {
-                'match ${receiver} {',
-                '\tOk($1) => {',
-                '\t\t$2',
-                '\t}',
-                '\tErr(err) => {',
-                '\t\twarn!("error $3: {err:?}");',
-                '\t}',
-                '}',
-              },
+          },
+          ['match Ok, Err'] = {
+            postfix = 'moe',
+            body = {
+              'match ${receiver} {',
+              '\tOk($1) => {',
+              '\t\t$2',
+              '\t}',
+              '\tErr(err) => {',
+              '\t\twarn!("error $3: {err:?}");',
+              '\t}',
+              '}',
             },
-            ['info_span scope'] = {
-              postfix = 'iss',
-              body = {
-                'info_span!("$0").in_scope(|| ${receiver})',
-              },
+          },
+          ['info_span scope'] = {
+            postfix = 'iss',
+            body = {
+              'info_span!("$0").in_scope(|| ${receiver})',
             },
           },
         },
       },
     },
   },
+}
+
+-- Configuring Rustaceanvim through vim.lsp.config breaks r-a in dependency source.
+vim.g.rustaceanvim = {
+  server = {
+    default_settings = ra_settings,
+  },
+}
+
+-- This is for plain nvim-lspconfig, without Rustaceanvim.
+-- It's unused because we disable mason/nvim-lspconfig r-a activation
+-- when using Rustaceanvim, but it's helpful to have it here for testing.
+vim.lsp.config('rust_analyzer', {
+  settings = ra_settings,
 })
