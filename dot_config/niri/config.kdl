@@ -29,7 +29,7 @@ xwayland-satellite {
 
 input {
     keyboard {
-        xkb {
+        /-xkb {
             layout "us,ru"
             // variant "colemak_dh_ortho,"
             options "compose:ralt,ctrl:nocaps"
