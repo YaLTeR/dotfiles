@@ -1287,6 +1287,7 @@ binds {
 
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
     // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
+    Super+Alt+S hotkey-overlay-title=null { spawn "sh" "-c" "pkill orca || exec orca"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
     Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "~/source/sh/spawn-alacritty.bash" "toolbox"; }
