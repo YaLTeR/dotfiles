@@ -515,10 +515,6 @@ vim.lsp.config.clangd = {
   cmd = { 'clangd', '--header-insertion=never' },
 }
 
-vim.lsp.config.qmlls = {
-  cmd = { 'qmlls', '-E' },
-}
-
 vim.lsp.config.tinymist = {
   root_dir = function(filename, bufnr)
     return vim.fn.getcwd()
