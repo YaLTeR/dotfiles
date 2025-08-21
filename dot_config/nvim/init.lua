@@ -558,6 +558,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'gd', telescope_builtin.lsp_definitions, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<space>k', vim.lsp.buf.document_highlight, opts)
     vim.keymap.set('n', 'gi', telescope_builtin.lsp_implementations, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -590,6 +591,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         arguments = { nil },
       }
     end, opts)
+  end,
+})
+
+vim.api.nvim_create_autocmd('CursorMoved', {
+  callback = function()
+    vim.lsp.buf.clear_references()
   end,
 })
 
