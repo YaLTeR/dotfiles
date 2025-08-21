@@ -55,6 +55,7 @@ input {
         // middle-emulation
         // scroll-factor 0.1
         // scroll-factor 2
+        // scroll-factor horizontal=10 vertical=-2
         // scroll-method "edge"
     }
 
@@ -66,6 +67,7 @@ input {
         // middle-emulation
         // scroll-factor 0.1
         // scroll-factor 2
+        // scroll-factor horizontal=2 vertical=-2
     }
 
     trackpoint {
@@ -1287,7 +1289,7 @@ binds {
 
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
     // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
-    Super+Alt+S hotkey-overlay-title=null { spawn "sh" "-c" "pkill orca || exec orca"; }
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
     Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "~/source/sh/spawn-alacritty.bash" "toolbox"; }
