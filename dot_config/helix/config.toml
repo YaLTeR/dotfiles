@@ -13,6 +13,9 @@ auto-format = false
 end-of-line-diagnostics = "hint"
 # true-color = true
 
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
