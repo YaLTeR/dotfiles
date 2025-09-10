@@ -441,7 +441,7 @@ animations {
 
     workspace-switch {
         // off
-        // duration-ms 2500
+        // duration-ms 1000
         // curve "linear"
         // curve "ease-out-cubic"
         // curve "cubic-bezier" 0 1.5 0.5 1
@@ -1014,6 +1014,7 @@ window-rule {
     // match app-id="pavucontrol"
     // match title="^niri$"
     match app-id=r#"^lxqt-policykit-agent$"#
+    match app-id=r#"^org\.musescore\.MuseScore$"# title="^Page settings$"
 
     open-floating true
 
