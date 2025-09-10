@@ -13,6 +13,8 @@
   executable: true
 
 ".local/bin/jj-fzf":
-  type: file
-  url: "https://raw.githubusercontent.com/tim-janik/jj-fzf/refs/heads/trunk/jj-fzf"
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "tim-janik/jj-fzf" "jj-fzf-*.tar.zst" | quote }}
+  path: jj-fzf
+  stripComponents: 1
   executable: true
