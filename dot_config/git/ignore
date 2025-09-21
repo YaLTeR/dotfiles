@@ -15,6 +15,7 @@ proptest-regressions/
 perf.data
 perf.data.old
 CLAUDE.md
+AGENTS.md
 **/.claude/settings.local.json
 .cursorignore
 .cursorrules
