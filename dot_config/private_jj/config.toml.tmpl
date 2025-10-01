@@ -11,3 +11,42 @@ default-command = "log"
 pager = "delta"
 diff-formatter = ":git"
 {{- end }}
+
+[jj-fzf]
+log_template = "builtin_log_oneline_short"
+
+[template-aliases]
+# Copy of builtin_log_oneline but without the date.
+# https://github.com/jj-vcs/jj/blob/29991bb6d0450353d898f69e321c226a4140bee0/cli/src/config/templates.toml#L151
+builtin_log_oneline_short = 'builtin_log_oneline_short(self)'
+'builtin_log_oneline_short(commit)' = '''
+if(commit.root(),
+  format_root_commit(commit),
+  label(
+    separate(" ",
+      if(commit.current_working_copy(), "working_copy"),
+      if(commit.immutable(), "immutable", "mutable"),
+      if(commit.conflict(), "conflicted"),
+    ),
+    concat(
+      separate(" ",
+        format_short_change_id_with_hidden_and_divergent_info(commit),
+        format_short_signature_oneline(commit.author()),
+        commit.bookmarks(),
+        commit.tags(),
+        commit.working_copies(),
+        if(commit.git_head(), label("git_head", "git_head()")),
+        format_short_commit_id(commit.commit_id()),
+        if(commit.conflict(), label("conflict", "conflict")),
+        if(config("ui.show-cryptographic-signatures").as_boolean(),
+          format_short_cryptographic_signature(commit.signature())),
+        if(commit.empty(), label("empty", "(empty)")),
+        if(commit.description(),
+          commit.description().first_line(),
+          label(if(commit.empty(), "empty"), description_placeholder),
+        ),
+      ) ++ "\n",
+    ),
+  )
+)
+'''
