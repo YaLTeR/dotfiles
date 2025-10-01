@@ -20,3 +20,13 @@ sudo dnf install gstreamer1-plugins-ugly
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 sudo dnf install code
+
+# enable debug repos
+find /etc/yum.repos.d -maxdepth 1 -type f -name 'fedora*.repo' -or -name 'rpmfusion*.repo' | while read -r f; do
+    # only enable when the main repo is enabled
+    # (i.e. don't enable testing debug repo when testing is not enabled)
+    if grep -q '^enabled=1$' "$f"; then
+        echo "trying to enable debug in $f"
+        sudo sed -i '/^\[.*debug.*\]/,/^\[/{s/^enabled=0$/enabled=1/}' "$f"
+    fi
+done
