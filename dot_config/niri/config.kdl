@@ -117,6 +117,34 @@ input {
 workspace "discord" {
     // open-on-output "DP-2"
     open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+
+    /-layout {
+        // gaps 32
+
+        // struts {
+        //     top 64
+        //     bottom 64
+        // }
+
+        border {
+            // off
+            // on
+            width 64
+        }
+
+        // always-center-single-column false
+
+        // empty-workspace-above-first
+        // insert-hint {}
+
+        default-column-width { proportion 1.0; }
+
+        preset-column-widths {
+            proportion 0.5
+        }
+
+        // background-color "white"
+    }
 }
 
 workspace "chat" {
@@ -148,6 +176,13 @@ output "winit" {
     // background-color "#fff"
     // background-color "#0000"
     // backdrop-color "#999"
+
+    /-layout {
+        // background-color "red"
+        gaps 32
+
+        border { on; width 32; }
+    }
 }
 
 output "BOE 0x0A9B Unknown" {
@@ -197,6 +232,22 @@ output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
     // variable-refresh-rate
     // background-color "#003"
     // focus-at-startup
+
+    /-hot-corners {
+        // off
+        top-right
+        top-left
+        // bottom-right
+    }
+
+    /-layout {
+        // gaps 64
+
+        border {
+            on
+            width 32
+        }
+    }
 }
 
 output "Nvidia G-SYNC 241910 #ASNWvgsHCG3d" {
@@ -410,13 +461,14 @@ cursor {
     // hide-after-inactive-ms 100
 }
 
-prefer-no-csd
+// prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
 
 environment {
     // GSK_RENDERER "cairo"
     // WAYLAND_DISPLAY null
+    _JAVA_AWT_WM_NONREPARENTING "1"
 }
 
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -438,6 +490,7 @@ animations {
     // slowdown 3
     // slowdown 2
     // slowdown 1.5
+    slowdown 1.2
 
     workspace-switch {
         // off
@@ -651,6 +704,8 @@ gestures {
 
     hot-corners {
         // off
+        // bottom-left
+        // top-right
     }
 }
 
@@ -693,11 +748,12 @@ overview {
 }
 
 window-rule {
-    geometry-corner-radius 6
+    // geometry-corner-radius 6
     // geometry-corner-radius 15
     // geometry-corner-radius 32
     clip-to-geometry true
     tiled-state true
+    draw-border-with-background false
 }
 
 window-rule {
