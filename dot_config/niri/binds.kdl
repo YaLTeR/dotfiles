@@ -54,8 +54,8 @@ binds {
     XF86AudioMute        allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio mute || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio micmute || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness increment 10 ''"; }
-    XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness decrement 10 ''"; }
+    XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness increment 10 '' || brightnessctl --class=backlight set +10%"; }
+    XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness decrement 10 '' || brightnessctl --class=backlight set 10%-"; }
 
     Mod+O { toggle-overview; }
 
