@@ -1,0 +1,13 @@
+layout {
+    border {
+        // off
+        // width 64
+        active-color "red"
+    }
+
+    focus-ring {
+        active-color "white"
+    }
+}
+
+// layout {}

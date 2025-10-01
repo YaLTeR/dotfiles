@@ -1,0 +1,191 @@
+layout {
+    // background-color "#5005"
+    // background-color "transparent"
+
+    focus-ring {
+        // off
+        width 1
+        // width 8
+        active-color "#f9e2af"
+        // catppuccin-mocha Surface2
+        // inactive-color "#585b70"
+        // inactive-color "green"
+        inactive-color "transparent"
+
+        // active-gradient from="#80c8ff" to="#bbddff" angle=45
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // active-gradient from="#f00" to="#fc0" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // active-gradient from="red" to="orange" angle=45 in="oklch longer hue"
+        active-gradient from="#E5989B" to="#FFB4A2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+    }
+
+    border {
+        on
+        // off
+        width 1
+        // width 2
+        // width 4
+        // width 32
+        // width 128
+
+        // active-color "#f38ba8"
+        // inactive-color "#585b70"
+
+        active-color "#6c7086"
+        inactive-color "#6c7086"
+
+        // active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+
+        // inactive-gradient from="green" to="lightblue" angle=45 relative-to="workspace-view"
+        // active-gradient from="#ff0000ff" to="#00ff0011" angle=90 in="srgb-linear"
+        // active-gradient from="#ff0000ff" to="transparent" angle=90 in="srgb"
+        // active-gradient from="red" to="orange" angle=45 in="oklch longer hue"
+        active-gradient from="#E5989B" to="#FFB4A2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // active-gradient from="yellow" to="red" angle=45 in="oklab" relative-to="workspace-view"
+        // inactive-gradient from="yellow" to="red" angle=45
+
+        // urgent-gradient from="#800" to="#a33" angle=45
+    }
+
+    // default-column-display "tabbed"
+
+    tab-indicator {
+        width 2
+        // width 4
+        // width 8
+        // width 64
+        // width 128
+
+        // gap -8
+        // gap -2
+        // gap -0.1
+        // gap 0
+        // gap 0.1
+        // gap 2
+        // gap 3
+        gap 4
+
+        // gaps-between-tabs 0.1
+        gaps-between-tabs 2
+        // gaps-between-tabs 64
+
+        // corner-radius 8
+        // corner-radius 64
+
+        // hide-when-single-tab
+
+        // place-within-column
+
+        // position "right"
+        // position "top"
+        // position "bottom"
+
+        // length total-proportion=0.0
+        // length total-proportion=1.0
+        // length total-proportion=1.3
+
+        // active-color "#f9e2af"
+        // active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // inactive-color "red"
+        // inactive-gradient from="#585b70" to="#7f849c" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#f007" to="#fc07" angle=45 relative-to="workspace-view" in="oklch longer hue"
+
+        // inactive-color "#f9e2af90"
+        inactive-color "#585b70"
+    }
+
+    shadow {
+        on
+
+        // draw-behind-window false
+        // draw-behind-window true
+
+        // softness 0
+        // softness 1
+        // softness 10
+        // softness 15
+        // softness 23
+        // softness 20
+        // softness 40
+        // softness 30
+        // softness 100
+        // softness 200
+        // softness 1000
+
+        // spread 0
+        // spread 2
+        // spread 5
+        // spread 35
+        // spread 50
+
+        // color "#00000070"
+        // color "#f007"
+        // color "#f00f"
+        // inactive-color "#00000054"
+
+        // color "#4007"
+
+        // offset x=0 y=0
+        // offset x=0 y=5
+        // offset x=0 y=50
+        // offset x=-50 y=-50
+        // offset y=200
+    }
+
+    insert-hint {
+        // off
+        color "#ffc87f80"
+        gradient from="#f38ba880" to="#f9e2af80" angle=45 relative-to="workspace-view"
+        // gradient from="#ff000080" to="#ffa50080" angle=45 relative-to="workspace-view" in="oklch longer hue"
+    }
+
+    preset-column-widths {
+        proportion 0.3333333333333333
+        proportion 0.5
+        proportion 0.66667
+        // proportion 0.25
+        // fixed 1000
+    }
+
+    /-preset-window-heights {
+        proportion 0.3333333333333333
+        proportion 0.5
+        proportion 0.66667
+        // fixed 200
+        // fixed 300
+    }
+
+    default-column-width { proportion 0.3333333333333333; }
+    // default-column-width { }
+
+    // gaps 0
+    gaps 8
+    // gaps 16
+    // gaps 32
+    // gaps 64
+
+    struts {
+        // left 64
+        // right 64
+        // top 16
+        // bottom 16
+        // top 44
+        // bottom 64
+        // top 64
+    }
+
+    // empty-workspace-above-first
+
+    // center-focused-column "on-overflow"
+    // center-focused-column "always"
+
+    // always-center-single-column
+}

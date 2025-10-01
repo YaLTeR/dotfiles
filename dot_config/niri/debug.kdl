@@ -1,0 +1,23 @@
+debug {
+    // preview-render "screencast"
+    // preview-render "screen-capture"
+    // dbus-interfaces-in-non-session-instances
+    // wait-for-frame-completion-before-queueing
+    // wait-for-frame-completion-in-pipewire
+    // enable-overlay-planes
+    // disable-cursor-plane
+    // disable-direct-scanout
+    // restrict-primary-scanout-to-matching-format
+    // render-drm-device "/dev/dri/renderD129"
+    // render-drm-device "/dev/dri/renderD128"
+    // render-drm-device "/dev/dri/card1"
+    // force-pipewire-invalid-modifier
+    // emulate-zero-presentation-time
+    // disable-transactions
+    // disable-resize-throttling
+    // keep-laptop-panel-on-when-lid-is-closed
+    // disable-monitor-names
+    // strict-new-window-focus-policy
+    // honor-xdg-activation-with-invalid-serial
+    // deactivate-unfocused-windows
+}

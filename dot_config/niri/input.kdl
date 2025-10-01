@@ -1,0 +1,81 @@
+input {
+    keyboard {
+        /-xkb {
+            layout "us,ru"
+            // variant "colemak_dh_ortho,"
+            options "compose:ralt,ctrl:nocaps"
+        }
+
+        repeat-delay 500
+        repeat-rate 30
+
+        // track-layout "window"
+        numlock
+    }
+
+    touchpad {
+        tap
+        // dwt
+        // dwtp
+        natural-scroll
+        accel-speed 0.4
+        // click-method "clickfinger"
+        // accel-profile "flat"
+        // tap-button-map "left-middle-right"
+        // left-handed
+        // middle-emulation
+        // scroll-factor 0.1
+        // scroll-factor 2
+        // scroll-factor horizontal=10 vertical=-2
+        // scroll-method "edge"
+    }
+
+    mouse {
+        // natural-scroll
+        // accel-speed -1
+        // accel-profile "flat"
+        // left-handed
+        // middle-emulation
+        // scroll-factor 0.1
+        // scroll-factor 2
+        // scroll-factor horizontal=2 vertical=-2
+    }
+
+    trackpoint {
+        // natural-scroll
+        // accel-speed -1.0
+        // accel-profile "flat"
+        // middle-emulation
+    }
+
+    tablet {
+        // map-to-output "eDP-1"
+        // map-to-output "eDP-2"
+        // map-to-output "HDMI-A-1"
+        // map-to-output "DP-1"
+        map-to-output "Acer Technologies XV320QU LV 420615FCD4200"
+        // map-to-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+        // left-handed
+        /-calibration-matrix 0.0 -1.0 1.0 \
+                           1.0  0.0 0.0
+        /-calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
+
+    touch {
+        // off
+        // map-to-output "DP-3"
+        map-to-output "Interaction Systems, Inc TYPE-C TCH00562020"
+    }
+
+    // disable-power-key-handling
+    // warp-mouse-to-focus
+    // warp-mouse-to-focus mode="center-xy"
+    // warp-mouse-to-focus mode="center-xy-always"
+    // focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="0%"
+    // workspace-auto-back-and-forth
+
+    // mod-key "Alt"
+    // mod-key "Ctrl"
+    // mod-key-nested "Ctrl"
+}

@@ -1,0 +1,589 @@
+window-rule {
+    match is-urgent=true
+
+    // baba-is-float true
+
+    shadow {
+        color "#7d0d2d70"
+    }
+}
+
+// I want mpv's window dragging, and it disables that on tiled state.
+window-rule {
+    match app-id="^mpv$"
+    tiled-state false
+}
+
+/-window-rule {
+    match at-startup=false
+    exclude app-id="^Alacritty$"
+    exclude app-id="^neovide$"
+    exclude app-id="firefox$"
+
+    open-floating true
+}
+
+/-window-rule {
+    match is-active-in-column=false
+
+    min-height 100
+    max-height 100
+}
+
+/-window-rule {
+    match is-floating=true
+    exclude app-id="^mpv$"
+    exclude app-id="^foot$"
+
+    tiled-state false
+    clip-to-geometry false
+
+    shadow {
+        off;
+        // on;
+    }
+
+    border { off; }
+    focus-ring { off; }
+}
+
+/-window-rule {
+    match is-floating=true app-id="^foot$"
+    tiled-state false
+}
+
+/-window-rule {
+    match app-id="Adwaita"
+    // match app-id="TextEditor"
+    // opacity 0.5
+    // block-out-from "screencast"
+    geometry-corner-radius 15
+    // geometry-corner-radius 0 0 8 8
+    // clip-to-geometry false
+    border {
+        // off
+        // width 12
+        // width 2
+    }
+}
+
+window-rule {
+    match app-id="^gnome-terminal-server$"
+    // opacity 0.5
+    // block-out-from "screen-capture"
+    clip-to-geometry false
+    geometry-corner-radius 8 8 0 0
+    border {
+        width 4
+    }
+}
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"#
+    geometry-corner-radius 6
+}
+
+/-window-rule {
+    match title="~/source"
+    geometry-corner-radius 12 24 32 64
+}
+
+/-window-rule {
+    match title="presentation-shm"
+    geometry-corner-radius 999
+}
+
+/-window-rule {
+    match app-id="code"
+    // opacity 0.98
+    border {
+        // off
+    }
+}
+
+/-window-rule {
+    match app-id="weston."
+    // block-out-from "screencast"
+    geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    clip-to-geometry true
+}
+
+// window-rule {
+//     match app-id="Alacritty"
+//     geometry-corner-radius 12 12 0 0
+//     border {
+//         width 8
+//     }
+// }
+
+window-rule {
+    match app-id="org.freedesktop.weston.simple-egl"
+    // min-width 128
+    // max-width 128
+    // min-height 128
+    // max-height 128
+    // match is-focused=true
+    // match is-active=false
+    // opacity 0.9
+    // block-out-from "screencast"
+    // block-out-from "screen-capture"
+    // min-width 1000
+    draw-border-with-background false
+    // match app-id="mpv"
+    // open-on-output "HDMI-A-1"
+    // open-maximized true
+    // default-column-width { proportion 0.5; }
+    // default-window-height { fixed 100; }
+    // open-fullscreen false
+    // open-floating false
+    // open-floating true
+}
+
+window-rule {
+    match app-id="^gimp" title="^GIMP Startup$"
+
+    open-focused false
+}
+
+/-window-rule {
+    match app-id="^Alacritty$"
+    match app-id="^neovide$"
+    exclude is-active=true
+
+    opacity 0.95
+}
+
+/-window-rule {
+    match app-id="^Alacritty$"
+    match app-id="^neovide$"
+    match app-id="^code$"
+    // match title="^niri$"
+    match app-id="^labwc$"
+
+    border { on; }
+    // geometry-corner-radius 8
+    // geometry-corner-radius 12
+    // clip-to-geometry true
+}
+
+// window-rule {
+//     match app-id="^Alacritty$"
+//     match app-id="^neovide$"
+//     exclude is-floating=false
+//
+//     border { off; }
+// }
+
+window-rule {
+    match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
+    open-fullscreen false
+    open-floating true
+    // default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+window-rule {
+    match app-id="^mpv$"
+    match app-id="^hl_linux$"
+    match app-id="^steam_app_524220$" // NieR:Automata
+    match app-id="^steam_app_1299460$" // Wanderstop
+    variable-refresh-rate true
+    default-column-width {}
+}
+
+window-rule {
+    match app-id="^blender$"
+    match app-id="^gimp"
+    match app-id=r#"^org\.musescore\.MuseScore$"#
+    match app-id=r#"^org\.inkscape\.Inkscape$"#
+    default-column-width { fixed 1200; }
+    open-maximized true
+}
+
+window-rule {
+    match app-id="^obsidian$"
+    default-column-width { fixed 1000; }
+}
+
+window-rule {
+    match at-startup=true app-id="^obsidian$"
+    // open-on-workspace "notes"
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.telegram\.desktop$"#
+    exclude title="^Media viewer$"
+
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.gnome\.Fractal$"#
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^discord"#
+    match at-startup=true app-id=r#"^com\.discordapp\.Discord$"#
+    open-on-workspace "discord"
+}
+
+window-rule {
+    match app-id=r#"^discord"#
+    match app-id=r#"^com\.discordapp\.Discord$"#
+    default-column-width { proportion 0.66667; }
+}
+
+window-rule {
+    match app-id=r#"firefox$"#
+    exclude title="^Picture-in-Picture$"
+
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match at-startup=true app-id=r#"firefox$"#
+
+    open-on-workspace "browser"
+    open-maximized true
+}
+
+window-rule {
+    match at-startup=true app-id=r#"^org\.keepassxc\.KeePassXC$"#
+
+    open-on-workspace "browser"
+}
+
+window-rule {
+    match app-id="^code"
+    match app-id="^cursor"
+    default-column-width { proportion 0.66667; }
+}
+
+// window-rule {
+//     match app-id=r#"firefox$"# title=" Grafana "
+//
+//     open-on-workspace "dash"
+//     open-maximized true
+// }
+
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+
+    // Doesn't quite work: Firefox changes the title one frame early.
+    match app-id=r#"firefox$"# title="- Gmail "
+    match app-id=r#"firefox$"# title="^Google Calendar "
+    match app-id=r#"firefox$"# title="Todoist "
+    match app-id=r#"firefox$"# title=r#"^GNOME( \*)?( \[\d+\])? \| "#
+    match app-id=r#"firefox$"# title=r#"^Element "#
+    match app-id=r#"firefox$"# title=r#"Discord \| "#
+
+    block-out-from "screencast"
+    // block-out-from "screen-capture"
+
+    border {
+        // off
+        // active-color "red"
+    }
+
+    // clip-to-geometry false
+    // geometry-corner-radius 12
+}
+
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match app-id=r#"^AmneziaVPN$"#
+    match app-id="^mpv$"
+    match app-id=r#"^org\.gnome\.Loupe"#
+    match app-id=r#"^org\.gnome\.Calculator"#
+    match app-id=r#"^org\.gnome\.Decibels"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
+    match app-id=r#"^app\.drey\.Warp"#
+    match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+    // match app-id="pavucontrol"
+    // match title="^niri$"
+    match app-id=r#"^lxqt-policykit-agent$"#
+    match app-id=r#"^org\.musescore\.MuseScore$"# title="^Page settings$"
+
+    open-floating true
+
+    // focus-ring { on; }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Loupe"#
+    match app-id=r#"^org\.gnome\.Calculator"#
+    match app-id=r#"^org\.gnome\.Decibels"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
+    match app-id=r#"^video-trimmer"#
+    match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
+    match app-id=r#"^identity"#
+    match app-id=r#"^app\.drey\.Warp"#
+    match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+    match app-id=r#"^org\.gnome\.Adwaita1\.Demo$"#
+
+    geometry-corner-radius 15
+    // clip-to-geometry false
+    tiled-state false
+
+    // focus-ring { off; }
+    // border { off; }
+}
+
+window-rule {
+    match app-id="^explorer.exe$"
+    default-column-width {}
+    default-window-height {}
+    // open-floating true
+}
+
+// Always focus the KeePassXC-Browser unlock dialog.
+//
+// This dialog opens parented to the KeePassXC window rather than the browser,
+// so it doesn't get auto-focused by default.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^KeePassXC - Browser Access Request$"
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Unlock Database - KeePassXC$"
+
+    open-focused true
+}
+
+window-rule {
+    match app-id="foot"
+
+    // geometry-corner-radius 0
+    // geometry-corner-radius 12
+    // geometry-corner-radius 15
+    // clip-to-geometry true
+    // opacity 0.5
+    // opacity 0.05
+    // opacity 0.0
+    // draw-border-with-background false
+
+    /-shadow {
+        // off
+        // draw-behind-window true
+        // softness 0
+        // offset x=5 y=5
+        // offset x=50 y=20
+        // offset x=0 y=0
+        // spread -20
+        // spread 0
+        // softness 100
+        // spread 0
+        // inactive-color "#000"
+    }
+
+    /-focus-ring {
+        off
+    }
+
+    /-border {
+        // on
+        off
+        // width 1
+        width 256
+        active-gradient from="#f38ba8" to="#f9e2af" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+    }
+
+    /-tab-indicator {
+        inactive-gradient from="#f38ba8aa" to="#f9e2afaa" angle=45 relative-to="workspace-view"
+    }
+}
+
+/-window-rule {
+    match app-id="circle"
+    opacity 0.05
+
+    geometry-corner-radius 999
+
+    shadow {
+        // off
+        // draw-behind-window true
+        inactive-color "#000"
+    }
+}
+
+/-window-rule {
+    match app-id="osu"
+    geometry-corner-radius 999
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 1000; }
+    // open-floating true
+    open-fullscreen false
+    /-focus-ring {
+        on
+        active-gradient from="red" to="orange" angle=45 relative-to="workspace-view" in="oklch longer hue"
+    }
+}
+
+window-rule {
+    // match app-id="Alacritty"
+    // match app-id="Adwaita"
+    // match title="About GTK Demo"
+    // match title="GTK Demo"
+    // match title="sleep"
+    // match at-startup=true
+    // match is-floating=true
+    // opacity 0.9
+    // opacity 0.5
+    // opacity 0.0
+    // opacity 0.98
+
+    // open-on-output "eDP-1"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    // open-on-workspace "browser"
+    // open-on-workspace "discord"
+    // default-column-width { proportion 0.5; }
+    // default-column-width { fixed 400; }
+    // default-column-width {}
+    // default-window-height { proportion 0.25; }
+    // default-window-height { proportion 1.1; }
+    // default-window-height { fixed 100; }
+    // open-maximized true
+    // open-fullscreen true
+    // open-floating false
+    // open-floating true
+    // open-focused false
+    // open-focused true
+    // block-out-from "screencast"
+    // default-floating-position x=0 y=0 relative-to="bottom-right"
+    // scroll-factor 0.1
+    // scroll-factor 0
+    // baba-is-float true
+    // tiled-state true
+    // tiled-state false
+
+    // min-width 600
+    // max-width 600
+    // min-height 600
+    // max-height 600
+
+    focus-ring {
+        // off
+        // on
+        // active-gradient from="red" to="green"
+        // active-color "lightgreen"
+        // width 1
+    }
+
+    border {
+        // off
+        // on
+        // width 12
+        // width 0
+        // active-color "#ff808080"
+        // active-color "red"
+    }
+
+    shadow {
+        // off
+        // draw-behind-window true
+    }
+
+    tab-indicator {
+        // inactive-color "red"
+        // inactive-gradient from="yellow" to="yellow"
+    }
+
+    // draw-border-with-background true
+    // draw-border-with-background false
+
+    // geometry-corner-radius 12 24 32 64
+    // geometry-corner-radius 999
+    // geometry-corner-radius 30
+    // geometry-corner-radius 1
+    // geometry-corner-radius 12
+    // geometry-corner-radius 6
+    // geometry-corner-radius 32
+    // geometry-corner-radius 25
+    // clip-to-geometry true
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
+// layer-rule {
+//     baba-is-float true
+// }
+
+/-layer-rule {
+    // match namespace="waybar"
+    // match namespace="launcher"
+    // match namespace="^notifications$"
+    opacity 0.5
+    // opacity 0.05
+    block-out-from "screencast"
+
+    // geometry-corner-radius 12
+    // geometry-corner-radius 999
+
+    shadow {
+        on
+        // draw-behind-window true
+    }
+}
+
+layer-rule {
+    // fuzzel
+    match namespace="^launcher$"
+
+    // opacity 0.05
+
+    shadow {
+        on
+    }
+
+    // geometry-corner-radius 14
+    // geometry-corner-radius 8
+}
+
+/-layer-rule {
+    match namespace="^launcher$"
+    // match namespace="^notifications$"
+
+    baba-is-float true
+}
+
+layer-rule {
+    // mako
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+
+layer-rule {
+    match namespace="^wallpaper$"
+    // match namespace="^desktop$"
+    // match namespace="^desktop-icons$"
+
+    place-within-backdrop true
+}

@@ -1,0 +1,99 @@
+output "winit" {
+    // scale 2.0
+    // scale 2.333
+    // scale 3.0
+    // scale 1.25
+    // scale 1.333
+    // transform "flipped-90"
+    position x=100 y=200
+    // background-color "#000"
+    // background-color "#030"
+    // background-color "#ccc"
+    // background-color "#fff"
+    // background-color "#0000"
+    // backdrop-color "#999"
+
+    /-layout {
+        // background-color "red"
+        gaps 32
+
+        border { on; width 32; }
+    }
+}
+
+output "BOE 0x0A9B Unknown" {
+    // off
+
+    // scale 2.0
+    // scale 1.75
+    scale 1.5
+    // transform "90"
+    position x=0 y=0
+    // mode "1920x1200"
+    // mode "2560x1600@60.002"
+    // mode "1280x1024"
+    // mode "1280x720"
+    // mode "640x480"
+
+    // variable-refresh-rate on-demand=true
+}
+
+output "Acer Technologies XV320QU LV 420615FCD4200" {
+    // off
+    // position x=-2560 y=-1440
+    // position x=2500 y=0
+    // mode "1920x1080@60.000"
+    // mode "800x600@72.188"
+    // mode "100x100"
+    // mode "1280x720"
+
+    variable-refresh-rate on-demand=true
+    // variable-refresh-rate
+    // background-color "#030"
+    // backdrop-color "#777777"
+    // focus-at-startup
+}
+
+output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
+    // off
+
+    // position x=0 y=-1440
+    // mode "3440x1440@99.982"
+    // mode "2560x1440@119.998"
+
+    // position x=2560 y=0
+    mode "2560x1440@143.998"
+    // scale 1.25
+
+    // variable-refresh-rate
+    // background-color "#003"
+    // focus-at-startup
+
+    /-hot-corners {
+        // off
+        top-right
+        top-left
+        // bottom-right
+    }
+
+    /-layout {
+        // gaps 64
+
+        border {
+            on
+            width 32
+        }
+    }
+}
+
+output "Nvidia G-SYNC 241910 #ASNWvgsHCG3d" {
+    mode "1920x1080@144.001"
+}
+
+output "PNP(BNQ) BenQ XL2420T V4C01839SL0" {
+    position x=-1920 y=0
+}
+
+output "Samsung Electric Company SyncMaster HLPB800375" {
+    position x=-1920 y=0
+}

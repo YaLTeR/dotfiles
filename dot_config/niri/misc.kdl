@@ -1,0 +1,92 @@
+// spawn-at-startup "alacritty" "-e" "fish"
+// spawn-sh-at-startup "qs -c dms"
+
+environment {
+    // GSK_RENDERER "cairo"
+    // WAYLAND_DISPLAY null
+    _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
+overview {
+    // zoom 0.0001
+    // zoom 0.01
+    // zoom 0.1
+    // zoom 0.25
+    // zoom 0.5
+    // zoom 0.333
+    // zoom 0.75
+
+    // backdrop-color "#ffffff"
+    // backdrop-color "#444"
+    // backdrop-color "#900"
+    // backdrop-color "#262626"
+
+    workspace-shadow {
+        // off
+
+        // softness 0
+        // softness 40
+        // softness 45
+        // softness 50
+        // softness 60
+        // softness 80
+        // softness 100
+
+        // spread 5
+        // spread 10
+        // spread 50
+
+        // offset x=0 y=10
+        // offset x=20 y=20
+
+        // color "#0005"
+        // color "#000d"
+        // color "#000a"
+    }
+}
+
+gestures {
+    dnd-edge-view-scroll {
+        // trigger-width 0
+        // trigger-width 1
+        // trigger-width 10000
+        // max-speed 100000
+        // delay-ms 0
+        // delay-ms 100
+        // delay-ms 1000
+    }
+
+    dnd-edge-workspace-switch {
+        // max-speed 500
+    }
+
+    hot-corners {
+        // off
+        // bottom-left
+        // top-right
+    }
+}
+
+xwayland-satellite {
+    // off
+    // path "~/source/rs/xwayland-satellite/target/release/xwayland-satellite"
+}
+
+cursor {
+    // xcursor-theme "breeze_cursors"
+    // xcursor-theme "arstieonart"
+    // xcursor-size 48
+    // hide-when-typing
+    // hide-after-inactive-ms 100
+}
+
+// screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path "~/Pictures/niri-scale/%M-%S.png"
+
+hotkey-overlay {
+    // skip-at-startup
+}
+
+clipboard {
+    // disable-primary
+}
