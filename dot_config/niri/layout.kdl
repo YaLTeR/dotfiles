@@ -163,7 +163,7 @@ layout {
         // fixed 300
     }
 
-    default-column-width { proportion 0.3333333333333333; }
+    // default-column-width { proportion 0.3333333333333333; }
     // default-column-width { }
 
     // gaps 0

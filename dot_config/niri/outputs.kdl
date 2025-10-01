@@ -52,6 +52,10 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     // background-color "#030"
     // backdrop-color "#777777"
     // focus-at-startup
+
+    layout {
+        default-column-width { proportion 0.3333333333333333; }
+    }
 }
 
 output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
@@ -76,13 +80,14 @@ output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
         // bottom-right
     }
 
-    /-layout {
-        // gaps 64
+    layout {
+        default-column-width { proportion 0.3333333333333333; }
 
-        border {
-            on
-            width 32
-        }
+        // gaps 64
+        // border {
+        //     on
+        //     width 32
+        // }
     }
 }
 
