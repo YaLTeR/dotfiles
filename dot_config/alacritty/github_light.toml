@@ -1,3 +1,6 @@
+[window]
+decorations_theme_variant = "Light"
+
 [colors]
 transparent_background_colors = true
 
