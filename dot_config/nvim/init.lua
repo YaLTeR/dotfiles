@@ -256,7 +256,7 @@ require('lazy').setup {
           {
             desc = 'niri config',
             group = 'Number',
-            action = 'edit ~/.config/niri/config.kdl',
+            action = 'Telescope find_files cwd=~/.config/niri/',
             key = 'n',
           },
           {
@@ -493,6 +493,10 @@ end)
 vim.keymap.set('n', '<space>D', telescope_builtin.diagnostics)
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<space>b', telescope_builtin.buffers)
+
+vim.keymap.set('n', '<space>n', function()
+  telescope_builtin.find_files { cwd = '~/.config/niri' }
+end)
 
 require('lualine').setup {
   sections = {
