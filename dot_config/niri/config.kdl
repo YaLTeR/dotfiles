@@ -453,6 +453,13 @@ layout {
     // always-center-single-column
 }
 
+// include "c.kdl"
+// include "config.kdl"
+// include "colors.kdl"
+
+// include "dms/colors.kdl"
+// include "dms/layout.kdl"
+
 cursor {
     // xcursor-theme "breeze_cursors"
     // xcursor-theme "arstieonart"
@@ -464,6 +471,7 @@ cursor {
 // prefer-no-csd
 
 // spawn-at-startup "alacritty" "-e" "fish"
+// spawn-sh-at-startup "qs -c dms"
 
 environment {
     // GSK_RENDERER "cairo"
@@ -1350,8 +1358,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Super+Shift+S hotkey-overlay-title="Toggle Dark/Light Style" { spawn "set-theme"; }
-    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c dms ipc call lock lock || hyprlock"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn "fuzzel"; }
+    // Mod+D hotkey-overlay-title="Run an Application" { spawn "qs" "-c" "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+M hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
 
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
@@ -1387,13 +1396,22 @@ binds {
     // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
     // XF86AudioMute        allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     // XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "+10"; }
-    XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "-10"; }
-    XF86AudioMute        allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "mute-toggle"; }
-    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--input-volume" "mute-toggle"; }
 
-    XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "+10"; }
-    XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "-10"; }
+    // XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "+10"; }
+    // XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "-10"; }
+    // XF86AudioMute        allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--output-volume" "mute-toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--input-volume" "mute-toggle"; }
+
+    // XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "+10"; }
+    // XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn "~/source/rs/SwayOSD/build/src/swayosd-client" "--brightness" "-10"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio increment 10 || wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio decrement 10 || wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute        allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio mute || wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call audio micmute || wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness increment 10 '' || brightnessctl --class=backlight set +10%"; }
+    XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn-sh "qs -c dms ipc call brightness decrement 10 '' || brightnessctl --class=backlight set 10%-"; }
 
     Mod+O { toggle-overview; }
 
