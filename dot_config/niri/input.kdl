@@ -65,6 +65,7 @@ input {
         // off
         // map-to-output "DP-3"
         map-to-output "Interaction Systems, Inc TYPE-C TCH00562020"
+        // calibration-matrix 1.0 0.0 0.0 0.0 2.0 0.0
     }
 
     // disable-power-key-handling
