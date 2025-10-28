@@ -22,14 +22,12 @@ require('lazy').setup {
     priority = 1000,
     opts = {
       term_colors = true,
-      integrations = {
-        native_lsp = {
-          underlines = {
-            errors = { 'undercurl' },
-            hints = { 'undercurl' },
-            warnings = { 'undercurl' },
-            information = { 'undercurl' },
-          },
+      lsp_styles = {
+        underlines = {
+          errors = { 'undercurl' },
+          hints = { 'undercurl' },
+          warnings = { 'undercurl' },
+          information = { 'undercurl' },
         },
       },
     },
@@ -437,7 +435,8 @@ vim.keymap.set('n', '<leader>lpe', function()
   )
 end)
 
-require('leap').set_default_mappings()
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
 require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
