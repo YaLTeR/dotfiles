@@ -8,7 +8,7 @@
 window#waybar {
     background: transparent;
     background-color: rgba(30, 30, 46, 1.0);
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
     /* background-color: black; */
     /* border-bottom: 2px solid rgba(147, 153, 178, 0.5); */
     /* border: 1px solid rgba(166, 173, 200, 1.0); */
@@ -76,7 +76,7 @@ button:hover {
 #workspaces button {
     padding: 0 0;
     color: #f0f0ff;
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
 }
 
 #workspaces button:hover {
@@ -167,7 +167,7 @@ button:hover {
 #battery {
     /* background-color: #585b70; */
     background-color: #313244;
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
     /* color: #000000; */
     /* margin-top: 4px; */
 }
@@ -202,7 +202,7 @@ label:focus {
 
 #cpu {
     background-color: #313244;
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
     /* color: #000000; */
     /* border-radius: 99px 99px 0px 0px; */
     /* padding: 10px 0 0 0; */
@@ -212,7 +212,7 @@ label:focus {
 #memory {
     /* background-color: #45475a; */
     background-color: #313244;
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
     /* color: #000000; */
     /* border-radius: 0px 99px 99px 0px; */
     /* padding: 0 10px 0 0; */
@@ -244,7 +244,7 @@ label:focus {
 #taskbar button {
     color: #f0f0ff;
     padding: 8px 8px 0 8px;
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
     /* background-color: rgba(30, 30, 46, 1.0); */
     /* padding: 0; */
 }
@@ -274,7 +274,7 @@ label:focus {
 }
 
 #custom-style {
-    border-left: 1px solid #6c7086;
+    border-right: 1px solid #6c7086;
 }
 
 #custom-style:hover {
