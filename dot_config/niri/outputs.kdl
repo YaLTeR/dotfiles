@@ -13,11 +13,27 @@ output "winit" {
     // background-color "#0000"
     // backdrop-color "#999"
 
-    /-layout {
+    layout {
         // background-color "red"
-        gaps 32
+        gaps 16
+        // gaps 64
 
-        border { on; width 32; }
+        /-border {
+            // on
+            off
+            width 64
+        }
+
+        /-focus-ring {
+            width 32
+        }
+
+        struts {
+            // left 32
+            // right 32
+            // bottom 128
+            // top 128
+        }
     }
 }
 
@@ -42,6 +58,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     // off
     // position x=-2560 y=-1440
     // position x=2500 y=0
+    position x=0 y=0
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"
@@ -61,6 +78,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
 output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
     // off
 
+    // position x=0 y=-1440
     // position x=0 y=-1440
     // mode "3440x1440@99.982"
     // mode "2560x1440@119.998"

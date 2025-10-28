@@ -128,7 +128,9 @@ layout {
 
         // color "#00000070"
         // color "#f007"
-        // color "#f00f"
+        // color "#ff0000"
+        // color "red"
+        // inactive-color "#ff0000"
         // inactive-color "#00000054"
 
         // color "#4007"

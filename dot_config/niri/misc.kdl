@@ -1,5 +1,5 @@
 // spawn-at-startup "alacritty" "-e" "fish"
-// spawn-sh-at-startup "qs -c dms"
+spawn-at-startup "dms" "run"
 
 environment {
     // GSK_RENDERER "cairo"
@@ -82,6 +82,7 @@ cursor {
 
 // screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // screenshot-path "~/Pictures/niri-scale/%M-%S.png"
+// screenshot-path "%M-%S.png"
 
 hotkey-overlay {
     // skip-at-startup

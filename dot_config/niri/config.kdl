@@ -9,6 +9,7 @@ include "binds.kdl"
 
 // include "c.kdl"
 // include "config.kdl"
+// include "../niri/config.kdl"
 // include "colors.kdl"
 
 // include "dms/layout.kdl"

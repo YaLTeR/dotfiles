@@ -11,6 +11,7 @@ debug {
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
+    // ignore-drm-device "/dev/dri/renderD128"
     // force-pipewire-invalid-modifier
     // emulate-zero-presentation-time
     // disable-transactions

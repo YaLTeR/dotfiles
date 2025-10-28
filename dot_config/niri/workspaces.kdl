@@ -5,6 +5,7 @@
 
 workspace "discord" {
     // open-on-output "DP-2"
+    // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
 
     /-layout {
@@ -38,6 +39,7 @@ workspace "discord" {
 
 workspace "chat" {
     // open-on-output "DP-2"
+    // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-output "eDP-2"
 }

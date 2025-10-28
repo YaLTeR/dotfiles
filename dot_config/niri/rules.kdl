@@ -196,13 +196,13 @@ window-rule {
     default-column-width {}
 }
 
-window-rule {
+/-window-rule {
     match app-id="^blender$"
     match app-id="^gimp"
     match app-id=r#"^org\.musescore\.MuseScore$"#
     match app-id=r#"^org\.inkscape\.Inkscape$"#
     default-column-width { fixed 1200; }
-    open-maximized true
+    // open-maximized true
 }
 
 window-rule {
@@ -251,7 +251,7 @@ window-rule {
     match at-startup=true app-id=r#"firefox$"#
 
     open-on-workspace "browser"
-    open-maximized true
+    // open-maximized true
 }
 
 window-rule {
@@ -321,6 +321,9 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.gnome\.Loupe"#
+    match app-id=r#"^org\.gnome\.Nautilus"#
+    match app-id=r#"^org\.gnome\.Papers"#
+    match app-id=r#"^org\.gnome\.Ptyxis"#
     match app-id=r#"^org\.gnome\.Calculator"#
     match app-id=r#"^org\.gnome\.Decibels"#
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
@@ -451,6 +454,8 @@ window-rule {
     // default-window-height { proportion 1.1; }
     // default-window-height { fixed 100; }
     // open-maximized true
+    // open-maximized-to-edges true
+    // open-maximized-to-edges false
     // open-fullscreen true
     // open-floating false
     // open-floating true
