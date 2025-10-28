@@ -5,8 +5,8 @@
     // "mode": "overlay",
     // "position": "top",
     // "position": "bottom",
-    "position": "right",
-    // "position": "left",
+    // "position": "right",
+    "position": "left",
     // "output": "eDP-1",
     // "output": "eDP-2",
     // "margin-top": 4,
@@ -21,6 +21,7 @@
         {{ if eq .hosttype "laptop" -}}
         "network",
         {{ end -}}
+        // "wlr/workspaces"
         "niri/workspaces"
     ],
     "modules-center": ["clock"],
@@ -45,6 +46,19 @@
         "exec-on-event": false,
         "on-click": "niri msg action switch-layout next",
         "on-click-right": "niri msg action switch-layout prev"
+    },
+    "wlr/workspaces": {
+        "sort-by-name": false,
+        "sort-by-coordinates": true,
+        // "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "discord": "",
+            "chat": "<b></b>",
+            "default": "◦"
+        },
+        "on-click": "activate"
     },
     "niri/workspaces": {
         "format": "{icon}",
