@@ -6,7 +6,7 @@ animations {
     // slowdown 3
     // slowdown 2
     // slowdown 1.5
-    slowdown 1.2
+    // slowdown 1.2
 
     workspace-switch {
         // off

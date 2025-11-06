@@ -63,6 +63,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     // mode "800x600@72.188"
     // mode "100x100"
     // mode "1280x720"
+    // modeline 162.00  1280 1376 1512 1744  720 723 728 775 "-hsync" "+vsync"
 
     variable-refresh-rate on-demand=true
     // variable-refresh-rate
@@ -85,6 +86,7 @@ output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd" {
 
     // position x=2560 y=0
     mode "2560x1440@143.998"
+    // mode "1280x720@60" custom=true
     // scale 1.25
 
     // variable-refresh-rate

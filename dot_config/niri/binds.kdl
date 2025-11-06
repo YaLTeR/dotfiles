@@ -4,7 +4,7 @@ binds {
     Super+Shift+S hotkey-overlay-title="Toggle Dark/Light Style" { spawn "set-theme"; }
     Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn-sh "dms ipc call lock lock || hyprlock"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn "fuzzel"; }
-    // Mod+D hotkey-overlay-title="Run an Application" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+Shift+D hotkey-overlay-title="Run an Application" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+M hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
 
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
