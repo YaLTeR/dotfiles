@@ -142,7 +142,7 @@ require('lazy').setup {
   'hrsh7th/cmp-nvim-lua',
   'FelipeLema/cmp-async-path',
 
-  'L3MON4D3/LuaSnip',
+  { 'L3MON4D3/LuaSnip', version = '*' },
   'saadparwaiz1/cmp_luasnip',
   'honza/vim-snippets',
 
@@ -435,8 +435,8 @@ vim.keymap.set('n', '<leader>lpe', function()
   )
 end)
 
-vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
-vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
+vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
 
 require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
