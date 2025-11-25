@@ -212,8 +212,7 @@ window-rule {
 
 window-rule {
     match at-startup=true app-id="^obsidian$"
-    // open-on-workspace "notes"
-    open-on-workspace "chat"
+    open-on-workspace "notes"
 }
 
 window-rule {
@@ -231,7 +230,7 @@ window-rule {
 window-rule {
     match at-startup=true app-id=r#"^discord"#
     match at-startup=true app-id=r#"^com\.discordapp\.Discord$"#
-    open-on-workspace "discord"
+    open-on-workspace "chat"
 }
 
 window-rule {

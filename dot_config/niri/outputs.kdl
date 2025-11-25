@@ -15,7 +15,7 @@ output "winit" {
 
     layout {
         // background-color "red"
-        gaps 16
+        // gaps 16
         // gaps 64
 
         /-border {

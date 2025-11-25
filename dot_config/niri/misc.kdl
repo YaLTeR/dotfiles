@@ -1,10 +1,50 @@
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "dms" "run"
+// spawn-at-startup "dms" "run"
+
+recent-windows {
+    // off
+    // debounce-ms 0
+    // open-delay-ms 0
+
+    highlight {
+        // active-color "#99ff99ff"
+
+        // urgent-color "#9999ff"
+        // urgent-color "#9b0000"
+        // urgent-color "#ac4242"
+
+        // padding 0
+        // padding 10
+        // padding 100
+
+        // corner-radius 8
+        corner-radius 14
+        // corner-radius 30
+    }
+
+    previews {
+        // max-height 200
+        max-height 320
+        // max-height 1080
+        // max-height 10000
+
+        // max-scale 0.75
+        // max-scale 1
+    }
+
+    /-binds {
+        Mod+Tab         { next-window scope="output"; }
+        Mod+Shift+Tab   { previous-window scope="output"; }
+        Mod+grave       { next-window filter="app-id" scope="output"; }
+        Mod+Shift+grave { previous-window filter="app-id" scope="output"; }
+    }
+}
 
 environment {
     // GSK_RENDERER "cairo"
     // WAYLAND_DISPLAY null
     _JAVA_AWT_WM_NONREPARENTING "1"
+    GTK_IM_MODULE "simple"
 }
 
 overview {

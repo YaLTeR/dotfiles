@@ -1,11 +1,21 @@
 window-rule {
     // geometry-corner-radius 6
+    // geometry-corner-radius 8
     // geometry-corner-radius 15
     // geometry-corner-radius 32
+    // geometry-corner-radius 20
 
     // clip-to-geometry true
     // tiled-state true
     // draw-border-with-background false
+}
+
+window-rule {
+    match app-id="^Alacritty$"
+
+    clip-to-geometry true
+    tiled-state true
+    draw-border-with-background false
 }
 
 // prefer-no-csd

@@ -201,4 +201,10 @@ animations {
         // duration-ms 200
         // curve "ease-out-quad"
     }
+
+    /-recent-windows-close {
+        off
+        // duration-ms 2000
+        // curve "ease-out-quad"
+    }
 }

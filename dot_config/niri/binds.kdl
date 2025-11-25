@@ -230,4 +230,7 @@ binds {
 
     // Mod+Ctrl+MouseLeft { close-window; }
     // Mod+MouseMiddle    { maximize-column; }
+
+    // Mod+MouseForward { focus-column-right; }
+    // Mod+MouseBack { focus-column-left; }
 }
