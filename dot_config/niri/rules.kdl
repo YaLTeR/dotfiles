@@ -14,6 +14,13 @@ window-rule {
     tiled-state false
 }
 
+window-rule {
+    match app-id="^alacritty-recorder$"
+    open-floating true
+    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    default-floating-position x=0 y=0 relative-to="bottom-right"
+}
+
 /-window-rule {
     match at-startup=false
     exclude app-id="^Alacritty$"

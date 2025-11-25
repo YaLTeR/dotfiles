@@ -215,6 +215,7 @@ binds {
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    Shift+Print { spawn "t" "alacritty" "--class" "alacritty-recorder" "--command" "screen-recorder"; }
 
     Mod+P { screenshot; }
 

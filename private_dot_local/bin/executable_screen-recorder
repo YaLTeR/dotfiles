@@ -1,0 +1,155 @@
+#!/usr/bin/fish
+
+function pick-region
+    # 1) Select region with slurp: "x,y wxh"
+    set -l sel (slurp)
+    if test -z "$sel"
+        echo "slurp failed or cancelled" >&2
+        return 1
+    end
+
+    # Parse "x,y wxh"
+    set -l parts (string split ' ' -- $sel)
+    set -l xy $parts[1]
+    set -l wh $parts[2]
+
+    set -l xparts (string split ',' -- $xy)
+    set -l x $xparts[1]
+    set -l y $xparts[2]
+
+    set -l whparts (string split 'x' -- $wh)
+    set -l w $whparts[1]
+    set -l h $whparts[2]
+
+    # 2) Get outputs: name lx ly lw lh (space-separated)
+    set -l outputs (wayland-info -i xdg_output | awk '
+/xdg_output_v1/ {inside=1; next}
+inside && /name:/ {name=$2}
+inside && /logical_x:/ {
+    lx=$2; sub(/,/, "", lx);
+    ly=$4;
+}
+inside && /logical_width:/ {
+    lw=$2; sub(/,/, "", lw);
+    lh=$4;
+    print name, lx, ly, lw, lh;
+    inside=0;
+}')
+
+    if test (count $outputs) -eq 0
+        echo "no outputs from wayland-info" >&2
+        return 1
+    end
+
+    # 3) Find an output that contains the center of the region
+    set -l chosen_ox
+    set -l chosen_oy
+    set -l chosen_ow
+    set -l chosen_oh
+
+    set -l cx (math --scale 0 "$x + $w / 2")
+    set -l cy (math --scale 0 "$y + $h / 2")
+
+    set -l n (count $outputs)
+    for line in $outputs
+        # line is like: DP-2 2560 0 2560 1440
+        set -l f (string split ' ' -- $line)
+
+        # f[1] = name, f[2] = lx, f[3] = ly, f[4] = lw, f[5] = lh
+        set -l ox $f[2]
+        set -l oy $f[3]
+        set -l ow $f[4]
+        set -l oh $f[5]
+
+        set -l ox_plus_ow (math --scale 0 "$ox + $ow")
+        set -l oy_plus_oh (math --scale 0 "$oy + $oh")
+
+        if test $cx -ge $ox -a $cy -ge $oy -a $cx -lt $ox_plus_ow -a $cy -lt $oy_plus_oh
+            set chosen_ox $ox
+            set chosen_oy $oy
+            set chosen_ow $ow
+            set chosen_oh $oh
+            break
+        end
+    end
+
+    if test -z "$chosen_ox"
+        echo "no output contains the region's origin ($x,$y)" >&2
+        return 1
+    end
+
+    set -l ox $chosen_ox
+    set -l oy $chosen_oy
+    set -l ow $chosen_ow
+    set -l oh $chosen_oh
+
+    set -l ox_plus_ow (math --scale 0 "$ox + $ow")
+    set -l oy_plus_oh (math --scale 0 "$oy + $oh")
+
+    # 4) Clip region to this output
+
+    # Left/top
+    if test $x -lt $ox
+        set -l delta (math --scale 0 "$ox - $x")
+        set x $ox
+        set w (math --scale 0 "$w - $delta")
+    end
+    if test $y -lt $oy
+        set -l delta (math --scale 0 "$oy - $y")
+        set y $oy
+        set h (math --scale 0 "$h - $delta")
+    end
+
+    # Right/bottom
+    set -l x_plus_w (math --scale 0 "$x + $w")
+    if test $x_plus_w -gt $ox_plus_ow
+        set w (math --scale 0 "$ox_plus_ow - $x")
+    end
+
+    set -l y_plus_h (math --scale 0 "$y + $h")
+    if test $y_plus_h -gt $oy_plus_oh
+        set h (math --scale 0 "$oy_plus_oh - $y")
+    end
+
+    # Ensure positive size
+    if test $w -le 0 -o $h -le 0
+        echo "clipped region is empty" >&2
+        return 1
+    end
+
+    set -l geom "$x,$y "$w"x$h"
+    echo "Recording region: $geom" >&2
+    echo $geom
+end
+
+set geom (pick-region)
+or begin
+    echo "Failed to get region" >&2
+    return 1
+end
+
+set -l in  ~/Downloads/raw.mp4
+set -l out ~/Downloads/recording.mp4
+
+# Install temporary SIGINT handler so fish doesn't exit on Ctrl+C
+function __rec_sigint --on-signal INT
+    # do nothing, just prevent the script from dying
+end
+
+wf-recorder -f $in -c h264_vaapi -b 0 -r 60 -y -g $geom
+or wf-recorder -f $in -c libx264 -r 60 -y -g $geom
+
+set -l rc $status
+
+# Remove the handler so it doesn't affect anything else
+functions -e __rec_sigint
+
+if test $rc -eq 0
+    ffmpeg -i $in -vf "fps=60,crop=trunc(iw/2)*2:trunc(ih/2)*2" -movflags +faststart -crf 23 -y $out
+    if test $status -ne 0
+        read -P "Press Enter to exit..."
+    end
+else
+    echo "wf-recorder exited with an error: $rc" >$2
+    read -P "Press Enter to exit..."
+end
