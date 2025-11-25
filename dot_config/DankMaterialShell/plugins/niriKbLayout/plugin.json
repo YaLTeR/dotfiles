@@ -1,0 +1,10 @@
+{
+  "id": "niriKbLayout",
+  "name": "Niri Keyboard Layout",
+  "description": "See the current keyboard layout",
+  "version": "1.0.0",
+  "author": "Ivan Molodetskikh",
+  "icon": "keyboard",
+  "type": "widget",
+  "component": "./KbWidget.qml"
+}
