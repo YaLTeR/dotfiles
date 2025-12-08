@@ -90,6 +90,11 @@ window-rule {
     geometry-corner-radius 6
 }
 
+window-rule {
+    match app-id=r#"^dev\.zed\.Zed$"#
+    geometry-corner-radius 10
+}
+
 /-window-rule {
     match title="~/source"
     geometry-corner-radius 12 24 32 64
