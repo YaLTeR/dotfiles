@@ -14,7 +14,7 @@ binds {
     // Mod+T { spawn "sh" "-c" "alacritty msg create-window -e fish -C t || alacritty -e fish -C t"; }
     Mod+T hotkey-overlay-title="Open Terminal in the Toolbox" { spawn "~/source/sh/spawn-alacritty.bash" "toolbox"; }
     Mod+Shift+T hotkey-overlay-title="Open Terminal on the Host" { spawn "~/source/sh/spawn-alacritty.bash" "host"; }
-    Mod+E hotkey-overlay-title="Open Neovide" { spawn "t" "neovide"; }
+    Mod+E hotkey-overlay-title="Open Neovide" { spawn "tb" "neovide"; }
     // Mod+Ctrl+T { spawn "spawn-alacritty.bash" "toolbox"; }
     Mod+Return { spawn "alacritty"; }
     // Mod+Shift+T { spawn "alacritty"; }
