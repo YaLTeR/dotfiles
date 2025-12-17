@@ -167,7 +167,18 @@ require('lazy').setup {
     },
   },
 
-  'ggandor/leap.nvim',
+  {
+    'https://codeberg.org/andyg/leap.nvim',
+    opts = {
+      -- Exclude whitespace and the middle of alphabetic words from preview:
+      --   foobar[baaz] = quux
+      --   ^----^^^--^^-^-^--^
+      preview = function(ch0, ch1, ch2)
+        return not (ch1:match('%s') or (ch0:match('%a') and ch1:match('%a') and ch2:match('%a')))
+      end,
+    },
+  },
+
   'numToStr/Comment.nvim',
 
   {
@@ -437,6 +448,16 @@ end)
 
 vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
 vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
+
+vim.keymap.set({ 'x', 'o' }, 'R', function()
+  require('leap.treesitter').select {
+    opts = require('leap.user').with_traversal_keys('R', 'r'),
+  }
+end)
+
+vim.keymap.set({ 'n', 'x', 'o' }, 'gs', function()
+  require('leap.remote').action()
+end)
 
 require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
