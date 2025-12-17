@@ -5,6 +5,7 @@ compile_commands.json
 /build/
 .idea/
 .vscode/
+.zed/
 .cache/
 node_modules/
 venv/
