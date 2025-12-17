@@ -204,6 +204,8 @@ window-rule {
     match app-id="^hl_linux$"
     match app-id="^steam_app_524220$" // NieR:Automata
     match app-id="^steam_app_1299460$" // Wanderstop
+    match app-id=r#"^org\.gnome\.Showtime$"#
+    // match at-startup=false
     variable-refresh-rate true
     default-column-width {}
 }
@@ -274,6 +276,7 @@ window-rule {
 window-rule {
     match app-id="^code"
     match app-id="^cursor"
+    match app-id=r#"^dev\.zed\.Zed$"#
     default-column-width { proportion 0.66667; }
 }
 
@@ -320,6 +323,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.Identity"#
     match app-id=r#"^app\.drey\.Warp"#
     match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+    match app-id=r#"^org\.gnome\.Showtime$"#
     // match app-id="pavucontrol"
     // match title="^niri$"
     match app-id=r#"^lxqt-policykit-agent$"#
@@ -343,6 +347,7 @@ window-rule {
     match app-id=r#"^identity"#
     match app-id=r#"^app\.drey\.Warp"#
     match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
+    match app-id=r#"^org\.gnome\.Showtime$"#
     match app-id=r#"^org\.gnome\.Adwaita1\.Demo$"#
 
     geometry-corner-radius 15
@@ -593,6 +598,7 @@ layer-rule {
 layer-rule {
     // mako
     match namespace="^notifications$"
+    match namespace="^dms:notification-popup$"
     block-out-from "screencast"
 }
 
