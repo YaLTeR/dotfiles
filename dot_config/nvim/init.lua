@@ -49,6 +49,8 @@ require('lazy').setup {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'master',
+    lazy = false,
     build = ':TSUpdate',
     config = function()
       local configs = require('nvim-treesitter.configs')
@@ -319,8 +321,9 @@ vim.cmd([[highlight link @normal Normal]])
 
 -- Font for GUI frontends
 -- vim.o.guifont = 'monospace:h9.7'
+vim.o.guifont = 'Iosevka Custom Md Cn:h10.5'
 -- vim.o.guifont = 'monospace:h10.2'
-vim.o.guifont = 'monospace:h10.5'
+-- vim.o.guifont = 'monospace:h10.5'
 -- vim.o.guifont = 'monospace:h11.3'
 -- vim.o.guifont = 'monospace:h14'
 -- vim.o.termguicolors = true  -- Fix some color schemes not displaying (like base16)
