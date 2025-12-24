@@ -4,7 +4,7 @@ border-size=2
 border-color=#74c7ec
 border-radius=8
 default-timeout=5000
-font=Cantarell 12
+font=Adwaita Sans 12
 #output=eDP-1
 
 [urgency=high]
