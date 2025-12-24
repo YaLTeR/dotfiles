@@ -8,6 +8,7 @@ debug {
     // disable-cursor-plane
     // disable-direct-scanout
     // restrict-primary-scanout-to-matching-format
+    // force-disable-connectors-on-resume
     // render-drm-device "/dev/dri/renderD129"
     // render-drm-device "/dev/dri/renderD128"
     // render-drm-device "/dev/dri/card1"
