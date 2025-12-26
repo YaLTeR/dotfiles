@@ -5,7 +5,7 @@ binds {
     Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock the Screen" { spawn-sh "dms ipc call lock lock || hyprlock"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn "fuzzel"; }
     Mod+Shift+D hotkey-overlay-title="Run an Application" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-    Mod+M hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
+    Mod+N hotkey-overlay-title="Open File Manager" { spawn "nautilus"; }
 
     // Mod+Shift+C { spawn "sh" "-c" "t env DISPLAY=:0 xsel -ob | wl-copy"; }
     // Mod+Shift+V { spawn "sh" "-c" "wl-paste -n | t env DISPLAY=:0 xsel -ib"; }
@@ -183,7 +183,7 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
-    Mod+N { maximize-window-to-edges; }
+    Mod+M { maximize-window-to-edges; }
     Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
