@@ -49,52 +49,65 @@ require('lazy').setup {
 
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      local configs = require('nvim-treesitter.configs')
-
-      configs.setup {
-        ensure_installed = {
-          'c',
-          'cpp',
-          'lua',
-          'vim',
-          'vimdoc',
-          'query',
-          'markdown',
-          'rust',
-          'kdl',
-          'glsl',
-          'comment',
-          'blueprint',
-          'regex',
-          'vala',
-          'meson',
-        },
-        highlight = {
-          enable = true,
-          disable = function(lang, bufnr)
-            return lang ~= 'blueprint' and lang ~= 'kdl' and lang ~= 'vala'
-          end,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<A-o>',
-            node_incremental = '<A-o>',
-            node_decremental = '<A-i>',
-          },
-        },
-        indent = {
-          enable = true,
-          disable = function(lang, bufnr)
-            return lang ~= 'meson'
-          end,
-        },
+      local languages = {
+        'c',
+        'cpp',
+        'lua',
+        'vim',
+        'vimdoc',
+        'query',
+        'markdown',
+        'rust',
+        'kdl',
+        'glsl',
+        'comment',
+        -- 'blueprint', -- was dropped due to GitLab outages
+        'regex',
+        'vala',
+        'meson',
       }
+      require('nvim-treesitter').install(languages)
+
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local buf = args.buf
+          local filetype = args.match
+
+          -- Check that the treesitter language exists for this filetype.
+          local lang = vim.treesitter.language.get_lang(filetype) or filetype
+          if not vim.treesitter.language.add(lang) then
+            return
+          end
+
+          -- Highlight.
+          if vim.list_contains({ 'blueprint', 'kdl', 'vala' }, lang) then
+            vim.treesitter.start(buf, lang)
+          end
+
+          -- Indent.
+          if lang == 'meson' then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end,
+  },
+  {
+    'MeanderingProgrammer/treesitter-modules.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    opts = {
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = '<A-o>',
+          node_incremental = '<A-o>',
+          node_decremental = '<A-i>',
+        },
+      },
+    },
   },
 
   'neovim/nvim-lspconfig',
@@ -185,12 +198,12 @@ require('lazy').setup {
 
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    version = '*',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install',
   },
   'nvim-telescope/telescope-ui-select.nvim', -- Telescope for native pickers such as LSP code actions
 
