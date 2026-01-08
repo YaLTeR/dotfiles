@@ -328,6 +328,7 @@ window-rule {
     // match title="^niri$"
     match app-id=r#"^lxqt-policykit-agent$"#
     match app-id=r#"^org\.musescore\.MuseScore$"# title="^Page settings$"
+    match app-id=r#"^io\.gitlab\.news_flash\.NewsFlash$"#
 
     open-floating true
 
@@ -349,6 +350,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.NautilusPreviewer$"#
     match app-id=r#"^org\.gnome\.Showtime$"#
     match app-id=r#"^org\.gnome\.Adwaita1\.Demo$"#
+    match app-id=r#"^io\.gitlab\.news_flash\.NewsFlash$"#
 
     geometry-corner-radius 15
     // clip-to-geometry false
