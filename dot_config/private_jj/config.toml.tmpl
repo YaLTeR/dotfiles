@@ -17,7 +17,7 @@ log_template = "builtin_log_oneline_short"
 
 [template-aliases]
 # Copy of builtin_log_oneline but without the date.
-# https://github.com/jj-vcs/jj/blob/29991bb6d0450353d898f69e321c226a4140bee0/cli/src/config/templates.toml#L151
+# https://github.com/jj-vcs/jj/blob/3284aaccc77330bce4b8459e703425636fdff900/cli/src/config/templates.toml#L160
 builtin_log_oneline_short = 'builtin_log_oneline_short(self)'
 'builtin_log_oneline_short(commit)' = '''
 if(commit.root(),
@@ -28,25 +28,23 @@ if(commit.root(),
       if(commit.immutable(), "immutable", "mutable"),
       if(commit.conflict(), "conflicted"),
     ),
-    concat(
-      separate(" ",
-        format_short_change_id_with_hidden_and_divergent_info(commit),
-        format_short_signature_oneline(commit.author()),
-        commit.bookmarks(),
-        commit.tags(),
-        commit.working_copies(),
-        if(commit.git_head(), label("git_head", "git_head()")),
-        format_short_commit_id(commit.commit_id()),
-        if(commit.conflict(), label("conflict", "conflict")),
-        if(config("ui.show-cryptographic-signatures").as_boolean(),
-          format_short_cryptographic_signature(commit.signature())),
-        if(commit.empty(), label("empty", "(empty)")),
-        if(commit.description(),
-          commit.description().first_line(),
-          label(if(commit.empty(), "empty"), description_placeholder),
-        ),
-      ) ++ "\n",
-    ),
+    separate(" ",
+      format_short_change_id_with_change_offset(commit),
+      format_short_signature_oneline(commit.author()),
+      commit.bookmarks(),
+      commit.tags(),
+      commit.working_copies(),
+      format_short_commit_id(commit.commit_id()),
+      format_commit_labels(commit),
+      if(config("ui.show-cryptographic-signatures").as_boolean(),
+        format_short_cryptographic_signature(commit.signature())
+      ),
+      if(commit.empty(), empty_commit_marker),
+      if(commit.description(),
+        commit.description().first_line(),
+        label(if(commit.empty(), "empty"), description_placeholder),
+      ),
+    ) ++ "\n",
   )
 )
 '''
