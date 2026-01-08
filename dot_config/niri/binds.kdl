@@ -17,6 +17,7 @@ binds {
     Mod+E hotkey-overlay-title="Open Neovide" { spawn "tb" "neovide"; }
     // Mod+Ctrl+T { spawn "spawn-alacritty.bash" "toolbox"; }
     Mod+Return { spawn "alacritty"; }
+    // Mod+Return { spawn-sh "fuzzel && sleep 10"; }
     // Mod+Shift+T { spawn "alacritty"; }
     // Mod+Ctrl+T { spawn "t" "alacritty"; }
     // Mod+Shift+T { spawn "sh" "-c" "alacritty msg create-window || alacritty"; }
