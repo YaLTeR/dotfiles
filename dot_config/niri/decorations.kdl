@@ -12,6 +12,7 @@ window-rule {
 
 window-rule {
     match app-id="^Alacritty$"
+    match app-id="^Alacritty-floating$"
 
     clip-to-geometry true
     tiled-state true

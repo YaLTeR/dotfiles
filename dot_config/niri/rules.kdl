@@ -330,6 +330,9 @@ window-rule {
     match app-id=r#"^org\.musescore\.MuseScore$"# title="^Page settings$"
     match app-id=r#"^io\.gitlab\.news_flash\.NewsFlash$"#
 
+    match app-id=r#"^Alacritty-floating$"#
+    match app-id=r#"^Minecraft"# title=r#"^Minecraft"#
+
     open-floating true
 
     // focus-ring { on; }
@@ -351,6 +354,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Showtime$"#
     match app-id=r#"^org\.gnome\.Adwaita1\.Demo$"#
     match app-id=r#"^io\.gitlab\.news_flash\.NewsFlash$"#
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
 
     geometry-corner-radius 15
     // clip-to-geometry false
