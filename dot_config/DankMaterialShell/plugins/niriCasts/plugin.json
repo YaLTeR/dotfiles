@@ -1,0 +1,10 @@
+{
+  "id": "niriCasts",
+  "name": "Niri Screencasts",
+  "description": "See the screencasts",
+  "version": "1.0.0",
+  "author": "Ivan Molodetskikh",
+  "icon": "screen_record",
+  "type": "widget",
+  "component": "./CastWidget.qml"
+}
