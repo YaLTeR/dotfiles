@@ -2,6 +2,9 @@ key.txt.age
 
 README.md
 
+# Install from packages instead
+.local/bin/fzf
+
 {{ if eq .hosttype "desktop" "laptop" | not }}
 **
 !.config
@@ -18,6 +21,7 @@ README.md
 {{ if eq .hosttype "uni" }}
 !.local/bin/jj
 !.local/bin/jj-fzf
+!.local/bin/fzf
 !.config/jj
 !.config/jj/config.toml
 !.config/helix

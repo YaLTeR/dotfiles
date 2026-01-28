@@ -16,3 +16,9 @@
   type: file
   url: {{ gitHubLatestReleaseAssetURL "tim-janik/jj-fzf" "jj-fzf.sfx" | quote }}
   executable: true
+
+".local/bin/fzf":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "junegunn/fzf" "fzf-*-linux_amd64.tar.gz" | quote }}
+  path: fzf
+  executable: true
