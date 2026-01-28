@@ -8,6 +8,8 @@ general.import = [
     # "~/.config/alacritty/adwaita_dark.toml",
     # "~/.config/alacritty/github_dark.toml",
 
+    # "~/.config/alacritty/dank-theme.toml",
+
     # "~/.config/alacritty/latency.toml",
 ]
 
@@ -15,16 +17,18 @@ general.import = [
 # dimensions = { columns = 120, lines = 74 }
 # dimensions = { columns = 300, lines = 74 }
 # dimensions = { columns = 42, lines = 26 }
-padding = { x = 1, y = 0 }
+# padding = { x = 1, y = 0 }
 # padding = { x = 2, y = 2 }
+padding = { x = 32, y = 32 }
 # padding = { x = 9, y = 14 }
-# dynamic_padding = true
+dynamic_padding = true
 opacity = 0.98
+# opacity = 0.8
 # opacity = 0.5
 # opacity = 0.0
 # startup_mode = "Fullscreen"
 # decorations = "Full"
-# decorations = "None"
+decorations = "None"
 
 [colors]
 transparent_background_colors = true
