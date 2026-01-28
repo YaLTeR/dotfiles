@@ -11,6 +11,7 @@ line-number = "relative"
 auto-save = true
 auto-format = false
 end-of-line-diagnostics = "hint"
+auto-pairs = false
 # true-color = true
 
 [editor.inline-diagnostics]
@@ -31,6 +32,10 @@ hidden = false
 tab = "all"
 nbsp = "all"
 
+# Disable Tab jumping to end of node when there's non-whitespace to the left.
+[editor.smart-tab]
+enable = false
+
 [keys.normal]
 C-s = ":update"
 C-p = "file_picker"
@@ -49,4 +54,7 @@ i = ":toggle lsp.display-inlay-hints"
 
 [keys.normal.Z]
 Z = ":write-quit-all"
+
+[keys.normal." "]
+n = ":open ~/.config/niri/"
 
