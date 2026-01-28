@@ -63,6 +63,7 @@ window-rule {
     match app-id="Adwaita"
     // match app-id="TextEditor"
     // opacity 0.5
+    opacity 0.9
     // block-out-from "screencast"
     geometry-corner-radius 15
     // geometry-corner-radius 0 0 8 8
@@ -344,6 +345,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Papers"#
     match app-id=r#"^org\.gnome\.Ptyxis"#
     match app-id=r#"^org\.gnome\.Calculator"#
+    match app-id=r#"^org\.gnome\.TextEditor"#
     match app-id=r#"^org\.gnome\.Decibels"#
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
     match app-id=r#"^video-trimmer"#
@@ -359,6 +361,7 @@ window-rule {
     geometry-corner-radius 15
     // clip-to-geometry false
     tiled-state false
+    draw-border-with-background false
 
     // focus-ring { off; }
     // border { off; }
@@ -608,7 +611,7 @@ layer-rule {
     block-out-from "screencast"
 }
 
-layer-rule {
+/-layer-rule {
     match namespace="^wallpaper$"
     // match namespace="^desktop$"
     // match namespace="^desktop-icons$"
