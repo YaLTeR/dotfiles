@@ -18,7 +18,7 @@
 	renames = true
 [core]
 	autocrlf = input
-{{- if eq .hosttype "desktop" "laptop" }}
+{{- if eq .hosttype "desktop" "laptop" "uni" }}
 	pager = delta
 [interactive]
 	diffFilter = delta --color-only

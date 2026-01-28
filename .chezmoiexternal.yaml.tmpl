@@ -22,3 +22,10 @@
   url: {{ gitHubLatestReleaseAssetURL "junegunn/fzf" "fzf-*-linux_amd64.tar.gz" | quote }}
   path: fzf
   executable: true
+
+".local/bin/delta":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "dandavison/delta" "delta-*-x86_64-unknown-linux-gnu.tar.gz" | quote }}
+  stripComponents: 1
+  path: delta
+  executable: true

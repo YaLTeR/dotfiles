@@ -7,10 +7,8 @@ email = {{ .email | quote }}
 
 [ui]
 default-command = "log"
-{{- if eq .hosttype "desktop" "laptop" }}
 pager = "delta"
 diff-formatter = ":git"
-{{- end }}
 
 [jj-fzf]
 log_template = "builtin_log_oneline_short"
