@@ -108,7 +108,8 @@ window-rule {
 
 /-window-rule {
     match app-id="code"
-    // opacity 0.98
+    // opacity 0.9
+    draw-border-with-background false
     border {
         // off
     }
@@ -346,6 +347,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Ptyxis"#
     match app-id=r#"^org\.gnome\.Calculator"#
     match app-id=r#"^org\.gnome\.TextEditor"#
+    match app-id=r#"^org\.gnome\.Settings"#
     match app-id=r#"^org\.gnome\.Decibels"#
     match app-id=r#"^org\.gnome\.gitlab\.YaLTeR\.VideoTrimmer"#
     match app-id=r#"^video-trimmer"#

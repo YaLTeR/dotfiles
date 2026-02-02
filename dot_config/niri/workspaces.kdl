@@ -3,7 +3,7 @@ workspace "notes" {
     // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
 
-    /-layout {
+    layout {
         // gaps 32
 
         // struts {
@@ -14,7 +14,7 @@ workspace "notes" {
         border {
             // off
             // on
-            width 64
+            // width 64
         }
 
         // always-center-single-column false
@@ -22,13 +22,14 @@ workspace "notes" {
         // empty-workspace-above-first
         // insert-hint {}
 
-        default-column-width { proportion 1.0; }
+        // default-column-width { proportion 1.0; }
 
-        preset-column-widths {
-            proportion 0.5
-        }
+        // preset-column-widths {
+        //     proportion 0.5
+        // }
 
         // background-color "white"
+        // background-color "red"
     }
 }
 
@@ -37,6 +38,10 @@ workspace "chat" {
     // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-output "eDP-2"
+
+    layout {
+        // background-color "green"
+    }
 }
 
 workspace "browser" {
