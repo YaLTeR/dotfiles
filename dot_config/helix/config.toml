@@ -36,6 +36,10 @@ nbsp = "all"
 [editor.smart-tab]
 enable = false
 
+[keys.insert]
+A-n = "goto_next_tabstop"
+A-p = "goto_prev_tabstop"
+
 [keys.normal]
 C-s = ":update"
 C-p = "file_picker"
@@ -57,4 +61,3 @@ Z = ":write-quit-all"
 
 [keys.normal." "]
 n = ":open ~/.config/niri/"
-
