@@ -61,3 +61,4 @@ Z = ":write-quit-all"
 
 [keys.normal." "]
 n = ":open ~/.config/niri/"
+w = "goto_word"
