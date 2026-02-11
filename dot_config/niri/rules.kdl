@@ -75,10 +75,11 @@ window-rule {
     }
 }
 
-window-rule {
+/-window-rule {
     match app-id="^gnome-terminal-server$"
+    match app-id=r"^org\.gnome\.Terminal$"
     // opacity 0.5
-    // block-out-from "screen-capture"
+    block-out-from "screen-capture"
     clip-to-geometry false
     geometry-corner-radius 8 8 0 0
     border {
@@ -388,7 +389,8 @@ window-rule {
 }
 
 window-rule {
-    match app-id="foot"
+    match app-id="^foot$"
+    match app-id="^kitty$"
 
     // geometry-corner-radius 0
     // geometry-corner-radius 12
@@ -397,7 +399,7 @@ window-rule {
     // opacity 0.5
     // opacity 0.05
     // opacity 0.0
-    // draw-border-with-background false
+    draw-border-with-background false
 
     /-shadow {
         // off
@@ -613,7 +615,7 @@ layer-rule {
     block-out-from "screencast"
 }
 
-/-layer-rule {
+layer-rule {
     match namespace="^wallpaper$"
     // match namespace="^desktop$"
     // match namespace="^desktop-icons$"

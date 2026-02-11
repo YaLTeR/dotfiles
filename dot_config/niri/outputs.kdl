@@ -7,11 +7,11 @@ output "winit" {
     // transform "flipped-90"
     position x=100 y=200
     // background-color "#000"
-    // background-color "#030"
+    // background-color "#0705"
     // background-color "#ccc"
     // background-color "#fff"
     // background-color "#0000"
-    // backdrop-color "#999"
+    // backdrop-color "#900"
 
     layout {
         // background-color "red"
