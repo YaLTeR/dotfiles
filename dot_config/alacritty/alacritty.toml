@@ -22,10 +22,14 @@ general.import = [
 padding = { x = 32, y = 32 }
 # padding = { x = 9, y = 14 }
 dynamic_padding = true
-opacity = 0.98
+# opacity = 0.98
+# opacity = 0.9
+opacity = 0.85
 # opacity = 0.8
+# opacity = 0.7
 # opacity = 0.5
 # opacity = 0.0
+blur = true
 # startup_mode = "Fullscreen"
 # decorations = "Full"
 decorations = "None"
