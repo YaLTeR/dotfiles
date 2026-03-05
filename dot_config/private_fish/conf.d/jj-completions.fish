@@ -1,1 +1,0 @@
-COMPLETE=fish jj | source
