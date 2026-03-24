@@ -13,7 +13,6 @@ sudo dnf builddep {{- range .packages.toolbox.builddep }} {{ . | quote }}{{ end 
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm
 sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
-sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
 sudo dnf install gstreamer1-plugins-ugly
 
 # vscode
