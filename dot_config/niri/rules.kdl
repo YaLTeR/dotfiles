@@ -119,10 +119,10 @@ window-rule {
 
 /-window-rule {
     match app-id="weston."
-    // block-out-from "screencast"
-    geometry-corner-radius 12 24 32 64
+    block-out-from "screen-capture"
+    // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
-    clip-to-geometry true
+    // clip-to-geometry true
 }
 
 // window-rule {
@@ -209,6 +209,7 @@ window-rule {
     match app-id="^steam_app_524220$" // NieR:Automata
     match app-id="^steam_app_1299460$" // Wanderstop
     match app-id=r#"^org\.gnome\.Showtime$"#
+    // match app-id="^Minecraft"
     // match at-startup=false
     variable-refresh-rate true
     default-column-width {}
@@ -262,6 +263,7 @@ window-rule {
     exclude title="^Picture-in-Picture$"
 
     default-column-width { proportion 0.5; }
+    geometry-corner-radius 8 8 0 0
 }
 
 window-rule {

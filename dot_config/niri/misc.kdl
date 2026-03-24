@@ -110,6 +110,7 @@ gestures {
 xwayland-satellite {
     // off
     // path "~/source/rs/xwayland-satellite/target/release/xwayland-satellite"
+    // path "asdf"
 }
 
 cursor {
