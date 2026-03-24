@@ -1,7 +1,7 @@
 workspace "notes" {
     // open-on-output "DP-2"
-    // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
-    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
 
     layout {
         // gaps 32
@@ -35,8 +35,8 @@ workspace "notes" {
 
 workspace "chat" {
     // open-on-output "DP-2"
-    // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
-    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
     // open-on-output "eDP-2"
 
     layout {
@@ -45,6 +45,7 @@ workspace "chat" {
 }
 
 workspace "browser" {
-    open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
+    // open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     // open-on-output "DP-2"
+    open-on-output "LG Electronics LG ULTRAWIDE 511NTKFCK997"
 }

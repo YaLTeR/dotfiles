@@ -54,11 +54,30 @@ output "BOE 0x0A9B Unknown" {
     // variable-refresh-rate on-demand=true
 }
 
+output "LG Electronics LG ULTRAWIDE 511NTKFCK997" {
+    // position x=-3840 y=0
+    position x=0 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+
+    layout {
+        default-column-width { proportion 0.25; }
+
+        preset-column-widths {
+            proportion 0.25
+            proportion 0.3333333333333333
+            proportion 0.5
+            proportion 0.66667
+            proportion 0.75
+        }
+    }
+}
+
 output "Acer Technologies XV320QU LV 420615FCD4200" {
     // off
     // position x=-2560 y=-1440
     // position x=2500 y=0
-    position x=0 y=0
+    // position x=0 y=0
     // mode "1920x1080@60.000"
     // mode "800x600@72.188"
     // mode "100x100"

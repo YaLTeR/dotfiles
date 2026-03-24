@@ -17,7 +17,8 @@ window-rule {
 window-rule {
     match app-id="^alacritty-recorder$"
     open-floating true
-    open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    // open-on-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
+    open-on-output "Acer Technologies XV320QU LV 420615FCD4200"
     default-floating-position x=0 y=0 relative-to="bottom-right"
 }
 
