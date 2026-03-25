@@ -42,7 +42,8 @@ output "BOE 0x0A9B Unknown" {
 
     // scale 2.0
     // scale 1.75
-    scale 1.5
+    // scale 1.5
+    scale 1.25
     // transform "90"
     position x=0 y=0
     // mode "1920x1200"
