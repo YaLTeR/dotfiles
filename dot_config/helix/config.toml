@@ -5,6 +5,8 @@ theme = "catppuccin_mocha"
 # theme = "onedark"
 # theme = "github_dark"
 # theme = "adwaita-dark"
+# theme = "papercolor-dark"
+# theme = "papercolor-light"
 
 [editor]
 line-number = "relative"
