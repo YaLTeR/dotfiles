@@ -1,6 +1,6 @@
 ".local/share/fonts/IosevkaYNerdFont-TTF.tar.xz":
   type: file
-  url: "https://github.com/YaLTeR/iosevka-y/releases/latest/download/IosevkaYNerdFont-TTF.tar.xz"
+  url: {{ gitHubLatestReleaseAssetURL "YaLTeR/iosevka-y" "IosevkaYNerdFont-TTF.tar.xz" | quote }}
 
 ".local/bin/jj":
   type: archive-file
