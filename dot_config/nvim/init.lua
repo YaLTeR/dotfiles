@@ -43,6 +43,12 @@ require('lazy').setup {
   },
 
   {
+    'pappasam/papercolor-theme-slim',
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
     'RRethy/base16-nvim',
     priority = 1000,
   },
@@ -301,6 +307,8 @@ vim.cmd.colorscheme('catppuccin-mocha')
 -- vim.cmd.colorscheme 'catppuccin-latte'
 -- vim.cmd.colorscheme 'base16-classic-dark'
 -- vim.cmd.colorscheme 'alacritty'
+-- vim.cmd.colorscheme('PaperColorSlim')
+-- vim.cmd.colorscheme('PaperColorSlimLight')
 
 vim.o.clipboard = 'unnamedplus' -- Use the system clipboard
 vim.o.number = true -- Show line numbers
