@@ -55,6 +55,7 @@ require('lazy').setup {
 
   {
     'nvim-treesitter/nvim-treesitter',
+    commit = 'f8bbc3177d929dc86e272c41cc15219f0a7aa1ac', -- Last to support tree-sitter-cli 0.25 (currently in Fedora)
     lazy = false,
     build = ':TSUpdate',
     config = function()
@@ -171,21 +172,6 @@ require('lazy').setup {
     'kylechui/nvim-surround',
     version = '*', -- Use for stability; omit to use `main` branch for the latest features
     event = 'VeryLazy',
-    opts = {
-      keymaps = {
-        insert = '<C-g>z',
-        insert_line = '<C-g>Z',
-        normal = 'yz',
-        normal_cur = 'yzz',
-        normal_line = 'yZ',
-        normal_cur_line = 'yZZ',
-        visual = 'Z',
-        visual_line = 'gZ',
-        delete = 'dz',
-        change = 'cz',
-        change_line = 'cZ',
-      },
-    },
   },
 
   {
@@ -487,6 +473,19 @@ require('Comment').setup {}
 require('Comment.ft').set('spec', '#%s')
 vim.keymap.set('n', '<C-c>', '<Plug>(comment_toggle_linewise_current)')
 vim.keymap.set('x', '<C-c>', '<Plug>(comment_toggle_linewise_visual)')
+
+vim.g.nvim_surround_no_mappings = true
+vim.keymap.set('i', '<C-g>z', '<Plug>(nvim-surround-insert)')
+vim.keymap.set('i', '<C-g>Z', '<Plug>(nvim-surround-insert-line)')
+vim.keymap.set('n', 'yz', '<Plug>(nvim-surround-normal)')
+vim.keymap.set('n', 'yzz', '<Plug>(nvim-surround-normal-cur)')
+vim.keymap.set('n', 'yZ', '<Plug>(nvim-surround-normal-line)')
+vim.keymap.set('n', 'yZZ', '<Plug>(nvim-surround-normal-cur-line)')
+vim.keymap.set('x', 'Z', '<Plug>(nvim-surround-visual)')
+vim.keymap.set('x', 'gZ', '<Plug>(nvim-surround-visual-line)')
+vim.keymap.set('n', 'dz', '<Plug>(nvim-surround-delete)')
+vim.keymap.set('n', 'cz', '<Plug>(nvim-surround-change)')
+vim.keymap.set('n', 'cZ', '<Plug>(nvim-surround-change-line)')
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'rust',
