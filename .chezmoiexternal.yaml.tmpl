@@ -25,3 +25,17 @@
   stripComponents: 1
   path: delta
   executable: true
+
+".local/bin/yazi":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "sxyazi/yazi" "yazi-x86_64-unknown-linux-gnu.zip" | quote }}
+  stripComponents: 1
+  path: yazi
+  executable: true
+
+".local/bin/ya":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "sxyazi/yazi" "yazi-x86_64-unknown-linux-gnu.zip" | quote }}
+  stripComponents: 1
+  path: yazi
+  executable: true
