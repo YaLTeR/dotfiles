@@ -21,6 +21,10 @@ require('lazy').setup {
     name = 'catppuccin',
     priority = 1000,
     opts = {
+      transparent_background = true,
+      float = {
+        transparent = true,
+      },
       term_colors = true,
       lsp_styles = {
         underlines = {
@@ -28,6 +32,7 @@ require('lazy').setup {
           hints = { 'undercurl' },
           warnings = { 'undercurl' },
           information = { 'undercurl' },
+          ok = { 'undercurl' },
         },
       },
     },
@@ -200,7 +205,18 @@ require('lazy').setup {
   'nvim-telescope/telescope-ui-select.nvim', -- Telescope for native pickers such as LSP code actions
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
-  { 'j-hui/fidget.nvim', opts = { progress = { ignore = { 'ltex' } } } },
+  {
+    'j-hui/fidget.nvim',
+    opts = {
+      progress = { ignore = { 'ltex' } },
+      -- Fix black background.
+      notification = {
+        window = {
+          winblend = 0,
+        },
+      },
+    },
+  },
 
   'kaarmu/typst.vim',
   {
@@ -288,11 +304,10 @@ require('lazy').setup {
   },
 }
 
-vim.cmd.colorscheme('catppuccin-mocha')
--- vim.cmd.colorscheme 'github_light'
--- vim.cmd.colorscheme 'catppuccin-latte'
--- vim.cmd.colorscheme 'base16-classic-dark'
--- vim.cmd.colorscheme 'alacritty'
+vim.cmd.colorscheme('catppuccin-nvim')
+-- vim.cmd.colorscheme('github_light')
+-- vim.cmd.colorscheme('base16-classic-dark')
+-- vim.cmd.colorscheme('alacritty')
 -- vim.cmd.colorscheme('PaperColorSlim')
 -- vim.cmd.colorscheme('PaperColorSlimLight')
 
