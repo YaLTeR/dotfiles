@@ -35,7 +35,7 @@ blur = true
 decorations = "None"
 
 [colors]
-transparent_background_colors = true
+# transparent_background_colors = true
 
 [font]
 # size = 9.3
