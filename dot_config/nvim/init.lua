@@ -150,7 +150,7 @@ require('lazy').setup {
 
   {
     'mrcjkb/rustaceanvim',
-    version = '*',
+    version = '^8', -- latest to support nvim 0.11
     lazy = false,
   },
 
@@ -237,6 +237,7 @@ require('lazy').setup {
       vim.g.vim_markdown_no_default_key_mappings = 1
     end,
   },
+  'godlygeek/tabular',
   'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
