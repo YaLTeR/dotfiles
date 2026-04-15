@@ -32,7 +32,7 @@ opacity = 0.85
 blur = true
 # startup_mode = "Fullscreen"
 # decorations = "Full"
-decorations = "None"
+# decorations = "None"
 
 [colors]
 # transparent_background_colors = true
