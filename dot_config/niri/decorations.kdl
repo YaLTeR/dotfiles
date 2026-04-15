@@ -14,11 +14,12 @@ window-rule {
     match app-id="^Alacritty$"
     match app-id="^Alacritty-floating$"
 
-    clip-to-geometry true
-    tiled-state true
+    // clip-to-geometry true
+    // tiled-state true
     draw-border-with-background false
+    geometry-corner-radius 9 9 0 0
 
-    shadow { on; }
+    // shadow { on; }
 }
 
 // prefer-no-csd
