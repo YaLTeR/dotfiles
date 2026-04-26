@@ -239,6 +239,7 @@ require('lazy').setup {
   },
   'godlygeek/tabular',
   'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -344,7 +345,7 @@ vim.cmd([[highlight link @normal Normal]])
 
 -- Font for GUI frontends
 -- vim.o.guifont = 'monospace:h9.7'
-vim.o.guifont = 'IosevkaY NFM Cn Md:h10.5'
+vim.o.guifont = 'IosevkaY NFM Cn Md:h12'
 -- vim.o.guifont = 'monospace:h10.2'
 -- vim.o.guifont = 'monospace:h10.5'
 -- vim.o.guifont = 'monospace:h11.3'
