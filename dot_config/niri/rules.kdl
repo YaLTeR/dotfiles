@@ -126,14 +126,6 @@ window-rule {
     // clip-to-geometry true
 }
 
-// window-rule {
-//     match app-id="Alacritty"
-//     geometry-corner-radius 12 12 0 0
-//     border {
-//         width 8
-//     }
-// }
-
 window-rule {
     match app-id="org.freedesktop.weston.simple-egl"
     // min-width 128
@@ -163,39 +155,48 @@ window-rule {
     open-focused false
 }
 
-/-window-rule {
-    match app-id="^Alacritty$"
-    match app-id="^neovide$"
-    exclude is-active=true
 
-    opacity 0.95
+window-rule {
+    match app-id="^Alacritty"
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    match app-id=r#"^com\.mitchellh\.ghostty-debug$"#
+
+    draw-border-with-background false
+
+    background-effect {
+        blur true
+        // xray true
+        // saturation 0
+    }
 }
 
 /-window-rule {
-    match app-id="^Alacritty$"
-    match app-id="^neovide$"
-    match app-id="^code$"
-    // match title="^niri$"
-    match app-id="^labwc$"
+    match app-id="Adwaita"
+    match app-id="Nautilus"
+    match app-id="Loupe"
+    match app-id="TextEditor"
+    match app-id="VideoTrimmer"
 
-    border { on; }
-    // geometry-corner-radius 8
-    // geometry-corner-radius 12
-    // clip-to-geometry true
+    background-effect {
+        xray true
+        blur true
+    }
+
+    popups {
+        geometry-corner-radius 15
+
+        background-effect {
+            blur true
+        }
+    }
 }
-
-// window-rule {
-//     match app-id="^Alacritty$"
-//     match app-id="^neovide$"
-//     exclude is-floating=false
-//
-//     border { off; }
-// }
 
 window-rule {
     match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
-    open-fullscreen false
+    // open-fullscreen true
+    // open-fullscreen false
     open-floating true
+    draw-border-with-background false
     // default-column-width { proportion 0.5; }
 }
 
@@ -271,6 +272,7 @@ window-rule {
     match at-startup=true app-id=r#"firefox$"#
 
     open-on-workspace "browser"
+    default-column-width { proportion 0.75; }
     // open-maximized true
 }
 
@@ -284,7 +286,7 @@ window-rule {
     match app-id="^code"
     match app-id="^cursor"
     match app-id=r#"^dev\.zed\.Zed$"#
-    default-column-width { proportion 0.66667; }
+    default-column-width { proportion 0.5; }
 }
 
 // window-rule {
@@ -543,6 +545,8 @@ window-rule {
     // geometry-corner-radius 30
     // geometry-corner-radius 1
     // geometry-corner-radius 12
+    // geometry-corner-radius 15
+    // geometry-corner-radius 24
     // geometry-corner-radius 6
     // geometry-corner-radius 32
     // geometry-corner-radius 25
@@ -604,6 +608,10 @@ layer-rule {
 
     // geometry-corner-radius 14
     // geometry-corner-radius 8
+
+    background-effect {
+        blur true
+    }
 }
 
 /-layer-rule {

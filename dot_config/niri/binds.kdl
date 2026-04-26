@@ -1,3 +1,7 @@
+switch-events {
+    // lid-close { spawn "echo" "hi"; }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
@@ -217,6 +221,7 @@ binds {
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
+    // Alt+Print { screenshot-window; }
     Alt+Print { screenshot-window show-pointer=true; }
     Shift+Print { spawn "t" "alacritty" "--class" "alacritty-recorder" "--command" "screen-recorder"; }
 
