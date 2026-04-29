@@ -33,7 +33,7 @@ layout {
     }
 
     border {
-        off
+        // off
     }
 
     shadow {
