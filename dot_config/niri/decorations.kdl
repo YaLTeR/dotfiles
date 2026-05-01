@@ -41,6 +41,12 @@ layout {
     }
 }
 
+window-rule {
+    match app-id="^code"
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
 blur {
     // off
     // noise 0

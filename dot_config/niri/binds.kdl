@@ -149,15 +149,15 @@ binds {
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
 
-    Mod+1 { focus-window-in-column 1; }
-    Mod+2 { focus-window-in-column 2; }
-    Mod+3 { focus-window-in-column 3; }
-    Mod+4 { focus-window-in-column 4; }
-    Mod+5 { focus-window-in-column 5; }
-    Mod+6 { focus-window-in-column 6; }
-    Mod+7 { focus-window-in-column 7; }
-    Mod+8 { focus-window-in-column 8; }
-    Mod+9 { focus-window-in-column 9; }
+    Mod+Alt+1 { focus-window-in-column 1; }
+    Mod+Alt+2 { focus-window-in-column 2; }
+    Mod+Alt+3 { focus-window-in-column 3; }
+    Mod+Alt+4 { focus-window-in-column 4; }
+    Mod+Alt+5 { focus-window-in-column 5; }
+    Mod+Alt+6 { focus-window-in-column 6; }
+    Mod+Alt+7 { focus-window-in-column 7; }
+    Mod+Alt+8 { focus-window-in-column 8; }
+    Mod+Alt+9 { focus-window-in-column 9; }
     Mod+Ctrl+1 { move-column-to-workspace 1; }
     Mod+Ctrl+2 { move-column-to-workspace 2; }
     Mod+Ctrl+3 { move-column-to-workspace 3; }
@@ -204,12 +204,14 @@ binds {
     Mod+Shift+Ctrl+Minus { set-window-height "-1"; }
     Mod+Shift+Ctrl+Equal { set-window-height "+1"; }
 
-    Mod+0            { set-column-width "960"; }
-    Mod+Shift+0      { set-window-height "540"; }
-    Mod+Alt+0        { set-column-width "1280"; }
-    Mod+Shift+Alt+0  { set-window-height "720"; }
-    Mod+Ctrl+0       { set-column-width "1920"; }
-    Mod+Shift+Ctrl+0 { set-window-height "1080"; }
+    Mod+0       { set-column-width "960"; }
+    Mod+Shift+0 { set-window-height "540"; }
+    Mod+9       { set-column-width "1280"; }
+    Mod+Shift+9 { set-window-height "720"; }
+    Mod+8       { set-column-width "1920"; }
+    Mod+Shift+8 { set-window-height "1080"; }
+    Mod+7       { set-column-width "2560"; }
+    Mod+Shift+7 { set-window-height "1440"; }
 
     Mod+Space       { switch-layout "next"; }
     Mod+Shift+Space { switch-layout "prev"; }
