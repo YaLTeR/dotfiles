@@ -80,6 +80,8 @@ require('lazy').setup {
         'regex',
         'vala',
         'meson',
+        'latex',
+        'bibtex',
       }
       require('nvim-treesitter').install(languages)
 
@@ -95,7 +97,7 @@ require('lazy').setup {
           end
 
           -- Highlight.
-          if vim.list_contains({ 'blueprint', 'kdl', 'vala' }, lang) then
+          if vim.list_contains({ 'blueprint', 'kdl', 'vala', 'latex', 'bibtex' }, lang) then
             vim.treesitter.start(buf, lang)
           end
 
