@@ -205,6 +205,7 @@ require('lazy').setup {
     build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install',
   },
   'nvim-telescope/telescope-ui-select.nvim', -- Telescope for native pickers such as LSP code actions
+  'crispgm/telescope-heading.nvim', -- For picking headings in LaTeX, etc.
 
   { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
   {
@@ -566,6 +567,12 @@ vim.keymap.set('n', '<space>b', telescope_builtin.buffers)
 
 vim.keymap.set('n', '<space>n', function()
   telescope_builtin.find_files { cwd = '~/.config/niri' }
+end)
+
+-- Heading picker, overwritten by LSP when available.
+telescope.load_extension('heading')
+vim.keymap.set('n', '<space>s', function()
+  vim.cmd.Telescope('heading')
 end)
 
 require('lualine').setup {
