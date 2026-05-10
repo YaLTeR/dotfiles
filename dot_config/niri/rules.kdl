@@ -269,6 +269,14 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^chromium-browser$"#
+    match app-id=r#"^org.chromium.Chromium$"#
+
+    default-column-width { proportion 0.5; }
+    geometry-corner-radius 8 8 0 0
+}
+
+window-rule {
     match at-startup=true app-id=r#"firefox$"#
 
     open-on-workspace "browser"
