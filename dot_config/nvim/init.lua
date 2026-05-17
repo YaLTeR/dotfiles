@@ -152,7 +152,7 @@ require('lazy').setup {
 
   {
     'mrcjkb/rustaceanvim',
-    version = '^8', -- latest to support nvim 0.11
+    version = '*',
     lazy = false,
   },
 
