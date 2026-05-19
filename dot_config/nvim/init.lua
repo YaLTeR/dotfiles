@@ -193,8 +193,6 @@ require('lazy').setup {
     },
   },
 
-  'numToStr/Comment.nvim',
-
   {
     'nvim-telescope/telescope.nvim',
     version = '*',
@@ -489,10 +487,8 @@ vim.keymap.set({ 'n', 'x', 'o' }, 'gs', function()
   require('leap.remote').action()
 end)
 
-require('Comment').setup {}
-require('Comment.ft').set('spec', '#%s')
-vim.keymap.set('n', '<C-c>', '<Plug>(comment_toggle_linewise_current)')
-vim.keymap.set('x', '<C-c>', '<Plug>(comment_toggle_linewise_visual)')
+vim.keymap.set('n', '<C-c>', 'gcc', { remap = true })
+vim.keymap.set('x', '<C-c>', 'gcgv', { remap = true })
 
 vim.g.nvim_surround_no_mappings = true
 vim.keymap.set('i', '<C-g>z', '<Plug>(nvim-surround-insert)')
