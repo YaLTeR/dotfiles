@@ -19,7 +19,7 @@
 [core]
 	autocrlf = input
 {{- if eq .hosttype "desktop" "laptop" "uni" }}
-	pager = delta
+	pager = LESS='FR --redraw-on-quit' delta
 [interactive]
 	diffFilter = delta --color-only
 [delta]
