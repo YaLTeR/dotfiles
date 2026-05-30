@@ -262,6 +262,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"#
+    match app-id=r#"thunderbird$"#
     exclude title="^Picture-in-Picture$"
 
     default-column-width { proportion 0.5; }

@@ -60,6 +60,7 @@ output "LG Electronics LG ULTRAWIDE 511NTKFCK997" {
     position x=0 y=0
     variable-refresh-rate on-demand=true
     focus-at-startup
+    // max-bpc 8
 
     layout {
         default-column-width { proportion 0.25; }

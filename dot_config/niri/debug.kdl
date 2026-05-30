@@ -25,5 +25,4 @@ debug {
     // strict-new-window-focus-policy
     // honor-xdg-activation-with-invalid-serial
     // deactivate-unfocused-windows
-    // keep-max-bpc-unchanged
 }
