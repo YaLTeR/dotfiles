@@ -494,10 +494,12 @@ window-rule {
     // open-on-workspace "discord"
     // default-column-width { proportion 0.5; }
     // default-column-width { fixed 400; }
+    // default-column-width { fixed 2560; }
     // default-column-width {}
     // default-window-height { proportion 0.25; }
     // default-window-height { proportion 1.1; }
     // default-window-height { fixed 100; }
+    // default-window-height { fixed 1440; }
     // open-maximized true
     // open-maximized-to-edges true
     // open-maximized-to-edges false
