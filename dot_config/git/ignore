@@ -19,6 +19,7 @@ proptest-regressions/
 subprojects/.wraplock
 perf.data
 perf.data.old
+.hugo_build.lock
 CLAUDE.md
 AGENTS.md
 **/.claude/settings.local.json
