@@ -1,0 +1,114 @@
+disable_warning #true
+repositories {
+    // For very careful installation of new packages...
+    volatile {
+        description ...
+        uri "https://cdn.aerynos.dev/stream/volatile/x86_64/stone.index"
+        priority 0
+    }
+    unstable {
+        description ...
+        uri "https://cdn.aerynos.dev/stream/unstable/x86_64/stone.index"
+        priority 10
+    }
+    // https://github.com/YaLTeR/aeryn-yalter-recipes
+    local {
+        description ...
+        uri "file:///home/yalter/.cache/local_repo/x86_64/stone.index"
+        priority 100
+    }
+}
+packages {
+    // Defaults from the GNOME installation, stripped down somewhat
+    boulder
+    firefox
+    font-noto
+    font-noto-cjk
+    font-noto-emoji
+    intel-microcode
+    liberation-fonts-ttf
+    linux-firmware
+    linux-stable
+    pkgset-aeryn-base
+    pkgset-aeryn-base-desktop
+    pkgset-aeryn-gnome-recommended
+    pkgset-aeryn-utilities
+    plymouth
+    sof-firmware
+    usbutils
+    xfsprogs
+    zram-generator-defaults
+
+    // Essentials
+    fish
+    tmux
+    git
+    htop
+    fzf
+    gdb
+    perf
+    strace
+    syncthing
+    unzip
+    vim
+    neovim
+    man-db
+    wl-clipboard-rs
+    ripgrep
+    chezmoi
+    rsync
+    curl
+    cmake
+
+    // Packaging
+    build-essential
+
+    // Various
+    bubblewrap
+    podman
+    distrobox
+    fastfetch
+    sysprof
+    lm_sensors
+    ffmpeg
+    mpv
+    imagemagick
+    git-lfs
+    delta
+    drm-info
+
+    // Compositors
+    sway
+
+    // Terminals
+    alacritty
+    foot
+
+    // Wayland utils
+    fuzzel
+    waybar
+    wlsunset
+    hyprlock
+    gamescope
+    wf-recorder
+    grim
+    slurp
+
+    // Apps
+    resources
+    keepassxc
+    bazaar
+
+    // Extras
+    openssh-server
+    jq
+    helix
+    dankmaterialshell
+    matugen
+
+    // Local repo
+    xray-core
+    v2raya
+    niri-git
+    gh
+}
