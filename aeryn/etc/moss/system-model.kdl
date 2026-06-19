@@ -60,6 +60,10 @@ packages {
     curl
     cmake
 
+    // Waiting for espeak-ng package
+    // speech-dispatcher
+    // speech-dispatcher-utils
+
     // Packaging
     build-essential
 
@@ -77,6 +81,7 @@ packages {
     delta
     drm-info
     font-awesome-ttf
+    dejavu-fonts-ttf
 
     // Compositors
     sway
@@ -100,6 +105,8 @@ packages {
     resources
     keepassxc
     bazaar
+    dconf-editor
+    vscode-bin
 
     // Extras
     openssh-server
