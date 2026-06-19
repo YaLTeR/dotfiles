@@ -59,6 +59,7 @@ packages {
     rsync
     curl
     cmake
+    gstreamer-plugins-base-tools
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -107,11 +108,14 @@ packages {
     bazaar
     dconf-editor
     vscode-bin
+    pavucontrol
 
     // Extras
     openssh-server
     jq
     helix
+    gtk-4-demos
+    libadwaita-demos
     dankmaterialshell
     matugen
     qalculate
