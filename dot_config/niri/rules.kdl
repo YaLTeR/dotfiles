@@ -194,7 +194,7 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.telegram\.desktop$"# title="^Media viewer$"
     // open-fullscreen true
-    // open-fullscreen false
+    open-fullscreen false
     open-floating true
     draw-border-with-background false
     // default-column-width { proportion 0.5; }
