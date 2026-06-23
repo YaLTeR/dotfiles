@@ -59,7 +59,14 @@ packages {
     rsync
     curl
     cmake
+    meson
+    ninja
+    ccache
+    mold
+    clang-tools
     gstreamer-plugins-base-tools
+    networkmanager-openvpn
+    networkmanager-openvpn-gnome
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -113,12 +120,27 @@ packages {
     // Extras
     openssh-server
     jq
+    fd
     helix
     gtk-4-demos
     libadwaita-demos
     dankmaterialshell
     matugen
     qalculate
+    nodejs
+    uv
+    graphviz
+    "pkgconfig(libadwaita-1)"
+    "pkgconfig(dbus-1)"
+    "pkgconfig(egl)"
+    "pkgconfig(xkbcommon)"
+    "pkgconfig(freetype2)"
+    "pkgconfig(pugixml)"
+    "pkgconfig(libcurl)"
+    glibc-dbginfo
+    glib2-dbginfo
+    gtk-4-dbginfo
+    libadwaita-dbginfo
 
     // Local repo
     xray-core
