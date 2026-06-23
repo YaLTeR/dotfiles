@@ -1,1 +1,2 @@
 enable v2raya.service
+enable sshd.service
