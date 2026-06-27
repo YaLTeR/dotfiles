@@ -64,9 +64,11 @@ packages {
     ccache
     mold
     clang-tools
+    gettext
     gstreamer-plugins-base-tools
     networkmanager-openvpn
     networkmanager-openvpn-gnome
+    ntfs-3g
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -88,8 +90,10 @@ packages {
     git-lfs
     delta
     drm-info
+    hyperfine
     font-awesome-ttf
     dejavu-fonts-ttf
+    "binary(fuser)"
 
     // Compositors
     sway
