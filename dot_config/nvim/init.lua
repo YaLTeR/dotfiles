@@ -305,6 +305,35 @@ require('lazy').setup {
     },
     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
   },
+
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    lazy = false,
+    opts = {
+      window = {
+        mappings = {
+          -- Default mapping but with nowait = true since I don't need my space bindings.
+          ['<space>'] = {
+            'toggle_node',
+            -- nowait = true,
+          },
+        },
+      },
+      -- Add document_symbols which is currently experimental.
+      sources = {
+        'filesystem',
+        'buffers',
+        'git_status',
+        'document_symbols',
+      },
+    },
+  },
 }
 
 vim.cmd.colorscheme('catppuccin-nvim')
