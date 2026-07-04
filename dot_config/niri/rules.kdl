@@ -405,6 +405,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"# title="^Generate Password$"
+
+    open-floating true
+}
+
+window-rule {
     match app-id="^foot$"
     match app-id="^kitty$"
 
