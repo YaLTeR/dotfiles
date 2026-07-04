@@ -93,6 +93,7 @@ packages {
     hyperfine
     font-awesome-ttf
     dejavu-fonts-ttf
+    p7zip
     "binary(fuser)"
 
     // Compositors
@@ -141,6 +142,17 @@ packages {
     "pkgconfig(freetype2)"
     "pkgconfig(pugixml)"
     "pkgconfig(libcurl)"
+
+    "pkgconfig(glib-2.0)"
+    "pkgconfig(libdisplay-info)"
+    "pkgconfig(libinput)"
+    "pkgconfig(libpipewire-0.3)"
+    "pkgconfig(libseat)"
+    "pkgconfig(libspa-0.2)"
+    "pkgconfig(libudev)"
+    "pkgconfig(pango)"
+    "pkgconfig(xkbcommon)"
+
     glibc-dbginfo
     glib2-dbginfo
     gtk-4-dbginfo
@@ -150,5 +162,6 @@ packages {
     xray-core
     v2raya
     niri-git
+    niri-git-dbginfo
     gh
 }
