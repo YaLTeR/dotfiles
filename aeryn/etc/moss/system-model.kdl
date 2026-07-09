@@ -1,19 +1,18 @@
 disable_warning #true
 repositories {
     // For very careful installation of new packages...
-    volatile {
-        description ...
-        uri "https://cdn.aerynos.dev/stream/volatile/x86_64/stone.index"
+    /-volatile {
+        base-uri "https://cdn.aerynos.dev/"
+        version "stream/volatile"
         priority 0
     }
     unstable {
-        description ...
-        uri "https://cdn.aerynos.dev/stream/unstable/x86_64/stone.index"
+        base-uri "https://cdn.aerynos.dev/"
+        version "stream/unstable"
         priority 10
     }
     // https://github.com/YaLTeR/aeryn-yalter-recipes
     local {
-        description ...
         uri "file:///home/yalter/.cache/local_repo/x86_64/stone.index"
         priority 100
     }
@@ -69,6 +68,7 @@ packages {
     networkmanager-openvpn
     networkmanager-openvpn-gnome
     ntfs-3g
+    gvfs-smb
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -135,6 +135,7 @@ packages {
     nodejs
     uv
     graphviz
+    "binary(eglinfo)"
     "pkgconfig(libadwaita-1)"
     "pkgconfig(dbus-1)"
     "pkgconfig(egl)"
@@ -164,4 +165,45 @@ packages {
     niri-git
     niri-git-dbginfo
     gh
+
+    // builddep(gtk-4)
+    "binary(gettext)"
+    "binary(gi-docgen)"
+    "binary(rst2man)"
+    "cmake(VulkanHeaders)"
+    "pkgconfig(cairo)"
+    "pkgconfig(cairo-gobject)"
+    "pkgconfig(cloudproviders)"
+    "pkgconfig(colord)"
+    "pkgconfig(cups)"
+    "pkgconfig(epoxy)"
+    "pkgconfig(fribidi)"
+    "pkgconfig(gdk-pixbuf-2.0)"
+    "pkgconfig(glib-2.0)"
+    "pkgconfig(gobject-introspection-1.0)"
+    "pkgconfig(graphene-gobject-1.0)"
+    "pkgconfig(gstreamer-gl-1.0)"
+    "pkgconfig(gstreamer-player-1.0)"
+    "pkgconfig(harfbuzz)"
+    "pkgconfig(iso-codes)"
+    "pkgconfig(libjpeg)"
+    "pkgconfig(libpng)"
+    "pkgconfig(libtiff-4)"
+    "pkgconfig(pango)"
+    "pkgconfig(shaderc)"
+    "pkgconfig(sysprof-capture-4)"
+    "pkgconfig(tinysparql-3.0)"
+    "pkgconfig(vulkan)"
+    "pkgconfig(wayland-client)"
+    "pkgconfig(wayland-egl)"
+    "pkgconfig(wayland-protocols)"
+    "pkgconfig(xcursor)"
+    "pkgconfig(xdamage)"
+    "pkgconfig(xext)"
+    "pkgconfig(xi)"
+    "pkgconfig(xinerama)"
+    "pkgconfig(xkbcommon)"
+    "pkgconfig(xrandr)"
+
+    "binary(sassc)"
 }
