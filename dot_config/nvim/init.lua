@@ -276,35 +276,6 @@ require('lazy').setup {
   'tpope/vim-eunuch', -- :Rename, etc.
   'tpope/vim-abolish', -- Case conversion, :Subvert
   'tpope/vim-sleuth', -- Heuristic indent options
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    opts = {
-      config = {
-        shortcut = {
-          {
-            desc = 'update',
-            group = '@property',
-            action = 'Lazy update',
-            key = 'u',
-          },
-          {
-            desc = 'niri config',
-            group = 'Number',
-            action = 'Telescope find_files cwd=~/.config/niri/',
-            key = 'n',
-          },
-          {
-            desc = 'nvim config',
-            group = 'Number',
-            action = 'edit ~/.config/nvim/init.lua',
-            key = 'v',
-          },
-        },
-      },
-    },
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-  },
 
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -467,14 +438,14 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'BufEnter' }, {
   end,
 })
 
-vim.keymap.set('n', '<leader>vps', function()
+vim.keymap.set('n', '<leader>pvs', function()
   vim.cmd([[
     :profile start /tmp/nvim-profile.log
     :profile func *
     :profile file *
   ]])
 end)
-vim.keymap.set('n', '<leader>vpe', function()
+vim.keymap.set('n', '<leader>pve', function()
   vim.cmd([[
     :profile stop
     :e /tmp/nvim-profile.log
@@ -482,11 +453,11 @@ vim.keymap.set('n', '<leader>vpe', function()
 end)
 
 local plenary_profile = require('plenary.profile')
-vim.keymap.set('n', '<leader>lps', function()
+vim.keymap.set('n', '<leader>pls', function()
   print('starting lua profiling')
   plenary_profile.start('/tmp/nvim-profile-flame.log', { flame = true })
 end)
-vim.keymap.set('n', '<leader>lpe', function()
+vim.keymap.set('n', '<leader>ple', function()
   plenary_profile.stop()
   vim.system(
     { 'sh', '-c', 'inferno-flamegraph /tmp/nvim-profile-flame.log >/tmp/nvim-profile-flame.svg' },
@@ -592,6 +563,9 @@ vim.keymap.set('n', '<space>b', telescope_builtin.buffers)
 
 vim.keymap.set('n', '<space>n', function()
   telescope_builtin.find_files { cwd = '~/.config/niri' }
+end)
+vim.keymap.set('n', '<space>v', function()
+  vim.cmd.edit('~/.config/nvim/init.lua')
 end)
 
 -- Heading picker, overwritten by LSP when available.
