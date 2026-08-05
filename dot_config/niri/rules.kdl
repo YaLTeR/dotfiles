@@ -227,12 +227,13 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^obsidian$"
+    match app-id="^md.Obsidian$"
     default-column-width { fixed 1000; }
+    geometry-corner-radius 8 8 8 8
 }
 
 window-rule {
-    match at-startup=true app-id="^obsidian$"
+    match at-startup=true app-id="^md.Obsidian$"
     open-on-workspace "notes"
 }
 
@@ -266,7 +267,7 @@ window-rule {
     exclude title="^Picture-in-Picture$"
 
     default-column-width { proportion 0.5; }
-    geometry-corner-radius 8 8 0 0
+    geometry-corner-radius 8 8 8 8
 }
 
 window-rule {
