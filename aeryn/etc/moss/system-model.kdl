@@ -69,6 +69,7 @@ packages {
     networkmanager-openvpn-gnome
     ntfs-3g
     gvfs-smb
+    gvfs-mtp
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -135,6 +136,7 @@ packages {
     nodejs
     uv
     graphviz
+    yt-dlp
     "binary(eglinfo)"
     "pkgconfig(libadwaita-1)"
     "pkgconfig(dbus-1)"
