@@ -55,13 +55,15 @@ def main() -> None:
             if not (info_dir / f"{f.name}.trashinfo").exists():
                 to_delete.append(f)
 
-    if not args.f:
-        if to_delete:
-            for path in sorted(to_delete):
-                print(path)
+    if to_delete:
+        for path in sorted(to_delete):
+            print(path)
+        if not args.f:
             print("\nDRY RUN. Pass -f to actually delete.")
-        else:
-            print("DRY RUN. Nothing to delete.")
+    else:
+        print("Nothing to delete.")
+
+    if not args.f:
         return
 
     for path in to_delete:
