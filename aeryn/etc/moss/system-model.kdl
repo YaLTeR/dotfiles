@@ -137,6 +137,7 @@ packages {
     uv
     graphviz
     yt-dlp
+    zig
     "binary(eglinfo)"
     "pkgconfig(libadwaita-1)"
     "pkgconfig(dbus-1)"
