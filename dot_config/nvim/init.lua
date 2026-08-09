@@ -544,6 +544,7 @@ telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 vim.keymap.set('n', '<C-p>', telescope_builtin.find_files)
 vim.keymap.set('n', '<space>/', telescope_builtin.live_grep)
+vim.keymap.set('n', '<space>*', telescope_builtin.grep_string)
 vim.keymap.set('n', '<space>d', function()
   telescope_builtin.diagnostics { bufnr = 0 }
 end)
