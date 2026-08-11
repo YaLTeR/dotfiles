@@ -227,13 +227,13 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^md.Obsidian$"
+    match app-id=r#"^md\.obsidian\.Obsidian$"#
     default-column-width { fixed 1000; }
     geometry-corner-radius 8 8 8 8
 }
 
 window-rule {
-    match at-startup=true app-id="^md.Obsidian$"
+    match at-startup=true app-id=r#"^md\.obsidian\.Obsidian$"#
     open-on-workspace "notes"
 }
 
