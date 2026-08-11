@@ -1,2 +1,4 @@
 enable v2raya.service
 enable sshd.service
+enable getty@.service
+disable kmsconvt@.service
