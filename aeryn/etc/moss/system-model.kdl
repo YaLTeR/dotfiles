@@ -114,6 +114,7 @@ packages {
     grim
     slurp
     wayland-utils
+    weston-demo
 
     // Apps
     resources
@@ -131,6 +132,7 @@ packages {
     gtk-4-demos
     libadwaita-demos
     dankmaterialshell
+    kf6-kimageformats // .jxl support for DMS
     matugen
     qalculate
     nodejs
