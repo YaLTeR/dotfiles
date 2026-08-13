@@ -47,6 +47,7 @@ packages {
     gdb
     perf
     strace
+    valgrind
     syncthing
     unzip
     vim
@@ -64,6 +65,7 @@ packages {
     mold
     clang-tools
     gettext
+    man-pages
     gstreamer-plugins-base-tools
     networkmanager-openvpn
     networkmanager-openvpn-gnome
@@ -140,6 +142,7 @@ packages {
     graphviz
     yt-dlp
     zig
+    zls
     "binary(eglinfo)"
     "pkgconfig(libadwaita-1)"
     "pkgconfig(dbus-1)"
