@@ -105,6 +105,7 @@ packages {
     // Terminals
     alacritty
     foot
+    ghostty
 
     // Wayland utils
     fuzzel
@@ -144,6 +145,7 @@ packages {
     zig
     zls
     "binary(eglinfo)"
+    "binary(vulkaninfo)"
     "pkgconfig(libadwaita-1)"
     "pkgconfig(dbus-1)"
     "pkgconfig(egl)"
