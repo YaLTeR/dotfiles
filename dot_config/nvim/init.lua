@@ -581,7 +581,7 @@ require('lualine').setup {
 -- LSP
 
 -- These are installed from packages rather than Mason.
-vim.lsp.enable { 'clangd', 'vala_ls', 'blueprint_ls', 'qmlls' }
+vim.lsp.enable { 'clangd', 'vala_ls', 'blueprint_ls', 'qmlls', 'zls' }
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('*', {
