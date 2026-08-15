@@ -1,12 +1,12 @@
 disable_warning #true
 repositories {
     // For very careful installation of new packages...
-    /-volatile {
+    volatile {
         base-uri "https://cdn.aerynos.dev/"
         version "stream/volatile"
         priority 0
     }
-    unstable {
+    /-unstable {
         base-uri "https://cdn.aerynos.dev/"
         version "stream/unstable"
         priority 10
@@ -67,11 +67,7 @@ packages {
     gettext
     man-pages
     gstreamer-plugins-base-tools
-    networkmanager-openvpn
-    networkmanager-openvpn-gnome
     ntfs-3g
-    gvfs-smb
-    gvfs-mtp
 
     // Waiting for espeak-ng package
     // speech-dispatcher
