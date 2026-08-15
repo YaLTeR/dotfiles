@@ -733,7 +733,7 @@ local ra_settings = {
   ['rust-analyzer'] = {
     check = { command = 'clippy' },
     rustfmt = { overrideCommand = { 'rustfmt', '+nightly', '--edition=2021' } },
-    diagnostics = { disabled = { 'inactive-code' } },
+    diagnostics = { disabled = { 'inactive_code' } },
     completion = {
       snippets = {
         custom = {
