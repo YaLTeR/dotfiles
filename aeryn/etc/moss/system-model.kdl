@@ -141,6 +141,7 @@ packages {
     github-cli
     zig
     zls
+    vala
     "binary(eglinfo)"
     "binary(vulkaninfo)"
     "pkgconfig(libadwaita-1)"
