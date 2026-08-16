@@ -210,6 +210,7 @@ window-rule {
     match app-id="^hl_linux$"
     match app-id="^steam_app_524220$" // NieR:Automata
     match app-id="^steam_app_1299460$" // Wanderstop
+    match app-id="^steam_app_1478500$" // Big Walk
     match app-id=r#"^org\.gnome\.Showtime$"#
     // match app-id="^Minecraft"
     // match at-startup=false
