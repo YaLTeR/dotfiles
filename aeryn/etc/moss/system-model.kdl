@@ -138,6 +138,7 @@ packages {
     uv
     graphviz
     yt-dlp
+    github-cli
     zig
     zls
     "binary(eglinfo)"
@@ -170,7 +171,6 @@ packages {
     v2raya
     niri-git
     niri-git-dbginfo
-    gh
 
     // builddep(gtk-4)
     "binary(gettext)"
