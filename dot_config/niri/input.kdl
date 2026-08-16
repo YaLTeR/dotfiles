@@ -59,6 +59,7 @@ input {
         // map-to-output "Acer Technologies XV320QU LV 420615FCD4200"
         // map-to-output "Dell Inc. Dell S2716DG #ASOwvAqQj0Dd"
         map-to-focused-output
+        // map-to-focused-window
         // left-handed
         /-calibration-matrix 0.0 -1.0 1.0 \
                            1.0  0.0 0.0
