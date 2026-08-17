@@ -112,6 +112,7 @@ packages {
     wf-recorder
     grim
     slurp
+    wl-mirror
     wayland-utils
     weston-demo
 
