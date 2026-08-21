@@ -132,7 +132,6 @@ packages {
     gtk-4-demos
     libadwaita-demos
     dankmaterialshell
-    dgop
     kf6-kimageformats // .jxl support for DMS
     matugen
     qalculate
