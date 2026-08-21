@@ -132,6 +132,7 @@ packages {
     gtk-4-demos
     libadwaita-demos
     dankmaterialshell
+    dgop
     kf6-kimageformats // .jxl support for DMS
     matugen
     qalculate
@@ -167,6 +168,7 @@ packages {
     glib2-dbginfo
     gtk-4-dbginfo
     libadwaita-dbginfo
+    pango-dbginfo
 
     // Local repo
     xray-core
