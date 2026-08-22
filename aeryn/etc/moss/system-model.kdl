@@ -115,6 +115,7 @@ packages {
     wl-mirror
     wayland-utils
     weston-demo
+    wev
 
     // Apps
     resources
