@@ -52,7 +52,7 @@ output "BOE 0x0A9B Unknown" {
     // mode "1280x720"
     // mode "640x480"
 
-    // variable-refresh-rate on-demand=true
+    variable-refresh-rate on-demand=true
 }
 
 output "LG Electronics LG ULTRAWIDE 511NTKFCK997" {
