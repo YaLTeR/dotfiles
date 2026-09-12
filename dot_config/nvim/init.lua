@@ -568,7 +568,10 @@ end)
 require('lualine').setup {
   sections = {
     lualine_c = {
-      'filename',
+      {
+        'filename',
+        path = 1,
+      },
       {
         'lsp_progress',
         hide = { 'ltex' }, -- Spammy LSPs
