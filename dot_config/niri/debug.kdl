@@ -17,6 +17,7 @@ debug {
     // ignore-drm-device "/dev/dri/card1"
     // ignore-drm-device "/dev/dri/card2"
     // force-pipewire-invalid-modifier
+    // disable-pipewire-dmabuf
     // emulate-zero-presentation-time
     // disable-transactions
     // disable-resize-throttling
