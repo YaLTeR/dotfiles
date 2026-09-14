@@ -1,12 +1,12 @@
 disable_warning #true
 repositories {
     // For very careful installation of new packages...
-    volatile {
+    /-volatile {
         base-uri "https://cdn.aerynos.dev/"
         version "stream/volatile"
         priority 0
     }
-    /-unstable {
+    unstable {
         base-uri "https://cdn.aerynos.dev/"
         version "stream/unstable"
         priority 10
@@ -93,6 +93,9 @@ packages {
     font-awesome-ttf
     dejavu-fonts-ttf
     p7zip
+    socat
+    alsa-utils
+    pulseaudio-utils
     "binary(fuser)"
 
     // Compositors
@@ -141,6 +144,7 @@ packages {
     graphviz
     yt-dlp
     github-cli
+    freerdp
     zig
     zls
     vala
