@@ -212,10 +212,16 @@ window-rule {
     match app-id="^steam_app_1299460$" // Wanderstop
     match app-id="^steam_app_1478500$" // Big Walk
     match app-id=r#"^org\.gnome\.Showtime$"#
+    match app-id=r#"^rs\.bxt\.TasLogReader"#
     // match app-id="^Minecraft"
     // match at-startup=false
     variable-refresh-rate true
     default-column-width {}
+}
+
+window-rule {
+    match app-id="^vrmonitor$"
+    open-floating true
 }
 
 /-window-rule {
