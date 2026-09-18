@@ -28,6 +28,7 @@ input {
         // scroll-factor 2
         // scroll-factor horizontal=10 vertical=-2
         // scroll-method "edge"
+        // pinch-sensitivity 3
     }
 
     mouse {
