@@ -39,3 +39,8 @@
   stripComponents: 1
   path: ya
   executable: true
+
+".local/bin/leaf":
+  type: file
+  url: {{ gitHubLatestReleaseAssetURL "RivoLink/leaf" "leaf-linux-x86_64" | quote }}
+  executable: true
