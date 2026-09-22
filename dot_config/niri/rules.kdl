@@ -359,6 +359,7 @@ window-rule {
     match app-id=r#"^Alacritty-floating$"#
     match app-id=r#"^Minecraft"# title=r#"^Minecraft"#
     match app-id=r#"^com\.mojang\.minecraft$"# title=r#"^Minecraft"#
+    match app-id=r#"^flameshot$"#
 
     open-floating true
 
