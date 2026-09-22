@@ -7,6 +7,8 @@ include "animations.kdl"
 include "misc.kdl"
 include "binds.kdl"
 
+// include "anim-detox.kdl"
+
 // include "c.kdl"
 // include "config.kdl"
 // include "../niri/config.kdl"
