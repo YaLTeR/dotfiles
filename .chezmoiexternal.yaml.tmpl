@@ -44,3 +44,10 @@
   type: file
   url: {{ gitHubLatestReleaseAssetURL "RivoLink/leaf" "leaf-linux-x86_64" | quote }}
   executable: true
+
+".local/bin/typst":
+  type: archive-file
+  url: {{ gitHubLatestReleaseAssetURL "typst/typst" "typst-x86_64-unknown-linux-musl.tar.xz" | quote }}
+  stripComponents: 1
+  path: typst
+  executable: true
