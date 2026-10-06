@@ -161,6 +161,9 @@ packages {
     "pkgconfig(freetype2)"
     "pkgconfig(pugixml)"
     "pkgconfig(libcurl)"
+    "pkgconfig(gtksourceview-5)"
+    glycin-gtk4-libs-devel
+    blueprint-compiler
 
     "pkgconfig(glib-2.0)"
     "pkgconfig(libdisplay-info)"
