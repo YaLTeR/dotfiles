@@ -1,0 +1,9 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "ru"
+    name[Group1]= "Russian (YLTR)";
+
+    key <TLDE> {[ Cyrillic_SOFTSIGN, Cyrillic_HARDSIGN ]};
+    key <AD12> {[ Cyrillic_io, Cyrillic_IO ]};
+    key <AB07> {[ Cyrillic_softsign, Cyrillic_hardsign ]};
+};
