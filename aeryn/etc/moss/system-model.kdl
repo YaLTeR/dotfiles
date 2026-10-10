@@ -38,8 +38,6 @@ packages {
     xfsprogs
     zram-generator-defaults
 
-    sushi
-
     // Essentials
     fish
     tmux
@@ -70,6 +68,7 @@ packages {
     man-pages
     gstreamer-plugins-base-tools
     ntfs-3g
+    fcitx5
 
     // Waiting for espeak-ng package
     // speech-dispatcher
@@ -99,6 +98,7 @@ packages {
     alsa-utils
     pulseaudio-utils
     f3
+    libxkbcommon-utils
     "binary(fuser)"
 
     // Compositors
