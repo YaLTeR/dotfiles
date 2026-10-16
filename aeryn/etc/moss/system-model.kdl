@@ -37,6 +37,7 @@ packages {
     usbutils
     xfsprogs
     zram-generator-defaults
+    gdm
 
     // Essentials
     fish
