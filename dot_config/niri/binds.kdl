@@ -62,6 +62,7 @@ binds {
 
     Mod+Q { close-window; }
     Mod+BackSpace { close-window; }
+    Alt+F4 { close-window; }
 
     // Mod+Tab { focus-window-previous; }
 
