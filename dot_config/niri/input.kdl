@@ -6,8 +6,8 @@ input {
             options "compose:ralt,ctrl:nocaps"
         }
 
-        repeat-delay 500
-        repeat-rate 30
+        repeat-delay 250
+        repeat-rate 40
 
         // track-layout "window"
         numlock
