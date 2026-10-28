@@ -79,6 +79,22 @@ alias gsu    "git submodule update"
 alias gsui   "git submodule update --init"
 alias gsuir  "git submodule update --init --recursive"
 
+# Push a non-checked-out branch.
+function gpusb --wraps 'git push origin'
+	set --local b $argv[1]
+
+	if not set --local push_remote "$(git config "branch.$b.pushRemote")"
+		echo "branch.$b.pushRemote not found"
+		return 1
+	end
+	if not set --local merge "$(git config "branch.$b.merge")"
+		echo "branch.$b.merge not found"
+		return 1
+	end
+
+	git push $argv[2..] $push_remote "$b:$merge"
+end
+
 # Fix emoji and others rendering
 set -g fish_emoji_width 2
 set -g fish_cursor_insert line
