@@ -21,6 +21,10 @@ aeryn
 !.ssh/authorized_keys
 
 {{ if eq .hosttype "uni" }}
+# Dirs need to be unignored too, but only for non-external files.
+!.local
+!.local/bin
+
 !.local/bin/jj
 !.local/bin/jj-fzf
 !.local/bin/jjf
@@ -34,6 +38,7 @@ aeryn
 !.config/helix
 !.config/helix/config.toml
 !.config/helix/languages.toml
+!.config/helix/themes
 {{ end }}
 
 {{ end }}
