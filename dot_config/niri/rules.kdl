@@ -665,7 +665,7 @@ layer-rule {
     block-out-from "screencast"
 }
 
-layer-rule {
+/-layer-rule {
     match namespace="^wallpaper$"
     // match namespace="^desktop$"
     // match namespace="^desktop-icons$"
