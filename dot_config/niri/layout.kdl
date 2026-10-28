@@ -2,6 +2,9 @@ layout {
     // background-color "#5005"
     // background-color "transparent"
 
+    // fullscreen-backdrop-color "transparent"
+    // fullscreen-backdrop-color "#0f07"
+
     focus-ring {
         // off
         width 1

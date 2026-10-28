@@ -85,4 +85,5 @@ input {
     // mod-key "Alt"
     // mod-key "Ctrl"
     // mod-key-nested "Ctrl"
+    // mod-key-nested "Super"
 }

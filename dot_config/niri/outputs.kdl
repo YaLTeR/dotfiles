@@ -15,6 +15,7 @@ output "winit" {
 
     layout {
         // background-color "red"
+        // fullscreen-backdrop-color "#00f"
         // gaps 16
         // gaps 64
 

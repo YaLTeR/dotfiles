@@ -205,6 +205,10 @@ window-rule {
     default-column-width {}
 }
 
+/-window-rule {
+    variable-refresh-rate "fullscreen-only"
+}
+
 window-rule {
     match app-id="^mpv$"
     match app-id="^hl_linux$"
@@ -222,6 +226,12 @@ window-rule {
 window-rule {
     match app-id="^vrmonitor$"
     open-floating true
+}
+
+/-window-rule {
+    match app-id="^Vncviewer$"
+    default-column-width {}
+    default-window-height { fixed 713; }
 }
 
 /-window-rule {

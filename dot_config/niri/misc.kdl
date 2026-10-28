@@ -37,6 +37,12 @@ recent-windows {
         Mod+Shift+Tab   { previous-window scope="output"; }
         Mod+grave       { next-window filter="app-id" scope="output"; }
         Mod+Shift+grave { previous-window filter="app-id" scope="output"; }
+
+        // Mod+Control_L { next-window; }
+        // Mod+Ctrl+Control_L { next-window; }
+
+        // Alt_L { next-window; }
+        // Alt { next-window; }
     }
 }
 
