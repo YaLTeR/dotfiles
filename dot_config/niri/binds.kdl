@@ -58,6 +58,22 @@ binds {
     XF86MonBrightnessUp   allow-when-locked=true repeat=false { spawn-sh "dms ipc call brightness increment 10 '' || brightnessctl --class=backlight set +10%"; }
     XF86MonBrightnessDown allow-when-locked=true repeat=false { spawn-sh "dms ipc call brightness decrement 10 '' || brightnessctl --class=backlight set 10%-"; }
 
+    // XF86TouchpadToggle repeat=false { toggle-touchpad; }
+    // Mod+Y repeat=false { toggle-touchpad; }
+    // Mod+Shift+Less { spawn "alacritty"; }
+
+    /-Mod+Shift {
+        press { spawn-sh "notify-send press"; }
+        release { spawn-sh "notify-send release"; }
+        // release { switch-layout "next"; }
+    }
+    /-Shift+Mod {
+        release { switch-layout "next"; }
+    }
+
+    /-Mod {
+        release { toggle-overview; }
+    }
     Mod+O { toggle-overview; }
 
     Mod+Q { close-window; }
@@ -217,6 +233,10 @@ binds {
     Mod+Space       { switch-layout "next"; }
     Mod+Shift+Space { switch-layout "prev"; }
 
+    /-Alt+Shift {
+        release { switch-layout "next"; }
+    }
+
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
@@ -243,6 +263,7 @@ binds {
     // Mod+Ctrl+MouseLeft { close-window; }
     // Mod+MouseMiddle    { maximize-column; }
     // Mod+MouseLeft { center-window; }
+    // Mod+MouseLeft { spawn "alacritty"; }
 
     // Mod+MouseForward { focus-column-right; }
     // Mod+MouseBack { focus-column-left; }
