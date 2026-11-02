@@ -38,6 +38,7 @@ packages {
     xfsprogs
     zram-generator-defaults
     gdm
+    cups
 
     // Essentials
     fish
