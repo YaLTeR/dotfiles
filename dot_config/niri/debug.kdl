@@ -27,4 +27,5 @@ debug {
     // honor-xdg-activation-with-invalid-serial
     // deactivate-unfocused-windows
     // disable-10bit-output
+    // nested-show-host-cursor
 }

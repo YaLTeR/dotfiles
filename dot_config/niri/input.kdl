@@ -4,6 +4,8 @@ input {
             layout "us,ru"
             // variant "colemak_dh_ortho,"
             options "compose:ralt,ctrl:nocaps"
+
+            // file "~/Downloads/keymap2.xkb"
         }
 
         repeat-delay 250
