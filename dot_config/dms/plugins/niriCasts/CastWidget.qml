@@ -3,6 +3,7 @@ import qs.Common
 import qs.Services
 import qs.Widgets
 import qs.Modules.Plugins
+import qs.DCommon.Widgets
 import Quickshell.Io
 import Quickshell.Services.Pipewire
 
@@ -37,7 +38,7 @@ PluginComponent {
     }
 
     horizontalBarPill: Component {
-        DankIcon {
+        DIcon {
             name: NiriService.hasCasts ? "screen_record" : "circle"
             size: Theme.iconSize - 6
             color: NiriService.hasActiveCast ? Theme.primary : Theme.surfaceText
@@ -46,7 +47,7 @@ PluginComponent {
     }
 
     verticalBarPill: Component {
-        DankIcon {
+        DIcon {
             name: NiriService.hasCasts ? "screen_record" : "circle"
             size: Theme.iconSize - 6
             color: NiriService.hasActiveCast ? Theme.primary : Theme.surfaceText
@@ -127,7 +128,7 @@ PluginComponent {
                                 color: stopMouseArea.containsMouse ? Qt.rgba(Theme.error.r, Theme.error.g, Theme.error.b, 0.2) : "transparent"
                                 visible: modelData.kind === "PipeWire"
 
-                                DankIcon {
+                                DIcon {
                                     anchors.centerIn: parent
                                     name: "close"
                                     size: Theme.iconSize - 8
@@ -145,7 +146,7 @@ PluginComponent {
                                 }
                             }
 
-                            DankIcon {
+                            DIcon {
                                 name: "screen_record"
                                 size: Theme.iconSize - 8
                                 color: modelData.is_active ? Theme.primary : Theme.surfaceText
