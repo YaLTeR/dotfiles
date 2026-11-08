@@ -39,6 +39,7 @@ packages {
     zram-generator-defaults
     gdm
     cups
+    fwupd
 
     // Essentials
     fish
