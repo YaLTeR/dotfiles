@@ -4,6 +4,7 @@ window-rule {
     // geometry-corner-radius 15
     // geometry-corner-radius 16
     // geometry-corner-radius 32
+    // geometry-corner-radius 8 16 24 32
     // geometry-corner-radius 20
 
     // clip-to-geometry true
@@ -27,6 +28,8 @@ window-rule {
 // prefer-no-csd
 
 layout {
+    // gaps 16
+
     focus-ring {
         // off
         width 2

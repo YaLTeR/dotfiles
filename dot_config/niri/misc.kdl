@@ -50,7 +50,7 @@ environment {
     // GSK_RENDERER "cairo"
     // WAYLAND_DISPLAY null
     _JAVA_AWT_WM_NONREPARENTING "1"
-    GTK_IM_MODULE "simple"
+    // GTK_IM_MODULE "simple"
 }
 
 overview {
