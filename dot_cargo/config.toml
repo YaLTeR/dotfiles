@@ -3,3 +3,6 @@ rustflags = ["-C", "link-arg=-fuse-ld=mold", "-C", "force-frame-pointers=yes"]
 
 [resolver]
 incompatible-rust-versions = "fallback"
+
+[registry]
+global-min-publish-age = "1 week"
