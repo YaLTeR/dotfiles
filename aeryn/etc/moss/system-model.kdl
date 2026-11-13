@@ -106,6 +106,7 @@ packages {
 
     // Compositors
     sway
+    labwc
 
     // Terminals
     alacritty
