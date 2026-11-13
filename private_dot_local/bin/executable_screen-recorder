@@ -2,7 +2,7 @@
 
 function pick-region
     # 1) Select region with slurp: "x,y wxh"
-    set -l sel (slurp)
+    set -l sel (slurp -o)
     if test -z "$sel"
         echo "slurp failed or cancelled" >&2
         return 1
