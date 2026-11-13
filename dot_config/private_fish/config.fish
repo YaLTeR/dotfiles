@@ -79,6 +79,9 @@ alias gsu    "git submodule update"
 alias gsui   "git submodule update --init"
 alias gsuir  "git submodule update --init --recursive"
 
+alias jgf    "jj git fetch"
+alias jgfr   "jj git fetch --remote"
+
 # Push a non-checked-out branch.
 function gpusb --wraps 'git push origin'
 	set --local b $argv[1]
