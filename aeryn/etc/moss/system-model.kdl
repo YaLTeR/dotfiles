@@ -40,6 +40,9 @@ packages {
     gdm
     cups
     fwupd
+    exfatprogs
+    dosfstools
+    ntfsprogs
 
     // Essentials
     fish
@@ -126,6 +129,7 @@ packages {
     wayland-utils
     weston-demo
     wev
+    wtype
 
     // Apps
     resources
