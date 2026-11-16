@@ -82,6 +82,7 @@ input {
     // warp-mouse-to-focus mode="center-xy-always"
     // focus-follows-mouse
     focus-follows-mouse max-scroll-amount="0%"
+    // focus-follows-mouse outputs-only=true
     // workspace-auto-back-and-forth
 
     // mod-key "Alt"

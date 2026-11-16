@@ -120,7 +120,8 @@ window-rule {
 
 /-window-rule {
     match app-id="weston."
-    block-out-from "screen-capture"
+    // block-out-from "screen-capture"
+    block-out-from "screen-capture" kind="hide"
     // geometry-corner-radius 12 24 32 64
     // geometry-corner-radius 999
     // clip-to-geometry true
@@ -337,7 +338,7 @@ window-rule {
     match app-id=r#"firefox$"# title=r#"Discord \| "#
 
     block-out-from "screencast"
-    // block-out-from "screen-capture"
+    // block-out-from "screen-capture" kind="hide"
 
     border {
         // off
@@ -395,6 +396,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Showtime$"#
     match app-id=r#"^org\.gnome\.Adwaita1\.Demo$"#
     match app-id=r#"^io\.gitlab\.news_flash\.NewsFlash$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
     match app-id=r#"^com\.mitchellh\.ghostty$"#
     match app-id=r#"^com\.mitchellh\.ghostty-debug$"#
 
