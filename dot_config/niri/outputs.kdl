@@ -86,6 +86,7 @@ output "Acer Technologies XV320QU LV 420615FCD4200" {
     // mode "100x100"
     // mode "1280x720"
     // modeline 162.00  1280 1376 1512 1744  720 723 728 775 "-hsync" "+vsync"
+    // drm-lease
 
     variable-refresh-rate on-demand=true
     // variable-refresh-rate

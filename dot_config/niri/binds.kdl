@@ -81,7 +81,7 @@ binds {
     Mod+BackSpace { close-window; }
     Alt+F4 { close-window; }
 
-    // Mod+Tab { focus-window-previous; }
+    // Mod+Ctrl+Tab { focus-window-previous; }
 
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -141,6 +141,11 @@ binds {
     Mod+Ctrl+I         { move-column-to-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+    // Mod+Ctrl+Shift+U         { move-column-to-new-workspace-below; }
+    // Mod+Ctrl+Shift+I         { move-column-to-new-workspace-above; }
+    // Mod+Ctrl+Shift+Page_Down { move-column-to-new-workspace-below; }
+    // Mod+Ctrl+Shift+Page_Up   { move-column-to-new-workspace-above; }
 
     Mod+WheelScrollDown            cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp              cooldown-ms=150 { focus-workspace-up; }

@@ -206,13 +206,10 @@ window-rule {
     default-column-width {}
 }
 
-/-window-rule {
-    variable-refresh-rate "fullscreen-only"
-}
-
 window-rule {
     match app-id="^mpv$"
     match app-id="^hl_linux$"
+    // match app-id=r#"^sh\.ppy\.osu$"#
     match app-id="^steam_app_524220$" // NieR:Automata
     match app-id="^steam_app_1299460$" // Wanderstop
     match app-id="^steam_app_1478500$" // Big Walk
@@ -253,6 +250,7 @@ window-rule {
 window-rule {
     match at-startup=true app-id=r#"^md\.obsidian\.Obsidian$"#
     open-on-workspace "notes"
+    on-xdg-activate "ignore"
 }
 
 window-rule {
@@ -504,6 +502,13 @@ window-rule {
     }
 }
 
+/-window-rule {
+    match app-id=r#"^sh\.ppy\.osu$"#
+    max-width 2844
+    // max-width 1920
+    variable-refresh-rate true
+}
+
 window-rule {
     // match app-id="Alacritty"
     // match app-id="Adwaita"
@@ -544,6 +549,8 @@ window-rule {
     // baba-is-float true
     // tiled-state true
     // tiled-state false
+
+    // variable-refresh-rate "fullscreen-only"
 
     // min-width 600
     // max-width 600
