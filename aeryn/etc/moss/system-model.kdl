@@ -93,6 +93,7 @@ packages {
     ffmpeg
     mpv
     imagemagick
+    mediainfo
     git-lfs
     delta
     drm-info
