@@ -38,8 +38,8 @@ binds {
     Super+Alt+Comma  hotkey-overlay-title="Switch to 170 Hz" { spawn "~/source/sh/refresh.sh" "auto"; }
     Super+Alt+Period hotkey-overlay-title="Switch to 120 Hz" { spawn "~/source/sh/refresh.sh" "120"; }
 
-    Super+Alt+M hotkey-overlay-title="Set Dynamic Cast Output" { set-dynamic-cast-monitor; }
-    Super+Alt+W hotkey-overlay-title="Set Dynamic Cast Window" { set-dynamic-cast-window; }
+    Super+Alt+M hotkey-overlay-title="Set Dynamic Cast Monitor" { set-dynamic-cast-monitor; }
+    Super+Alt+W hotkey-overlay-title="Set Dynamic Cast Window"  { set-dynamic-cast-window; }
     Super+Alt+P hotkey-overlay-title="Pick Dynamic Cast Window" { spawn "~/source/sh/pick-dynamic-cast-window.sh"; }
     Super+Alt+C hotkey-overlay-title="Clear Dynamic Cast Target" { clear-dynamic-cast-target; }
 
