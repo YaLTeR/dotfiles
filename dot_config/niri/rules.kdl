@@ -120,6 +120,8 @@ window-rule {
 
 /-window-rule {
     match app-id="weston."
+    match title="presentation-shm"
+    offscreen-fps 23
     // block-out-from "screen-capture"
     block-out-from "screen-capture" kind="hide"
     // geometry-corner-radius 12 24 32 64
@@ -275,6 +277,7 @@ window-rule {
     match app-id=r#"^discord"#
     match app-id=r#"^com\.discordapp\.Discord$"#
     default-column-width { proportion 0.66667; }
+    geometry-corner-radius 8 8 8 8
 }
 
 window-rule {
